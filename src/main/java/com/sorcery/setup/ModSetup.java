@@ -7,20 +7,20 @@ import net.minecraft.item.ItemStack;
 public class ModSetup
 {
 
-    public static ItemGroup SORCERY = new ItemGroup("Sorcery"){
+    public static ItemGroup SORCERY = new ItemGroup("sorcery"){
         @Override
         public ItemStack createIcon()
         {
-            return new ItemStack(ModItem.GRIMOIRE);
+            return new ItemStack(ModItem.GRIMOIRE.get());
         }
     };
 
-    public static ItemGroup SORCERY_SPELLS = new ItemGroup("Sorcery Spells")
+    public static ItemGroup SORCERY_SPELLS = new ItemGroup("sorcery_spells")
     {
         @Override
         public ItemStack createIcon()
         {
-            return new ItemStack(ModItem.create_water_spell_scroll);
+            return new ItemStack(ModItem.CREATE_WATER_SPELL_SCROLL.get());
         }
     };
 }
