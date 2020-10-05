@@ -81,7 +81,7 @@ public class SpellcastingItem extends Item
     // Actually casting a spell
     public ActionResultType castSpell(SpellUseContext context)
     {
-        Spell spellToCast = getActiveSpell(context);
+        Spell spellToCast = context.getSpell();
         System.out.println(spellToCast);
         CastType castType = spellToCast.getCastType();
 
@@ -109,19 +109,13 @@ public class SpellcastingItem extends Item
         return spell.castFinal(context);
     }
 
-    //Adding this to to override as necessary for final staff version
-    public Spell getActiveSpell(SpellUseContext context)
-    {
-        return Utils.getSpellFromProvider(context.getItem());
-    }
-
 
     // Duration spells finish here
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving)
     {
         SpellUseContext spellContext = new SpellUseContext(worldIn, entityLiving, entityLiving.getActiveHand());
-        Spell spellToCast = getActiveSpell(spellContext);
+        Spell spellToCast = spellContext.getSpell();
         spellToCast.castFinal(spellContext);
         return stack;
     }

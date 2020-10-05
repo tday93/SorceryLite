@@ -6,6 +6,7 @@ import com.google.gson.JsonDeserializer;
 import com.sorcery.Constants;
 import com.sorcery.block.ModBlock;
 import com.sorcery.item.SpellcastingItem;
+import com.sorcery.item.WandItem;
 import com.sorcery.keybinding.KeyBindings;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.KeyPressPacket;
@@ -51,7 +52,17 @@ public class ScrollEvent
             spellCap = Utils.getSpellCap(spellBook);
         }
 
+        if (heldItem instanceof WandItem)
+        {
+            ResourceLocation selectedSpell = ((WandItem) heldItem).getSpell().getRegistryName();
+            DrawScreenEvent.setSelectedSpell(selectedSpell);
+            PacketHandler.sendToServer(new KeyPressPacket(1));
+            event.setCanceled(true);
+            return;
+        }
+
         Double delta = event.getScrollDelta();
+
 
         if (delta > 0)
         {

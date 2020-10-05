@@ -59,16 +59,20 @@ public class ModItem
     public static final RegistryObject<Item> GEODE = ITEMS.register("geode", () -> new GeodeItem(Constants.ITEM_PROPS));
 
     // Crushed Wolframite
-    public static final RegistryObject<Item> CRUSHED_WOLFRAMITE = ITEMS.register("crushed_wolframite", () -> new Item(Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> SORCEROUS_CATALYST = ITEMS.register("sorcerous_catalyst", () -> new Item(Constants.ITEM_PROPS));
 
     // Grimoire
     public static final RegistryObject<Item> GRIMOIRE = ITEMS.register("grimoire", () -> new Item(Constants.ITEM_PROPS));
 
+    // Utility Items
+    public static final RegistryObject<Item> CRYSTAL_RESONATOR = ITEMS.register("crystal_resonator", () -> new CrystalResonatorItem(Constants.ITEM_PROPS));
+
     // Staves
     public static final RegistryObject<Item> SORCEROUS_STAFF = ITEMS.register("sorcerous_staff", () -> new StaffItem(Constants.ITEM_PROPS));
 
-    // Utility Items
-    public static final RegistryObject<Item> CRYSTAL_RESONATOR = ITEMS.register("crystal_resonator", () -> new CrystalResonatorItem(Constants.ITEM_PROPS));
+    //Spellbook
+    public static final RegistryObject<Item> SPELL_BOOK = ITEMS.register("spell_book", () -> new SpellbookItem(Constants.ITEM_PROPS));
+
 
     // Spell Scrolls
     public static final RegistryObject<Item> CREATE_WATER_SPELL_SCROLL = ITEMS.register("create_water_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.CREATE_WATER_SPELL));
@@ -76,8 +80,9 @@ public class ModItem
     public static final RegistryObject<Item> COMBUSTION_SPELL_SCROLL = ITEMS.register("combustion_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.COMBUSTION_SPELL));
     public static final RegistryObject<Item> BLINK_SPELL_SCROLL = ITEMS.register("blink_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.BLINK_SPELL));
 
-    //Spellbook
-    public static final RegistryObject<Item> SPELL_BOOK = ITEMS.register("spell_book", () -> new SpellbookItem(Constants.ITEM_PROPS));
+    // Wands
+    public static final RegistryObject<Item> WAND_CREATE_WATER = ITEMS.register("wand_create_water", () -> new WandItem(ModSpell.CREATE_WATER_SPELL));
+
 
     // Block Items
     public static final RegistryObject<Item> POLISHED_RUNESTONE = ITEMS.register("polished_wolfram", () -> new BlockItem(ModBlock.POLISHED_RUNESTONE.get(), Constants.ITEM_PROPS));
@@ -101,7 +106,7 @@ public class ModItem
     public static final RegistryObject<Item> WOLFRAM_LANTERN = ITEMS.register("wolfram_lantern", () -> new BlockItem(ModBlock.WOLFRAM_LANTERN.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> PYLON = ITEMS.register("pylon", () -> new BlockItem(ModBlock.PYLON.get(), Constants.ITEM_PROPS));
 
-    // Test
+    // Monolith Pieces
     public static final RegistryObject<Item> MONOLITH_CHISELED_BOTTOM = ITEMS.register("monolith_chiseled_bottom", () -> new BlockItem(ModBlock.MONOLITH_CHISELED_BOTTOM.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> MONOLITH_CHISELED_MIDDLE = ITEMS.register("monolith_chiseled_middle", () -> new BlockItem(ModBlock.MONOLITH_CHISELED_MIDDLE.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> MONOLITH_CHISELED_TOP = ITEMS.register("monolith_chiseled_top", () -> new BlockItem(ModBlock.MONOLITH_CHISELED_TOP.get(), Constants.ITEM_PROPS));

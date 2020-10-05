@@ -2,6 +2,9 @@ package com.sorcery.spell;
 
 
 import com.sorcery.arcana.IArcanaStorage;
+import com.sorcery.item.StaffItem;
+import com.sorcery.item.WandItem;
+import com.sorcery.spellcasting.ISpellcasting;
 import com.sorcery.utils.Utils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -9,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
@@ -215,6 +219,19 @@ public class SpellUseContext
     public int getCastingTicks()
     {
         return this.castingTicks;
+    }
+
+    public Spell getSpell()
+    {
+        if (this.item.getItem() instanceof WandItem)
+        {
+            return ((WandItem) this.item.getItem()).getSpell();
+        }
+        if (this.item.getItem() instanceof StaffItem && this.getPlayer() != null)
+        {
+            return Utils.getSpellFromProvider(Utils.getPlayerSpellbook(this.getPlayer()));
+        }
+        return ModSpell.REMOVE_ARCANA_SPELL.get();
     }
 
 }

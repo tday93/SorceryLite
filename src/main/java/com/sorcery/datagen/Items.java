@@ -1,15 +1,12 @@
 package com.sorcery.datagen;
 
 import com.sorcery.Constants;
-import com.sorcery.block.ModBlock;
 import com.sorcery.item.*;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.RegistryObject;
 
 public class Items extends ItemModelProvider
 {
@@ -30,7 +27,6 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.ARCANE_DYNAMO.get(), "arcane_dynamo");
         simpleSingleTexture(ModItem.MUNDANE_MECHANISM.get(), "mundane_mechanism");
         simpleSingleTexture(ModItem.LODESTONE.get(), "lodestone");
-        simpleSingleTexture(ModItem.WOLFRAM_INGOT.get(), "wolfram_ingot");
         simpleSingleTexture(ModItem.MYTHRIL_INGOT.get(), "mythril_ingot");
         simpleSingleTexture(ModItem.SIGIL_SLATE.get(), "sigil_slate");
         simpleSingleTexture(ModItem.SIGIL_EVOCATION.get(), "sigil_evocation");
@@ -48,7 +44,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.CRYSTAL_SERPENTINE.get(), "crystal_serpentine");
         simpleSingleTexture(ModItem.CRYSTAL_NUUMMITE.get(), "crystal_nuummite");
         simpleSingleTexture(ModItem.GEODE.get(), "geode");
-        simpleSingleTexture(ModItem.CRUSHED_WOLFRAMITE.get(), "hadean_ember");
+        simpleSingleTexture(ModItem.SORCEROUS_CATALYST.get(), "hadean_ember");
         simpleSingleTexture(ModItem.GRIMOIRE.get(), "grimoire");
         simpleSingleTexture(ModItem.SPELL_BOOK.get(), "tome_evocation");
         // simpleSingleTexture(ModItem.SORCEROUS_STAFF.get(), "apprentice_staff");
@@ -59,6 +55,9 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.COMBUSTION_SPELL_SCROLL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.BLINK_SPELL_SCROLL.get(), "scroll_evocation");
+
+        // Wands
+        simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_create_water");
 
 
         // Block Item Models
