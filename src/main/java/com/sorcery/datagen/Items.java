@@ -55,6 +55,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.COMBUSTION_SPELL_SCROLL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.BLINK_SPELL_SCROLL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.DIG_SPELL_SCROLL.get(), "scroll_evocation");
 
         // Wands
         simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_create_water");

@@ -59,9 +59,7 @@ public class Utils {
 
     public static Spell getSpellFromProvider(CapabilityProvider<?> provider)
     {
-        System.out.println("getting spell from provider");
         ResourceLocation spellLoc = getSpellCap(provider).getActiveSpell();
-        System.out.println("active spell:" + spellLoc);
         Spell spellOut = GameRegistry.findRegistry(Spell.class).getValue(spellLoc);
         return spellOut;
     }
@@ -217,11 +215,9 @@ public class Utils {
         {
             if (stack.getItem() instanceof SpellbookItem)
             {
-                System.out.println("Found spellbook in getPlayerSpellbook");
                 spellbook = stack;
             }
         }
-        System.out.println("returning spellbook");
         return spellbook;
     }
 

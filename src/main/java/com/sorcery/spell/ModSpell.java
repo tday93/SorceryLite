@@ -16,6 +16,12 @@ public class ModSpell
     public static final DeferredRegister<Spell> SPELLS = DeferredRegister.create(Spell.class, Constants.MODID);
 
 
+    // Pre-Iron Spells
+    // Iron Spells
+    // Diamond Spells
+    // Nether Spells
+    // Netherite Spells
+    // End Spells
     public static final RegistryObject<Spell> TEST_SPELL = SPELLS.register("test_spell", () -> new TestSpell("poof!", 0));
 
     public static final RegistryObject<Spell> REMOVE_ARCANA_SPELL = SPELLS.register("remove_arcana_spell", () -> new TestSpell("Arcana Removed!", 1000));
@@ -39,6 +45,8 @@ public class ModSpell
     public static final RegistryObject<Spell> FIREBOLT_SPELL = SPELLS.register("firebolt_spell", () -> new FireboltSpell());
 
     public static final RegistryObject<Spell> CREATE_WATER_SPELL = SPELLS.register("create_water_spell", () -> new CreateWaterSpell());
+
+    public static final RegistryObject<Spell> DIG_SPELL = SPELLS.register("dig_spell", () -> new DigSpell(10));
 
 
     public static void init()

@@ -11,6 +11,7 @@ import com.sorcery.utils.Utils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -19,6 +20,19 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber
 public class DurationSpellEvent
 {
+    @SubscribeEvent
+    public static void durationSpellStart(LivingEntityUseItemEvent.Start event)
+    {
+        if (event.getItem().getItem() instanceof SpellcastingItem)
+        {
+            PlayerEntity entity = (PlayerEntity) event.getEntity();
+            SpellUseContext context = new SpellUseContext(entity.getEntityWorld(), entity, Hand.MAIN_HAND);
+            Spell spell = context.getSpell();
+            event.setDuration(spell.getCastDuration(context));
+        }
+    }
+
+
     /**
      * Called every tick a spell is being channeled.
      * @param event
@@ -26,7 +40,6 @@ public class DurationSpellEvent
     @SubscribeEvent
     public static void channeledSpell(LivingEntityUseItemEvent.Tick event)
     {
-
         if (event.getItem().getItem() instanceof SpellcastingItem)
         {
             PlayerEntity entity = (PlayerEntity) event.getEntity();
@@ -54,23 +67,6 @@ public class DurationSpellEvent
                 context.setCastingTicks(spell.castDuration - event.getDuration());
                 spell.castFinal(context);
             }
-        }
-    }
-
-    /**
-     * Called when a player channels a spell for the full duration.
-     * @param event
-     */
-    @SubscribeEvent
-    public static void channeledSpellFinish(LivingEntityUseItemEvent.Finish event)
-    {
-        if (event.getItem().getItem() instanceof SpellcastingItem)
-        {
-            PlayerEntity entity = (PlayerEntity) event.getEntity();
-            SpellUseContext context = new SpellUseContext(entity.getEntityWorld(), entity, entity.getActiveHand());
-            Spell spell = context.getSpell();
-            context.setCastingTicks(spell.castDuration - event.getDuration());
-            spell.castFinal(context);
         }
     }
 }

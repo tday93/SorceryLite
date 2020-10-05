@@ -153,6 +153,10 @@ public class Spell extends ForgeRegistryEntry<Spell>
         return this.castDuration;
     }
 
+    public int getCastDuration(SpellUseContext context){
+        return this.castDuration;
+    }
+
     public CastType getCastType()
     {
         return this.castType;
