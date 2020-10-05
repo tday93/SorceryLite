@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "sorcery:block/monolith_lapis_top",
+      "uvlock": true
+    },
+    "active=true": {
+      "model": "sorcery:block/monolith_lapis_top_active",
+      "uvlock": true
+    }
+  }
+}

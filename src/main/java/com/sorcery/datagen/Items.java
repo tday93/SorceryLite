@@ -75,10 +75,6 @@ public class Items extends ItemModelProvider
         simpleBlockItem(ModItem.RUNEWOOD_PLANK_SLAB.get(), "runewood_plank_slab");
         simpleBlockItem(ModItem.RUNEWOOD_PLANK_STAIRS.get(), "runewood_plank_stairs");
         simpleBlockItem(ModItem.RUNEWOOD_PLANK_FENCE.get(), "runewood_plank_fence_inventory");
-        simpleBlockItem(ModItem.MONOLITH_CHISELED.get(), "monolith_chiseled");
-        simpleBlockItem(ModItem.MONOLITH_SOLAR.get(), "monolith_solar");
-        simpleBlockItem(ModItem.MONOLITH_LUNAR.get(), "monolith_lunar");
-        simpleBlockItem(ModItem.MONOLITH_DARK.get(), "monolith_dark");
         simpleBlockItem(ModItem.CHISELED_RUNESTONE.get(), "chiseled_runestone");
         simpleBlockItem(ModItem.DARK_RUNESTONE.get(), "dark_runestone");
         simpleBlockItem(ModItem.LAPIS_RUNESTONE.get(), "lapis_runestone");
@@ -87,6 +83,26 @@ public class Items extends ItemModelProvider
         simpleBlockItem(ModItem.WOLFRAM_LANTERN.get(), "wolfram_lantern");
         simpleBlockItem(ModItem.PYLON.get(), "pylon_inactive");
 
+        //TEST
+        simpleBlockItem(ModItem.MONOLITH_CHISELED_BOTTOM.get(), "monolith_chiseled_bottom");
+        simpleBlockItem(ModItem.MONOLITH_CHISELED_MIDDLE.get(), "monolith_chiseled_middle");
+        simpleBlockItem(ModItem.MONOLITH_CHISELED_TOP.get(), "monolith_chiseled_top");
+
+        simpleBlockItem(ModItem.MONOLITH_DARK_BOTTOM.get(), "monolith_dark_bottom");
+        simpleBlockItem(ModItem.MONOLITH_DARK_MIDDLE.get(), "monolith_dark_middle");
+        simpleBlockItem(ModItem.MONOLITH_DARK_TOP.get(), "monolith_dark_top");
+
+        simpleBlockItem(ModItem.MONOLITH_LAPIS_BOTTOM.get(), "monolith_lapis_bottom");
+        simpleBlockItem(ModItem.MONOLITH_LAPIS_MIDDLE.get(), "monolith_lapis_middle");
+        simpleBlockItem(ModItem.MONOLITH_LAPIS_TOP.get(), "monolith_lapis_top");
+
+        simpleBlockItem(ModItem.MONOLITH_LUNAR_BOTTOM.get(), "monolith_lunar_bottom");
+        simpleBlockItem(ModItem.MONOLITH_LUNAR_MIDDLE.get(), "monolith_lunar_middle");
+        simpleBlockItem(ModItem.MONOLITH_LUNAR_TOP.get(), "monolith_lunar_top");
+
+        simpleBlockItem(ModItem.MONOLITH_SOLAR_BOTTOM.get(), "monolith_solar_bottom");
+        simpleBlockItem(ModItem.MONOLITH_SOLAR_MIDDLE.get(), "monolith_solar_middle");
+        simpleBlockItem(ModItem.MONOLITH_SOLAR_TOP.get(), "monolith_solar_top");
 
     }
 

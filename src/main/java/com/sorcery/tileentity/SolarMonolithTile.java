@@ -37,18 +37,17 @@ public class SolarMonolithTile extends AbstractMonolithTile implements ITickable
                 {
                     if (this.world.getLightFor(LightType.SKY, this.pos) >= 14 && this.world.isDaytime())
                     {
-                        this.active = true;
+                        this.setActivity(true);
                     } else {
-                        this.active = false;
+                        this.setActivity(false);
                     }
                 } else {
-                    this.active = false;
+                    this.setActivity(false);
                 }
                 if (this.interference)
                 {
-                    this.active = false;
+                    this.setActivity(false);
                 }
-                MonolithBlock.setActivity(this.world, this.getBlockState(), this.pos, this.active);
             }
         } else {
             // Particles

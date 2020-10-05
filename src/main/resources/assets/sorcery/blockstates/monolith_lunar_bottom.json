@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "sorcery:block/monolith_lunar_bottom",
+      "uvlock": true
+    },
+    "active=true": {
+      "model": "sorcery:block/monolith_lunar_bottom_active",
+      "uvlock": true
+    }
+  }
+}

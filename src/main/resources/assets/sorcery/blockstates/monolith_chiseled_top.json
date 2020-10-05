@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "sorcery:block/monolith_chiseled_top",
+      "uvlock": true
+    },
+    "active=true": {
+      "model": "sorcery:block/monolith_chiseled_top_active",
+      "uvlock": true
+    }
+  }
+}

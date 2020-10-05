@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "sorcery:block/monolith_dark_middle",
+      "uvlock": true
+    },
+    "active=true": {
+      "model": "sorcery:block/monolith_dark_middle_active",
+      "uvlock": true
+    }
+  }
+}

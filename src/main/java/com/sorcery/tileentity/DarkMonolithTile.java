@@ -40,10 +40,9 @@ public class DarkMonolithTile extends AbstractMonolithTile
             {
                 if (this.arcanaStorage.getArcanaStored() < 10)
                 {
-                    MonolithBlock.setActivity(world, this.getBlockState(), this.pos, false);
+                    this.setActivity(false);
                 } else {
-                    MonolithBlock.setActivity(world, this.getBlockState(), this.pos, true);
-
+                    this.setActivity(true);
                 }
             }
         }

@@ -1,15 +1,7 @@
 package com.sorcery.block;
 
 import com.sorcery.Constants;
-import net.minecraft.block.Block;
-import net.minecraft.block.FenceBlock;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.block.OreBlock;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.StairsBlock;
-import net.minecraft.block.WallBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -47,13 +39,35 @@ public class ModBlock
     public static final RegistryObject<Block> RUNEWOOD_PLANK_SLAB = BLOCKS.register("runewood_plank_slab", () -> new SlabBlock(Block.Properties.create(Material.WOOD)));
     public static final RegistryObject<Block> RUNEWOOD_PLANK_FENCE = BLOCKS.register("runewood_plank_fence", () -> new FenceBlock(Block.Properties.create(Material.WOOD)));
 
+    // Monoliths
+
+    public static final RegistryObject<Block> MONOLITH_CHISELED_TOP = BLOCKS.register("monolith_chiseled_top", () -> new MonolithTopBlock());
+    public static final RegistryObject<Block> MONOLITH_CHISELED_MIDDLE = BLOCKS.register("monolith_chiseled_middle", () -> new MonolithBlock());
+    public static final RegistryObject<Block> MONOLITH_CHISELED_BOTTOM = BLOCKS.register("monolith_chiseled_bottom", () -> new MonolithBottomBlock());
+
+    public static final RegistryObject<Block> MONOLITH_DARK_TOP = BLOCKS.register("monolith_dark_top", () -> new MonolithTopBlock());
+    public static final RegistryObject<Block> MONOLITH_DARK_MIDDLE = BLOCKS.register("monolith_dark_middle", () -> new DarkMonolithBlock());
+    public static final RegistryObject<Block> MONOLITH_DARK_BOTTOM = BLOCKS.register("monolith_dark_bottom", () -> new MonolithBottomBlock());
+
+    public static final RegistryObject<Block> MONOLITH_LAPIS_TOP = BLOCKS.register("monolith_lapis_top", () -> new MonolithTopBlock());
+    public static final RegistryObject<Block> MONOLITH_LAPIS_MIDDLE = BLOCKS.register("monolith_lapis_middle", () -> new LapisMonolithBlock());
+    public static final RegistryObject<Block> MONOLITH_LAPIS_BOTTOM = BLOCKS.register("monolith_lapis_bottom", () -> new MonolithBottomBlock());
+
+    public static final RegistryObject<Block> MONOLITH_LUNAR_TOP =  BLOCKS.register("monolith_lunar_top", () -> new MonolithTopBlock());
+    public static final RegistryObject<Block> MONOLITH_LUNAR_MIDDLE = BLOCKS.register("monolith_lunar_middle", () -> new LunarMonolithBlock());
+    public static final RegistryObject<Block> MONOLITH_LUNAR_BOTTOM = BLOCKS.register("monolith_lunar_bottom", () -> new MonolithBottomBlock());
+
+    public static final RegistryObject<Block> MONOLITH_SOLAR_TOP = BLOCKS.register("monolith_solar_top", () -> new MonolithTopBlock());
+    public static final RegistryObject<Block> MONOLITH_SOLAR_MIDDLE = BLOCKS.register("monolith_solar_middle", () -> new SolarMonolithBlock());
+    public static final RegistryObject<Block> MONOLITH_SOLAR_BOTTOM = BLOCKS.register("monolith_solar_bottom", () -> new MonolithBottomBlock());
+
     // Runestones
 
-    public static final RegistryObject<Block> CHISELED_RUNESTONE = BLOCKS.register("chiseled_runestone", () -> new RunestoneBlock(new ResourceLocation(Constants.MODID, "monolith_chiseled")));
-    public static final RegistryObject<Block> DARK_RUNESTONE = BLOCKS.register("dark_runestone", () -> new RunestoneBlock(new ResourceLocation(Constants.MODID, "monolith_dark")));
-    public static final RegistryObject<Block> LAPIS_RUNESTONE = BLOCKS.register("lapis_runestone", () -> new RunestoneBlock(new ResourceLocation(Constants.MODID, "monolith_lapis")));
-    public static final RegistryObject<Block> SOLAR_RUNESTONE = BLOCKS.register("solar_runestone", () -> new RunestoneBlock(new ResourceLocation(Constants.MODID, "monolith_lunar")));
-    public static final RegistryObject<Block> LUNAR_RUNESTONE = BLOCKS.register("lunar_runestone", () -> new RunestoneBlock(new ResourceLocation(Constants.MODID, "monolith_solar")));
+    public static final RegistryObject<Block> CHISELED_RUNESTONE = BLOCKS.register("chiseled_runestone", () -> new RunestoneBlock(MONOLITH_CHISELED_TOP.getId(), MONOLITH_CHISELED_MIDDLE.getId(), MONOLITH_CHISELED_BOTTOM.getId()));
+    public static final RegistryObject<Block> DARK_RUNESTONE = BLOCKS.register("dark_runestone", () -> new RunestoneBlock(MONOLITH_DARK_TOP.getId(), MONOLITH_DARK_MIDDLE.getId(), MONOLITH_DARK_BOTTOM.getId()));
+    public static final RegistryObject<Block> LAPIS_RUNESTONE = BLOCKS.register("lapis_runestone", () -> new RunestoneBlock(MONOLITH_LAPIS_TOP.getId(), MONOLITH_LAPIS_MIDDLE.getId(), MONOLITH_LAPIS_BOTTOM.getId()));
+    public static final RegistryObject<Block> LUNAR_RUNESTONE = BLOCKS.register("lunar_runestone", () -> new RunestoneBlock(MONOLITH_LUNAR_TOP.getId(), MONOLITH_LUNAR_MIDDLE.getId(), MONOLITH_LUNAR_BOTTOM.getId()));
+    public static final RegistryObject<Block> SOLAR_RUNESTONE = BLOCKS.register("solar_runestone", () -> new RunestoneBlock(MONOLITH_SOLAR_TOP.getId(), MONOLITH_SOLAR_MIDDLE.getId(), MONOLITH_SOLAR_BOTTOM.getId()));
 
     // non simple blocks
     public static final RegistryObject<Block> RUNEWOOD_LOG = BLOCKS.register("runewood_log", () -> new RunewoodLogBlock());
@@ -64,15 +78,9 @@ public class ModBlock
     // Decor
     public static final RegistryObject<Block> WOLFRAM_LANTERN = BLOCKS.register("wolfram_lantern", () -> new WolframLanternBlock());
 
-    // Monoliths
-    public static final RegistryObject<Block> MONOLITH_CHISELED = BLOCKS.register("monolith_chiseled", () -> new MonolithBlock());
-    public static final RegistryObject<Block> MONOLITH_DARK = BLOCKS.register("monolith_dark", () -> new DarkMonolithBlock());
-    public static final RegistryObject<Block> MONOLITH_LAPIS = BLOCKS.register("monolith_lapis", () -> new LapisMonolithBlock());
-    public static final RegistryObject<Block> MONOLITH_LUNAR = BLOCKS.register("monolith_lunar", () -> new LunarMonolithBlock());
-    public static final RegistryObject<Block> MONOLITH_SOLAR = BLOCKS.register("monolith_solar", () -> new SolarMonolithBlock());
-
-
     // Other Tiles
     public static final RegistryObject<Block> PYLON = BLOCKS.register("pylon", () -> new PylonBlock());
+
+
 
 }
