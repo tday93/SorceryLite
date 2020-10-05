@@ -2,6 +2,9 @@ package com.sorcery.tileentity;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
+import com.sorcery.block.MonolithBlock;
+import com.sorcery.block.MonolithBottomBlock;
+import com.sorcery.block.MonolithTopBlock;
 import com.sorcery.utils.Utils;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -29,12 +32,13 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
     {
         super(variantIn);
         this.arcanaStorage.setMaxArcanaStored(maxArcana);
-        this.arcanaPulseOffset = new Vector3d(0.5, 2, 0.5);
+        this.arcanaPulseOffset = new Vector3d(0.5, 1, 0.5);
     }
 
     @Override
     public void tick()
     {
+        long worldTicks = this.getOffsetWorldTicks();
         if (!world.isRemote())
         {
             if (this.getOffsetWorldTicks() % 40 == 0)
@@ -43,6 +47,14 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
             }
         }
         super.tick();
+    }
+
+    public void setActivity(boolean activity)
+    {
+        this.active = activity;
+        MonolithTopBlock.setActivity(this.world, this.world.getBlockState(this.pos.up(1)), this.pos.up(1), this.active);
+        MonolithBlock.setActivity(this.world, this.getBlockState(), this.pos, this.active);
+        MonolithBottomBlock.setActivity(this.world, this.world.getBlockState(this.pos.down(1)), this.pos.down(1), this.active);
     }
 
 

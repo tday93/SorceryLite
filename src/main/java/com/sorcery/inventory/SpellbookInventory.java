@@ -4,6 +4,7 @@ import com.sorcery.item.ModItem;
 import com.sorcery.item.SpellScrollItem;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.SpellCapSyncPacket;
+import com.sorcery.spell.ModSpell;
 import com.sorcery.spellcasting.ISpellcasting;
 import com.sorcery.spellcasting.SpellcastingCapability;
 import com.sorcery.utils.Utils;
@@ -72,6 +73,9 @@ public class SpellbookInventory extends Inventory
                 spellCasting.addPreparedSpell(spellLoc);
             }
         }
+        System.out.println("adding arcanaDrain");
+        spellCasting.addPreparedSpell(ModSpell.ARCANA_DRAIN_SPELL.getId());
+        spellCasting.setActiveSpell(ModSpell.ARCANA_DRAIN_SPELL.getId());
         System.out.println("final spellcasting:");
         System.out.println(spellCasting.serializeNBT());
         ItemStackHelper.saveAllItems(compound, list, true);

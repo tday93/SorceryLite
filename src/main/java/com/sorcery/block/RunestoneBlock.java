@@ -18,13 +18,17 @@ import javax.annotation.Nullable;
 
 public class RunestoneBlock extends Block
 {
-    private ResourceLocation formationBlock;
+    private ResourceLocation monolithTopBlock;
+    private ResourceLocation monolithMiddleBlock;
+    private ResourceLocation monolithBottomBlock;
 
 
-    public RunestoneBlock(ResourceLocation formationBlock)
+    public RunestoneBlock(ResourceLocation monolithTopBlockIn, ResourceLocation monolithMiddleBlockIn, ResourceLocation monolithBottomBlockIn)
     {
         super(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).sound(SoundType.STONE).setLightLevel((x) -> 15));
-        this.formationBlock = formationBlock;
+        this.monolithTopBlock = monolithTopBlockIn;
+        this.monolithMiddleBlock = monolithMiddleBlockIn;
+        this.monolithBottomBlock = monolithBottomBlockIn;
     }
 
     @Override
@@ -44,12 +48,17 @@ public class RunestoneBlock extends Block
         // check for runestone below
         if (tag.contains(sub1) && tag.contains(sub2))
         {
-            Block block = GameRegistry.findRegistry(Block.class).getValue(this.formationBlock);
+            Block topBlock = GameRegistry.findRegistry(Block.class).getValue(this.monolithTopBlock);
+            Block middleBlock = GameRegistry.findRegistry(Block.class).getValue(this.monolithMiddleBlock);
+            Block bottomBlock = GameRegistry.findRegistry(Block.class).getValue(this.monolithBottomBlock);
             // remove blocks, add monolith
             worldIn.removeBlock(pos, false);
             worldIn.removeBlock(pos.down(1), false);
             worldIn.removeBlock(pos.down(2), false);
-            worldIn.setBlockState(pos.down(2), block.getDefaultState(), 3);
+            worldIn.setBlockState(pos, topBlock.getDefaultState(), 3);
+            worldIn.setBlockState(pos.down(1), middleBlock.getDefaultState(), 3);
+            worldIn.setBlockState(pos.down(2), bottomBlock.getDefaultState(), 3);
+
         }
     }
 }

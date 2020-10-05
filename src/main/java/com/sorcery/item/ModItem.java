@@ -93,10 +93,6 @@ public class ModItem
     public static final RegistryObject<Item> RUNEWOOD_PLANK_SLAB = ITEMS.register("runewood_plank_slab", () -> new BlockItem(ModBlock.RUNEWOOD_PLANK_SLAB.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> RUNEWOOD_PLANK_STAIRS = ITEMS.register("runewood_plank_stairs", () -> new BlockItem(ModBlock.RUNEWOOD_PLANK_STAIRS.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> RUNEWOOD_PLANK_FENCE = ITEMS.register("runewood_plank_fence", () -> new BlockItem(ModBlock.RUNEWOOD_PLANK_FENCE.get(), Constants.ITEM_PROPS));
-    public static final RegistryObject<Item> MONOLITH_CHISELED = ITEMS.register("monolith_chiseled", () -> new BlockItem(ModBlock.MONOLITH_CHISELED.get(), Constants.ITEM_PROPS));
-    public static final RegistryObject<Item> MONOLITH_SOLAR = ITEMS.register("monolith_solar", () -> new BlockItem(ModBlock.MONOLITH_SOLAR.get(), Constants.ITEM_PROPS));
-    public static final RegistryObject<Item> MONOLITH_LUNAR = ITEMS.register("monolith_lunar", () -> new BlockItem(ModBlock.MONOLITH_LUNAR.get(), Constants.ITEM_PROPS));
-    public static final RegistryObject<Item> MONOLITH_DARK = ITEMS.register("monolith_dark", () -> new BlockItem(ModBlock.MONOLITH_DARK.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> CHISELED_RUNESTONE = ITEMS.register("chiseled_runestone", () -> new BlockItem(ModBlock.CHISELED_RUNESTONE.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> DARK_RUNESTONE = ITEMS.register("dark_runestone", () -> new BlockItem(ModBlock.DARK_RUNESTONE.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> LAPIS_RUNESTONE = ITEMS.register("lapis_runestone", () -> new BlockItem(ModBlock.LAPIS_RUNESTONE.get(), Constants.ITEM_PROPS));
@@ -104,6 +100,27 @@ public class ModItem
     public static final RegistryObject<Item> SOLAR_RUNESTONE = ITEMS.register("solar_runestone", () -> new BlockItem(ModBlock.SOLAR_RUNESTONE.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> WOLFRAM_LANTERN = ITEMS.register("wolfram_lantern", () -> new BlockItem(ModBlock.WOLFRAM_LANTERN.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> PYLON = ITEMS.register("pylon", () -> new BlockItem(ModBlock.PYLON.get(), Constants.ITEM_PROPS));
+
+    // Test
+    public static final RegistryObject<Item> MONOLITH_CHISELED_BOTTOM = ITEMS.register("monolith_chiseled_bottom", () -> new BlockItem(ModBlock.MONOLITH_CHISELED_BOTTOM.get(), Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> MONOLITH_CHISELED_MIDDLE = ITEMS.register("monolith_chiseled_middle", () -> new BlockItem(ModBlock.MONOLITH_CHISELED_MIDDLE.get(), Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> MONOLITH_CHISELED_TOP = ITEMS.register("monolith_chiseled_top", () -> new BlockItem(ModBlock.MONOLITH_CHISELED_TOP.get(), Constants.ITEM_PROPS));
+
+    public static final RegistryObject<Item> MONOLITH_DARK_BOTTOM = ITEMS.register("monolith_dark_bottom", () -> new BlockItem(ModBlock.MONOLITH_DARK_BOTTOM.get(), Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> MONOLITH_DARK_MIDDLE = ITEMS.register("monolith_dark_middle", () -> new BlockItem(ModBlock.MONOLITH_DARK_MIDDLE.get(), Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> MONOLITH_DARK_TOP = ITEMS.register("monolith_dark_top", () -> new BlockItem(ModBlock.MONOLITH_DARK_TOP.get(), Constants.ITEM_PROPS));
+
+    public static final RegistryObject<Item> MONOLITH_LAPIS_BOTTOM = ITEMS.register("monolith_lapis_bottom", () -> new BlockItem(ModBlock.MONOLITH_LAPIS_BOTTOM.get(), Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> MONOLITH_LAPIS_MIDDLE = ITEMS.register("monolith_lapis_middle", () -> new BlockItem(ModBlock.MONOLITH_LAPIS_MIDDLE.get(), Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> MONOLITH_LAPIS_TOP = ITEMS.register("monolith_lapis_top", () -> new BlockItem(ModBlock.MONOLITH_LAPIS_TOP.get(), Constants.ITEM_PROPS));
+
+    public static final RegistryObject<Item> MONOLITH_LUNAR_BOTTOM = ITEMS.register("monolith_lunar_bottom", () -> new BlockItem(ModBlock.MONOLITH_LUNAR_BOTTOM.get(), Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> MONOLITH_LUNAR_MIDDLE = ITEMS.register("monolith_lunar_middle", () -> new BlockItem(ModBlock.MONOLITH_LUNAR_MIDDLE.get(), Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> MONOLITH_LUNAR_TOP = ITEMS.register("monolith_lunar_top", () -> new BlockItem(ModBlock.MONOLITH_LUNAR_TOP.get(), Constants.ITEM_PROPS));
+
+    public static final RegistryObject<Item> MONOLITH_SOLAR_BOTTOM = ITEMS.register("monolith_solar_bottom", () -> new BlockItem(ModBlock.MONOLITH_SOLAR_BOTTOM.get(), Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> MONOLITH_SOLAR_MIDDLE = ITEMS.register("monolith_solar_middle", () -> new BlockItem(ModBlock.MONOLITH_SOLAR_MIDDLE.get(), Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> MONOLITH_SOLAR_TOP = ITEMS.register("monolith_solar_top", () -> new BlockItem(ModBlock.MONOLITH_SOLAR_TOP.get(), Constants.ITEM_PROPS));
 
 
     public static void init()

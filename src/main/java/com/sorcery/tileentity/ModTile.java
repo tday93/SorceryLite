@@ -34,27 +34,27 @@ public class ModTile
     {
 
         event.getRegistry().register(TileEntityType.Builder
-                .create(ChiseledMonolithTile::new, ModBlock.MONOLITH_CHISELED.get())
+                .create(ChiseledMonolithTile::new, ModBlock.MONOLITH_CHISELED_MIDDLE.get())
                 .build(null)
                 .setRegistryName("chiseled_monolith"));
 
         event.getRegistry().register(TileEntityType.Builder
-                .create(DarkMonolithTile::new, ModBlock.MONOLITH_DARK.get())
+                .create(DarkMonolithTile::new, ModBlock.MONOLITH_DARK_MIDDLE.get())
                 .build(null)
                 .setRegistryName("dark_monolith"));
 
         event.getRegistry().register(TileEntityType.Builder
-                .create(SolarMonolithTile::new, ModBlock.MONOLITH_SOLAR.get())
+                .create(SolarMonolithTile::new, ModBlock.MONOLITH_SOLAR_MIDDLE.get())
                 .build(null)
                 .setRegistryName("solar_monolith"));
 
         event.getRegistry().register(TileEntityType.Builder
-                .create(LunarMonolithTile::new, ModBlock.MONOLITH_LUNAR.get())
+                .create(LunarMonolithTile::new, ModBlock.MONOLITH_LUNAR_MIDDLE.get())
                 .build(null)
                 .setRegistryName("lunar_monolith"));
 
         event.getRegistry().register(TileEntityType.Builder
-                .create(LapisMonolithTile::new, ModBlock.MONOLITH_LAPIS.get())
+                .create(LapisMonolithTile::new, ModBlock.MONOLITH_LAPIS_MIDDLE.get())
                 .build(null)
                 .setRegistryName("lapis_monolith"));
 

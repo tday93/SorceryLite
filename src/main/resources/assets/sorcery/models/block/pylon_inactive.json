@@ -1,5 +1,4 @@
 {
-	"credit": "Made with Blockbench",
 	"textures": {
 		"base": "sorcery:block/pylon_base",
 		"orb": "sorcery:block/pylon_orb_inactive",

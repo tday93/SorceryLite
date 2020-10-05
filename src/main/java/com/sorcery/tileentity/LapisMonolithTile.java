@@ -55,9 +55,9 @@ public class LapisMonolithTile extends AbstractMonolithTile
             if (worldTicks % 20 == 0) {
                 // check if active
                 if (this.arcanaStorage.getArcanaStored() < 10) {
-                    MonolithBlock.setActivity(world, this.getBlockState(), this.pos, false);
+                    this.setActivity(false);
                 } else {
-                    MonolithBlock.setActivity(world, this.getBlockState(), this.pos, true);
+                    this.setActivity(true);
                 }
             }
 

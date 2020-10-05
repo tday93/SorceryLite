@@ -1,6 +1,8 @@
 package com.sorcery.tileentity;
 
 import com.sorcery.block.MonolithBlock;
+import com.sorcery.block.MonolithBottomBlock;
+import com.sorcery.block.MonolithTopBlock;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.math.vector.Vector3d;
 
@@ -31,7 +33,7 @@ public class ChiseledMonolithTile extends AbstractMonolithTile implements ITicka
 
         if (worldTicks % 20 == 0)
         {
-            MonolithBlock.setActivity(this.world, this.getBlockState(), this.pos, this.active);
+            this.setActivity(true);
         }
         super.tick();
     }
