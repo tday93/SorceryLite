@@ -11,9 +11,19 @@ import javax.annotation.Nullable;
 
 public class ArcanaProvider implements ICapabilitySerializable<CompoundNBT>
 {
-    private final IArcanaStorage impl = new ArcanaStorage(10000);
+    private IArcanaStorage impl;
 
     private final LazyOptional<IArcanaStorage> cap = LazyOptional.of(() -> impl);
+
+    public ArcanaProvider()
+    {
+        impl = new ArcanaStorage(10000);
+    }
+
+    public ArcanaProvider(int arcanaAmount)
+    {
+        impl = new ArcanaStorage(arcanaAmount);
+    }
 
     @Nonnull
     @Override

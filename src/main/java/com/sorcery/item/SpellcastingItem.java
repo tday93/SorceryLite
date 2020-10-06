@@ -82,7 +82,6 @@ public class SpellcastingItem extends Item
     public ActionResultType castSpell(SpellUseContext context)
     {
         Spell spellToCast = context.getSpell();
-        System.out.println(spellToCast);
         CastType castType = spellToCast.getCastType();
 
         // If duration or channeled spell, set active hand and pass

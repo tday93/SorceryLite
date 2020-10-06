@@ -51,14 +51,24 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.CRYSTAL_RESONATOR.get(), "crystal_resonator");
 
         // Spell Scrolls
-        simpleSingleTexture(ModItem.CREATE_WATER_SPELL_SCROLL.get(), "scroll_evocation");
+        // Testing
         simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.COMBUSTION_SPELL_SCROLL.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.BLINK_SPELL_SCROLL.get(), "scroll_evocation");
+        // Pre-Iron
         simpleSingleTexture(ModItem.DIG_SPELL_SCROLL.get(), "scroll_evocation");
+        // Iron
+        // Diamond
+        // Nether
+        simpleSingleTexture(ModItem.COMBUSTION_SPELL_SCROLL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.CREATE_WATER_SPELL_SCROLL.get(), "scroll_evocation");
+        // Netherite
+        // End
+        simpleSingleTexture(ModItem.BLINK_SPELL_SCROLL.get(), "scroll_evocation");
 
         // Wands
+        simpleSingleTexture(ModItem.WAND_DIG.get(), "wand_dig");
         simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_create_water");
+        simpleSingleTexture(ModItem.WAND_PLANT_DEATH.get(), "wand_plant_death");
+        simpleSingleTexture(ModItem.WAND_PLANT_LIFE.get(), "wand_plant_life");
 
 
         // Block Item Models

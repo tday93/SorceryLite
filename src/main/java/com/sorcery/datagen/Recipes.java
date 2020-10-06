@@ -5,6 +5,7 @@ import com.sorcery.item.ModItem;
 import jdk.nashorn.internal.ir.Block;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.data.*;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -32,7 +33,6 @@ public class Recipes extends RecipeProvider
                 .addCriterion("lapis", InventoryChangeTrigger.Instance.forItems(Items.LAPIS_LAZULI))
                 .build(consumer);
 
-
         // Shaped Recipes
         ShapedRecipeBuilder.shapedRecipe(ModBlock.RUNESTONE_BRICKS.get(), 4)
                 .patternLine("xx")
@@ -53,5 +53,32 @@ public class Recipes extends RecipeProvider
                 .build(consumer);
     }
 
+    protected void spellScrollRecipeTier1(Consumer<IFinishedRecipe> consumer, Item scrollItem, Item uniqueComponent)
+    {
+        ShapedRecipeBuilder.shapedRecipe(scrollItem)
+                .patternLine(" x ")
+                .patternLine(" y ")
+                .patternLine(" z ")
+                .key('x', uniqueComponent)
+                .key('y', ModItem.SORCEROUS_CATALYST.get())
+                .key('z', Items.PAPER)
+                .setGroup("sorcery_spells")
+                .addCriterion("sorcery:sorcerous_catalyst", InventoryChangeTrigger.Instance.forItems(ModItem.SORCEROUS_CATALYST.get()))
+                .addCriterion("unique_component", InventoryChangeTrigger.Instance.forItems(uniqueComponent))
+                .build(consumer);
+    }
+
+    protected void wandRecipeTier1(Consumer<IFinishedRecipe> consumer, Item wandItem, Item uniqueComponent)
+    {
+        ShapedRecipeBuilder.shapedRecipe(wandItem)
+                .patternLine("  x")
+                .patternLine(" y ")
+                .patternLine("y  ")
+                .key('x', uniqueComponent)
+                .key('y', Items.STICK)
+                .setGroup("sorcery")
+                .addCriterion("unique_component", InventoryChangeTrigger.Instance.forItems(uniqueComponent))
+                .build(consumer);
+    }
 
 }
