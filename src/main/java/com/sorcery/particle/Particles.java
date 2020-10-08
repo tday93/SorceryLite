@@ -1,6 +1,7 @@
 package com.sorcery.particle;
 
 import com.sorcery.Constants;
+import com.sorcery.block.ModBlock;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleType;
 
@@ -30,6 +31,11 @@ public class Particles
     public static IParticleData getSkullSmoke()
     {
         return new RGBAParticleData(ModParticle.SKULL_SMOKE, 1, 1, 1, 0.7f);
+    }
+
+    public static IParticleData getSnowflake()
+    {
+        return new RGBAParticleData(ModParticle.SNOWFLAKE, 1, 1, 1, 0.8f);
     }
 
     public static IParticleData getColoredParticle(List<Integer> rgb, ParticleType type, float alpha)
@@ -100,6 +106,8 @@ public class Particles
                 collection.add(25, getColoredParticle(Constants.ARCANA_PURPLE_LOWLIGHT, ModParticle.ARCANA_ORB, 1.0f));
                 collection.add(25, getColoredParticle(Constants.ARCANA_PURPLE_HIGHLIGHT, ModParticle.ARCANA_ORB, 1.0f));
                 return collection;
+            case 7:
+                collection.add(100, getSnowflake());
             default:
                 collection.add(100, getSpark());
                 return collection;

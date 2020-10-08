@@ -4,10 +4,12 @@ import com.sorcery.block.ModBlock;
 import com.sorcery.item.ModItem;
 import jdk.nashorn.internal.ir.Block;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
@@ -51,6 +53,14 @@ public class Recipes extends RecipeProvider
                 .setGroup("sorcery")
                 .addCriterion("sorcery:sorcerous_catalyst", InventoryChangeTrigger.Instance.forItems(ModItem.SORCEROUS_CATALYST.get()))
                 .build(consumer);
+
+        // Wands
+        wandRecipeTier1(consumer, ModItem.WAND_DIG.get(), Items.DIRT);
+        wandRecipeTier1(consumer, ModItem.WAND_PLANT_DEATH.get(), Items.COARSE_DIRT);
+        wandRecipeTier1(consumer, ModItem.WAND_PLANT_LIFE.get(), Tags.Items.SEEDS);
+        wandRecipeTier1(consumer, ModItem.WAND_CHILLING_TOUCH.get(), Items.SNOWBALL);
+
+        //Scrolls
     }
 
     protected void spellScrollRecipeTier1(Consumer<IFinishedRecipe> consumer, Item scrollItem, Item uniqueComponent)
@@ -68,6 +78,7 @@ public class Recipes extends RecipeProvider
                 .build(consumer);
     }
 
+
     protected void wandRecipeTier1(Consumer<IFinishedRecipe> consumer, Item wandItem, Item uniqueComponent)
     {
         ShapedRecipeBuilder.shapedRecipe(wandItem)
@@ -78,6 +89,19 @@ public class Recipes extends RecipeProvider
                 .key('y', Items.STICK)
                 .setGroup("sorcery")
                 .addCriterion("unique_component", InventoryChangeTrigger.Instance.forItems(uniqueComponent))
+                .build(consumer);
+    }
+
+    protected void wandRecipeTier1(Consumer<IFinishedRecipe> consumer, Item wandItem, ITag<Item> tag)
+    {
+        ShapedRecipeBuilder.shapedRecipe(wandItem)
+                .patternLine("  x")
+                .patternLine(" y ")
+                .patternLine("y  ")
+                .key('x', tag)
+                .key('y', Items.STICK)
+                .setGroup("sorcery")
+                .addCriterion("unique_component", InventoryChangeTrigger.Instance.forItems(ItemPredicate.Builder.create().tag(tag).build()))
                 .build(consumer);
     }
 

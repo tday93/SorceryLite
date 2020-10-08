@@ -1,4 +1,8 @@
 {
+  "itemGroup.sorcery": "Sorcery",
+  "itemGroup.sorcery_spells": "Sorcery Spells",
+  "itemGroup.sorcery_wands": "Sorcery Wands",
+
   "block.sorcery.polished_wolfram": "Polished Wolfram",
   "block.sorcery.runestone_bricks": "Runestone Bricks",
   "block.sorcery.runestone_brick_stairs": "Runestone Brick Stairs",
@@ -74,8 +78,11 @@
   "item.sorcery.sorcerous_staff": "Sorcerous Staff",
   "item.sorcery.crystal_resonator": "Crystal Resonator",
 
-  "effect.sorcery.dimensional_fraying": "Dimensional Fraying",
+  "item.sorcery.wand_dig": "Wand of Dig",
+  "item.sorcery.wand_plant_death": "Wand of Plant Death",
+  "item.sorcery.wand_plant_life": "Wand of Plant Life",
+  "item.sorcery.wand_chilling_touch": "Wand of Chilling Touch",
 
-  "itemGroup.sorcery": "Sorcery",
-  "itemGroup.sorcery_spells": "Sorcery Spells"
+  "effect.sorcery.dimensional_fraying": "Dimensional Fraying"
+
 }

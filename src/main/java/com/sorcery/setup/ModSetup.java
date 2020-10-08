@@ -23,4 +23,13 @@ public class ModSetup
             return new ItemStack(ModItem.CREATE_WATER_SPELL_SCROLL.get());
         }
     };
+
+    public static ItemGroup SORCERY_WANDS = new ItemGroup("sorcery_wands")
+    {
+        @Override
+        public ItemStack createIcon()
+        {
+            return new ItemStack(ModItem.WAND_DIG.get());
+        }
+    };
 }

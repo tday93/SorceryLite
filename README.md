@@ -18,7 +18,21 @@ The goal of this mod is to build an alternative progression path for players, fo
     * Plant Death
         * adjust range
     * Plant Life
+        * spell icon
         * adjust cost
         * particle effects?
 * Finish recipes for existing items
     * Wands
+* Textures for wands
+
+
+## Progression Brainstorming
+
+1) Pre-Iron
+    * Wands
+    * Simple Spells
+    
+    
+    
+## Other To-Do
+* make spells + scrolls use prefixed names

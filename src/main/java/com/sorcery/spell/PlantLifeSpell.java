@@ -16,13 +16,20 @@ public class PlantLifeSpell extends Spell
     @Override
     public ActionResultType doCastFinal(SpellUseContext context)
     {
-        this.doParticleEffects(context);
         this.playSound(context);
-        World world = context.getWorld();
         if (context.wasUsedOnBlock())
         {
             BoneMealItem.applyBonemeal(new ItemStack(Items.BONE_MEAL), context.getWorld(), context.getHitPos());
         }
         return ActionResultType.SUCCESS;
+    }
+
+    @Override
+    public void doCastFinalClient(SpellUseContext context)
+    {
+        if (context.wasUsedOnBlock())
+        {
+            BoneMealItem.spawnBonemealParticles(context.getWorld(), context.getHitPos(), 7);
+        }
     }
 }

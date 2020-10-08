@@ -102,7 +102,7 @@ public class SpellUseContext
     {
         this.world = worldIn;
         this.pos = pos;
-        this.arcanaSource = Utils.getArcanaCap(itemStackIn);
+        this.arcanaSource = Utils.getArcanaCap(playerIn.getHeldItem(handIn));
         this.rayTraceResult = null;
         this.player = playerIn;
         this.hand = handIn;

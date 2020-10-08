@@ -55,6 +55,9 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_evocation");
         // Pre-Iron
         simpleSingleTexture(ModItem.DIG_SPELL_SCROLL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.PLANT_DEATH_SCROLL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.PLANT_LIFE_SCROLL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.CHILLING_TOUCH_SCROLL.get(), "scroll_evocation");
         // Iron
         // Diamond
         // Nether
@@ -69,6 +72,8 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_create_water");
         simpleSingleTexture(ModItem.WAND_PLANT_DEATH.get(), "wand_plant_death");
         simpleSingleTexture(ModItem.WAND_PLANT_LIFE.get(), "wand_plant_life");
+        simpleSingleTexture(ModItem.WAND_CHILLING_TOUCH.get(), "wand_plant_life");
+
 
 
         // Block Item Models
@@ -125,5 +130,7 @@ public class Items extends ItemModelProvider
     {
         withExistingParent(item.getRegistryName().getPath(), new ResourceLocation(Constants.MODID, "block/" + pathName));
     }
+
+
 
 }

@@ -48,10 +48,11 @@ public class CommonEventHandlers
             if (event.getObject().getItem() instanceof WandItem)
             {
                 event.addCapability(ArcanaCapability.ARCANA_LOC, new ArcanaProvider(((WandItem) event.getObject().getItem()).getArcanaAmount()));
+                event.addCapability(SpellcastingCapability.SPELLCASTING_LOC, new SpellcastingProvider(((WandItem) event.getObject().getItem()).getSpell().getRegistryName()));
             } else {
                 event.addCapability(ArcanaCapability.ARCANA_LOC, new ArcanaProvider());
+                event.addCapability(SpellcastingCapability.SPELLCASTING_LOC, new SpellcastingProvider());
             }
-            event.addCapability(SpellcastingCapability.SPELLCASTING_LOC, new SpellcastingProvider());
         }
         if (event.getObject().getItem() instanceof PortableArcanaItem)
         {

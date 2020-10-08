@@ -43,15 +43,7 @@ public class SpellcastingItem extends Item
     @Override
     public ActionResultType itemInteractionForEntity(ItemStack stack, PlayerEntity playerIn, LivingEntity target, Hand hand) {
         SpellUseContext spellContext = new SpellUseContext(playerIn.getEntityWorld(), playerIn.getPosition(), playerIn, hand, stack, target);
-        ActionResultType actionResultType = castSpell(spellContext);
-        if (actionResultType == ActionResultType.SUCCESS)
-        {
-            return ActionResultType.SUCCESS;
-        }
-        else
-        {
-            return ActionResultType.FAIL;
-        }
+        return castSpell(spellContext);
     }
 
     // When item is used on a block

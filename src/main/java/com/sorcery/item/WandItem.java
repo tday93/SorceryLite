@@ -8,17 +8,17 @@ public class WandItem extends SpellcastingItem
 {
     public final RegistryObject<Spell> SPELL;
 
-    private int arcanaAmount = 100;
+    private int arcanaAmount = 1000;
 
     public WandItem(RegistryObject<Spell> spellin)
     {
-        super(Constants.ITEM_PROPS_NONSTACK);
+        super(Constants.ITEM_PROPS_WANDS);
         this.SPELL = spellin;
     }
 
     public WandItem(RegistryObject<Spell> spellin, int arcanaAmount)
     {
-        super(Constants.ITEM_PROPS_NONSTACK);
+        super(Constants.ITEM_PROPS_WANDS);
         this.arcanaAmount = arcanaAmount;
         this.SPELL = spellin;
     }

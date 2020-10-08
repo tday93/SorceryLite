@@ -158,7 +158,7 @@ public class DrawScreenEvent
             {
                 if (heldItem instanceof WandItem)
                 {
-                    setSelectedSpell(((WandItem) heldItem).getSpell().getRegistryName());
+                    setSelectedSpell(Utils.getSpellFromProvider(heldItemStack).getRegistryName());
                     showSpellSelection = true;
                 } else {
                     Spell spell = Utils.getSpellFromProvider(Utils.getPlayerSpellbook(mc.player));
