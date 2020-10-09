@@ -225,7 +225,7 @@ public class SpellUseContext
     {
         if (this.item.getItem() instanceof WandItem)
         {
-            return ((WandItem) this.item.getItem()).getSpell();
+            return Utils.getSpellFromProvider(this.item);
         }
         if (this.item.getItem() instanceof StaffItem && this.getPlayer() != null)
         {

@@ -54,7 +54,7 @@ public class Items extends ItemModelProvider
         // Testing
         simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_evocation");
         // Pre-Iron
-        simpleSingleTexture(ModItem.DIG_SPELL_SCROLL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.LESSER_DIG_SPELL_SCROLL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.PLANT_DEATH_SCROLL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.PLANT_LIFE_SCROLL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.CHILLING_TOUCH_SCROLL.get(), "scroll_evocation");
@@ -68,7 +68,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.BLINK_SPELL_SCROLL.get(), "scroll_evocation");
 
         // Wands
-        simpleSingleTexture(ModItem.WAND_DIG.get(), "wand_dig");
+        simpleSingleTexture(ModItem.WAND_LESSER_DIG.get(), "wand_lesser_dig");
         simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_create_water");
         simpleSingleTexture(ModItem.WAND_PLANT_DEATH.get(), "wand_plant_death");
         simpleSingleTexture(ModItem.WAND_PLANT_LIFE.get(), "wand_plant_life");

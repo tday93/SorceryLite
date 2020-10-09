@@ -35,34 +35,29 @@ public class ScrollEvent
         Minecraft mc = Minecraft.getInstance();
         ItemStack heldItemStack = mc.player.getHeldItemMainhand();
         Item heldItem = heldItemStack.getItem();
+        ItemStack spellBook = Utils.getPlayerSpellbook(mc.player);
 
         if (heldItem == null || !(heldItem instanceof SpellcastingItem) || !(KeyBindings.SPELL_SCROLL.isKeyDown()))
         {
             return;
         }
 
-        DrawScreenEvent.setShowSpellSelection(true);
-
-        ItemStack spellBook = Utils.getPlayerSpellbook(mc.player);
-        ISpellcasting spellCap = Utils.getSpellCap(heldItemStack);
+        ISpellcasting spellCap = null;
 
         if (spellBook != null)
         {
-            System.out.println("Spell book found! in scroll event");
             spellCap = Utils.getSpellCap(spellBook);
         }
-
         if (heldItem instanceof WandItem)
         {
-            ResourceLocation selectedSpell = ((WandItem) heldItem).getSpell().getRegistryName();
-            DrawScreenEvent.setSelectedSpell(selectedSpell);
-            PacketHandler.sendToServer(new KeyPressPacket(1));
-            event.setCanceled(true);
+            spellCap = Utils.getSpellCap(heldItemStack);
+        }
+        if (spellCap == null)
+        {
             return;
         }
 
         Double delta = event.getScrollDelta();
-
 
         if (delta > 0)
         {

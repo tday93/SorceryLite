@@ -80,7 +80,7 @@ public class ModItem
     public static final RegistryObject<Item> REMOVE_ARCANA_SPELL_SCROLL = ITEMS.register("remove_arcana_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.REMOVE_ARCANA_SPELL));
 
     // -- Pre-Iron
-    public static final RegistryObject<Item> DIG_SPELL_SCROLL = ITEMS.register("dig_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.DIG_SPELL));
+    public static final RegistryObject<Item> LESSER_DIG_SPELL_SCROLL = ITEMS.register("lesser_dig_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.LESSER_DIG_SPELL));
     public static final RegistryObject<Item> PLANT_DEATH_SCROLL = ITEMS.register("plant_death_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.PLANT_DEATH_SPELL));
     public static final RegistryObject<Item> PLANT_LIFE_SCROLL = ITEMS.register("plant_life_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.PLANT_LIFE_SPELL));
     public static final RegistryObject<Item> CHILLING_TOUCH_SCROLL = ITEMS.register("chilling_touch_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.CHILLING_TOUCH_SPELL));
@@ -100,7 +100,7 @@ public class ModItem
 
 
     // Wands
-    public static final RegistryObject<Item> WAND_DIG = ITEMS.register("wand_dig", () -> new WandItem(ModSpell.DIG_SPELL, 2500));
+    public static final RegistryObject<Item> WAND_LESSER_DIG = ITEMS.register("wand_lesser_dig", () -> new WandItem(ModSpell.LESSER_DIG_SPELL, 2500));
     public static final RegistryObject<Item> WAND_CREATE_WATER = ITEMS.register("wand_create_water", () -> new WandItem(ModSpell.CREATE_WATER_SPELL));
     public static final RegistryObject<Item> WAND_PLANT_DEATH = ITEMS.register("wand_plant_death", () -> new WandItem(ModSpell.PLANT_DEATH_SPELL));
     public static final RegistryObject<Item> WAND_PLANT_LIFE = ITEMS.register("wand_plant_life", () -> new WandItem(ModSpell.PLANT_LIFE_SPELL));

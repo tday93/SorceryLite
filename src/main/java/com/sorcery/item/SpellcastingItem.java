@@ -6,6 +6,8 @@ import com.sorcery.spell.Spell;
 import com.sorcery.spell.SpellUseContext;
 import com.sorcery.tileentity.ArcanaStorageTile;
 import com.sorcery.utils.Utils;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -13,12 +15,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
+import net.minecraft.util.*;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponent;
+import net.minecraft.util.text.TextComponentUtils;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class SpellcastingItem extends Item
 {
@@ -122,6 +129,17 @@ public class SpellcastingItem extends Item
     public boolean canContinueUsing(ItemStack oldStack, ItemStack newStack)
     {
         return true;
+    }
+    @OnlyIn(Dist.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        try {
+            Spell spell = Utils.getSpellFromProvider(stack);
+            TranslationTextComponent localizedSpell = new TranslationTextComponent(spell.getRegistryName().toString());
+            tooltip.add(localizedSpell);
+        } catch (NullPointerException exception)
+        {
+
+        }
     }
 
     // NBT handlers

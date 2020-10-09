@@ -29,7 +29,7 @@ public class ModSetup
         @Override
         public ItemStack createIcon()
         {
-            return new ItemStack(ModItem.WAND_DIG.get());
+            return new ItemStack(ModItem.WAND_LESSER_DIG.get());
         }
     };
 }

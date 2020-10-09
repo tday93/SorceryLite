@@ -74,8 +74,8 @@ public class SpellbookInventory extends Inventory
             }
         }
         System.out.println("adding arcanaDrain");
-        spellCasting.addPreparedSpell(ModSpell.ARCANA_DRAIN_SPELL.getId());
-        spellCasting.setActiveSpell(ModSpell.ARCANA_DRAIN_SPELL.getId());
+        spellCasting.addPreparedSpell(ModSpell.MEDITATE_SPELL.getId());
+        spellCasting.setActiveSpell(ModSpell.MEDITATE_SPELL.getId());
         System.out.println("final spellcasting:");
         System.out.println(spellCasting.serializeNBT());
         ItemStackHelper.saveAllItems(compound, list, true);

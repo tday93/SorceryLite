@@ -205,6 +205,7 @@ public class DrawScreenEvent
     public static void setSelectedSpell(ResourceLocation spell)
     {
         selectedSpell = spell;
+        setShowSpellSelection(true);
         spellIcon = new ResourceLocation(Constants.MODID, "textures/spells/" + spell.getPath() + ".png");
         showSpellSelectionStart = Minecraft.getInstance().world.getGameTime();
     }

@@ -25,7 +25,8 @@ public class ModSpell
     public static final RegistryObject<Spell> TEST_SPELL = SPELLS.register("test_spell", () -> new TestSpell("poof!", 0));
 
     // Pre-Iron Spells
-    public static final RegistryObject<Spell> DIG_SPELL = SPELLS.register("dig_spell", () -> new DigSpell(10, 6));
+    public static final RegistryObject<Spell> LESSER_DIG_SPELL = SPELLS.register("lesser_dig_spell", () -> new DigSpell(10, 6));
+    public static final RegistryObject<Spell> MEDITATE_SPELL = SPELLS.register("meditate_spell", () -> new MeditateSpell());
     public static final RegistryObject<Spell> PLANT_DEATH_SPELL = SPELLS.register("plant_death_spell", () -> new PlantDeathSpell());
     public static final RegistryObject<Spell> PLANT_LIFE_SPELL = SPELLS.register("plant_life_spell", () -> new PlantLifeSpell(10));
     public static final RegistryObject<Spell> CHILLING_TOUCH_SPELL = SPELLS.register("chilling_touch_spell", () -> new ChillingTouchSpell(50));

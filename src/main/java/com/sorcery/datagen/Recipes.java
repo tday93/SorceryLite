@@ -55,7 +55,7 @@ public class Recipes extends RecipeProvider
                 .build(consumer);
 
         // Wands
-        wandRecipeTier1(consumer, ModItem.WAND_DIG.get(), Items.DIRT);
+        wandRecipeTier1(consumer, ModItem.WAND_LESSER_DIG.get(), Items.DIRT);
         wandRecipeTier1(consumer, ModItem.WAND_PLANT_DEATH.get(), Items.COARSE_DIRT);
         wandRecipeTier1(consumer, ModItem.WAND_PLANT_LIFE.get(), Tags.Items.SEEDS);
         wandRecipeTier1(consumer, ModItem.WAND_CHILLING_TOUCH.get(), Items.SNOWBALL);

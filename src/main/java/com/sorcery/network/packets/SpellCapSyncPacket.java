@@ -1,6 +1,7 @@
 package com.sorcery.network.packets;
 
 import com.sorcery.item.SpellbookItem;
+import com.sorcery.item.WandItem;
 import com.sorcery.spellcasting.ISpellcasting;
 import com.sorcery.spellcasting.SpellcastingCapability;
 import com.sorcery.utils.Utils;
@@ -42,33 +43,38 @@ public class SpellCapSyncPacket
         {
             ctx.get().enqueueWork(() -> {
                 if (ctx.get().getDirection().getReceptionSide().isClient()) {
-
                     PlayerEntity playerEntity = Minecraft.getInstance().player;
                     ItemStack spellbook = Utils.getPlayerSpellbook(playerEntity);
-                    System.out.println("In spell cap sync client");
-                    if (spellbook == null)
+                    ItemStack heldItem = playerEntity.getHeldItemMainhand();
+                    ISpellcasting itemCap = null;
+                    if (spellbook != null)
                     {
-                        return;
-                    }
-                    if (spellbook.getItem() instanceof SpellbookItem)
-                    {
-                        ISpellcasting itemCap = Utils.getSpellCap(spellbook);
                         itemCap = Utils.getSpellCap(spellbook);
+                    }
+                    if (heldItem.getItem() instanceof WandItem)
+                    {
+                        itemCap = Utils.getSpellCap(heldItem);
+
+                    }
+                    if (itemCap != null)
+                    {
                         SpellcastingCapability.SPELLCASTING.readNBT(itemCap, null, message.capNBT);
                     }
                 } else {
                     PlayerEntity playerEntity = ctx.get().getSender();
                     ItemStack spellbook = Utils.getPlayerSpellbook(playerEntity);
-                    if (spellbook == null)
+                    ItemStack heldItem = playerEntity.getHeldItemMainhand();
+                    ISpellcasting itemCap = null;
+                    if (spellbook != null)
                     {
-                        return;
-                    }
-                    System.out.println("In spell cap sync server");
-                    if (spellbook.getItem() instanceof SpellbookItem)
-                    {
-                        Utils.getSpellCap(spellbook);
-                        ISpellcasting itemCap;
                         itemCap = Utils.getSpellCap(spellbook);
+                    }
+                    if (heldItem.getItem() instanceof WandItem)
+                    {
+                        itemCap = Utils.getSpellCap(heldItem);
+                    }
+                    if (itemCap != null)
+                    {
                         SpellcastingCapability.SPELLCASTING.readNBT(itemCap, null, message.capNBT);
                     }
                 }
