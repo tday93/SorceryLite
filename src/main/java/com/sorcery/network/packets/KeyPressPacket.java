@@ -2,6 +2,7 @@ package com.sorcery.network.packets;
 
 import com.sorcery.Sorcery;
 import com.sorcery.item.SpellbookItem;
+import com.sorcery.item.WandItem;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.spellcasting.ISpellcasting;
 import com.sorcery.spellcasting.SpellcastingCapability;
@@ -42,9 +43,18 @@ public class KeyPressPacket
             ctx.get().enqueueWork(() -> {
                 ServerPlayerEntity player = ctx.get().getSender();
                 ItemStack spellbook = Utils.getPlayerSpellbook(player);
-                if (spellbook.getItem() instanceof SpellbookItem)
+                ItemStack heldItem = player.getHeldItemMainhand();
+                ISpellcasting itemCap = null;
+                if (spellbook != null)
                 {
-                    ISpellcasting itemCap = Utils.getSpellCap(spellbook);
+                    itemCap = Utils.getSpellCap(spellbook);
+                }
+                if (heldItem.getItem() instanceof WandItem)
+                {
+                    itemCap = Utils.getSpellCap(heldItem);
+                }
+                if (itemCap != null)
+                {
                     switch (message.key)
                     {
                         // Cycle Spell Key

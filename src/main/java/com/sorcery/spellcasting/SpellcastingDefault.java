@@ -13,18 +13,21 @@ public class SpellcastingDefault implements ISpellcasting
 
     private ArrayList<ResourceLocation> preparedSpells = new ArrayList<>();
 
-    private ArrayList<ResourceLocation> knownSpells = new ArrayList<>();
 
     public SpellcastingDefault()
     {
 
-        ResourceLocation testSpell = ModSpell.TEST_SPELL.getId();
+        ResourceLocation testSpell = ModSpell.MEDITATE_SPELL.getId();
+        this.addPreparedSpell(testSpell);
+        this.setActiveSpell(testSpell);
 
-        this.activeSpell = testSpell;
+    }
 
-        this.preparedSpells.add(testSpell);
-
-        this.knownSpells.add(testSpell);
+    public SpellcastingDefault(ResourceLocation startingSpell)
+    {
+        this.addPreparedSpell(startingSpell);
+        this.addPreparedSpell(ModSpell.MEDITATE_SPELL.getId());
+        this.setActiveSpell(startingSpell);
     }
 
     public void cycleActiveSpell(int delta)

@@ -6,6 +6,8 @@ import com.sorcery.Constants;
 import com.sorcery.arcana.IArcanaStorage;
 import com.sorcery.item.PortableArcanaItem;
 import com.sorcery.item.SpellcastingItem;
+import com.sorcery.item.WandItem;
+import com.sorcery.spell.Spell;
 import com.sorcery.tileentity.ArcanaStorageTile;
 import com.sorcery.utils.Utils;
 import net.minecraft.client.Minecraft;
@@ -152,6 +154,22 @@ public class DrawScreenEvent
             // Numbers
             mc.fontRenderer.drawString(matrixStack, arcanaString, posX + 40, posY + 20, 16777215);
 
+            if (spellIcon == null)
+            {
+                if (heldItem instanceof WandItem)
+                {
+                    setSelectedSpell(Utils.getSpellFromProvider(heldItemStack).getRegistryName());
+                    showSpellSelection = true;
+                } else {
+                    Spell spell = Utils.getSpellFromProvider(Utils.getPlayerSpellbook(mc.player));
+                    if (spell != null)
+                    {
+                        setSelectedSpell(spell.getRegistryName());
+                        showSpellSelection = true;
+                    }
+                }
+            }
+
             if (spellIcon != null)
             {
                 // Spell Icon
@@ -187,6 +205,7 @@ public class DrawScreenEvent
     public static void setSelectedSpell(ResourceLocation spell)
     {
         selectedSpell = spell;
+        setShowSpellSelection(true);
         spellIcon = new ResourceLocation(Constants.MODID, "textures/spells/" + spell.getPath() + ".png");
         showSpellSelectionStart = Minecraft.getInstance().world.getGameTime();
     }

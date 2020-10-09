@@ -6,6 +6,8 @@ import com.sorcery.spell.Spell;
 import com.sorcery.spell.SpellUseContext;
 import com.sorcery.tileentity.ArcanaStorageTile;
 import com.sorcery.utils.Utils;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -13,12 +15,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
+import net.minecraft.util.*;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponent;
+import net.minecraft.util.text.TextComponentUtils;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class SpellcastingItem extends Item
 {
@@ -43,15 +50,7 @@ public class SpellcastingItem extends Item
     @Override
     public ActionResultType itemInteractionForEntity(ItemStack stack, PlayerEntity playerIn, LivingEntity target, Hand hand) {
         SpellUseContext spellContext = new SpellUseContext(playerIn.getEntityWorld(), playerIn.getPosition(), playerIn, hand, stack, target);
-        ActionResultType actionResultType = castSpell(spellContext);
-        if (actionResultType == ActionResultType.SUCCESS)
-        {
-            return ActionResultType.SUCCESS;
-        }
-        else
-        {
-            return ActionResultType.FAIL;
-        }
+        return castSpell(spellContext);
     }
 
     // When item is used on a block
@@ -81,8 +80,7 @@ public class SpellcastingItem extends Item
     // Actually casting a spell
     public ActionResultType castSpell(SpellUseContext context)
     {
-        Spell spellToCast = getActiveSpell(context);
-        System.out.println(spellToCast);
+        Spell spellToCast = context.getSpell();
         CastType castType = spellToCast.getCastType();
 
         // If duration or channeled spell, set active hand and pass
@@ -109,19 +107,13 @@ public class SpellcastingItem extends Item
         return spell.castFinal(context);
     }
 
-    //Adding this to to override as necessary for final staff version
-    public Spell getActiveSpell(SpellUseContext context)
-    {
-        return Utils.getSpellFromProvider(context.getItem());
-    }
-
 
     // Duration spells finish here
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving)
     {
         SpellUseContext spellContext = new SpellUseContext(worldIn, entityLiving, entityLiving.getActiveHand());
-        Spell spellToCast = getActiveSpell(spellContext);
+        Spell spellToCast = spellContext.getSpell();
         spellToCast.castFinal(spellContext);
         return stack;
     }
@@ -137,6 +129,17 @@ public class SpellcastingItem extends Item
     public boolean canContinueUsing(ItemStack oldStack, ItemStack newStack)
     {
         return true;
+    }
+    @OnlyIn(Dist.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        try {
+            Spell spell = Utils.getSpellFromProvider(stack);
+            TranslationTextComponent localizedSpell = new TranslationTextComponent(spell.getRegistryName().toString());
+            tooltip.add(localizedSpell);
+        } catch (NullPointerException exception)
+        {
+
+        }
     }
 
     // NBT handlers

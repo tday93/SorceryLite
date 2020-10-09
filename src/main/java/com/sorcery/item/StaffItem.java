@@ -81,16 +81,4 @@ public class StaffItem extends SpellcastingItem
         return 10;
     }
 
-    @Override
-    public Spell getActiveSpell(SpellUseContext context)
-    {
-        PlayerEntity playerEntity = context.getPlayer();
-        ItemStack stack = Utils.getPlayerSpellbook(playerEntity);
-        if (stack != null)
-        {
-            return Utils.getSpellFromProvider(stack);
-        }
-        return Utils.getSpellFromProvider(context.getItem());
-    }
-
 }

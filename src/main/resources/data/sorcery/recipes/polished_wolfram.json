@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sorcery",
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
+  "key": {
+    "y": {
+      "item": "sorcery:sorcerous_catalyst"
+    },
+    "x": {
+      "tag": "forge:stone"
+    }
+  },
+  "result": {
+    "item": "sorcery:polished_wolfram",
+    "count": 8
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "sorcery:wand_lesser_dig"
+    ]
+  },
+  "criteria": {
+    "unique_component": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:dirt"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sorcery:wand_lesser_dig"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "unique_component",
+      "has_the_recipe"
+    ]
+  ]
+}

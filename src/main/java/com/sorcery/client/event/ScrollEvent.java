@@ -6,6 +6,7 @@ import com.google.gson.JsonDeserializer;
 import com.sorcery.Constants;
 import com.sorcery.block.ModBlock;
 import com.sorcery.item.SpellcastingItem;
+import com.sorcery.item.WandItem;
 import com.sorcery.keybinding.KeyBindings;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.KeyPressPacket;
@@ -34,21 +35,26 @@ public class ScrollEvent
         Minecraft mc = Minecraft.getInstance();
         ItemStack heldItemStack = mc.player.getHeldItemMainhand();
         Item heldItem = heldItemStack.getItem();
+        ItemStack spellBook = Utils.getPlayerSpellbook(mc.player);
 
         if (heldItem == null || !(heldItem instanceof SpellcastingItem) || !(KeyBindings.SPELL_SCROLL.isKeyDown()))
         {
             return;
         }
 
-        DrawScreenEvent.setShowSpellSelection(true);
-
-        ItemStack spellBook = Utils.getPlayerSpellbook(mc.player);
-        ISpellcasting spellCap = Utils.getSpellCap(heldItemStack);
+        ISpellcasting spellCap = null;
 
         if (spellBook != null)
         {
-            System.out.println("Spell book found! in scroll event");
             spellCap = Utils.getSpellCap(spellBook);
+        }
+        if (heldItem instanceof WandItem)
+        {
+            spellCap = Utils.getSpellCap(heldItemStack);
+        }
+        if (spellCap == null)
+        {
+            return;
         }
 
         Double delta = event.getScrollDelta();

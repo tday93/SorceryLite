@@ -39,6 +39,7 @@ public class Spell extends ForgeRegistryEntry<Spell>
             doCastFinal(context);
             return ActionResultType.SUCCESS;
         } else {
+            doCastFinalClient(context);
             return ActionResultType.SUCCESS;
         }
     }
@@ -56,9 +57,12 @@ public class Spell extends ForgeRegistryEntry<Spell>
             return ActionResultType.PASS;
         }
 
-        if (!preCast(context))
+        if( this.castType == CastType.CHANNELED)
         {
-            return ActionResultType.FAIL;
+            if (!preCast(context))
+            {
+                return ActionResultType.FAIL;
+            }
         }
 
         if (!context.getWorld().isRemote())
@@ -108,6 +112,11 @@ public class Spell extends ForgeRegistryEntry<Spell>
         return ActionResultType.SUCCESS;
     }
 
+    // final cast of spell client-only actions
+    public void doCastFinalClient(SpellUseContext context)
+    {
+    }
+
     // perform the per-tick action of the spell
     public ActionResultType doCastPerTick(SpellUseContext context)
     {
@@ -150,6 +159,10 @@ public class Spell extends ForgeRegistryEntry<Spell>
     }
 
     public int getCastDuration(){
+        return this.castDuration;
+    }
+
+    public int getCastDuration(SpellUseContext context){
         return this.castDuration;
     }
 
