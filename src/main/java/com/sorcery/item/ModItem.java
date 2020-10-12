@@ -100,11 +100,15 @@ public class ModItem
 
 
     // Wands
+    // -- Pre-Iron
     public static final RegistryObject<Item> WAND_LESSER_DIG = ITEMS.register("wand_lesser_dig", () -> new WandItem(ModSpell.LESSER_DIG_SPELL, 2500));
-    public static final RegistryObject<Item> WAND_CREATE_WATER = ITEMS.register("wand_create_water", () -> new WandItem(ModSpell.CREATE_WATER_SPELL));
     public static final RegistryObject<Item> WAND_PLANT_DEATH = ITEMS.register("wand_plant_death", () -> new WandItem(ModSpell.PLANT_DEATH_SPELL));
     public static final RegistryObject<Item> WAND_PLANT_LIFE = ITEMS.register("wand_plant_life", () -> new WandItem(ModSpell.PLANT_LIFE_SPELL));
     public static final RegistryObject<Item> WAND_CHILLING_TOUCH = ITEMS.register("wand_chilling_touch", () -> new WandItem(ModSpell.CHILLING_TOUCH_SPELL));
+    // -- Iron
+    public static final RegistryObject<Item> WAND_COBBLE_PLACEMENT = ITEMS.register("wand_cobble_placement", () -> new WandItem(ModSpell.COBBLE_PLACEMENT_SPELL));
+    // -- Diamond
+    public static final RegistryObject<Item> WAND_CREATE_WATER = ITEMS.register("wand_create_water", () -> new WandItem(ModSpell.CREATE_WATER_SPELL));
 
 
     // Block Items

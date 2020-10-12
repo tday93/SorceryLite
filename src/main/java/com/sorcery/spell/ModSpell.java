@@ -2,7 +2,10 @@ package com.sorcery.spell;
 
 import com.sorcery.Config;
 import com.sorcery.Constants;
+import net.minecraft.block.Blocks;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent.Register;
@@ -33,6 +36,8 @@ public class ModSpell
 
     // Iron Spells
     public static final RegistryObject<Spell> ARCANA_DRAIN_SPELL = SPELLS.register("arcana_drain_spell", () -> new ArcanaDrainSpell());
+    public static final RegistryObject<Spell> COBBLE_PLACEMENT_SPELL = SPELLS.register("cobble_placement_spell", () -> new BlockPlacementSpell(10, (BlockItem)Items.COBBLESTONE));
+
 
     // Diamond Spells
     public static final RegistryObject<Spell> COMBUSTION_SPELL = SPELLS.register("combustion_spell", () -> new CombustionSpell());

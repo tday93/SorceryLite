@@ -51,28 +51,35 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.CRYSTAL_RESONATOR.get(), "crystal_resonator");
 
         // Spell Scrolls
-        // Testing
+        // -- Testing
         simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_evocation");
-        // Pre-Iron
+        // -- Pre-Iron
         simpleSingleTexture(ModItem.LESSER_DIG_SPELL_SCROLL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.PLANT_DEATH_SCROLL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.PLANT_LIFE_SCROLL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.CHILLING_TOUCH_SCROLL.get(), "scroll_evocation");
-        // Iron
-        // Diamond
-        // Nether
+        // -- Iron
+        // -- Diamond
+        // -- Nether
         simpleSingleTexture(ModItem.COMBUSTION_SPELL_SCROLL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.CREATE_WATER_SPELL_SCROLL.get(), "scroll_evocation");
-        // Netherite
-        // End
+        // -- Netherite
+        // -- End
         simpleSingleTexture(ModItem.BLINK_SPELL_SCROLL.get(), "scroll_evocation");
 
         // Wands
+        // -- Pre-Iron
         simpleSingleTexture(ModItem.WAND_LESSER_DIG.get(), "wand_lesser_dig");
-        simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_create_water");
         simpleSingleTexture(ModItem.WAND_PLANT_DEATH.get(), "wand_plant_death");
         simpleSingleTexture(ModItem.WAND_PLANT_LIFE.get(), "wand_plant_life");
         simpleSingleTexture(ModItem.WAND_CHILLING_TOUCH.get(), "wand_plant_life");
+        // -- Iron
+        simpleSingleTexture(ModItem.WAND_COBBLE_PLACEMENT.get(), "wand_cobble_placement");
+        // -- Diamond
+        simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_create_water");
+        // -- Nether
+        // -- Netherite
+        // -- End
 
 
 

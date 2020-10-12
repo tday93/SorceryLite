@@ -4,13 +4,13 @@ import com.google.common.base.Predicate;
 import com.sorcery.arcana.IArcanaStorage;
 import com.sorcery.block.state.CrystalColor;
 import com.sorcery.item.SpellbookItem;
-import com.sorcery.spell.ModSpell;
 import com.sorcery.spell.Spell;
 import com.sorcery.spellcasting.ISpellcasting;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -24,14 +24,9 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityProvider;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import org.lwjgl.system.CallbackI;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class Utils {
@@ -94,6 +89,12 @@ public class Utils {
             map.put(crystalColor.getCrystalName(), crystalColor);
         }
         return map;
+    }
+
+    public static List<ItemEntity> itemEntitiesInRange(World world, BlockPos pos, int range)
+    {
+        AxisAlignedBB aaBB = new AxisAlignedBB(pos.add(range, range, range), pos.add(-range, -range, -range));
+        return world.getEntitiesWithinAABB(EntityType.ITEM, aaBB, Objects::nonNull);
     }
 
     public static List<Entity> entitiesInRange(World world, BlockPos pos, int range, Entity excludeEnt)
