@@ -1,6 +1,5 @@
 package com.sorcery.inventory;
 
-import com.sorcery.item.ModItem;
 import com.sorcery.item.SpellScrollItem;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.SpellCapSyncPacket;
@@ -16,7 +15,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.system.CallbackI;
 
 public class SpellbookInventory extends Inventory
 {
@@ -74,8 +72,8 @@ public class SpellbookInventory extends Inventory
             }
         }
         System.out.println("adding arcanaDrain");
-        spellCasting.addPreparedSpell(ModSpell.MEDITATE_SPELL.getId());
-        spellCasting.setActiveSpell(ModSpell.MEDITATE_SPELL.getId());
+        spellCasting.addPreparedSpell(ModSpell.SPELL_MEDITATE.getId());
+        spellCasting.setActiveSpell(ModSpell.SPELL_MEDITATE.getId());
         System.out.println("final spellcasting:");
         System.out.println(spellCasting.serializeNBT());
         ItemStackHelper.saveAllItems(compound, list, true);

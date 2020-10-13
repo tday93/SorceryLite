@@ -1,9 +1,16 @@
 package com.sorcery.spell;
 
+import com.sorcery.network.PacketHandler;
+import com.sorcery.network.packets.ParticleEffectPacket;
+import com.sorcery.utils.Utils;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particles.BlockParticleData;
+import net.minecraft.particles.IParticleData;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.SoundEvents;
 
 public class BlockPlacementSpell extends Spell
 {
@@ -14,6 +21,7 @@ public class BlockPlacementSpell extends Spell
     public BlockPlacementSpell(int arcanaCost, BlockItem placementItem)
     {
         super(arcanaCost);
+        this.sound = SoundEvents.BLOCK_STONE_PLACE;
         this.placementItem = placementItem;
         this.placementItemStack = new ItemStack(placementItem);
     }
@@ -21,6 +29,10 @@ public class BlockPlacementSpell extends Spell
     @Override
     public boolean allowCast(SpellUseContext context)
     {
+        if (context.wasHitBlockAir())
+        {
+            return false;
+        }
         Integer index = context.getPlayer().inventory.findSlotMatchingUnusedItem(this.placementItemStack);
         if(index > -1)
         {
@@ -46,10 +58,19 @@ public class BlockPlacementSpell extends Spell
             {
                 BlockState state = placementItem.getBlock().getDefaultState();
                 context.getPlayer().inventory.getStackInSlot(index).shrink(1);
-                context.getWorld().setBlockState(context.getFacePos(), state);
+                this.playSound(context);
+                context.getWorld().setBlockState(context.getFacePos(), state, 3);
                 return ActionResultType.SUCCESS;
             }
         }
         return ActionResultType.FAIL;
+    }
+
+    //needs work still
+    public void doParticleEffects(SpellUseContext context)
+    {
+        IParticleData blockPartData = new BlockParticleData(ParticleTypes.BLOCK, this.placementItem.getBlock().getDefaultState());
+        ParticleEffectPacket pkt = new ParticleEffectPacket(5, blockPartData, Utils.getVectorFromPos(context.getFacePos()), context.getPlayer().getLookVec(), 20, 0.5, 0.2, 20);
+        PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt);
     }
 }

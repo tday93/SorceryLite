@@ -6,7 +6,6 @@ import com.sorcery.spell.Spell;
 import com.sorcery.spell.SpellUseContext;
 import com.sorcery.tileentity.ArcanaStorageTile;
 import com.sorcery.utils.Utils;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,8 +16,6 @@ import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.*;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponent;
-import net.minecraft.util.text.TextComponentUtils;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -61,7 +58,7 @@ public class SpellcastingItem extends Item
         // if targeting arcana source, instead draw in arcana
         if (context.getWorld().getTileEntity(context.getPos()) instanceof ArcanaStorageTile)
         {
-            return castSpellOverride(spellContext, ModSpell.ARCANA_DRAIN_SPELL.get());
+            return castSpellOverride(spellContext, ModSpell.SPELL_ARCANA_DRAIN.get());
         }
         return castSpell(spellContext);
     }

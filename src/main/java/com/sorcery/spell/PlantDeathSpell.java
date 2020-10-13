@@ -24,8 +24,8 @@ public class PlantDeathSpell extends Spell
     private double spellRange;
 
     public PlantDeathSpell() {
-        super(Config.PLANT_DEATH_SPELL_COST.get());
-        this.spellRange = Config.PLANT_DEATH_SPELL_RANGE.get();
+        super(Config.SPELL_PLANT_DEATH_COST.get());
+        this.spellRange = Config.SPELL_PLANT_DEATH_RANGE.get();
         this.sound = SoundEvents.BLOCK_CROP_BREAK;
     }
 

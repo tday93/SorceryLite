@@ -141,6 +141,30 @@ public class Utils {
         return vec;
     }
 
+    public static Predicate<TileEntity> getTESearchPredicate(Class clazz, BlockPos pos, double range)
+    {
+        Predicate<TileEntity> pred = new Predicate<TileEntity>()
+        {
+            @Override
+            public boolean apply(@Nullable TileEntity input)
+            {
+                // Only add selected class
+                if (!clazz.isInstance(input))
+                {
+                    return false;
+                }
+                // Only add items with distance
+                if (!pos.withinDistance(input.getPos(), range))
+                {
+                    return false;
+                }
+                return true;
+            }
+        };
+        return pred;
+    }
+
+
     public static Predicate<TileEntity> getTESearchPredicate(Class clazz, TileEntity tile, double range)
     {
         Predicate<TileEntity> pred = new Predicate<TileEntity>()
@@ -205,6 +229,14 @@ public class Utils {
 
     public static Vector3d getVectorFromPos(BlockPos pos){
         return new Vector3d(pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    public static Vector3d randomPosInRange(Random rand, double originX, double originY, double originZ, double range)
+    {
+        double newX = originX + (rand.nextDouble() * range);
+        double newY = originY + (rand.nextDouble() * range);
+        double newZ = originZ + (rand.nextDouble() * range);
+        return new Vector3d(newX, newY, newZ);
     }
 
     @Nullable

@@ -21,10 +21,10 @@ public class CombustionSpell extends Spell
 
     public CombustionSpell()
     {
-        super(Config.COMBUSTION_SPELL_COST.get());
-        this.castDuration = Config.COMBUSTION_SPELL_CAST_DURATION.get();
-        this.dmgPerTick = Config.COMBUSTION_SPELL_DAMAGE.get();
-        this.fireDuration = Config.COMBUSTION_SPELL_FIRE_DURATION.get();
+        super(Config.SPELL_COMBUSTION_COST.get());
+        this.castDuration = Config.SPELL_COMBUSTION_CAST_DURATION.get();
+        this.dmgPerTick = Config.SPELL_COMBUSTION_DAMAGE.get();
+        this.fireDuration = Config.SPELL_COMBUSTION_FIRE_DURATION.get();
         this.castType = CastType.CHANNELED;
         this.sound = SoundEvents.ITEM_FIRECHARGE_USE;
         this.castFrequency = 2;

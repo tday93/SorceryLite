@@ -75,6 +75,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.WAND_CHILLING_TOUCH.get(), "wand_plant_life");
         // -- Iron
         simpleSingleTexture(ModItem.WAND_COBBLE_PLACEMENT.get(), "wand_cobble_placement");
+        simpleSingleTexture(ModItem.WAND_LESSER_SHUNT.get(), "wand_cobble_placement");
         // -- Diamond
         simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_create_water");
         // -- Nether

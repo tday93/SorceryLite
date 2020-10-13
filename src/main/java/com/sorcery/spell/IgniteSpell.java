@@ -4,7 +4,6 @@ import com.sorcery.Config;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FireBlock;
-import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -13,7 +12,7 @@ public class IgniteSpell extends Spell
 {
     public IgniteSpell()
     {
-        super(Config.IGNITE_SPELL_COST.get());
+        super(Config.SPELL_IGNITE_COST.get());
         this.sound = SoundEvents.ITEM_FIRECHARGE_USE;
     }
 
