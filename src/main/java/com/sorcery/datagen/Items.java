@@ -54,18 +54,18 @@ public class Items extends ItemModelProvider
         // -- Testing
         simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_evocation");
         // -- Pre-Iron
-        simpleSingleTexture(ModItem.LESSER_DIG_SPELL_SCROLL.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.PLANT_DEATH_SCROLL.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.PLANT_LIFE_SCROLL.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.CHILLING_TOUCH_SCROLL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_LESSER_DIG.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_PLANT_DEATH.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_PLANT_LIFE.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_CHILLING_TOUCH.get(), "scroll_evocation");
         // -- Iron
         // -- Diamond
         // -- Nether
-        simpleSingleTexture(ModItem.COMBUSTION_SPELL_SCROLL.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.CREATE_WATER_SPELL_SCROLL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_COMBUSTION.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_CREATE_WATER.get(), "scroll_evocation");
         // -- Netherite
         // -- End
-        simpleSingleTexture(ModItem.BLINK_SPELL_SCROLL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_BLINK.get(), "scroll_evocation");
 
         // Wands
         // -- Pre-Iron
@@ -76,6 +76,10 @@ public class Items extends ItemModelProvider
         // -- Iron
         simpleSingleTexture(ModItem.WAND_COBBLE_PLACEMENT.get(), "wand_cobble_placement");
         simpleSingleTexture(ModItem.WAND_LESSER_SHUNT.get(), "wand_cobble_placement");
+        simpleSingleTexture(ModItem.WAND_LESSER_FIREBOLT.get(), "wand_cobble_placement");
+        simpleSingleTexture(ModItem.WAND_LESSER_HEAL.get(), "wand_cobble_placement");
+        simpleSingleTexture(ModItem.WAND_LESSER_SLOW.get(), "wand_cobble_placement");
+        simpleSingleTexture(ModItem.WAND_SIGNAL_FLARE.get(), "wand_cobble_placement");
         // -- Diamond
         simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_create_water");
         // -- Nether

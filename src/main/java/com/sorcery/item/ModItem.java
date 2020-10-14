@@ -80,23 +80,18 @@ public class ModItem
     public static final RegistryObject<Item> REMOVE_ARCANA_SPELL_SCROLL = ITEMS.register("remove_arcana_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_REMOVE_ARCANA));
 
     // -- Pre-Iron
-    public static final RegistryObject<Item> LESSER_DIG_SPELL_SCROLL = ITEMS.register("lesser_dig_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_DIG));
-    public static final RegistryObject<Item> PLANT_DEATH_SCROLL = ITEMS.register("plant_death_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_DEATH));
-    public static final RegistryObject<Item> PLANT_LIFE_SCROLL = ITEMS.register("plant_life_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_LIFE));
-    public static final RegistryObject<Item> CHILLING_TOUCH_SCROLL = ITEMS.register("chilling_touch_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CHILLING_TOUCH));
-
+    public static final RegistryObject<Item> SCROLL_LESSER_DIG = ITEMS.register("scroll_lesser_dig", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_DIG));
+    public static final RegistryObject<Item> SCROLL_PLANT_DEATH = ITEMS.register("scroll_plant_death", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_DEATH));
+    public static final RegistryObject<Item> SCROLL_PLANT_LIFE = ITEMS.register("scroll_plant_life", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_LIFE));
+    public static final RegistryObject<Item> SCROLL_CHILLING_TOUCH = ITEMS.register("scroll_chilling_touch", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CHILLING_TOUCH));
     // -- Iron
-
     // -- Diamond
-
     // -- Nether
-    public static final RegistryObject<Item> COMBUSTION_SPELL_SCROLL = ITEMS.register("combustion_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COMBUSTION));
-    public static final RegistryObject<Item> CREATE_WATER_SPELL_SCROLL = ITEMS.register("create_water_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CREATE_WATER));
-
+    public static final RegistryObject<Item> SCROLL_COMBUSTION = ITEMS.register("scroll_combustion", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COMBUSTION));
+    public static final RegistryObject<Item> SCROLL_CREATE_WATER = ITEMS.register("scroll_create_water", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CREATE_WATER));
     // -- Netherite
-
     // -- End
-    public static final RegistryObject<Item> BLINK_SPELL_SCROLL = ITEMS.register("blink_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_BLINK));
+    public static final RegistryObject<Item> SCROLL_BLINK = ITEMS.register("scroll_blink", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_BLINK));
 
 
     // Wands
@@ -109,9 +104,14 @@ public class ModItem
     public static final RegistryObject<Item> WAND_COBBLE_PLACEMENT = ITEMS.register("wand_cobble_placement", () -> new WandItem(ModSpell.SPELL_COBBLE_PLACEMENT));
     public static final RegistryObject<Item> WAND_LESSER_FIREBOLT = ITEMS.register("wand_lesser_firebolt", () -> new WandItem(ModSpell.SPELL_LESSER_FIREBOLT));
     public static final RegistryObject<Item> WAND_LESSER_SHUNT = ITEMS.register("wand_lesser_shunt", () -> new WandItem(ModSpell.SPELL_LESSER_SHUNT));
+    public static final RegistryObject<Item> WAND_LESSER_HEAL = ITEMS.register("wand_lesser_heal", () -> new WandItem(ModSpell.SPELL_LESSER_HEAL));
+    public static final RegistryObject<Item> WAND_LESSER_SLOW = ITEMS.register("wand_lesser_slow", () -> new WandItem(ModSpell.SPELL_LESSER_SLOW));
+    public static final RegistryObject<Item> WAND_SIGNAL_FLARE = ITEMS.register("wand_signal_flare", () -> new WandItem(ModSpell.SPELL_SIGNAL_FLARE));
     // -- Diamond
     public static final RegistryObject<Item> WAND_CREATE_WATER = ITEMS.register("wand_create_water", () -> new WandItem(ModSpell.SPELL_CREATE_WATER));
-
+    // -- Nether
+    // -- Netherite
+    // -- End
 
     // Block Items
     public static final RegistryObject<Item> POLISHED_RUNESTONE = ITEMS.register("polished_wolfram", () -> new BlockItem(ModBlock.POLISHED_RUNESTONE.get(), Constants.ITEM_PROPS));
