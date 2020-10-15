@@ -31,6 +31,7 @@ public class Spell extends ForgeRegistryEntry<Spell>
 
         if (!preCast(context))
         {
+            // TODO: Generic Spell Failure particle effect + sound
             return ActionResultType.FAIL;
         }
 

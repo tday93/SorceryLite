@@ -11,7 +11,7 @@ public class ModSetup
         @Override
         public ItemStack createIcon()
         {
-            return new ItemStack(ModItem.GRIMOIRE.get());
+            return new ItemStack(ModItem.SPELL_BOOK.get());
         }
     };
 

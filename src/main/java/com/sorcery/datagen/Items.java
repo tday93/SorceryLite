@@ -45,8 +45,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.CRYSTAL_NUUMMITE.get(), "crystal_nuummite");
         simpleSingleTexture(ModItem.GEODE.get(), "geode");
         simpleSingleTexture(ModItem.SORCEROUS_CATALYST.get(), "hadean_ember");
-        simpleSingleTexture(ModItem.GRIMOIRE.get(), "grimoire");
-        simpleSingleTexture(ModItem.SPELL_BOOK.get(), "tome_evocation");
+        simpleSingleTexture(ModItem.SPELL_BOOK.get(), "grimoire");
         // simpleSingleTexture(ModItem.SORCEROUS_STAFF.get(), "apprentice_staff");
         simpleSingleTexture(ModItem.CRYSTAL_RESONATOR.get(), "crystal_resonator");
 
@@ -59,6 +58,12 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.SCROLL_PLANT_LIFE.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.SCROLL_CHILLING_TOUCH.get(), "scroll_evocation");
         // -- Iron
+        simpleSingleTexture(ModItem.SCROLL_COBBLE_PLACEMENT.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_LESSER_SHUNT.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_LESSER_FIREBOLT.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_LESSER_HEAL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_LESSER_SLOW.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_SIGNAL_FLARE.get(), "scroll_evocation");
         // -- Diamond
         // -- Nether
         simpleSingleTexture(ModItem.SCROLL_COMBUSTION.get(), "scroll_evocation");
@@ -69,19 +74,19 @@ public class Items extends ItemModelProvider
 
         // Wands
         // -- Pre-Iron
-        simpleSingleTexture(ModItem.WAND_LESSER_DIG.get(), "wand_lesser_dig");
-        simpleSingleTexture(ModItem.WAND_PLANT_DEATH.get(), "wand_plant_death");
-        simpleSingleTexture(ModItem.WAND_PLANT_LIFE.get(), "wand_plant_life");
-        simpleSingleTexture(ModItem.WAND_CHILLING_TOUCH.get(), "wand_plant_life");
+        simpleSingleTexture(ModItem.WAND_LESSER_DIG.get(), "wand_preiron_evocation");
+        simpleSingleTexture(ModItem.WAND_PLANT_DEATH.get(), "wand_preiron_evocation");
+        simpleSingleTexture(ModItem.WAND_PLANT_LIFE.get(), "wand_preiron_evocation");
+        simpleSingleTexture(ModItem.WAND_CHILLING_TOUCH.get(), "wand_preiron_evocation");
         // -- Iron
-        simpleSingleTexture(ModItem.WAND_COBBLE_PLACEMENT.get(), "wand_cobble_placement");
-        simpleSingleTexture(ModItem.WAND_LESSER_SHUNT.get(), "wand_cobble_placement");
-        simpleSingleTexture(ModItem.WAND_LESSER_FIREBOLT.get(), "wand_cobble_placement");
-        simpleSingleTexture(ModItem.WAND_LESSER_HEAL.get(), "wand_cobble_placement");
-        simpleSingleTexture(ModItem.WAND_LESSER_SLOW.get(), "wand_cobble_placement");
-        simpleSingleTexture(ModItem.WAND_SIGNAL_FLARE.get(), "wand_cobble_placement");
+        simpleSingleTexture(ModItem.WAND_COBBLE_PLACEMENT.get(), "wand_iron_evocation");
+        simpleSingleTexture(ModItem.WAND_LESSER_SHUNT.get(), "wand_iron_evocation");
+        simpleSingleTexture(ModItem.WAND_LESSER_FIREBOLT.get(), "wand_iron_evocation");
+        simpleSingleTexture(ModItem.WAND_LESSER_HEAL.get(), "wand_iron_evocation");
+        simpleSingleTexture(ModItem.WAND_LESSER_SLOW.get(), "wand_iron_evocation");
+        simpleSingleTexture(ModItem.WAND_SIGNAL_FLARE.get(), "wand_iron_evocation");
         // -- Diamond
-        simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_create_water");
+        simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_iron_evocation");
         // -- Nether
         // -- Netherite
         // -- End
@@ -136,6 +141,11 @@ public class Items extends ItemModelProvider
     public void simpleSingleTexture(Item item, String pathName)
     {
         singleTexture(item.getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(Constants.MODID, "item/"+pathName));
+    }
+
+    public void simpleHandheld(Item item, String pathName)
+    {
+        singleTexture(item.getRegistryName().getPath(), new ResourceLocation("item/handheld"), "layer0", new ResourceLocation(Constants.MODID, "item/"+pathName));
     }
 
     public void simpleBlockItem(Item item, String pathName)

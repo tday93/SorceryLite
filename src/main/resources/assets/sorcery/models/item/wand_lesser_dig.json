@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "sorcery:item/wand_lesser_dig"
+    "layer0": "sorcery:item/wand_preiron_evocation"
   }
 }

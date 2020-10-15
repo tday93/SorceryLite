@@ -2,6 +2,7 @@ package com.sorcery.particle;
 
 import com.sorcery.Constants;
 import com.sorcery.block.ModBlock;
+import com.sorcery.utils.ModColor;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleType;
 
@@ -69,42 +70,42 @@ public class Particles
         switch (set)
         {
             case 0:
-                collection.add(50, getColoredParticle(Constants.ARCANA_PURPLE_MAIN, ModParticle.SIMPLE_SPARK, 1.0f));
-                collection.add(25, getColoredParticle(Constants.ARCANA_PURPLE_LOWLIGHT, ModParticle.SIMPLE_SPARK, 1.0f));
-                collection.add(25, getColoredParticle(Constants.ARCANA_PURPLE_HIGHLIGHT, ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(50, getColoredParticle(ModColor.ARCANA_PURPLE.getMainList(), ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getLowList(), ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getHiList(), ModParticle.SIMPLE_SPARK, 1.0f));
                 return collection;
             case 1:
-                collection.add(50, getColoredParticle(Constants.SOLAR_GOLD_MAIN, ModParticle.SIMPLE_SPARK, 1.0f));
-                collection.add(25, getColoredParticle(Constants.SOLAR_GOLD_LOWLIGHT, ModParticle.SIMPLE_SPARK, 1.0f));
-                collection.add(25, getColoredParticle(Constants.SOLAR_GOLD_HIGHLIGHT, ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(50, getColoredParticle(ModColor.SOLAR_GOLD.getMainList(), ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.SOLAR_GOLD.getLowList(), ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.SOLAR_GOLD.getHiList(), ModParticle.SIMPLE_SPARK, 1.0f));
                 return collection;
             case 2:
-                collection.add(50, getColoredParticle(Constants.LUNAR_SILVER_MAIN, ModParticle.LIT_SPARK, 1.0f));
-                collection.add(25, getColoredParticle(Constants.LUNAR_SILVER_LOWLIGHT, ModParticle.LIT_SPARK, 1.0f));
-                collection.add(25, getColoredParticle(Constants.LUNAR_SILVER_HIGHLIGHT, ModParticle.LIT_SPARK, 1.0f));
+                collection.add(50, getColoredParticle(ModColor.LUNAR_SILVER.getMainList(), ModParticle.LIT_SPARK, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getLowList(), ModParticle.LIT_SPARK, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getHiList(), ModParticle.LIT_SPARK, 1.0f));
                 return collection;
             case 3:
-                collection.add(50, getColoredParticle(Constants.LAPIS_BLUE_MAIN, ModParticle.SIMPLE_SPARK, 1.0f));
-                collection.add(25, getColoredParticle(Constants.LAPIS_BLUE_LOWLIGHT, ModParticle.SIMPLE_SPARK, 1.0f));
-                collection.add(25, getColoredParticle(Constants.LAPIS_BLUE_HIGHLIGHT, ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(50, getColoredParticle(ModColor.LAPIS_BLUE.getMainList(), ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.LAPIS_BLUE.getLowList(), ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.LAPIS_BLUE.getHiList(), ModParticle.SIMPLE_SPARK, 1.0f));
                 return collection;
             case 4:
-                collection.add(50, getColoredParticle(Constants.BLOOD_RED_MAIN, ModParticle.SIMPLE_SPARK, 1.0f));
-                collection.add(25, getColoredParticle(Constants.BLOOD_RED_LOWLIGHT, ModParticle.SIMPLE_SPARK, 1.0f));
-                collection.add(25, getColoredParticle(Constants.BLOOD_RED_HIGHLIGHT, ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(50, getColoredParticle(ModColor.BLOOD_RED.getMainList(), ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.BLOOD_RED.getLowList(), ModParticle.SIMPLE_SPARK, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.BLOOD_RED.getHiList(), ModParticle.SIMPLE_SPARK, 1.0f));
                 return collection;
             case 5:
-                collection.add(50, getColoredParticle(Constants.ARCANA_PURPLE_MAIN, ModParticle.ARCANA_SPARK_1, 0.7f));
-                collection.add(25, getColoredParticle(Constants.ARCANA_PURPLE_LOWLIGHT, ModParticle.ARCANA_SPARK_1, 0.7f));
-                collection.add(25, getColoredParticle(Constants.ARCANA_PURPLE_HIGHLIGHT, ModParticle.ARCANA_SPARK_1, 0.7f));
-                collection.add(50, getColoredParticle(Constants.ARCANA_PURPLE_MAIN, ModParticle.ARCANA_SPARK_3, 0.7f));
-                collection.add(25, getColoredParticle(Constants.ARCANA_PURPLE_LOWLIGHT, ModParticle.ARCANA_SPARK_3, 0.7f));
-                collection.add(25, getColoredParticle(Constants.ARCANA_PURPLE_HIGHLIGHT, ModParticle.ARCANA_SPARK_3, 0.7f));
+                collection.add(50, getColoredParticle(ModColor.ARCANA_PURPLE.getMainList(), ModParticle.ARCANA_SPARK_1, 0.7f));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getLowList(), ModParticle.ARCANA_SPARK_1, 0.7f));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getHiList(), ModParticle.ARCANA_SPARK_1, 0.7f));
+                collection.add(50, getColoredParticle(ModColor.ARCANA_PURPLE.getMainList(), ModParticle.ARCANA_SPARK_3, 0.7f));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getLowList(), ModParticle.ARCANA_SPARK_3, 0.7f));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getHiList(), ModParticle.ARCANA_SPARK_3, 0.7f));
                 return collection;
             case 6:
-                collection.add(50, getColoredParticle(Constants.ARCANA_PURPLE_MAIN, ModParticle.ARCANA_ORB, 1.0f));
-                collection.add(25, getColoredParticle(Constants.ARCANA_PURPLE_LOWLIGHT, ModParticle.ARCANA_ORB, 1.0f));
-                collection.add(25, getColoredParticle(Constants.ARCANA_PURPLE_HIGHLIGHT, ModParticle.ARCANA_ORB, 1.0f));
+                collection.add(50, getColoredParticle(ModColor.ARCANA_PURPLE.getMainList(), ModParticle.ARCANA_ORB, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getLowList(), ModParticle.ARCANA_ORB, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getHiList(), ModParticle.ARCANA_ORB, 1.0f));
                 return collection;
             case 7:
                 collection.add(100, getSnowflake());

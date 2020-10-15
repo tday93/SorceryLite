@@ -61,9 +61,6 @@ public class ModItem
     // Crushed Wolframite
     public static final RegistryObject<Item> SORCEROUS_CATALYST = ITEMS.register("sorcerous_catalyst", () -> new Item(Constants.ITEM_PROPS));
 
-    // Grimoire
-    public static final RegistryObject<Item> GRIMOIRE = ITEMS.register("grimoire", () -> new Item(Constants.ITEM_PROPS));
-
     // Utility Items
     public static final RegistryObject<Item> CRYSTAL_RESONATOR = ITEMS.register("crystal_resonator", () -> new CrystalResonatorItem(Constants.ITEM_PROPS));
 
@@ -85,6 +82,12 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_PLANT_LIFE = ITEMS.register("scroll_plant_life", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_LIFE));
     public static final RegistryObject<Item> SCROLL_CHILLING_TOUCH = ITEMS.register("scroll_chilling_touch", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CHILLING_TOUCH));
     // -- Iron
+    public static final RegistryObject<Item> SCROLL_COBBLE_PLACEMENT = ITEMS.register("scroll_cobble_placement", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COBBLE_PLACEMENT));
+    public static final RegistryObject<Item> SCROLL_LESSER_FIREBOLT = ITEMS.register("scroll_lesser_firebolt", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_FIREBOLT));
+    public static final RegistryObject<Item> SCROLL_LESSER_SHUNT = ITEMS.register("scroll_lesser_shunt", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_SHUNT));
+    public static final RegistryObject<Item> SCROLL_LESSER_HEAL = ITEMS.register("scroll_lesser_heal", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_HEAL));
+    public static final RegistryObject<Item> SCROLL_LESSER_SLOW = ITEMS.register("scroll_lesser_slow", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_SLOW));
+    public static final RegistryObject<Item> SCROLL_SIGNAL_FLARE = ITEMS.register("scroll_signal_flare", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_SIGNAL_FLARE));
     // -- Diamond
     // -- Nether
     public static final RegistryObject<Item> SCROLL_COMBUSTION = ITEMS.register("scroll_combustion", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COMBUSTION));
