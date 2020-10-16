@@ -14,13 +14,26 @@ public class PotionSpell extends Spell
     private Effect effect;
     // Duration in ticks, 1 second = 20 ticks
     private int duration;
+    // effect amplifier
+    private int amp;
+    private boolean castOnSelf = true;
 
 
-    public PotionSpell(Effect effectIn, int costIn, int durationIn)
+    public PotionSpell(int costIn, Effect effectIn, int durationIn, int ampIn)
     {
         super(costIn);
         this.effect = effectIn;
         this.duration = durationIn;
+        this.amp = ampIn;
+    }
+
+    public PotionSpell(int costIn, Effect effectIn, int durationIn, int ampIn, boolean selfCastIn)
+    {
+        super(costIn);
+        this.effect = effectIn;
+        this.duration = durationIn;
+        this.amp = ampIn;
+        this.castOnSelf = selfCastIn;
     }
 
     @Override
@@ -31,16 +44,17 @@ public class PotionSpell extends Spell
 
         if (context.wasEntityTargeted())
         {
-            EffectInstance potionEffect = new EffectInstance(effect, duration);
+            EffectInstance potionEffect = new EffectInstance(effect, duration, this.amp);
             context.getTargetEntity().addPotionEffect(potionEffect);
             return ActionResultType.SUCCESS;
         }
-        else
+        else if (this.castOnSelf)
         {
-            EffectInstance potionEffect = new EffectInstance(effect, duration);
+            EffectInstance potionEffect = new EffectInstance(effect, duration, this.amp);
             context.getPlayer().addPotionEffect(potionEffect);
             return ActionResultType.SUCCESS;
         }
+        return ActionResultType.FAIL;
     }
 
     @Override

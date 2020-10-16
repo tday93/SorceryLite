@@ -17,7 +17,7 @@ public class CreateWaterSpell extends Spell
 {
     public CreateWaterSpell()
     {
-        super(Config.CREATE_WATER_SPELL_COST.get());
+        super(Config.SPELL_CREATE_WATER_COST.get());
         this.sound = SoundEvents.ITEM_BUCKET_EMPTY;
     }
 

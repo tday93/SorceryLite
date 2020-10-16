@@ -19,9 +19,9 @@ public class RepelSpell extends Spell
 
     public RepelSpell()
     {
-        super(Config.REPEL_SPELL_COST.get());
-        this.range = Config.REPEL_SPELL_RANGE.get();
-        this.velocity = Config.REPEL_SPELL_VELOCITY.get() * 0.1;
+        super(Config.SPELL_REPEL_COST.get());
+        this.range = Config.SPELL_REPEL_RANGE.get();
+        this.velocity = Config.SPELL_REPEL_VELOCITY.get() * 0.1;
     }
 
     // Server-side only stuff happens here

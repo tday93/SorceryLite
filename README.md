@@ -10,28 +10,36 @@ The goal of this mod is to build an alternative progression path for players, fo
 * DataGenerators
 * DeferredRegisters
 
-## To Do before initial release:
-* Round out pre-iron spells + wands
-    * Dig
-        * Particle Effects
-        * Sound?
-    * Plant Death
-        * adjust range
-    * Plant Life
-        * spell icon
-        * adjust cost
-        * particle effects?
-* Finish recipes for existing items
-    * Wands
-* Textures for wands
 
-
-## Progression Brainstorming
+## Progression
 
 1) Pre-Iron
-    * Wands
-    * Simple Spells
-    
+    * New Mod Materials:
+        * None!
+    * New Mod Features:
+        * Wands
+    * Spells:
+        * Lesser Dig
+        * Plant Death
+        * Plant Life
+        * Chilling Touch
+2) Iron
+    * Mod Materials:
+        * Sorcerous Catalyst
+            * Redstone + Lapis
+        * Runestone: 
+            * Stone + Catalyst
+        * Runewood:
+            * Sapling + Catalyst
+    * New Mod Features:
+        * None, short phase
+    * Spells:
+        * Fire Damage Spell?
+        * Cobble Placement
+        * Lesser Transmutation
+            * Granite -> Diorite -> Andesite -> Stone -> Granite
+            * 4 Redstone -> 1 Lapis
+        
     
     
 ## Other To-Do

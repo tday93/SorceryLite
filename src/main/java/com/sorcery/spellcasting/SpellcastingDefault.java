@@ -17,7 +17,7 @@ public class SpellcastingDefault implements ISpellcasting
     public SpellcastingDefault()
     {
 
-        ResourceLocation testSpell = ModSpell.MEDITATE_SPELL.getId();
+        ResourceLocation testSpell = ModSpell.SPELL_MEDITATE.getId();
         this.addPreparedSpell(testSpell);
         this.setActiveSpell(testSpell);
 
@@ -26,7 +26,7 @@ public class SpellcastingDefault implements ISpellcasting
     public SpellcastingDefault(ResourceLocation startingSpell)
     {
         this.addPreparedSpell(startingSpell);
-        this.addPreparedSpell(ModSpell.MEDITATE_SPELL.getId());
+        this.addPreparedSpell(ModSpell.SPELL_MEDITATE.getId());
         this.setActiveSpell(startingSpell);
     }
 

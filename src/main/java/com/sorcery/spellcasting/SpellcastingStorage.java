@@ -20,7 +20,7 @@ public class SpellcastingStorage implements Capability.IStorage<ISpellcasting>
         CompoundNBT tag = new CompoundNBT();
 
         // Active Spell
-        tag.putString("active_spell", instance.getActiveSpell().toString());
+        tag.putString("spell_active", instance.getActiveSpell().toString());
 
         // Prepared Spells
         ListNBT preparedSpells = new ListNBT();
@@ -45,7 +45,7 @@ public class SpellcastingStorage implements Capability.IStorage<ISpellcasting>
     {
 
         // Active Spell
-        instance.setActiveSpell(new ResourceLocation(((CompoundNBT) nbt).getString("active_spell")));
+        instance.setActiveSpell(new ResourceLocation(((CompoundNBT) nbt).getString("spell_active")));
 
         // Prepared Spells
         ArrayList<ResourceLocation> preparedSpells = new ArrayList<>();

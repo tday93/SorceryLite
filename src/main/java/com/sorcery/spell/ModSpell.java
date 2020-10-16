@@ -2,16 +2,12 @@ package com.sorcery.spell;
 
 import com.sorcery.Config;
 import com.sorcery.Constants;
-import net.minecraft.item.Item;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Items;
 import net.minecraft.potion.Effects;
-import net.minecraftforge.common.ToolType;
-import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.ArrayList;
 
 public class ModSpell
 {
@@ -20,34 +16,41 @@ public class ModSpell
 
 
     // Testing Spells
-    public static final RegistryObject<Spell> DURATION_SPELL = SPELLS.register("duration_spell", () -> new DurationSpell());
-    public static final RegistryObject<Spell> REMOVE_ARCANA_SPELL = SPELLS.register("remove_arcana_spell", () -> new TestSpell("Arcana Removed!", 1000));
-    public static final RegistryObject<Spell> TEST_SPELL = SPELLS.register("test_spell", () -> new TestSpell("poof!", 0));
+    public static final RegistryObject<Spell> SPELL_DURATION = SPELLS.register("spell_duration", () -> new DurationSpell());
+    public static final RegistryObject<Spell> SPELL_REMOVE_ARCANA = SPELLS.register("spell_remove_arcana", () -> new TestSpell("Arcana Removed!", 1000));
+    public static final RegistryObject<Spell> SPELL_TEST = SPELLS.register("spell_test", () -> new TestSpell("poof!", 0));
+    public static final RegistryObject<Spell> SPELL_ARCANA_DRAIN = SPELLS.register("spell_arcana_drain", () -> new ArcanaDrainSpell());
 
     // Pre-Iron Spells
-    public static final RegistryObject<Spell> LESSER_DIG_SPELL = SPELLS.register("lesser_dig_spell", () -> new DigSpell(10, 6));
-    public static final RegistryObject<Spell> MEDITATE_SPELL = SPELLS.register("meditate_spell", () -> new MeditateSpell());
-    public static final RegistryObject<Spell> PLANT_DEATH_SPELL = SPELLS.register("plant_death_spell", () -> new PlantDeathSpell());
-    public static final RegistryObject<Spell> PLANT_LIFE_SPELL = SPELLS.register("plant_life_spell", () -> new PlantLifeSpell(10));
-    public static final RegistryObject<Spell> CHILLING_TOUCH_SPELL = SPELLS.register("chilling_touch_spell", () -> new ChillingTouchSpell(50));
+    public static final RegistryObject<Spell> SPELL_LESSER_DIG = SPELLS.register("spell_lesser_dig", () -> new DigSpell(10, 6));
+    public static final RegistryObject<Spell> SPELL_MEDITATE = SPELLS.register("spell_meditate", () -> new MeditateSpell());
+    public static final RegistryObject<Spell> SPELL_PLANT_DEATH = SPELLS.register("spell_plant_death", () -> new PlantDeathSpell());
+    public static final RegistryObject<Spell> SPELL_PLANT_LIFE = SPELLS.register("spell_plant_life", () -> new PlantLifeSpell(10));
+    public static final RegistryObject<Spell> SPELL_CHILLING_TOUCH = SPELLS.register("spell_chilling_touch", () -> new ChillingTouchSpell(50));
 
     // Iron Spells
-    public static final RegistryObject<Spell> ARCANA_DRAIN_SPELL = SPELLS.register("arcana_drain_spell", () -> new ArcanaDrainSpell());
+    public static final RegistryObject<Spell> SPELL_COBBLE_PLACEMENT = SPELLS.register("spell_cobble_placement", () -> new BlockPlacementSpell(10, (BlockItem)Items.COBBLESTONE));
+    public static final RegistryObject<Spell> SPELL_LESSER_FIREBOLT = SPELLS.register("spell_lesser_firebolt", () -> new FireboltSpell());
+    public static final RegistryObject<Spell> SPELL_LESSER_SHUNT = SPELLS.register("spell_lesser_shunt", () -> new ShuntSpell(10, 5));
+    public static final RegistryObject<Spell> SPELL_LESSER_HEAL = SPELLS.register("spell_lesser_heal", () -> new HealSpell(10, 4, 2, 80));
+    public static final RegistryObject<Spell> SPELL_LESSER_SLOW = SPELLS.register("spell_lesser_slow", () -> new PotionSpell(10, Effects.SLOWNESS, 40, 1));
+    public static final RegistryObject<Spell> SPELL_SIGNAL_FLARE = SPELLS.register("spell_signal_flare", () -> new SignalFlareSpell(10));
 
     // Diamond Spells
-    public static final RegistryObject<Spell> COMBUSTION_SPELL = SPELLS.register("combustion_spell", () -> new CombustionSpell());
-    public static final RegistryObject<Spell> FIREBOLT_SPELL = SPELLS.register("firebolt_spell", () -> new FireboltSpell());
-    public static final RegistryObject<Spell> IGNITE_SPELL = SPELLS.register("ignite_spell", () -> new IgniteSpell());
+    public static final RegistryObject<Spell> SPELL_COMBUSTION = SPELLS.register("spell_combustion", () -> new CombustionSpell());
+    public static final RegistryObject<Spell> SPELL_IGNITE = SPELLS.register("spell_ignite", () -> new IgniteSpell());
 
     // Nether Spells
-    public static final RegistryObject<Spell> CREATE_WATER_SPELL = SPELLS.register("create_water_spell", () -> new CreateWaterSpell());
-    public static final RegistryObject<Spell> REPEL_SPELL = SPELLS.register("repel_spell", () -> new RepelSpell());
-    public static final RegistryObject<Spell> SPEED_SPELL = SPELLS.register("speed_spell", () -> new PotionSpell(Effects.SPEED, Config.SPEED_SPELL_COST.get(), Config.SPEED_SPELL_DURATION.get()));
+    public static final RegistryObject<Spell> SPELL_CREATE_WATER = SPELLS.register("spell_create_water", () -> new CreateWaterSpell());
+    public static final RegistryObject<Spell> SPELL_REPEL = SPELLS.register("spell_repel", () -> new RepelSpell());
+    public static final RegistryObject<Spell> SPELL_SPEED = SPELLS.register("spell_speed", () -> new PotionSpell(Config.SPELL_SPEED_COST.get(), Effects.SPEED, Config.SPELL_SPEED_DURATION.get(), 1));
+    // -- Cocoon Spell
 
     // Netherite Spells
+    // -- Tunnel Spell
 
     // End Spells
-    public static final RegistryObject<Spell> BLINK_SPELL = SPELLS.register("blink_spell", () -> new BlinkSpell());
+    public static final RegistryObject<Spell> SPELL_BLINK = SPELLS.register("spell_blink", () -> new BlinkSpell());
 
 
     public static void init()

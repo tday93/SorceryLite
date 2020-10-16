@@ -11,7 +11,7 @@ public class ModSetup
         @Override
         public ItemStack createIcon()
         {
-            return new ItemStack(ModItem.GRIMOIRE.get());
+            return new ItemStack(ModItem.SPELL_BOOK.get());
         }
     };
 
@@ -20,7 +20,7 @@ public class ModSetup
         @Override
         public ItemStack createIcon()
         {
-            return new ItemStack(ModItem.CREATE_WATER_SPELL_SCROLL.get());
+            return new ItemStack(ModItem.SCROLL_CREATE_WATER.get());
         }
     };
 

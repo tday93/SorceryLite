@@ -21,8 +21,8 @@ public class BlinkSpell extends Spell
 
     public BlinkSpell()
     {
-        super(Config.BLINK_SPELL_COST.get());
-        this.blinkDistance = Config.BLINK_SPELL_DISTANCE.get();
+        super(Config.SPELL_BLINK_COST.get());
+        this.blinkDistance = Config.SPELL_BLINK_DISTANCE.get();
     }
 
 

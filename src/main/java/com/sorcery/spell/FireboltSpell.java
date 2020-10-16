@@ -14,7 +14,7 @@ public class FireboltSpell extends Spell
 
     public FireboltSpell()
     {
-        super(Config.FIREBOLT_SPELL_COST.get());
+        super(Config.SPELL_FIREBOLT_COST.get());
         this.velocity = 3;
     }
 
@@ -26,7 +26,7 @@ public class FireboltSpell extends Spell
         this.playSound(context);
         World world = context.getWorld();
         FireboltEntity entity = new FireboltEntity(ModEntity.FIREBOLT, world);
-        entity.setDamageAndDuration(Config.FIREBOLT_SPELL_DAMAGE.get(), Config.FIREBOLT_SPELL_FIRE_DURATION.get());
+        entity.setDamageAndDuration(Config.SPELL_FIREBOLT_DAMAGE.get(), Config.SPELL_FIREBOLT_FIRE_DURATION.get());
         Vector3d eyePos = context.getPlayer().getEyePosition(1);
         Vector3d playerLook = context.getPlayer().getLookVec();
         Vector3d entityPos = Utils.nBlocksAlongVector(eyePos, playerLook, 2.0f);

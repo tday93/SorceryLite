@@ -28,6 +28,7 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
     protected boolean interference = false;
 
 
+    // TODO: rework interference to be more interesting
     public AbstractMonolithTile(TileEntityType variantIn, int maxArcana)
     {
         super(variantIn);

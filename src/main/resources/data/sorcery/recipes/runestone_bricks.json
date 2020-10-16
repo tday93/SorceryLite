@@ -11,6 +11,7 @@
     }
   },
   "result": {
-    "item": "sorcery:runestone_bricks"
+    "item": "sorcery:runestone_bricks",
+    "count": 4
   }
 }

@@ -30,34 +30,34 @@ public class Config
 
 
     // Spell config items
-    public static ForgeConfigSpec.IntValue BLINK_SPELL_COST;
-    public static ForgeConfigSpec.IntValue BLINK_SPELL_DISTANCE;
+    public static ForgeConfigSpec.IntValue SPELL_BLINK_COST;
+    public static ForgeConfigSpec.IntValue SPELL_BLINK_DISTANCE;
 
-    public static ForgeConfigSpec.IntValue COMBUSTION_SPELL_COST;
-    public static ForgeConfigSpec.IntValue COMBUSTION_SPELL_CAST_DURATION;
-    public static ForgeConfigSpec.IntValue COMBUSTION_SPELL_DAMAGE;
-    public static ForgeConfigSpec.IntValue COMBUSTION_SPELL_FIRE_DURATION;
+    public static ForgeConfigSpec.IntValue SPELL_COMBUSTION_COST;
+    public static ForgeConfigSpec.IntValue SPELL_COMBUSTION_CAST_DURATION;
+    public static ForgeConfigSpec.IntValue SPELL_COMBUSTION_DAMAGE;
+    public static ForgeConfigSpec.IntValue SPELL_COMBUSTION_FIRE_DURATION;
 
-    public static ForgeConfigSpec.IntValue IGNITE_SPELL_COST;
+    public static ForgeConfigSpec.IntValue SPELL_IGNITE_COST;
 
-    public static ForgeConfigSpec.IntValue PLANT_DEATH_SPELL_COST;
-    public static ForgeConfigSpec.IntValue PLANT_DEATH_SPELL_RANGE;
+    public static ForgeConfigSpec.IntValue SPELL_PLANT_DEATH_COST;
+    public static ForgeConfigSpec.IntValue SPELL_PLANT_DEATH_RANGE;
 
-    public static ForgeConfigSpec.IntValue REPEL_SPELL_COST;
-    public static ForgeConfigSpec.IntValue REPEL_SPELL_RANGE;
-    public static ForgeConfigSpec.IntValue REPEL_SPELL_VELOCITY;
+    public static ForgeConfigSpec.IntValue SPELL_REPEL_COST;
+    public static ForgeConfigSpec.IntValue SPELL_REPEL_RANGE;
+    public static ForgeConfigSpec.IntValue SPELL_REPEL_VELOCITY;
 
 
-    public static ForgeConfigSpec.IntValue SPEED_SPELL_COST;
-    public static ForgeConfigSpec.IntValue SPEED_SPELL_DURATION;
+    public static ForgeConfigSpec.IntValue SPELL_SPEED_COST;
+    public static ForgeConfigSpec.IntValue SPELL_SPEED_DURATION;
 
-    public static ForgeConfigSpec.IntValue FIREBOLT_SPELL_COST;
-    public static ForgeConfigSpec.IntValue FIREBOLT_SPELL_DAMAGE;
-    public static ForgeConfigSpec.IntValue FIREBOLT_SPELL_FIRE_DURATION;
+    public static ForgeConfigSpec.IntValue SPELL_FIREBOLT_COST;
+    public static ForgeConfigSpec.IntValue SPELL_FIREBOLT_DAMAGE;
+    public static ForgeConfigSpec.IntValue SPELL_FIREBOLT_FIRE_DURATION;
 
-    public static ForgeConfigSpec.IntValue CREATE_WATER_SPELL_COST;
+    public static ForgeConfigSpec.IntValue SPELL_CREATE_WATER_COST;
 
-    public static ForgeConfigSpec.IntValue ON_OFF_SPELL_COST;
+    public static ForgeConfigSpec.IntValue SPELL_ON_OFF_COST;
 
 
     // Monolith config items
@@ -83,8 +83,6 @@ public class Config
 
         monolithConfig();
 
-        worldgenConfig();
-
         COMMON_CONFIG = COMMON_BUILDER.build();
         CLIENT_CONFIG = CLIENT_BUILDER.build();
 
@@ -95,36 +93,36 @@ public class Config
 
         COMMON_BUILDER.comment("Spell Configs").push(CATEGORY_SPELLS);
 
-        BLINK_SPELL_COST = spellIntParamHelper("blink", "Cost",500, 0, Integer.MAX_VALUE);
-        BLINK_SPELL_DISTANCE = spellIntParamHelper("blink", "Distance", 4, 2, 64);
+        SPELL_BLINK_COST = spellIntParamHelper("blink", "Cost",500, 0, Integer.MAX_VALUE);
+        SPELL_BLINK_DISTANCE = spellIntParamHelper("blink", "Distance", 4, 2, 64);
 
-        COMBUSTION_SPELL_COST = spellIntParamHelper("combustion", "Cost",10, 0, Integer.MAX_VALUE);
+        SPELL_COMBUSTION_COST = spellIntParamHelper("combustion", "Cost",10, 0, Integer.MAX_VALUE);
         COMMON_BUILDER.comment("the damage done per tick");
-        COMBUSTION_SPELL_DAMAGE = spellIntParamHelper("combustion", "Damage",1, 0, Integer.MAX_VALUE);
+        SPELL_COMBUSTION_DAMAGE = spellIntParamHelper("combustion", "Damage",1, 0, Integer.MAX_VALUE);
         COMMON_BUILDER.comment("number of ticks this can be held for");
-        COMBUSTION_SPELL_CAST_DURATION = spellIntParamHelper("combustion", "CastDuration",100, 0, Integer.MAX_VALUE);
+        SPELL_COMBUSTION_CAST_DURATION = spellIntParamHelper("combustion", "CastDuration",100, 0, Integer.MAX_VALUE);
         COMMON_BUILDER.comment("fire duration in seconds");
-        COMBUSTION_SPELL_FIRE_DURATION = spellIntParamHelper("combustion", "FireDuration",10, 0, Integer.MAX_VALUE);
+        SPELL_COMBUSTION_FIRE_DURATION = spellIntParamHelper("combustion", "FireDuration",10, 0, Integer.MAX_VALUE);
 
-        IGNITE_SPELL_COST = spellIntParamHelper("ignite", "Cost", 20, 0, Integer.MAX_VALUE);
+        SPELL_IGNITE_COST = spellIntParamHelper("ignite", "Cost", 20, 0, Integer.MAX_VALUE);
 
-        PLANT_DEATH_SPELL_COST = spellIntParamHelper("plantDeath", "Cost", 200, 0, Integer.MAX_VALUE);
-        PLANT_DEATH_SPELL_RANGE = spellIntParamHelper("plantDeath", "Range", 8, 0, 64);
+        SPELL_PLANT_DEATH_COST = spellIntParamHelper("plantDeath", "Cost", 200, 0, Integer.MAX_VALUE);
+        SPELL_PLANT_DEATH_RANGE = spellIntParamHelper("plantDeath", "Range", 8, 0, 64);
 
-        REPEL_SPELL_COST = spellIntParamHelper("repel", "Cost", 200, 0, Integer.MAX_VALUE);
-        REPEL_SPELL_RANGE = spellIntParamHelper("repel", "Range", 8, 0, 64);
-        REPEL_SPELL_VELOCITY = spellIntParamHelper("repel", "Velocity", 5, 0, 80);
+        SPELL_REPEL_COST = spellIntParamHelper("repel", "Cost", 200, 0, Integer.MAX_VALUE);
+        SPELL_REPEL_RANGE = spellIntParamHelper("repel", "Range", 8, 0, 64);
+        SPELL_REPEL_VELOCITY = spellIntParamHelper("repel", "Velocity", 5, 0, 80);
 
-        SPEED_SPELL_COST = spellIntParamHelper("speed", "Cost", 200, 0, Integer.MAX_VALUE);
-        SPEED_SPELL_DURATION = spellIntParamHelper("speed", "Duration", 100, 0, Integer.MAX_VALUE);
+        SPELL_SPEED_COST = spellIntParamHelper("speed", "Cost", 200, 0, Integer.MAX_VALUE);
+        SPELL_SPEED_DURATION = spellIntParamHelper("speed", "Duration", 100, 0, Integer.MAX_VALUE);
 
-        FIREBOLT_SPELL_COST = spellIntParamHelper("firebolt", "Cost", 100, 0, Integer.MAX_VALUE);
-        FIREBOLT_SPELL_DAMAGE = spellIntParamHelper("firebolt", "Cost", 3, 0, Integer.MAX_VALUE);
-        FIREBOLT_SPELL_FIRE_DURATION = spellIntParamHelper("firebolt", "Cost", 3, 0, Integer.MAX_VALUE);
+        SPELL_FIREBOLT_COST = spellIntParamHelper("firebolt", "Cost", 100, 0, Integer.MAX_VALUE);
+        SPELL_FIREBOLT_DAMAGE = spellIntParamHelper("firebolt", "Cost", 3, 0, Integer.MAX_VALUE);
+        SPELL_FIREBOLT_FIRE_DURATION = spellIntParamHelper("firebolt", "Cost", 3, 0, Integer.MAX_VALUE);
 
-        CREATE_WATER_SPELL_COST = spellIntParamHelper("createWater", "Cost", 100, 0, Integer.MAX_VALUE);
+        SPELL_CREATE_WATER_COST = spellIntParamHelper("createWater", "Cost", 100, 0, Integer.MAX_VALUE);
 
-        ON_OFF_SPELL_COST = spellIntParamHelper("onOff", "Cost", 100, 0, Integer.MAX_VALUE);
+        SPELL_ON_OFF_COST = spellIntParamHelper("onOff", "Cost", 100, 0, Integer.MAX_VALUE);
 
 
         // After every config added
@@ -140,20 +138,6 @@ public class Config
         MONOLITH_LUNAR_GENERATE = COMMON_BUILDER.comment("Lunar Monolith Arcana per tick").defineInRange("monoLunarGen", 50, 0, Integer.MAX_VALUE);
         MONOLITH_DARK_GENERATE = COMMON_BUILDER.comment("Dark Monolith Arcana per tick").defineInRange("monoDarkGen", 50, 0, Integer.MAX_VALUE);
 
-
-        COMMON_BUILDER.pop();
-    }
-
-    private static void worldgenConfig()
-    {
-        COMMON_BUILDER.comment("Worldgen Config").push(CATEGORY_WORLDGEN);
-
-        WOLFRAMITE_COUNT = COMMON_BUILDER.comment("Wolframite ore per cluster").defineInRange("wolframiteCount", 4, 0, 128);
-        WOLFRAMITE_CLUSTERS = COMMON_BUILDER.comment("Wolframite clusters per chunk").defineInRange("wolframiteClusters", 4, 0, 128);
-        WOLFRAMITE_BOTTOM_OFFSET = COMMON_BUILDER.comment("Wolframite bottom offset").defineInRange("wolframiteBotOffset", 4, 0, 255);
-        WOLFRAMITE_TOP_OFFSET = COMMON_BUILDER.comment("Wolframite top offset").defineInRange("wolframiteTopOffset", 0, 0, 255);
-        WOLFRAMITE_MAX_HEIGHT = COMMON_BUILDER.comment("Wolframite max spawn height").defineInRange("wolframiteMaxHeight", 0, 0, 255);
-        WOLFRAMITE_MAX_HEIGHT = COMMON_BUILDER.comment("Wolframite max spawn height").defineInRange("wolframiteMaxHeight", 32, 0, 255);
 
         COMMON_BUILDER.pop();
     }

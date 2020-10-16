@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "sorcery:wand_lesser_heal"
+    ]
+  },
+  "criteria": {
+    "unique_component": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:glistering_melon_slice"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sorcery:wand_lesser_heal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "unique_component",
+      "has_the_recipe"
+    ]
+  ]
+}
