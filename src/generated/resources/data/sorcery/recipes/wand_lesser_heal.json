@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sorcery",
+  "pattern": [
+    " zx",
+    " yz",
+    "y  "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:glistering_melon_slice"
+    },
+    "y": {
+      "item": "minecraft:stick"
+    },
+    "z": {
+      "item": "sorcery:sorcerous_catalyst"
+    }
+  },
+  "result": {
+    "item": "sorcery:wand_lesser_heal"
+  }
+}

@@ -65,9 +65,12 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.SCROLL_LESSER_SLOW.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.SCROLL_SIGNAL_FLARE.get(), "scroll_evocation");
         // -- Diamond
-        // -- Nether
         simpleSingleTexture(ModItem.SCROLL_COMBUSTION.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_IGNITE.get(), "scroll_evocation");
+        // -- Nether
         simpleSingleTexture(ModItem.SCROLL_CREATE_WATER.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_REPEL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_SPEED.get(), "scroll_evocation");
         // -- Netherite
         // -- End
         simpleSingleTexture(ModItem.SCROLL_BLINK.get(), "scroll_evocation");

@@ -89,9 +89,13 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_LESSER_SLOW = ITEMS.register("scroll_lesser_slow", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_SLOW));
     public static final RegistryObject<Item> SCROLL_SIGNAL_FLARE = ITEMS.register("scroll_signal_flare", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_SIGNAL_FLARE));
     // -- Diamond
-    // -- Nether
     public static final RegistryObject<Item> SCROLL_COMBUSTION = ITEMS.register("scroll_combustion", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COMBUSTION));
+    public static final RegistryObject<Item> SCROLL_IGNITE = ITEMS.register("scroll_ignite", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_IGNITE));
+
+    // -- Nether
     public static final RegistryObject<Item> SCROLL_CREATE_WATER = ITEMS.register("scroll_create_water", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CREATE_WATER));
+    public static final RegistryObject<Item> SCROLL_REPEL = ITEMS.register("scroll_repel", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_REPEL));
+    public static final RegistryObject<Item> SCROLL_SPEED = ITEMS.register("scroll_speed", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_SPEED));
     // -- Netherite
     // -- End
     public static final RegistryObject<Item> SCROLL_BLINK = ITEMS.register("scroll_blink", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_BLINK));
