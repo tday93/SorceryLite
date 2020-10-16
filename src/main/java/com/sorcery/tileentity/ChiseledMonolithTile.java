@@ -24,18 +24,25 @@ public class ChiseledMonolithTile extends AbstractMonolithTile implements ITicka
     @Override
     public void tick()
     {
+        // Check Activity
         long worldTicks = this.getOffsetWorldTicks();
-
-        if (worldTicks % ticksPerRegen == 0 && this.active && !this.interference)
-        {
-            this.arcanaStorage.receiveArcana(arcanaPerRegen, false);
-        }
-
         if (worldTicks % 20 == 0)
         {
             this.setActivity(true);
         }
+        // To Abstract Monolith tick
         super.tick();
     }
+
+    @Override
+    public void generateArcana(Long worldTicks)
+    {
+        if (worldTicks % ticksPerRegen == 0 && !this.interference)
+        {
+            this.arcanaStorage.receiveArcana(arcanaPerRegen, false);
+        }
+    }
+
+
 
 }

@@ -2,6 +2,7 @@ package com.sorcery.block;
 
 import com.sorcery.block.state.States;
 import com.sorcery.tileentity.ChiseledMonolithTile;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -33,7 +34,7 @@ public class MonolithBlock extends Block
     public MonolithBlock()
     {
         super(Properties.create(Material.ROCK).hardnessAndResistance(hardness, resistance).sound(SoundType.STONE));
-        this.setDefaultState(this.stateContainer.getBaseState().with(ACTIVE, Boolean.valueOf(false)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(ACTIVE, Boolean.FALSE));
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
@@ -76,7 +77,7 @@ public class MonolithBlock extends Block
 
     public static void setActivity(World world, BlockState state, BlockPos pos, Boolean active)
     {
-        world.setBlockState(pos, state.with(ACTIVE, Boolean.valueOf(active)), 3);
+        world.setBlockState(pos, state.with(ACTIVE, active), 3);
     }
 
     @Override

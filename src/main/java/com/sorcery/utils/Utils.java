@@ -1,6 +1,7 @@
 package com.sorcery.utils;
 
 import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
 import com.sorcery.arcana.IArcanaStorage;
 import com.sorcery.block.state.CrystalColor;
 import com.sorcery.item.SpellbookItem;
@@ -11,6 +12,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -139,6 +141,18 @@ public class Utils {
         Vector3d vec = basis.addXYZ(player.getEyePosition(1), 0.25, 0, 0.1);
 
         return vec;
+    }
+
+    public static <T extends TileEntity> Set<T> getTEInRange(World world, @Nullable TileEntity selfTile, Class clazz, double range)
+    {
+        Set<T> tileEntitiesInRange = new HashSet<>();
+        Predicate<TileEntity> tilePred = getTESearchPredicate(clazz, selfTile, range);
+        List<TileEntity> allTE = world.loadedTileEntityList;
+        for (TileEntity tileEntity : Collections2.filter(allTE, tilePred))
+        {
+           tileEntitiesInRange.add((T)tileEntity);
+        }
+        return tileEntitiesInRange;
     }
 
     public static Predicate<TileEntity> getTESearchPredicate(Class clazz, BlockPos pos, double range)

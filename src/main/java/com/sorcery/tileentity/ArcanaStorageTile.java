@@ -37,35 +37,20 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
     // base vars
 
     protected ArcanaStorage arcanaStorage = new ArcanaStorage(10000);
-
     protected int transferRate = 100;
+    protected boolean interference = false;
 
 
     // Arcana network vars
     protected ArcanaStorageTile arcanaTransferTarget = null;
-
     protected Set<ArcanaStorageTile> arcanaTransferSources = new HashSet<>();
-
     protected int[] targetPos = null;
 
-    // Arcana Vacuum Vars
-
-    private boolean vacuum = false;
-
-    private int vacuumRange = 8;
-
-    protected int vacuumAmountTarget = 0;
-
-    public int vacuumPerTick = 0;
-
-    private Set<ArcanaStorageTile> vacuumSources = new HashSet<>();
 
     // Pulse particles
 
     protected Vector3d arcanaPulseTarget = null;
-
     protected Vector3d arcanaPulseSource = null;
-
     protected Vector3d arcanaPulseOffset = new Vector3d(0.5, 1, 0.5);
 
     // to offset processing
@@ -140,66 +125,20 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         this.updateAndMarkDirty();
     }
 
-    // Arcana Vacuum methods
 
-    public void startArcanaVacuum(int arcanaAmount)
-    {
-        this.vacuumAmountTarget = arcanaAmount;
-        this.vacuum = true;
-
-        this.updateVacuumSources();
-    }
-
-    private void updateVacuumSources()
-    {
-        Predicate<TileEntity> searchPredicate = Utils.getTESearchPredicate(ArcanaStorageTile.class, this, this.vacuumRange);
-
-        Set<ArcanaStorageTile> sources = new HashSet<>();
-
-        List<TileEntity> allTEs = world.loadedTileEntityList;
-
-        for (TileEntity tileEntity : Collections2.filter(allTEs, searchPredicate))
-        {
-            sources.add((ArcanaStorageTile)tileEntity);
-        }
-        this.vacuumSources = sources;
-    }
-
-    private void tryVacuumArcana()
-    {
-        int target = this.vacuumPerTick;
-        
-        for (ArcanaStorageTile tile : this.vacuumSources)
-        {
-            target -= tile.extractArcana(target);
-
-            if (target <= 0)
-            {
-                target = 0;
-                break;
-            }
-        }
-        this.receiveArcana(this.vacuumPerTick - target);
-    }
-    
-    private void clearVacuum()
-    {
-        this.vacuum = false;
-        this.vacuumAmountTarget = 0;
-    }
-    
     @Override
     public void tick()
     {
+        // if interference, don't do anything
+        if (this.interference)
+        {
+            return;
+        }
         if (world.isRemote)
         {
             if (this.getOffsetWorldTicks() % 40 == 0) {
                 if (this.arcanaTransferTarget != null) {
                     ParticleEffects.arcanaPulse(new ParticleEffectContext(this.world, Particles.getArcanaOrbs(), this.arcanaPulseSource, this.arcanaPulseTarget, 1, 1, 0, 40));
-                }
-                if (this.vacuum)
-                {
-                    // TODO: vacuum particle effect
                 }
             }
             return;
@@ -210,15 +149,6 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         // Every half second
         if (worldTicks % 10 == 0)
         {
-            if (this.vacuum)
-            {
-                if (this.arcanaStorage.getArcanaStored() >= this.vacuumAmountTarget)
-                {
-                    this.clearVacuum();
-                } else {
-                    this.tryVacuumArcana();
-                }
-            }
             // Pass Arcana to transfer target
             if (this.arcanaTransferTarget != null)
             {
