@@ -14,6 +14,7 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.LongArrayNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -251,6 +252,26 @@ public class Utils {
         double newY = originY + (rand.nextDouble() * range);
         double newZ = originZ + (rand.nextDouble() * range);
         return new Vector3d(newX, newY, newZ);
+    }
+
+    public static LongArrayNBT blockPosSetToLongArray(Set<BlockPos> blockPosSet)
+    {
+        List<Long> otherTilesList = new LinkedList<>();
+        for (BlockPos blockPos : blockPosSet)
+        {
+            otherTilesList.add(blockPos.toLong());
+        }
+        return new LongArrayNBT(otherTilesList);
+    }
+
+    public static Set<BlockPos> longArrayToBlockPosSet(LongArrayNBT nbt)
+    {
+        Set<BlockPos> posSet = new HashSet<>();
+        for (Long posLong : nbt.getAsLongArray())
+        {
+            posSet.add(BlockPos.fromLong(posLong));
+        }
+        return posSet;
     }
 
     @Nullable

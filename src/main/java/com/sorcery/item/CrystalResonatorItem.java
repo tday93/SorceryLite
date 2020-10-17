@@ -53,14 +53,14 @@ public class CrystalResonatorItem extends Item
             {
                 if (context.getPlayer().isSneaking())
                 {
-                    context.getPlayer().sendStatusMessage(new StringTextComponent("Link position set!"), true);
+                    context.getPlayer().sendStatusMessage(new StringTextComponent("Source position set!"), true);
                     setLinkPos(context.getItem(), pos);
                 } else {
 
                     // do interference particle effect for monoliths
                     if (tile instanceof AbstractMonolithTile)
                     {
-                        int range = ((AbstractMonolithTile) tile).getInterferenceRange();
+                        double range = ((AbstractMonolithTile) tile).interactionRange;
                         Vector3d tilePos = new Vector3d(pos.getX(), pos.getY(), pos.getZ());
 
                         ParticleEffectPacket pkt = new ParticleEffectPacket(8, ParticleTypes.ENCHANT, tilePos.add(0.5, 0.5, 0.5), tilePos, 10, 0, range, 20);
@@ -78,7 +78,7 @@ public class CrystalResonatorItem extends Item
 
                         if (linkTile != null && linkTile instanceof ArcanaStorageTile)
                         {
-                            ((ArcanaStorageTile) linkTile).setArcanaTransferTarget((ArcanaStorageTile) tile);
+                            ((ArcanaStorageTile) linkTile).addArcanaTransferTarget(tile.getPos());
                         }
                     }
                 }

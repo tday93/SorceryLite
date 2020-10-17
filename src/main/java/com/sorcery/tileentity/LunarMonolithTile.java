@@ -75,7 +75,7 @@ public class LunarMonolithTile extends AbstractMonolithTile implements ITickable
                 if (this.getBlockState().get(MonolithBlock.ACTIVE))
                 {
                     Vector3d moonVec = Utils.getMoonVector(this.world);
-                    ParticleEffects.drawIn(new ParticleEffectContext(world, Particles.getLunarSparks(), this.arcanaPulseSource, moonVec, 10, 1, 1, 40));
+                    ParticleEffects.drawIn(new ParticleEffectContext(world, Particles.getLunarSparks(), this.getOwnPulseTarget(), moonVec, 10, 1, 1, 40));
                 }
             }
 

@@ -42,7 +42,7 @@ public class LapisMonolithTile extends AbstractMonolithTile
     public void doSuckParticleEffect(ItemEntity entity)
     {
         Vector3d suckVec = entity.getPositionVec();
-        ParticleEffectPacket pkt =  new ParticleEffectPacket(7, 3, this.arcanaPulseSource, suckVec, 20, 1, 0.5, 40);
+        ParticleEffectPacket pkt =  new ParticleEffectPacket(7, 3, this.getOwnPulseTarget(), suckVec, 20, 1, 0.5, 40);
         PacketHandler.sendToAllTrackingEntity(entity, pkt);
     }
 
