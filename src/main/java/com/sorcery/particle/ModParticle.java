@@ -45,6 +45,10 @@ public class ModParticle
     @ObjectHolder("sorcery:snowflake")
     public static RGBAParticleType SNOWFLAKE;
 
+    @ObjectHolder("sorcery:zap2")
+    public static RGBAParticleType ZAP_2;
+
+
     @SubscribeEvent
     public static void registerParticles(RegistryEvent.Register<ParticleType<?>> event)
     {
@@ -57,6 +61,7 @@ public class ModParticle
         registerParticle(new RGBAParticleType(), "sorcery:lit_spark", event);
         registerParticle(new RGBAParticleType(), "sorcery:skull_smoke", event);
         registerParticle(new RGBAParticleType(), "sorcery:snowflake", event);
+        registerParticle(new RGBAParticleType(), "sorcery:zap2", event);
     }
 
     public static void registerParticle(ParticleType<?> particleType, String regName, RegistryEvent.Register<ParticleType<?>> event)

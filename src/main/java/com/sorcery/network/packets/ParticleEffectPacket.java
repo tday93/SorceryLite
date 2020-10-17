@@ -163,7 +163,9 @@ public class ParticleEffectPacket
                         case 8:
                             ParticleEffects.staticHorizontalRing(context);
                             break;
-
+                        case 9:
+                            ParticleEffects.staticVolume(context);
+                            break;
                     }
                 }
 

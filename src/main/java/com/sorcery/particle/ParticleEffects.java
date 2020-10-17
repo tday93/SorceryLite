@@ -172,4 +172,23 @@ public class ParticleEffects
     }
 
 
+    // static particles within area
+    public static void staticVolume(ParticleEffectContext ctx)
+    {
+        double[] rand1 = ctx.world.rand.doubles(ctx.numParticles, 0, 1).toArray();
+        double[] rand2 = ctx.world.rand.doubles(ctx.numParticles, 0, 1).toArray();
+        double[] rand3 = ctx.world.rand.doubles(ctx.numParticles, 0, 1).toArray();
+
+        for (int i = 0; i < ctx.numParticles; i++)
+        {
+            double x = ctx.vec1.x + (ctx.vec2.x * rand1[i]);
+            double y = ctx.vec1.y + (ctx.vec2.y * rand2[i]);
+            double z = ctx.vec1.z + (ctx.vec2.z * rand3[i]);
+            ctx.world.addParticle(ctx.getParticle(), x, y, z, 0, 0, 0);
+        }
+
+
+    }
+
+
 }

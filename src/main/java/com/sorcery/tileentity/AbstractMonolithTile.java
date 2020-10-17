@@ -1,10 +1,11 @@
 package com.sorcery.tileentity;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
 import com.sorcery.block.MonolithBlock;
 import com.sorcery.block.MonolithBottomBlock;
 import com.sorcery.block.MonolithTopBlock;
+import com.sorcery.particle.ParticleEffectContext;
+import com.sorcery.particle.ParticleEffects;
+import com.sorcery.particle.Particles;
 import com.sorcery.utils.Utils;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -12,10 +13,7 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public abstract class AbstractMonolithTile extends ArcanaStorageTile implements ITickableTileEntity
 {
@@ -28,9 +26,9 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
     protected int interferenceRange = 5;
 
     protected int interferenceMaxRange = 8;
-    protected List<Integer> noInterference = Arrays.asList(2,4,6,8);
+    protected List<List> noInterference = Arrays.asList(Arrays.asList(1.51,2.5), Arrays.asList(3.51, 4.5), Arrays.asList(5.51, 6.5), Arrays.asList(7.51, 8.5));
 
-    protected List<BlockPos> interferingMonoliths = Arrays.asList();
+    protected List<BlockPos> interferingMonoliths = new LinkedList<>();
 
 
     // TODO: rework interference to be more interesting
@@ -45,17 +43,21 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
     public void tick()
     {
         long worldTicks = this.getOffsetWorldTicks();
+        if (worldTicks % 40 == 0)
+        {
+            // TODO: save&load this, don't just check every 40 seconds
+            updateInterference();
+        }
+        if (this.interference && worldTicks % 10 == 0)
+        {
+            if (world.isRemote)
+            {
+                BlockPos basePos = this.pos.add(0, -1, 0);
+                ParticleEffects.staticVolume(new ParticleEffectContext(this.world, Particles.getParticleSet(8), new Vector3d(basePos.getX(), basePos.getY(), basePos.getZ()), new Vector3d(1,3,1), 20, 0, 0, 10));
+            }
+        }
         if (!world.isRemote())
         {
-            if (this.interference && worldTicks % 10 == 0)
-            {
-                // Do interference effect
-            }
-            if (worldTicks % 40 == 0)
-            {
-                // TODO: save&load this, don't just check every 40 seconds
-                updateInterference();
-            }
             if (!this.interference)
             {
                 this.generateArcana(worldTicks);
@@ -87,6 +89,11 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
     {
         // When monolith is formed, find all monoliths in max interference range
         Set<AbstractMonolithTile> tilesInRange = Utils.getTEInRange(this.world, this, AbstractMonolithTile.class, this.interferenceMaxRange);
+        if (tilesInRange.isEmpty())
+        {
+            this.interferingMonoliths.clear();
+            this.interference = false;
+        }
         for (AbstractMonolithTile monolithTile : tilesInRange)
         {
             if (this.willInterfere(monolithTile))
@@ -105,6 +112,15 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
         }
     }
 
+    public void clearAllInterference()
+    {
+        Set<AbstractMonolithTile> tilesInRange = Utils.getTEInRange(this.world, this, AbstractMonolithTile.class, this.interferenceMaxRange);
+        for (AbstractMonolithTile monolithTile : tilesInRange)
+        {
+            monolithTile.removeInterference(this);
+        }
+    }
+
     public void addInterference(TileEntity tile)
     {
        this.interferingMonoliths.add(tile.getPos());
@@ -113,10 +129,7 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
 
     public void removeInterference(TileEntity tileEntity)
     {
-        if (this.interferingMonoliths.contains(tileEntity.getPos()))
-        {
-            this.interferingMonoliths.remove(tileEntity.getPos());
-        }
+        this.interferingMonoliths.remove(tileEntity.getPos());
         if (this.interferingMonoliths.isEmpty())
         {
             this.interference = false;
@@ -132,21 +145,25 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
     // Return true if incoming monolith will interfere with this monolith
     public boolean willInterfere(AbstractMonolithTile tile)
     {
+        boolean interference = true;
         BlockPos tilePos = tile.getPos();
-        int diffX = Math.abs(this.pos.getX() - tilePos.getX());
-        int diffZ = Math.abs(this.pos.getZ() - tilePos.getZ());
-        if (this.noInterference.contains(diffX))
+        double hDistance = Math.sqrt(Math.pow((double)this.pos.getX() - (double)tilePos.getX(), 2) + Math.pow((double)this.pos.getZ() - (double)tilePos.getZ(), 2));
+        for (List<Double> band : this.noInterference)
         {
-            if (diffZ >= -diffX && diffZ <= diffX)
+            if (hDistance >= band.get(0) && hDistance <= band.get(1))
             {
-                return false;
-            }
-            if (this.noInterference.contains(diffZ))
-            {
-                return false;
+                interference = false;
+                break;
             }
         }
-        return !this.noInterference.contains(diffZ);
+        return interference;
+    }
+
+    @Override
+    public void remove()
+    {
+        this.clearAllInterference();
+        super.remove();
     }
 
 }

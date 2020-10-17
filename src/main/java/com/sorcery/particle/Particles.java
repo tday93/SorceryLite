@@ -109,6 +109,10 @@ public class Particles
                 return collection;
             case 7:
                 collection.add(100, getSnowflake());
+            case 8:
+                collection.add(50, getColoredParticle(ModColor.ARCANA_PURPLE.getMainList(), ModParticle.ZAP_2, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getLowList(), ModParticle.ZAP_2, 1.0f));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getHiList(), ModParticle.ZAP_2, 1.0f));
             default:
                 collection.add(100, getSpark());
                 return collection;
