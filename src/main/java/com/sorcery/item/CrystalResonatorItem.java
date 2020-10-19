@@ -60,10 +60,8 @@ public class CrystalResonatorItem extends Item
                     // do interference particle effect for monoliths
                     if (tile instanceof AbstractMonolithTile)
                     {
-                        double range = ((AbstractMonolithTile) tile).interactionRange;
                         Vector3d tilePos = new Vector3d(pos.getX(), pos.getY(), pos.getZ());
-
-                        ParticleEffectPacket pkt = new ParticleEffectPacket(8, ParticleTypes.ENCHANT, tilePos.add(0.5, 0.5, 0.5), tilePos, 10, 0, range, 20);
+                        ParticleEffectPacket pkt = new ParticleEffectPacket(10, ParticleTypes.ENCHANT, tilePos, tilePos, 10, 0, 0, 20);
                         PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt);
                     }
 

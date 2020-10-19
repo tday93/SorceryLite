@@ -17,6 +17,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import org.lwjgl.system.CallbackI;
 
 import java.util.function.Supplier;
 
@@ -166,6 +167,8 @@ public class ParticleEffectPacket
                         case 9:
                             ParticleEffects.staticVolume(context);
                             break;
+                        case 10:
+                            ParticleEffects.interferenceParticles(context);
                     }
                 }
 

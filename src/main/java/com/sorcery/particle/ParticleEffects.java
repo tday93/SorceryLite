@@ -1,7 +1,10 @@
 package com.sorcery.particle;
 
+import com.sorcery.tileentity.AbstractMonolithTile;
 import com.sorcery.utils.BasisVectors;
 import com.sorcery.utils.Utils;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 
 /**
@@ -187,6 +190,17 @@ public class ParticleEffects
             ctx.world.addParticle(ctx.getParticle(), x, y, z, 0, 0, 0);
         }
 
+
+    }
+
+    public static void interferenceParticles(ParticleEffectContext ctx)
+    {
+        TileEntity tile = ctx.world.getTileEntity(new BlockPos(ctx.vec1.x, ctx.vec1.y, ctx.vec1.z));
+
+        if (tile instanceof AbstractMonolithTile)
+        {
+            ((AbstractMonolithTile) tile).spawnInterferenceParticles();
+        }
 
     }
 

@@ -288,5 +288,4 @@ public class Utils {
         }
         return spellbook;
     }
-
 }
