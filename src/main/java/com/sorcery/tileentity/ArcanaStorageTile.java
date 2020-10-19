@@ -371,6 +371,10 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
 
     public int extractArcana(int arcana)
     {
+        if (this.interference)
+        {
+            return 0;
+        }
         int arcanaExtracted = this.arcanaStorage.extractArcana(arcana, false);
         this.updateAndMarkDirty();
         return arcanaExtracted;

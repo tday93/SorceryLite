@@ -38,6 +38,8 @@ public class InterferencePattern
 
     public List<List<Integer>> getNegInterferenceLocs()
     {
+        List<List<Integer>> locs = getOffsetPositions(getRawPositions(this.negativeInterference));
+        System.out.println(locs);
         return getOffsetPositions(getRawPositions(this.negativeInterference));
     }
 
@@ -56,14 +58,17 @@ public class InterferencePattern
     private List<List<Integer>> getRawPositions(Character charIn)
     {
         List<List<Integer>> locations = new LinkedList<>();
+        System.out.println("building for char: " + charIn);
 
         for (int i = 0; i < patternLines.size(); i++)
         {
             String line = patternLines.get(i);
             for( int j = 0; j < line.length(); j++)
             {
+                System.out.println("Char at j: "+ line.charAt(j));
                 if (line.charAt(j) == charIn)
                 {
+                    System.out.println("Match!");
                     locations.add(Arrays.asList(j, i));
                 }
             }
@@ -87,8 +92,8 @@ public class InterferencePattern
     public static class PatternBuilder
     {
         private List<String> patternLines = new LinkedList<>();
-        private Character negativeInterference = 'P';
-        private Character positiveInterference = 'N';
+        private Character negativeInterference = 'N';
+        private Character positiveInterference = 'P';
         private Character noInterference = '-';
         private Character monolith = 'I';
 
@@ -97,6 +102,7 @@ public class InterferencePattern
         public PatternBuilder addLine(String line)
         {
             this.patternLines.add(line);
+            System.out.println(patternLines);
             return this;
         }
 

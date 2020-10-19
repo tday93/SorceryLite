@@ -72,8 +72,16 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
         for (List<Integer> intLoc : this.monolithData.pattern.getNegInterferenceLocs())
         {
             BlockPos pos = new BlockPos(this.pos.getX() + intLoc.get(0), this.pos.getY(), this.pos.getZ() + intLoc.get(1));
-            ParticleEffects.staticVolume(new ParticleEffectContext(this.world, Particles.getParticleSet(8), new Vector3d(pos.getX(), pos.getY(), pos.getZ()), new Vector3d(1,3,1), 20, 0, 0, 10));
+            ParticleEffects.staticVolume(new ParticleEffectContext(this.world, Particles.getParticleSet(9, 200), new Vector3d(pos.getX(), pos.getY()-1, pos.getZ()), new Vector3d(1,0.25,1), 20, 0, 0, 100));
         }
+
+        for (List<Integer> intLoc : this.monolithData.pattern.getPosInterferenceLocs())
+        {
+            BlockPos pos = new BlockPos(this.pos.getX() + intLoc.get(0), this.pos.getY(), this.pos.getZ() + intLoc.get(1));
+            ParticleEffects.staticVolume(new ParticleEffectContext(this.world, Particles.getParticleSet(10, 200), new Vector3d(pos.getX(), pos.getY()-1, pos.getZ()), new Vector3d(1,0.25,1), 20, 0, 0, 100));
+        }
+
+
 
     }
 
