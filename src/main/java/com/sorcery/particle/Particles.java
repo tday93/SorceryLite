@@ -44,6 +44,11 @@ public class Particles
         return new RGBAParticleData(type, ((float)rgb.get(0))/255f, ((float)rgb.get(1))/255f, ((float)rgb.get(2))/255f, alpha, age);
     }
 
+    public static IParticleData getColoredParticle(List<Integer> rgb, ParticleType type, float alpha, int age, boolean doAnimation)
+    {
+        return new RGBAParticleData(type, ((float)rgb.get(0))/255f, ((float)rgb.get(1))/255f, ((float)rgb.get(2))/255f, alpha, age, doAnimation);
+    }
+
     public static ParticleCollection getArcanaOrbs()
     {
         return getParticleSet(6);
@@ -127,6 +132,11 @@ public class Particles
                 collection.add(50, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getMainList(), ModParticle.ZAP_2, 0.5f, age));
                 collection.add(25, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getLowList(), ModParticle.ZAP_2, 0.5f, age));
                 collection.add(25, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getHiList(), ModParticle.ZAP_2, 0.5f, age));
+                return collection;
+            case 11:
+                collection.add(50, getColoredParticle(ModColor.ARCANA_PURPLE.getMainList(), ModParticle.ARCANA, 0.5f, age, false));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getLowList(), ModParticle.ARCANA, 0.5f, age, false));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getHiList(), ModParticle.ARCANA, 0.5f, age, false));
                 return collection;
             default:
                 collection.add(100, getSpark());

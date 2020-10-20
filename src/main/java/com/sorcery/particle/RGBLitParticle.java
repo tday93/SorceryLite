@@ -16,6 +16,8 @@ public class RGBLitParticle extends SpriteTexturedParticle
 {
     IAnimatedSprite spriteSet;
 
+    Boolean doAnimation = true;
+
     public RGBLitParticle(ClientWorld world, double x, double y, double z, double vX, double vY, double vZ, IAnimatedSprite spriteSetIn, float r, float g, float b, float a)
     {
         super(world, x, y, z, vX, vY, vZ);
@@ -29,7 +31,6 @@ public class RGBLitParticle extends SpriteTexturedParticle
         this.particleBlue = b;
         this.particleGreen = g;
         this.particleAlpha = a;
-
         this.canCollide = false;
     }
 
@@ -38,7 +39,10 @@ public class RGBLitParticle extends SpriteTexturedParticle
     public void tick()
     {
         super.tick();
-        this.selectSpriteWithAge(this.spriteSet);
+        if (this.doAnimation)
+        {
+            this.selectSpriteWithAge(this.spriteSet);
+        }
     }
 
     @Override
@@ -65,7 +69,13 @@ public class RGBLitParticle extends SpriteTexturedParticle
         {
             RGBLitParticle simpleParticle = new RGBLitParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, spriteSet, data.r, data.g, data.b, data.a);
             simpleParticle.setMaxAge(data.t);
-            simpleParticle.selectSpriteWithAge(spriteSet);
+            simpleParticle.doAnimation = data.q;
+            if (data.q)
+            {
+                simpleParticle.selectSpriteWithAge(spriteSet);
+            } else {
+                simpleParticle.selectSpriteRandomly(spriteSet);
+            }
             return simpleParticle;
         }
     }

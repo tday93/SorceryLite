@@ -4,7 +4,7 @@ import com.sorcery.block.MonolithBlock;
 import com.sorcery.particle.ParticleEffectContext;
 import com.sorcery.particle.ParticleEffects;
 import com.sorcery.particle.Particles;
-import com.sorcery.utils.MonolithData;
+import com.sorcery.utils.MonolithPatterns;
 import com.sorcery.utils.Utils;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.math.vector.Vector3d;
@@ -26,7 +26,7 @@ public class LunarMonolithTile extends AbstractMonolithTile implements ITickable
 
 
     public LunarMonolithTile(){
-        super(ModTile.LUNAR_MONOLITH_TILE, 1000, MonolithData.LUNAR);
+        super(ModTile.LUNAR_MONOLITH_TILE, 1000, MonolithPatterns.LUNAR);
         this.arcanaStorage.extractArcana(1000, false);
         this.arcanaPerRegen = 10;
         this.phaseMap.put(0, 3d);

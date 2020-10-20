@@ -43,22 +43,12 @@ public class ParticleEffects
         }
     }
 
-    // pulse effect sent by arcana storage tiles
-    public static void arcanaPulse(ParticleEffectContext ctx)
-    {
-        sendTo(new ParticleEffectContext(ctx.world, Particles.getArcanaOrbs(), ctx.vec1, ctx.vec2, 1, 1, 0, ctx.age));
-        sendTo(new ParticleEffectContext(ctx.world, Particles.getArcanaOrbSparks(), ctx.vec1, ctx.vec2, 1, 0.95, 0, ctx.age));
-        sendTo(new ParticleEffectContext(ctx.world, Particles.getArcanaOrbSparks(), ctx.vec1, ctx.vec2, 1, 0.9, 0, ctx.age));
-        sendTo(new ParticleEffectContext(ctx.world, Particles.getArcanaOrbSparks(), ctx.vec1, ctx.vec2, 1, 0.85, 0, ctx.age));
-        sendTo(new ParticleEffectContext(ctx.world, Particles.getArcanaOrbSparks(), ctx.vec1, ctx.vec2, 1, 0.8, 0, ctx.age));
-    }
-
     // line of particles moving towards endpoint
     public static void sendTo(ParticleEffectContext ctx)
     {
         Vector3d ray = ctx.vec2.subtract(ctx.vec1).normalize();
         double distance = ctx.vec2.distanceTo(ctx.vec1);
-        double realSpeed = (distance / (double) (ctx.age - 10)) * ctx.speed;
+        double realSpeed = distance / ((double)ctx.age - 1);
         Vector3d vec = ray.mul(realSpeed, realSpeed, realSpeed);
         ctx.world.addParticle(ctx.getParticle(), ctx.vec1.getX(), ctx.vec1.getY(), ctx.vec1.getZ(), vec.getX(), vec.getY(), vec.getZ());
     }

@@ -1,12 +1,10 @@
 package com.sorcery.tileentity;
 
-import com.sorcery.block.MonolithBlock;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.ParticleEffectPacket;
-import com.sorcery.utils.MonolithData;
+import com.sorcery.utils.MonolithPatterns;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.math.vector.Vector3i;
 
 
 public class DarkMonolithTile extends AbstractMonolithTile
@@ -16,7 +14,7 @@ public class DarkMonolithTile extends AbstractMonolithTile
 
     public DarkMonolithTile()
     {
-        super(ModTile.DARK_MONOLITH_TILE, 1000, MonolithData.DARK);
+        super(ModTile.DARK_MONOLITH_TILE, 1000, MonolithPatterns.DARK);
         this.arcanaStorage.extractArcana(1000, false);
     }
 

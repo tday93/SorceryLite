@@ -41,9 +41,14 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
     // -- BlockPositions of all other arcana storage tiles
     protected Set<BlockPos> otherArcanaStorageTiles = new HashSet<>();
     // -- BlockPositions of interfering arcanaStorageTiles
-    protected Set<BlockPos> interferingTiles = new HashSet<>();
+    protected Set<BlockPos> negativeInterferingTiles = new HashSet<>();
+    protected Set<BlockPos> positiveInterferingTiles = new HashSet<>();
     // -- BlockPosition of current transfer target
     protected BlockPos arcanaTransferTargetPos = null;
+    // -- BlockPositions of tiles sending arcana to this one, needed for load order management and graph traversal
+    protected Set<BlockPos> arcanaTransferSources = new HashSet<>();
+    // -- BlockPosition of tile overriding interference
+    protected BlockPos tileOverridingInterference = null;
 
     protected boolean firstTick = true;
 
@@ -78,11 +83,11 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         // Client Side Stuff, mostly particle handling
         if (world.isRemote)
         {
-            if (worldTicks % 40 == 0)
+            if (worldTicks % 2 == 0)
             {
-                if (this.arcanaPulseTarget != null)
+                if (this.arcanaPulseTarget != null && !this.beingInterfered())
                 {
-                    ParticleEffects.arcanaPulse(new ParticleEffectContext(world, Particles.getArcanaOrbs(), this.getOwnPulseTarget(), this.arcanaPulseTarget, 1, 1, 0, 40));
+                    ParticleEffects.sendTo(new ParticleEffectContext(world, Particles.getParticleSet(11, 40), this.getOwnPulseTarget(), this.arcanaPulseTarget, 1, 1, 0, 40));
                 }
             }
         }
@@ -92,7 +97,7 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         {
             if (worldTicks % 10 == 0)
             {
-                if (this.arcanaTransferTarget != null)
+                if (this.arcanaTransferTarget != null && !this.beingInterfered())
                 {
                     int arcanaReceived = this.arcanaTransferTarget.receiveArcana(this.transferRate);
                     this.extractArcana(arcanaReceived);
@@ -137,7 +142,6 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
             this.otherArcanaStorageTiles.add(tile.pos);
             tile.addOtherTile(this.pos);
         }
-
     }
 
     private void updateInterference()
@@ -145,16 +149,24 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         for (BlockPos pos : this.otherArcanaStorageTiles)
         {
             ArcanaStorageTile otherTile = (ArcanaStorageTile)this.world.getTileEntity(pos);
-            if (otherTile.checkInterference(this.pos))
+            int interference = otherTile.checkInterference(this.pos);
+            int intForOther = this.checkInterference(this.pos);
+            if (interference == -1)
             {
-                this.interferingTiles.add(pos);
+                this.negativeInterferingTiles.add(pos);
+            } else if (interference == 1)
+            {
+                this.positiveInterferingTiles.add(pos);
             }
-            if (this.checkInterference(pos))
+            if (intForOther == -1)
             {
                 otherTile.addInterferingTile(this.pos);
+             } else if (intForOther == 1)
+            {
+                otherTile.positiveInterferingTiles.add(this.pos);
             }
         }
-        this.interference = !this.interferingTiles.isEmpty();
+        this.interference = !this.negativeInterferingTiles.isEmpty();
     }
 
     /*
@@ -164,27 +176,45 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
     2) Interference is based only on position
     3) Interferecence happens only horizontally
      */
-    public boolean checkInterference(BlockPos pos)
+    public int checkInterference(BlockPos pos)
     {
-        return false;
+        return 0;
     }
 
     public void addInterferingTile(BlockPos pos)
     {
-        this.interferingTiles.add(pos);
+        this.negativeInterferingTiles.add(pos);
         this.interference = true;
     }
+
+    public void addInterferenceOverride(BlockPos pos)
+    {
+        this.tileOverridingInterference = pos;
+    }
+
+    public boolean beingInterfered()
+    {
+        if (this.tileOverridingInterference != null)
+        {
+            return false;
+        } else {
+            return this.interference;
+        }
+    }
+
 
     public void addArcanaTransferTarget(BlockPos pos)
     {
         this.arcanaTransferTargetPos = pos;
         this.updateArcanaTransferTarget();
+        ((ArcanaStorageTile)this.world.getTileEntity(pos)).addTransferSource(this.pos);
         this.updateAndMarkDirty();
     }
 
-    public void removeArcanaTransferTarget()
+    public void removeArcanaTransferTarget(BlockPos pos)
     {
         this.arcanaTransferTargetPos = null;
+        ((ArcanaStorageTile)this.world.getTileEntity(pos)).removeTransferSource(this.pos);
         this.updateArcanaTransferTarget();
         this.updateAndMarkDirty();
     }
@@ -193,14 +223,37 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
     {
         if (this.arcanaTransferTargetPos != null)
         {
-            this.arcanaTransferTarget = (ArcanaStorageTile)this.world.getTileEntity(this.arcanaTransferTargetPos);
-            this.arcanaPulseTarget = this.arcanaTransferTarget.getOwnPulseTarget();
+            if (this.world != null)
+            {
+                this.arcanaTransferTarget = (ArcanaStorageTile)this.world.getTileEntity(this.arcanaTransferTargetPos);
+                this.arcanaPulseTarget = this.arcanaTransferTarget.getOwnPulseTarget();
+            }
         } else {
             this.arcanaTransferTarget = null;
             this.arcanaPulseTarget = null;
         }
+    }
+
+    public void addTransferSource(BlockPos pos)
+    {
+        this.arcanaTransferSources.add(pos);
         this.updateAndMarkDirty();
     }
+
+    public void removeTransferSource(BlockPos pos)
+    {
+        this.arcanaTransferSources.remove(pos);
+        this.updateAndMarkDirty();
+    }
+
+    public void pingTransferSources()
+    {
+        for (BlockPos pos : this.arcanaTransferSources)
+        {
+            ((ArcanaStorageTile)this.world.getTileEntity(pos)).updateArcanaTransferTarget();
+        }
+    }
+
 
     public Vector3d getOwnPulseTarget()
     {
@@ -218,13 +271,18 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
    public void removeOtherTile(BlockPos pos)
    {
        this.otherArcanaStorageTiles.remove(pos);
-       this.interferingTiles.remove(pos);
+       this.negativeInterferingTiles.remove(pos);
+       this.arcanaTransferSources.remove(pos);
        if (this.arcanaTransferTargetPos == pos)
        {
            this.arcanaTransferTargetPos = null;
            this.arcanaTransferTarget = null;
        }
-       this.interference = !this.interferingTiles.isEmpty();
+       if (this.tileOverridingInterference == pos)
+       {
+           this.tileOverridingInterference = null;
+       }
+       this.interference = !this.negativeInterferingTiles.isEmpty();
        this.updateAndMarkDirty();
    }
 
@@ -245,9 +303,24 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
             tag.put("TransferTarget", transferTargetNBT);
         }
 
+
         // interferingTiles
-        LongArrayNBT interferingTilesNBT = Utils.blockPosSetToLongArray(this.interferingTiles);
-        tag.put("InterferingTiles", interferingTilesNBT);
+        LongArrayNBT negInterferingTilesNBT = Utils.blockPosSetToLongArray(this.negativeInterferingTiles);
+        tag.put("NegInterferingTiles", negInterferingTilesNBT);
+
+
+        LongArrayNBT posInterferingTilesNBT = Utils.blockPosSetToLongArray(this.positiveInterferingTiles);
+        tag.put("PosInterferingTiles", posInterferingTilesNBT);
+
+        LongArrayNBT transferSourcesNBT = Utils.blockPosSetToLongArray(this.arcanaTransferSources);
+        tag.put("TransferSources", transferSourcesNBT);
+
+        // interferenceOverride
+        if (this.tileOverridingInterference != null)
+        {
+            LongNBT overrideNBT = LongNBT.valueOf(this.tileOverridingInterference.toLong());
+            tag.put("Override", overrideNBT);
+        }
 
         return tag;
     }
@@ -261,10 +334,29 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         if (nbt.contains("TransferTarget"))
         {
             this.arcanaTransferTargetPos = BlockPos.fromLong(((LongNBT)nbt.get("TransferTarget")).getLong());
+        } else {
+            this.arcanaTransferTargetPos = null;
         }
-        if (nbt.contains("InterferingTiles"))
+        this.updateArcanaTransferTarget();
+        if (nbt.contains("NegInterferingTiles"))
         {
-            this.interferingTiles = Utils.longArrayToBlockPosSet((LongArrayNBT)nbt.get("InterferingTiles"));
+            this.negativeInterferingTiles = Utils.longArrayToBlockPosSet((LongArrayNBT)nbt.get("NegInterferingTiles"));
+        }
+        if (nbt.contains("PosInterferingTiles"))
+        {
+            this.positiveInterferingTiles = Utils.longArrayToBlockPosSet((LongArrayNBT)nbt.get("PosInterferingTiles"));
+        }
+
+        if (nbt.contains("TransferSources"))
+        {
+            this.arcanaTransferSources = Utils.longArrayToBlockPosSet((LongArrayNBT)nbt.get("TransferSources"));
+            this.pingTransferSources();
+        }
+        if (nbt.contains("Override"))
+        {
+            this.tileOverridingInterference = BlockPos.fromLong(((LongNBT)nbt.get("Override")).getLong());
+        } else {
+            this.tileOverridingInterference = null;
         }
     }
 
@@ -371,7 +463,7 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
 
     public int extractArcana(int arcana)
     {
-        if (this.interference)
+        if (this.beingInterfered())
         {
             return 0;
         }

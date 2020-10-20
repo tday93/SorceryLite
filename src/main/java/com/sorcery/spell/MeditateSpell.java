@@ -46,7 +46,6 @@ public class MeditateSpell extends Spell
             {
                 int arcanaExtracted = ((ArcanaStorageTile) tile).extractArcana(this.arcanaDrainRate);
                 context.getArcanaSource().receiveArcana(arcanaExtracted, false);
-                return ActionResultType.SUCCESS;
             }
         }
 

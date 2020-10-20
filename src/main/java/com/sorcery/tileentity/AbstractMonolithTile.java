@@ -6,7 +6,8 @@ import com.sorcery.block.MonolithTopBlock;
 import com.sorcery.particle.ParticleEffectContext;
 import com.sorcery.particle.ParticleEffects;
 import com.sorcery.particle.Particles;
-import com.sorcery.utils.MonolithData;
+import com.sorcery.utils.MonolithPatterns;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
@@ -22,11 +23,11 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
 
     protected boolean active = false;
 
-    protected MonolithData monolithData;
+    protected MonolithPatterns monolithData;
 
 
     // TODO: rework interference to be more interesting
-    public AbstractMonolithTile(TileEntityType variantIn, int maxArcana, MonolithData dataIn)
+    public AbstractMonolithTile(TileEntityType variantIn, int maxArcana, MonolithPatterns dataIn)
     {
         super(variantIn);
         this.arcanaStorage.setMaxArcanaStored(maxArcana);
@@ -57,9 +58,13 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
     }
 
     @Override
-    public boolean checkInterference(BlockPos pos)
+    public int checkInterference(BlockPos pos)
     {
-        return pos.withinDistance(this.pos, 5);
+        if (pos.withinDistance(this.pos, 5))
+        {
+            return -1;
+        }
+        return 0;
     }
 
     public void generateArcana(Long worldTicks)
@@ -67,22 +72,24 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
 
     }
 
+    public ItemStack onResonatorWhack(ItemStack resonator)
+    {
+        return resonator;
+    }
+
     public void spawnInterferenceParticles()
     {
         for (List<Integer> intLoc : this.monolithData.pattern.getNegInterferenceLocs())
         {
             BlockPos pos = new BlockPos(this.pos.getX() + intLoc.get(0), this.pos.getY(), this.pos.getZ() + intLoc.get(1));
-            ParticleEffects.staticVolume(new ParticleEffectContext(this.world, Particles.getParticleSet(9, 200), new Vector3d(pos.getX(), pos.getY()-1, pos.getZ()), new Vector3d(1,0.25,1), 20, 0, 0, 100));
+            ParticleEffects.staticVolume(new ParticleEffectContext(this.world, Particles.getParticleSet(9, 200), new Vector3d(pos.getX(), pos.getY()-1, pos.getZ()), new Vector3d(1,0.5,1), 20, 0, 0, 100));
         }
 
         for (List<Integer> intLoc : this.monolithData.pattern.getPosInterferenceLocs())
         {
             BlockPos pos = new BlockPos(this.pos.getX() + intLoc.get(0), this.pos.getY(), this.pos.getZ() + intLoc.get(1));
-            ParticleEffects.staticVolume(new ParticleEffectContext(this.world, Particles.getParticleSet(10, 200), new Vector3d(pos.getX(), pos.getY()-1, pos.getZ()), new Vector3d(1,0.25,1), 20, 0, 0, 100));
+            ParticleEffects.staticVolume(new ParticleEffectContext(this.world, Particles.getParticleSet(10, 200), new Vector3d(pos.getX(), pos.getY()-1, pos.getZ()), new Vector3d(1,0.5,1), 20, 0, 0, 100));
         }
-
-
-
     }
 
     public void setActivity(boolean activity)

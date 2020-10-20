@@ -1,10 +1,12 @@
 package com.sorcery.utils;
 
 
-public enum MonolithData
+import com.sorcery.block.ModBlock;
+
+public enum MonolithPatterns
 {
 
-    CHISELED("chiseled", new InterferencePattern.PatternBuilder()
+    CHISELED(new MonolithPattern.PatternBuilder()
             .addLine("-----------------")
             .addLine("------NNNNN------")
             .addLine("----NN-----NN----")
@@ -24,7 +26,7 @@ public enum MonolithData
             .addLine("-----------------")
             .build()
     ),
-    DARK("dark", new InterferencePattern.PatternBuilder()
+    DARK(new MonolithPattern.PatternBuilder()
             .addLine("-----------------")
             .addLine("-----------------")
             .addLine("-----------------")
@@ -45,7 +47,7 @@ public enum MonolithData
             .addLine("-----------------")
             .build()
     ),
-    LAPIS("lapis", new InterferencePattern.PatternBuilder()
+    LAPIS(new MonolithPattern.PatternBuilder()
             .addLine("-----------------")
             .addLine("-----------------")
             .addLine("-----------------")
@@ -66,7 +68,7 @@ public enum MonolithData
             .addLine("-----------------")
             .build()
     ),
-    LUNAR("lunar", new InterferencePattern.PatternBuilder()
+    LUNAR(new MonolithPattern.PatternBuilder()
             .addLine("-----------------")
             .addLine("-----------------")
             .addLine("-----------------")
@@ -87,7 +89,7 @@ public enum MonolithData
             .addLine("-----------------")
             .build()
     ),
-    SOLAR("solar", new InterferencePattern.PatternBuilder()
+    SOLAR(new MonolithPattern.PatternBuilder()
             .addLine("N-------N-------N")
             .addLine("-N------N------N-")
             .addLine("--N-----N-----N--")
@@ -106,15 +108,34 @@ public enum MonolithData
             .addLine("-N------N------N-")
             .addLine("N-------N-------N")
             .build()
+    ),
+    CHISELED_RING(new MonolithPattern.PatternBuilder()
+            .addLine("-----------------")
+            .addLine("-----------------")
+            .addLine("-----------------")
+            .addLine("-----------------")
+            .addLine("-----------------")
+            .addLine("--------C--------")
+            .addLine("------C---C------")
+            .addLine("-----------------")
+            .addLine("-----C--I--C-----")
+            .addLine("-----------------")
+            .addLine("------C---C------")
+            .addLine("--------C--------")
+            .addLine("-----------------")
+            .addLine("-----------------")
+            .addLine("-----------------")
+            .addLine("-----------------")
+            .addLine("-----------------")
+            .addBlockMapping(ModBlock.MONOLITH_CHISELED_MIDDLE.get(), 'C')
+            .build()
     );
 
 
-    private final String name;
-    public final InterferencePattern pattern;
+    public final MonolithPattern pattern;
 
-    private MonolithData(String name, InterferencePattern pattern)
+    private MonolithPatterns(MonolithPattern pattern)
     {
-        this.name = name;
         this.pattern = pattern;
     }
 }
