@@ -1,12 +1,11 @@
 package com.sorcery.tileentity;
 
+import com.sorcery.block.ModBlock;
 import com.sorcery.utils.MonolithPattern;
-import com.sorcery.utils.MonolithPatterns;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraftforge.registries.ObjectHolder;
 
 public class ChiseledMonolithTile extends AbstractMonolithTile implements ITickableTileEntity
 {
@@ -16,12 +15,12 @@ public class ChiseledMonolithTile extends AbstractMonolithTile implements ITicka
 
     protected boolean active = true;
 
-    protected MonolithPatterns ringPattern = MonolithPatterns.CHISELED_RING;
+    protected MonolithPattern ringPattern = MonolithPattern.CHISELED_RING;
 
 
     public ChiseledMonolithTile()
     {
-        super(ModTile.CHISELED_MONOLITH_TILE, 1000, MonolithPatterns.CHISELED);
+        super(ModTile.CHISELED_MONOLITH_TILE, 1000, MonolithPattern.CHISELED);
         this.arcanaPulseOffset = new Vector3d(0.5, 2, 0.5);
     }
 
@@ -32,7 +31,12 @@ public class ChiseledMonolithTile extends AbstractMonolithTile implements ITicka
         long worldTicks = this.getOffsetWorldTicks();
         if (worldTicks % 20 == 0)
         {
-            this.setActivity(true);
+            if (this.getStoredArcana() > 10)
+            {
+                this.setActivity(true);
+            } else {
+                this.setActivity(false);
+            }
         }
         // To Abstract Monolith tick
         super.tick();
@@ -44,26 +48,35 @@ public class ChiseledMonolithTile extends AbstractMonolithTile implements ITicka
         int relX = pos.getX() - this.pos.getX();
         int relZ = pos.getZ() - this.pos.getZ();
 
-        if (this.monolithData.pattern.isNegInterference(relX, relZ))
-        {
-            return -1;
-        }
-        return 0;
+        return this.monolithData.pattern.getInterference(relX, relZ);
     }
 
     @Override
     public void generateArcana(Long worldTicks)
     {
-        if (worldTicks % ticksPerRegen == 0 && !this.interference)
-        {
-            this.arcanaStorage.receiveArcana(arcanaPerRegen, false);
-        }
+    }
+
+    public void onClickArcanaGen()
+    {
+        this.receiveArcana(100);
     }
 
 
     @Override
     public ItemStack onResonatorWhack(ItemStack resonator)
     {
+        if (this.ringPattern.pattern.isPatternValid(this.world, this.pos))
+        {
+            this.addInterferenceOverride(this.pos);
+            this.gridMonoliths.add(this.pos);
+            for (BlockPos pos : this.ringPattern.pattern.getBlockPositions(this.pos, ModBlock.MONOLITH_CHISELED_MIDDLE.get()))
+            {
+                ChiseledMonolithTile otherMono = (ChiseledMonolithTile)this.world.getTileEntity(pos);
+                otherMono.addInterferenceOverride(this.pos);
+                otherMono.addArcanaTransferTarget(this.pos);
+                this.gridMonoliths.add(pos);
+            }
+        }
         return resonator;
     }
 

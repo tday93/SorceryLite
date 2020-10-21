@@ -1,10 +1,10 @@
 package com.sorcery.tileentity;
 
-import com.sorcery.block.MonolithBlock;
+import com.sorcery.block.MonolithMiddleBlock;
 import com.sorcery.particle.ParticleEffectContext;
 import com.sorcery.particle.ParticleEffects;
 import com.sorcery.particle.Particles;
-import com.sorcery.utils.MonolithPatterns;
+import com.sorcery.utils.MonolithPattern;
 import com.sorcery.utils.Utils;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.math.vector.Vector3d;
@@ -14,7 +14,7 @@ public class SolarMonolithTile extends AbstractMonolithTile implements ITickable
 {
 
     public SolarMonolithTile(){
-        super(ModTile.SOLAR_MONOLITH_TILE, 1000, MonolithPatterns.SOLAR);
+        super(ModTile.SOLAR_MONOLITH_TILE, 1000, MonolithPattern.SOLAR);
         this.arcanaStorage.extractArcana(1000, false);
         this.arcanaPerRegen = 4;
     }
@@ -27,7 +27,7 @@ public class SolarMonolithTile extends AbstractMonolithTile implements ITickable
         if (!this.world.isRemote())
         {
             // Arcana generation
-            if (worldTicks % ticksPerRegen == 0 && this.active && !this.interference)
+            if (worldTicks % ticksPerRegen == 0 && this.active && !this.beingInterfered())
             {
                 this.receiveArcana(arcanaPerRegen);
             }
@@ -45,7 +45,7 @@ public class SolarMonolithTile extends AbstractMonolithTile implements ITickable
                 } else {
                     this.setActivity(false);
                 }
-                if (this.interference)
+                if (this.beingInterfered())
                 {
                     this.setActivity(false);
                 }
@@ -54,7 +54,7 @@ public class SolarMonolithTile extends AbstractMonolithTile implements ITickable
             // Particles
             if (worldTicks % 5 == 0)
             {
-                if (this.getBlockState().get(MonolithBlock.ACTIVE))
+                if (this.getBlockState().get(MonolithMiddleBlock.ACTIVE))
                 {
                     Vector3d sunVec = Utils.getSunVector(this.world);
                     ParticleEffects.drawIn(new ParticleEffectContext(world, Particles.getSolarSparks(), this.getOwnPulseTarget(), sunVec, 10, 1, 1, 40));

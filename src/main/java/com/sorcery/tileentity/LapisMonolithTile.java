@@ -2,7 +2,7 @@ package com.sorcery.tileentity;
 
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.ParticleEffectPacket;
-import com.sorcery.utils.MonolithPatterns;
+import com.sorcery.utils.MonolithPattern;
 import com.sorcery.utils.Utils;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.Items;
@@ -19,7 +19,7 @@ public class LapisMonolithTile extends AbstractMonolithTile
 
     public LapisMonolithTile()
     {
-        super(ModTile.LAPIS_MONOLITH_TILE, 1000, MonolithPatterns.LAPIS);
+        super(ModTile.LAPIS_MONOLITH_TILE, 1000, MonolithPattern.LAPIS);
         this.arcanaStorage.extractArcana(1000, false);
     }
 

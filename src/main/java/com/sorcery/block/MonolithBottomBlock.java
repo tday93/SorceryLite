@@ -3,8 +3,6 @@ package com.sorcery.block;
 import com.sorcery.block.state.States;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -16,11 +14,10 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class MonolithBottomBlock extends Block
+public class MonolithBottomBlock extends AbstractMonolithBlock
 {
     private static Float hardness   = 3.0F;
     private static Float resistance = 6.0F;
@@ -39,27 +36,20 @@ public class MonolithBottomBlock extends Block
 
     public MonolithBottomBlock()
     {
-        super(Properties.create(Material.ROCK).hardnessAndResistance(hardness, resistance).sound(SoundType.STONE));
-        this.setDefaultState(this.stateContainer.getBaseState().with(ACTIVE, Boolean.valueOf(false)));
+        super();
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(ACTIVE);
     }
 
-    public static void setActivity(World world, BlockState state, BlockPos pos, Boolean active)
-    {
-        if (state.getBlock() instanceof MonolithBottomBlock)
-        {
-            world.setBlockState(pos, state.with(ACTIVE, Boolean.valueOf(active)), 3);
-        }
-    }
+
     @Override
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
         super.onBlockHarvested(worldIn, pos, state, player);
         Block block1 = worldIn.getBlockState(pos.up(1)).getBlock();
         Block block2 = worldIn.getBlockState(pos.up(2)).getBlock();
-        if (block1 instanceof MonolithBlock)
+        if (block1 instanceof MonolithMiddleBlock)
         {
             worldIn.destroyBlock(pos.up(1), true, player);
         }

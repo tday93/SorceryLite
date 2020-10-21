@@ -7,7 +7,7 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
 
-public class LunarMonolithBlock extends MonolithBlock
+public class LunarMonolithBlock extends MonolithMiddleBlock
 {
     public LunarMonolithBlock()
     {

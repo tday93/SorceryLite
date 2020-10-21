@@ -1,5 +1,6 @@
 package com.sorcery.tileentity;
 
+import com.sorcery.Sorcery;
 import com.sorcery.arcana.ArcanaStorage;
 import com.sorcery.arcana.IArcanaStorage;
 import com.sorcery.particle.ParticleEffectContext;
@@ -49,6 +50,8 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
     protected Set<BlockPos> arcanaTransferSources = new HashSet<>();
     // -- BlockPosition of tile overriding interference
     protected BlockPos tileOverridingInterference = null;
+    // -- BlockPositions of tiles in Grid
+    protected Set<BlockPos> gridMonoliths = new HashSet<>();
 
     protected boolean firstTick = true;
 
@@ -83,7 +86,7 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         // Client Side Stuff, mostly particle handling
         if (world.isRemote)
         {
-            if (worldTicks % 2 == 0)
+            if (worldTicks % 10 == 0)
             {
                 if (this.arcanaPulseTarget != null && !this.beingInterfered())
                 {
@@ -95,11 +98,11 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         // Server side stuff, arcana sending etc.
         if (!world.isRemote)
         {
-            if (worldTicks % 10 == 0)
+            if (worldTicks % 20 == 0)
             {
                 if (this.arcanaTransferTarget != null && !this.beingInterfered())
                 {
-                    int arcanaReceived = this.arcanaTransferTarget.receiveArcana(this.transferRate);
+                    int arcanaReceived = this.arcanaTransferTarget.receiveArcana(Math.min(this.transferRate, this.getStoredArcana()));
                     this.extractArcana(arcanaReceived);
                 }
             }
@@ -149,6 +152,10 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         for (BlockPos pos : this.otherArcanaStorageTiles)
         {
             ArcanaStorageTile otherTile = (ArcanaStorageTile)this.world.getTileEntity(pos);
+            if (otherTile == null)
+            {
+                return;
+            }
             int interference = otherTile.checkInterference(this.pos);
             int intForOther = this.checkInterference(this.pos);
             if (interference == -1)
@@ -190,6 +197,13 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
     public void addInterferenceOverride(BlockPos pos)
     {
         this.tileOverridingInterference = pos;
+        this.updateAndMarkDirty();
+    }
+
+    public void removeInterferenceOverride()
+    {
+        this.tileOverridingInterference = null;
+        this.updateAndMarkDirty();
     }
 
     public boolean beingInterfered()
@@ -270,6 +284,10 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
 
    public void removeOtherTile(BlockPos pos)
    {
+       if (this.gridMonoliths.contains(pos))
+       {
+           this.removeGrid();
+       }
        this.otherArcanaStorageTiles.remove(pos);
        this.negativeInterferingTiles.remove(pos);
        this.arcanaTransferSources.remove(pos);
@@ -284,6 +302,20 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
        }
        this.interference = !this.negativeInterferingTiles.isEmpty();
        this.updateAndMarkDirty();
+   }
+
+   private void removeGrid()
+   {
+       for (BlockPos pos : this.gridMonoliths)
+       {
+           try
+           {
+               ((ArcanaStorageTile) this.world.getTileEntity(pos)).removeInterferenceOverride();
+           } catch (NullPointerException e)
+           {
+               Sorcery.getLogger().debug("Exception in remove grid, probably harmless");
+           }
+       }
    }
 
 
@@ -303,11 +335,9 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
             tag.put("TransferTarget", transferTargetNBT);
         }
 
-
         // interferingTiles
         LongArrayNBT negInterferingTilesNBT = Utils.blockPosSetToLongArray(this.negativeInterferingTiles);
         tag.put("NegInterferingTiles", negInterferingTilesNBT);
-
 
         LongArrayNBT posInterferingTilesNBT = Utils.blockPosSetToLongArray(this.positiveInterferingTiles);
         tag.put("PosInterferingTiles", posInterferingTilesNBT);
@@ -321,6 +351,9 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
             LongNBT overrideNBT = LongNBT.valueOf(this.tileOverridingInterference.toLong());
             tag.put("Override", overrideNBT);
         }
+
+        LongArrayNBT gridNBT = Utils.blockPosSetToLongArray(this.gridMonoliths);
+        tag.put("GridMonos", transferSourcesNBT);
 
         return tag;
     }
@@ -357,6 +390,11 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
             this.tileOverridingInterference = BlockPos.fromLong(((LongNBT)nbt.get("Override")).getLong());
         } else {
             this.tileOverridingInterference = null;
+        }
+
+        if (nbt.contains("GridMonos"))
+        {
+            this.gridMonoliths = Utils.longArrayToBlockPosSet((LongArrayNBT)nbt.get("GridMonos"));
         }
     }
 

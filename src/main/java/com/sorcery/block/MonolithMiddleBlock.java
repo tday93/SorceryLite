@@ -5,13 +5,14 @@ import com.sorcery.tileentity.ChiseledMonolithTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -19,7 +20,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class MonolithBlock extends Block
+public class MonolithMiddleBlock extends AbstractMonolithBlock
 {
     private static Float hardness   = 3.0F;
     private static Float resistance = 6.0F;
@@ -28,10 +29,9 @@ public class MonolithBlock extends Block
 
     public static final VoxelShape SHAPE = Block.makeCuboidShape(3, 0, 3, 13, 16, 13);
 
-    public MonolithBlock()
+    public MonolithMiddleBlock()
     {
-        super(Properties.create(Material.ROCK).hardnessAndResistance(hardness, resistance).sound(SoundType.STONE));
-        this.setDefaultState(this.stateContainer.getBaseState().with(ACTIVE, Boolean.FALSE));
+        super();
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
@@ -42,6 +42,16 @@ public class MonolithBlock extends Block
     public BlockRenderType getRenderType(BlockState state)
     {
         return BlockRenderType.MODEL;
+    }
+
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        if(state.getBlock() == ModBlock.MONOLITH_CHISELED_MIDDLE.get())
+        {
+            ((ChiseledMonolithTile)worldIn.getTileEntity(pos)).onClickArcanaGen();
+
+
+        }
+        return ActionResultType.FAIL;
     }
 
     @Override

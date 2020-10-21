@@ -1,12 +1,12 @@
 package com.sorcery.tileentity;
 
-import com.sorcery.block.MonolithBlock;
+import com.sorcery.block.MonolithMiddleBlock;
 import com.sorcery.block.MonolithBottomBlock;
 import com.sorcery.block.MonolithTopBlock;
 import com.sorcery.particle.ParticleEffectContext;
 import com.sorcery.particle.ParticleEffects;
 import com.sorcery.particle.Particles;
-import com.sorcery.utils.MonolithPatterns;
+import com.sorcery.utils.MonolithPattern;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -23,11 +23,11 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
 
     protected boolean active = false;
 
-    protected MonolithPatterns monolithData;
+    protected MonolithPattern monolithData;
 
 
     // TODO: rework interference to be more interesting
-    public AbstractMonolithTile(TileEntityType variantIn, int maxArcana, MonolithPatterns dataIn)
+    public AbstractMonolithTile(TileEntityType variantIn, int maxArcana, MonolithPattern dataIn)
     {
         super(variantIn);
         this.arcanaStorage.setMaxArcanaStored(maxArcana);
@@ -39,7 +39,7 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
     public void tick()
     {
         long worldTicks = this.getOffsetWorldTicks();
-        if (this.interference && worldTicks % 10 == 0)
+        if (this.beingInterfered() && worldTicks % 10 == 0)
         {
             if (world.isRemote)
             {
@@ -49,7 +49,7 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
         }
         if (!world.isRemote())
         {
-            if (!this.interference)
+            if (!this.beingInterfered())
             {
                 this.generateArcana(worldTicks);
             }
@@ -96,7 +96,7 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
     {
         this.active = activity;
         MonolithTopBlock.setActivity(this.world, this.world.getBlockState(this.pos.up(1)), this.pos.up(1), this.active);
-        MonolithBlock.setActivity(this.world, this.getBlockState(), this.pos, this.active);
+        MonolithMiddleBlock.setActivity(this.world, this.getBlockState(), this.pos, this.active);
         MonolithBottomBlock.setActivity(this.world, this.world.getBlockState(this.pos.down(1)), this.pos.down(1), this.active);
     }
 

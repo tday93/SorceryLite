@@ -4,11 +4,8 @@ package com.sorcery.block;
 import com.sorcery.block.state.States;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -17,11 +14,10 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class MonolithTopBlock extends Block
+public class MonolithTopBlock extends AbstractMonolithBlock
 {
     private static Float hardness   = 3.0F;
     private static Float resistance = 6.0F;
@@ -41,20 +37,7 @@ public class MonolithTopBlock extends Block
 
     public MonolithTopBlock()
     {
-        super(Properties.create(Material.ROCK).hardnessAndResistance(hardness, resistance).sound(SoundType.STONE));
-        this.setDefaultState(this.stateContainer.getBaseState().with(ACTIVE, Boolean.valueOf(false)));
-    }
-
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(ACTIVE);
-    }
-
-    public static void setActivity(World world, BlockState state, BlockPos pos, Boolean active)
-    {
-        if (state.getBlock() instanceof MonolithTopBlock)
-        {
-            world.setBlockState(pos, state.with(ACTIVE, Boolean.valueOf(active)), 3);
-        }
+        super();
     }
 
     @Override
@@ -62,7 +45,7 @@ public class MonolithTopBlock extends Block
         super.onBlockHarvested(worldIn, pos, state, player);
         Block block1 = worldIn.getBlockState(pos.down(1)).getBlock();
         Block block2 = worldIn.getBlockState(pos.down(2)).getBlock();
-        if (block1 instanceof MonolithBlock)
+        if (block1 instanceof MonolithMiddleBlock)
         {
             worldIn.destroyBlock(pos.down(1), true, player);
         }

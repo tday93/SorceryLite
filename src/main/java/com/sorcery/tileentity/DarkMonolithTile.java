@@ -2,7 +2,7 @@ package com.sorcery.tileentity;
 
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.ParticleEffectPacket;
-import com.sorcery.utils.MonolithPatterns;
+import com.sorcery.utils.MonolithPattern;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.vector.Vector3d;
 
@@ -14,13 +14,13 @@ public class DarkMonolithTile extends AbstractMonolithTile
 
     public DarkMonolithTile()
     {
-        super(ModTile.DARK_MONOLITH_TILE, 1000, MonolithPatterns.DARK);
+        super(ModTile.DARK_MONOLITH_TILE, 1000, MonolithPattern.DARK);
         this.arcanaStorage.extractArcana(1000, false);
     }
 
     public void processDeath(LivingEntity entity)
     {
-        if (this.interference)
+        if (this.beingInterfered())
         {
             return;
         }

@@ -1,10 +1,10 @@
 package com.sorcery.tileentity;
 
-import com.sorcery.block.MonolithBlock;
+import com.sorcery.block.MonolithMiddleBlock;
 import com.sorcery.particle.ParticleEffectContext;
 import com.sorcery.particle.ParticleEffects;
 import com.sorcery.particle.Particles;
-import com.sorcery.utils.MonolithPatterns;
+import com.sorcery.utils.MonolithPattern;
 import com.sorcery.utils.Utils;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.math.vector.Vector3d;
@@ -26,7 +26,7 @@ public class LunarMonolithTile extends AbstractMonolithTile implements ITickable
 
 
     public LunarMonolithTile(){
-        super(ModTile.LUNAR_MONOLITH_TILE, 1000, MonolithPatterns.LUNAR);
+        super(ModTile.LUNAR_MONOLITH_TILE, 1000, MonolithPattern.LUNAR);
         this.arcanaStorage.extractArcana(1000, false);
         this.arcanaPerRegen = 10;
         this.phaseMap.put(0, 3d);
@@ -47,7 +47,7 @@ public class LunarMonolithTile extends AbstractMonolithTile implements ITickable
         if (!this.world.isRemote())
         {
             // Arcana generation
-            if (worldTicks % ticksPerRegen == 0 && this.active && !this.interference)
+            if (worldTicks % ticksPerRegen == 0 && this.active && !this.beingInterfered())
             {
                 this.receiveArcana((int)((double)this.arcanaPerRegen * this.cycleMultiplier));
             }
@@ -64,7 +64,7 @@ public class LunarMonolithTile extends AbstractMonolithTile implements ITickable
                     int moonPhase = this.world.getDimensionType().getMoonPhase(worldTicks);
                     this.cycleMultiplier = this.phaseMap.get(moonPhase);
                 }
-                if (this.interference)
+                if (this.beingInterfered())
                 {
                     this.setActivity(false);
                 }
@@ -73,7 +73,7 @@ public class LunarMonolithTile extends AbstractMonolithTile implements ITickable
             // Particles
             if (worldTicks % 5 == 0)
             {
-                if (this.getBlockState().get(MonolithBlock.ACTIVE))
+                if (this.getBlockState().get(MonolithMiddleBlock.ACTIVE))
                 {
                     Vector3d moonVec = Utils.getMoonVector(this.world);
                     ParticleEffects.drawIn(new ParticleEffectContext(world, Particles.getLunarSparks(), this.getOwnPulseTarget(), moonVec, 10, 1, 1, 40));
