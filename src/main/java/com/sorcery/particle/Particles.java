@@ -84,24 +84,24 @@ public class Particles
                 collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getHiList(), ModParticle.SIMPLE_SPARK, 1.0f, age));
                 return collection;
             case 1:
-                collection.add(50, getColoredParticle(ModColor.SOLAR_GOLD.getMainList(), ModParticle.SIMPLE_SPARK, 1.0f, age));
-                collection.add(25, getColoredParticle(ModColor.SOLAR_GOLD.getLowList(), ModParticle.SIMPLE_SPARK, 1.0f, age));
-                collection.add(25, getColoredParticle(ModColor.SOLAR_GOLD.getHiList(), ModParticle.SIMPLE_SPARK, 1.0f, age));
+                collection.add(50, getColoredParticle(ModColor.SOLAR_GOLD.getMainList(), ModParticle.ARCANA, 1.0f, age, false));
+                collection.add(25, getColoredParticle(ModColor.SOLAR_GOLD.getLowList(), ModParticle.ARCANA, 1.0f, age, false));
+                collection.add(25, getColoredParticle(ModColor.SOLAR_GOLD.getHiList(), ModParticle.ARCANA, 1.0f, age, false));
                 return collection;
             case 2:
-                collection.add(50, getColoredParticle(ModColor.LUNAR_SILVER.getMainList(), ModParticle.LIT_SPARK, 1.0f, age));
-                collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getLowList(), ModParticle.LIT_SPARK, 1.0f, age));
-                collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getHiList(), ModParticle.LIT_SPARK, 1.0f, age));
+                collection.add(50, getColoredParticle(ModColor.LUNAR_SILVER.getMainList(), ModParticle.ARCANA, 1.0f, age, false));
+                collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getLowList(), ModParticle.ARCANA, 1.0f, age, false));
+                collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getHiList(), ModParticle.ARCANA, 1.0f, age, false));
                 return collection;
             case 3:
-                collection.add(50, getColoredParticle(ModColor.LAPIS_BLUE.getMainList(), ModParticle.SIMPLE_SPARK, 1.0f, age));
-                collection.add(25, getColoredParticle(ModColor.LAPIS_BLUE.getLowList(), ModParticle.SIMPLE_SPARK, 1.0f, age));
-                collection.add(25, getColoredParticle(ModColor.LAPIS_BLUE.getHiList(), ModParticle.SIMPLE_SPARK, 1.0f, age));
+                collection.add(50, getColoredParticle(ModColor.LAPIS_BLUE.getMainList(), ModParticle.ARCANA, 1.0f, age, false));
+                collection.add(25, getColoredParticle(ModColor.LAPIS_BLUE.getLowList(), ModParticle.ARCANA, 1.0f, age, false));
+                collection.add(25, getColoredParticle(ModColor.LAPIS_BLUE.getHiList(), ModParticle.ARCANA, 1.0f, age, false));
                 return collection;
             case 4:
-                collection.add(50, getColoredParticle(ModColor.BLOOD_RED.getMainList(), ModParticle.SIMPLE_SPARK, 1.0f, age));
-                collection.add(25, getColoredParticle(ModColor.BLOOD_RED.getLowList(), ModParticle.SIMPLE_SPARK, 1.0f, age));
-                collection.add(25, getColoredParticle(ModColor.BLOOD_RED.getHiList(), ModParticle.SIMPLE_SPARK, 1.0f, age));
+                collection.add(50, getColoredParticle(ModColor.BLOOD_RED.getMainList(), ModParticle.ARCANA, 1.0f, age));
+                collection.add(25, getColoredParticle(ModColor.BLOOD_RED.getLowList(), ModParticle.ARCANA, 1.0f, age));
+                collection.add(25, getColoredParticle(ModColor.BLOOD_RED.getHiList(), ModParticle.ARCANA, 1.0f, age));
                 return collection;
             case 5:
                 collection.add(50, getColoredParticle(ModColor.ARCANA_PURPLE.getMainList(), ModParticle.ARCANA_SPARK_1, 0.7f, age));

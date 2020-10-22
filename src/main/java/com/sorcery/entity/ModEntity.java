@@ -19,8 +19,6 @@ public class ModEntity
     @ObjectHolder("firebolt")
     public static EntityType<FireboltEntity> FIREBOLT;
 
-
-
     public static void init()
     {
         // Other Entities

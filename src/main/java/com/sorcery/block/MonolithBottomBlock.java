@@ -39,10 +39,6 @@ public class MonolithBottomBlock extends AbstractMonolithBlock
         super();
     }
 
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(ACTIVE);
-    }
-
 
     @Override
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {

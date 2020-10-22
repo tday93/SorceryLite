@@ -43,30 +43,20 @@ public class LunarMonolithTile extends AbstractMonolithTile implements ITickable
     public void tick()
     {
         long worldTicks = this.getOffsetWorldTicks();
-
         if (!this.world.isRemote())
         {
             // Arcana generation
-            if (worldTicks % ticksPerRegen == 0 && this.active && !this.beingInterfered())
+            if (worldTicks % ticksPerRegen == 0 && !this.world.isDaytime() && !this.beingInterfered())
             {
                 this.receiveArcana((int)((double)this.arcanaPerRegen * this.cycleMultiplier));
             }
-
-            // Activity setting
+            // Set generation amounts
             if (worldTicks % 20 == 0)
             {
-                if (this.world.isDaytime())
+                if (!this.world.isDaytime())
                 {
-                    this.setActivity(false);
-                } else {
-                    this.setActivity(true);
-
                     int moonPhase = this.world.getDimensionType().getMoonPhase(worldTicks);
                     this.cycleMultiplier = this.phaseMap.get(moonPhase);
-                }
-                if (this.beingInterfered())
-                {
-                    this.setActivity(false);
                 }
             }
         } else {
@@ -82,6 +72,5 @@ public class LunarMonolithTile extends AbstractMonolithTile implements ITickable
 
         }
         super.tick();
-
     }
 }

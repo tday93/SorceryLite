@@ -52,15 +52,6 @@ public class LapisMonolithTile extends AbstractMonolithTile
         if (!world.isRemote())
         {
             long worldTicks = this.getOffsetWorldTicks();
-            if (worldTicks % 20 == 0) {
-                // check if active
-                if (this.arcanaStorage.getArcanaStored() < 10) {
-                    this.setActivity(false);
-                } else {
-                    this.setActivity(true);
-                }
-            }
-
             if (worldTicks % 40 == 0)
             {
                 // look for lapis on ground

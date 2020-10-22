@@ -34,24 +34,10 @@ public class MonolithMiddleBlock extends AbstractMonolithBlock
         super();
     }
 
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(ACTIVE);
-    }
-
     @Override
     public BlockRenderType getRenderType(BlockState state)
     {
         return BlockRenderType.MODEL;
-    }
-
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        if(state.getBlock() == ModBlock.MONOLITH_CHISELED_MIDDLE.get())
-        {
-            ((ChiseledMonolithTile)worldIn.getTileEntity(pos)).onClickArcanaGen();
-
-
-        }
-        return ActionResultType.FAIL;
     }
 
     @Override

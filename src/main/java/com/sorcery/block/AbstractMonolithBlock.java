@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -17,25 +18,26 @@ public class AbstractMonolithBlock extends Block
     private static Float hardness   = 3.0F;
     private static Float resistance = 6.0F;
     public static final BooleanProperty ACTIVE = States.ACTIVE;
-    public static final int LIT_LIGHT_LEVEL = 7;
+    public static final IntegerProperty ARCANA_FILL = States.ARCANA_FILL;
 
     public AbstractMonolithBlock()
     {
         super(Properties.create(Material.ROCK).hardnessAndResistance(hardness, resistance).sound(SoundType.STONE));
-        this.setDefaultState(this.stateContainer.getBaseState().with(ACTIVE, Boolean.FALSE));
+        this.setDefaultState(this.stateContainer.getBaseState().with(ACTIVE, Boolean.FALSE).with(ARCANA_FILL, 0));
     }
 
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(ACTIVE);
+        builder.add(ACTIVE).add(ARCANA_FILL);
     }
 
-    public static void setActivity(World world, BlockState state, BlockPos pos, Boolean active)
+    public static void setArcanaFill(World world, BlockState state, BlockPos pos, int arcanaFill)
     {
         if (state.getBlock() instanceof AbstractMonolithBlock)
         {
-            world.setBlockState(pos, state.with(ACTIVE, Boolean.valueOf(active)), 3);
+            world.setBlockState(pos, state.with(ARCANA_FILL, arcanaFill).with(ACTIVE, (arcanaFill > 2)));
         }
+
     }
 
     @Override

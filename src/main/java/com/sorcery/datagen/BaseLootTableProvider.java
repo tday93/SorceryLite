@@ -36,7 +36,7 @@ public abstract class BaseLootTableProvider extends LootTableProvider
     // Subclasses can override this to fill the 'lootTables' map.
     protected abstract void addTables();
 
-    // Subclasses can call this if they want a standard loot table. Modify this for your own needs
+    // Subclasses can call this if they want a standard com.sorcery.loot table. Modify this for your own needs
     protected LootTable.Builder createStandardTable(String name, Block block) {
         LootPool.Builder builder = LootPool.builder()
                 .name(name)

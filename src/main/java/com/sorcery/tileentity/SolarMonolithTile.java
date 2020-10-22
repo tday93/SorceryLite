@@ -27,29 +27,11 @@ public class SolarMonolithTile extends AbstractMonolithTile implements ITickable
         if (!this.world.isRemote())
         {
             // Arcana generation
-            if (worldTicks % ticksPerRegen == 0 && this.active && !this.beingInterfered())
+            if (worldTicks % ticksPerRegen == 0 && this.world.isDaytime() && this.world.canBlockSeeSky(this.pos) && !this.beingInterfered())
             {
                 this.receiveArcana(arcanaPerRegen);
             }
             // Activity setting
-            if (worldTicks % 20 == 0)
-            {
-                if (this.world.getDimensionType().hasSkyLight())
-                {
-                    if (this.world.getLightFor(LightType.SKY, this.pos) >= 14 && this.world.isDaytime())
-                    {
-                        this.setActivity(true);
-                    } else {
-                        this.setActivity(false);
-                    }
-                } else {
-                    this.setActivity(false);
-                }
-                if (this.beingInterfered())
-                {
-                    this.setActivity(false);
-                }
-            }
         } else {
             // Particles
             if (worldTicks % 5 == 0)

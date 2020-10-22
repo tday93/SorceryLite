@@ -53,6 +53,10 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
             {
                 this.generateArcana(worldTicks);
             }
+            if (worldTicks % 20 == 0)
+            {
+                this.setArcanaFill((this.getStoredArcana() / this.getMaxArcana()) * 15);
+            }
         }
         super.tick();
     }
@@ -92,12 +96,12 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
         }
     }
 
-    public void setActivity(boolean activity)
+    public void setArcanaFill(int arcanaFill)
     {
-        this.active = activity;
-        MonolithTopBlock.setActivity(this.world, this.world.getBlockState(this.pos.up(1)), this.pos.up(1), this.active);
-        MonolithMiddleBlock.setActivity(this.world, this.getBlockState(), this.pos, this.active);
-        MonolithBottomBlock.setActivity(this.world, this.world.getBlockState(this.pos.down(1)), this.pos.down(1), this.active);
+        MonolithTopBlock.setArcanaFill(this.world, this.world.getBlockState(this.pos.up(1)), this.pos.up(1), arcanaFill);
+        MonolithMiddleBlock.setArcanaFill(this.world, this.getBlockState(), this.pos, arcanaFill);
+        MonolithBottomBlock.setArcanaFill(this.world, this.world.getBlockState(this.pos.down(1)), this.pos.down(1), arcanaFill);
+        this.updateAndMarkDirty();
     }
 
 }

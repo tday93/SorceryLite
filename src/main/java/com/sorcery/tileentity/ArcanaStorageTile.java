@@ -29,7 +29,7 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
 
     // static vars
     protected ArcanaStorage arcanaStorage = new ArcanaStorage(10000);
-    protected int transferRate = 100;
+    protected int transferRate = 1000;
     // -- the max distance this tile will interact with other
     public double interactionRange = 8;
     // -- where the pulse should start from in relation to blockpos

@@ -33,18 +33,6 @@ public class DarkMonolithTile extends AbstractMonolithTile
     @Override
     public void tick()
     {
-        if (!world.isRemote())
-        {
-            if (this.getOffsetWorldTicks() % 20 == 0)
-            {
-                if (this.arcanaStorage.getArcanaStored() < 10)
-                {
-                    this.setActivity(false);
-                } else {
-                    this.setActivity(true);
-                }
-            }
-        }
         super.tick();
     }
 }
