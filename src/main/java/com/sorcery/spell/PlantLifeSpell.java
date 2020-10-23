@@ -4,7 +4,6 @@ import net.minecraft.item.BoneMealItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ActionResultType;
-import net.minecraft.world.World;
 
 public class PlantLifeSpell extends Spell
 {

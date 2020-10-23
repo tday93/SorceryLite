@@ -1,6 +1,7 @@
 package com.sorcery.utils;
 
 import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
 import com.sorcery.arcana.IArcanaStorage;
 import com.sorcery.block.state.CrystalColor;
 import com.sorcery.item.SpellbookItem;
@@ -12,6 +13,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.LongArrayNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -141,6 +143,18 @@ public class Utils {
         return vec;
     }
 
+    public static <T extends TileEntity> Set<T> getTEInRange(World world, @Nullable TileEntity selfTile, Class clazz, double range)
+    {
+        Set<T> tileEntitiesInRange = new HashSet<>();
+        Predicate<TileEntity> tilePred = getTESearchPredicate(clazz, selfTile, range);
+        List<TileEntity> allTE = world.loadedTileEntityList;
+        for (TileEntity tileEntity : Collections2.filter(allTE, tilePred))
+        {
+           tileEntitiesInRange.add((T)tileEntity);
+        }
+        return tileEntitiesInRange;
+    }
+
     public static Predicate<TileEntity> getTESearchPredicate(Class clazz, BlockPos pos, double range)
     {
         Predicate<TileEntity> pred = new Predicate<TileEntity>()
@@ -239,6 +253,26 @@ public class Utils {
         return new Vector3d(newX, newY, newZ);
     }
 
+    public static LongArrayNBT blockPosSetToLongArray(Set<BlockPos> blockPosSet)
+    {
+        List<Long> otherTilesList = new LinkedList<>();
+        for (BlockPos blockPos : blockPosSet)
+        {
+            otherTilesList.add(blockPos.toLong());
+        }
+        return new LongArrayNBT(otherTilesList);
+    }
+
+    public static Set<BlockPos> longArrayToBlockPosSet(LongArrayNBT nbt)
+    {
+        Set<BlockPos> posSet = new HashSet<>();
+        for (Long posLong : nbt.getAsLongArray())
+        {
+            posSet.add(BlockPos.fromLong(posLong));
+        }
+        return posSet;
+    }
+
     @Nullable
     public static ItemStack getPlayerSpellbook(PlayerEntity playerEntity)
     {
@@ -253,5 +287,4 @@ public class Utils {
         }
         return spellbook;
     }
-
 }

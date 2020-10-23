@@ -2,7 +2,8 @@ package com.sorcery.block.trees;
 
 import com.sorcery.world.ModFeature;
 import net.minecraft.block.trees.Tree;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 
 import javax.annotation.Nullable;
 import java.util.Random;

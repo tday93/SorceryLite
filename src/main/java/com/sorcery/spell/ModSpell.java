@@ -2,6 +2,7 @@ package com.sorcery.spell;
 
 import com.sorcery.Config;
 import com.sorcery.Constants;
+import com.sorcery.Sorcery;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Effects;
@@ -55,7 +56,7 @@ public class ModSpell
 
     public static void init()
     {
-        System.out.println("Initing spells");
+        Sorcery.getLogger().debug("Initing spells");
         SPELLS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 

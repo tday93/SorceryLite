@@ -29,6 +29,8 @@ public class ClientRegistryEvents
         mc.particles.registerFactory(ModParticle.LIT_SPARK, RGBLitParticle.Factory::new);
         mc.particles.registerFactory(ModParticle.SKULL_SMOKE, RGBAParticle.Factory::new);
         mc.particles.registerFactory(ModParticle.SNOWFLAKE, RGBAParticle.Factory::new);
+        mc.particles.registerFactory(ModParticle.ZAP_2, RGBAParticle.Factory::new);
+        mc.particles.registerFactory(ModParticle.ARCANA, RGBLitParticle.Factory::new);
     }
 
 }

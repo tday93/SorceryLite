@@ -1,5 +1,6 @@
 package com.sorcery.inventory;
 
+import com.sorcery.Sorcery;
 import com.sorcery.item.SpellScrollItem;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.SpellCapSyncPacket;
@@ -56,26 +57,26 @@ public class SpellbookInventory extends Inventory
     private void writeNBT(CompoundNBT compound, ItemStack stack, PlayerInventory playerInventory) {
         final NonNullList<ItemStack> list = NonNullList.withSize(getSizeInventory(), ItemStack.EMPTY);
         ISpellcasting spellCasting = Utils.getSpellCap(stack);
-        System.out.println("existing spell cap");
-        System.out.println(spellCasting);
+        Sorcery.getLogger().debug("existing spell cap");
+        Sorcery.getLogger().debug(spellCasting);
         spellCasting.clearPreparedSpells();
-        System.out.println("in write NBT in spellbook inventory");
+        Sorcery.getLogger().debug("in write NBT in spellbook inventory");
         for (int index = 0; index < list.size(); index++) {
             ItemStack stack1 = getStackInSlot(index);
             list.set(index, getStackInSlot(index));
             if (stack1.getItem() instanceof SpellScrollItem)
             {
-                System.out.println("adding spell from scroll");
+                Sorcery.getLogger().debug("adding spell from scroll");
                 ResourceLocation spellLoc = ((SpellScrollItem) stack1.getItem()).getSpell();
-                System.out.println(spellLoc.toString());
+                Sorcery.getLogger().debug(spellLoc.toString());
                 spellCasting.addPreparedSpell(spellLoc);
             }
         }
-        System.out.println("adding arcanaDrain");
+        Sorcery.getLogger().debug("adding arcanaDrain");
         spellCasting.addPreparedSpell(ModSpell.SPELL_MEDITATE.getId());
         spellCasting.setActiveSpell(ModSpell.SPELL_MEDITATE.getId());
-        System.out.println("final spellcasting:");
-        System.out.println(spellCasting.serializeNBT());
+        Sorcery.getLogger().debug("final spellcasting:");
+        Sorcery.getLogger().debug(spellCasting.serializeNBT());
         ItemStackHelper.saveAllItems(compound, list, true);
         PacketHandler.sendToPlayer((ServerPlayerEntity) playerInventory.player, new SpellCapSyncPacket((CompoundNBT) SpellcastingCapability.SPELLCASTING.writeNBT(spellCasting, null)));
     }

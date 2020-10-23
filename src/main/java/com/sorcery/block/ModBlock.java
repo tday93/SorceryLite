@@ -3,13 +3,10 @@ package com.sorcery.block;
 import com.sorcery.Constants;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ObjectHolder;
 
 
 public class ModBlock
@@ -42,7 +39,7 @@ public class ModBlock
     // Monoliths
 
     public static final RegistryObject<Block> MONOLITH_CHISELED_TOP = BLOCKS.register("monolith_chiseled_top", () -> new MonolithTopBlock());
-    public static final RegistryObject<Block> MONOLITH_CHISELED_MIDDLE = BLOCKS.register("monolith_chiseled_middle", () -> new MonolithBlock());
+    public static final RegistryObject<Block> MONOLITH_CHISELED_MIDDLE = BLOCKS.register("monolith_chiseled_middle", () -> new MonolithMiddleBlock());
     public static final RegistryObject<Block> MONOLITH_CHISELED_BOTTOM = BLOCKS.register("monolith_chiseled_bottom", () -> new MonolithBottomBlock());
 
     public static final RegistryObject<Block> MONOLITH_DARK_TOP = BLOCKS.register("monolith_dark_top", () -> new MonolithTopBlock());

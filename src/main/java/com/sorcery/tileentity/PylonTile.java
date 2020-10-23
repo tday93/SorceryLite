@@ -20,7 +20,7 @@ public class PylonTile extends ArcanaStorageTile implements ITickableTileEntity
         if (worldTicks % 20 == 0)
         {
             boolean active = false;
-            if (!this.arcanaTransferSources.isEmpty())
+            if (this.arcanaPulseTarget != null)
             {
                active = true;
             }

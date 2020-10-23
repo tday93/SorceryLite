@@ -1,19 +1,19 @@
 package com.sorcery.tileentity;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
-import com.sorcery.block.MonolithBlock;
 import com.sorcery.block.MonolithBottomBlock;
+import com.sorcery.block.MonolithMiddleBlock;
 import com.sorcery.block.MonolithTopBlock;
-import com.sorcery.utils.Utils;
+import com.sorcery.particle.ParticleEffectContext;
+import com.sorcery.particle.ParticleEffects;
+import com.sorcery.particle.Particles;
+import com.sorcery.utils.MonolithPattern;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public abstract class AbstractMonolithTile extends ArcanaStorageTile implements ITickableTileEntity
 {
@@ -23,16 +23,15 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
 
     protected boolean active = false;
 
-    protected int interferenceRange = 5;
-
-    protected boolean interference = false;
+    protected MonolithPattern monolithData;
 
 
     // TODO: rework interference to be more interesting
-    public AbstractMonolithTile(TileEntityType variantIn, int maxArcana)
+    public AbstractMonolithTile(TileEntityType variantIn, int maxArcana, MonolithPattern dataIn)
     {
         super(variantIn);
         this.arcanaStorage.setMaxArcanaStored(maxArcana);
+        this.monolithData = dataIn;
         this.arcanaPulseOffset = new Vector3d(0.5, 1, 0.5);
     }
 
@@ -40,49 +39,69 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
     public void tick()
     {
         long worldTicks = this.getOffsetWorldTicks();
+        if (this.beingInterfered() && worldTicks % 10 == 0)
+        {
+            if (world.isRemote)
+            {
+                BlockPos basePos = this.pos.add(0, -1, 0);
+                ParticleEffects.staticVolume(new ParticleEffectContext(this.world, Particles.getParticleSet(8), new Vector3d(basePos.getX(), basePos.getY(), basePos.getZ()), new Vector3d(1,3,1), 20, 0, 0, 10));
+            }
+        }
         if (!world.isRemote())
         {
-            if (this.getOffsetWorldTicks() % 40 == 0)
+            if (!this.beingInterfered())
             {
-                updateInterference();
+                this.generateArcana(worldTicks);
+            }
+            if (worldTicks % 20 == 0)
+            {
+                this.setArcanaFill((int)(((double)this.getStoredArcana() / (double)this.getMaxArcana()) * 15));
             }
         }
         super.tick();
     }
 
-    public void setActivity(boolean activity)
+    @Override
+    public int checkInterference(BlockPos pos)
     {
-        this.active = activity;
-        MonolithTopBlock.setActivity(this.world, this.world.getBlockState(this.pos.up(1)), this.pos.up(1), this.active);
-        MonolithBlock.setActivity(this.world, this.getBlockState(), this.pos, this.active);
-        MonolithBottomBlock.setActivity(this.world, this.world.getBlockState(this.pos.down(1)), this.pos.down(1), this.active);
+        if (pos.withinDistance(this.pos, 5))
+        {
+            return -1;
+        }
+        return 0;
     }
 
-
-
-    public void updateInterference()
+    public void generateArcana(Long worldTicks)
     {
-        Predicate<TileEntity> searchPredicate = Utils.getTESearchPredicate(AbstractMonolithTile.class, this, this.interferenceRange);
 
-        Set<ArcanaStorageTile> otherMonoliths = new HashSet<>();
+    }
 
-        List<TileEntity> allTEs = world.loadedTileEntityList;
+    public ItemStack onResonatorWhack(ItemStack resonator)
+    {
+        return resonator;
+    }
 
-        for (TileEntity tileEntity : Collections2.filter(allTEs, searchPredicate))
+    public void spawnInterferenceParticles()
+    {
+        for (List<Integer> intLoc : this.monolithData.pattern.getNegInterferenceLocs())
         {
-            otherMonoliths.add((ArcanaStorageTile)tileEntity);
+            BlockPos pos = new BlockPos(this.pos.getX() + intLoc.get(0), this.pos.getY(), this.pos.getZ() + intLoc.get(1));
+            ParticleEffects.staticVolume(new ParticleEffectContext(this.world, Particles.getParticleSet(9, 200), new Vector3d(pos.getX(), pos.getY()-1, pos.getZ()), new Vector3d(1,0.5,1), 20, 0, 0, 100));
         }
-        if (!otherMonoliths.isEmpty())
+
+        for (List<Integer> intLoc : this.monolithData.pattern.getPosInterferenceLocs())
         {
-            this.interference = true;
-        } else {
-            this.interference = false;
+            BlockPos pos = new BlockPos(this.pos.getX() + intLoc.get(0), this.pos.getY(), this.pos.getZ() + intLoc.get(1));
+            ParticleEffects.staticVolume(new ParticleEffectContext(this.world, Particles.getParticleSet(10, 200), new Vector3d(pos.getX(), pos.getY()-1, pos.getZ()), new Vector3d(1,0.5,1), 20, 0, 0, 100));
         }
     }
 
-    public int getInterferenceRange()
+    public void setArcanaFill(int arcanaFill)
     {
-        return this.interferenceRange;
+        MonolithTopBlock.setArcanaFill(this.world, this.world.getBlockState(this.pos.up(1)), this.pos.up(1), arcanaFill);
+        MonolithMiddleBlock.setArcanaFill(this.world, this.getBlockState(), this.pos, arcanaFill);
+        MonolithBottomBlock.setArcanaFill(this.world, this.world.getBlockState(this.pos.down(1)), this.pos.down(1), arcanaFill);
+        this.updateAndMarkDirty();
     }
 
 }

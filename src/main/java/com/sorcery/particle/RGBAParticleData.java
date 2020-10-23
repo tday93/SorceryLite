@@ -19,6 +19,7 @@ public class RGBAParticleData implements IParticleData
     public final float b;
     public final float a;
     public final int t;
+    public final boolean q;
     public ParticleType<RGBAParticleData> particleType;
 
     public RGBAParticleData()
@@ -28,6 +29,7 @@ public class RGBAParticleData implements IParticleData
         this.b = 1;
         this.a = 1;
         this.t = 40;
+        this.q = true;
         this.particleType = ModParticle.RGBA_SPARK;
 
     }
@@ -40,6 +42,7 @@ public class RGBAParticleData implements IParticleData
         this.b = b;
         this.a = a;
         this.t = 40;
+        this.q = true;
         this.particleType = ModParticle.RGBA_SPARK;
     }
 
@@ -51,6 +54,19 @@ public class RGBAParticleData implements IParticleData
         this.b = b;
         this.a = a;
         this.t = t;
+        this.q = true;
+        this.particleType = ModParticle.RGBA_SPARK;
+    }
+
+    public RGBAParticleData(float r, float g, float b, float a, int t, boolean q)
+    {
+
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.a = a;
+        this.t = t;
+        this.q = q;
         this.particleType = ModParticle.RGBA_SPARK;
     }
 
@@ -61,6 +77,7 @@ public class RGBAParticleData implements IParticleData
         this.b = b;
         this.a = a;
         this.t = 40;
+        this.q = true;
         this.particleType = particleType;
     }
 
@@ -71,6 +88,18 @@ public class RGBAParticleData implements IParticleData
         this.b = b;
         this.a = a;
         this.t = t;
+        this.q = true;
+        this.particleType = particleType;
+    }
+
+    public RGBAParticleData(ParticleType<RGBAParticleData> particleType, float r, float g, float b, float a, int t, boolean q)
+    {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.a = a;
+        this.t = t;
+        this.q = q;
         this.particleType = particleType;
     }
 
@@ -88,13 +117,14 @@ public class RGBAParticleData implements IParticleData
         buf.writeFloat(b);
         buf.writeFloat(a);
         buf.writeInt(t);
+        buf.writeBoolean(q);
 
     }
 
     @Override
     public String getParameters()
     {
-        String params = String.format(Locale.ROOT, "%s %f %f %f %f %d", this.getType().getRegistryName(), this.r, this.g, this.b, this.a, this.t);
+        String params = String.format(Locale.ROOT, "%s %f %f %f %f %d %b", this.getType().getRegistryName(), this.r, this.g, this.b, this.a, this.t, this.q);
         return params;
     }
 
@@ -114,13 +144,15 @@ public class RGBAParticleData implements IParticleData
             float a = reader.readFloat();
             reader.expect(' ');
             int t = reader.readInt();
+            reader.expect(' ');
+            boolean q = reader.readBoolean();
 
-            return new RGBAParticleData((ParticleType)regParticle, r, g, b, a, t);
+            return new RGBAParticleData((ParticleType)regParticle, r, g, b, a, t, q);
         }
 
         @Override
         public RGBAParticleData read(@Nonnull ParticleType<RGBAParticleData> type, PacketBuffer buf) {
-            return new RGBAParticleData(buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readInt());
+            return new RGBAParticleData(type, buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readInt(), buf.readBoolean());
         }
     };
 }

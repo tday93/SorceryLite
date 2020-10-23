@@ -2,7 +2,9 @@ package com.sorcery.datagen;
 
 import com.sorcery.Constants;
 import com.sorcery.block.ModBlock;
-import net.minecraft.block.*;
+import net.minecraft.block.FenceBlock;
+import net.minecraft.block.StairsBlock;
+import net.minecraft.block.WallBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;

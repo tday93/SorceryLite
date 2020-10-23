@@ -1,12 +1,7 @@
 package com.sorcery.particle;
 
-import net.minecraft.client.particle.IAnimatedSprite;
-import net.minecraft.client.particle.IParticleFactory;
-import net.minecraft.client.particle.IParticleRenderType;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.SpriteTexturedParticle;
+import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -15,6 +10,8 @@ import javax.annotation.Nullable;
 public class RGBAParticle extends SpriteTexturedParticle
 {
     IAnimatedSprite spriteSet;
+
+    Boolean doAnimation;
 
     public RGBAParticle(ClientWorld world, double x, double y, double z, double vX, double vY, double vZ, IAnimatedSprite spriteSetIn, float r, float g, float b, float a)
     {
@@ -33,12 +30,25 @@ public class RGBAParticle extends SpriteTexturedParticle
         this.canCollide = false;
     }
 
-
     @Override
-    public void tick()
-    {
-        super.tick();
-        this.selectSpriteWithAge(this.spriteSet);
+    public void tick() {
+        if (this.doAnimation)
+        {
+            this.selectSpriteWithAge(this.spriteSet);
+        }
+        this.prevPosX = this.posX;
+        this.prevPosY = this.posY;
+        this.prevPosZ = this.posZ;
+        if (this.age++ >= this.maxAge) {
+            this.setExpired();
+        } else {
+            this.motionY -= 0.04D * (double)this.particleGravity;
+            this.move(this.motionX, this.motionY, this.motionZ);
+            if (this.onGround) {
+                this.motionX *= (double)0.7F;
+                this.motionZ *= (double)0.7F;
+            }
+        }
     }
 
     @Override
@@ -65,7 +75,13 @@ public class RGBAParticle extends SpriteTexturedParticle
         {
             RGBAParticle simpleParticle = new RGBAParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, spriteSet, data.r, data.g, data.b, data.a);
             simpleParticle.setMaxAge(data.t);
-            simpleParticle.selectSpriteWithAge(spriteSet);
+            simpleParticle.doAnimation = data.q;
+            if(data.q)
+            {
+                simpleParticle.selectSpriteWithAge(spriteSet);
+            } else {
+                simpleParticle.selectSpriteRandomly(spriteSet);
+            }
             return simpleParticle;
         }
 

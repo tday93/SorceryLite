@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    {
+      "condition": "block_state_property",
+      "block":"minecraft:iron_ore"
+    }
+  ],
+  "dropChance": 50,
+  "geodeItem": "sorcery:geode"
+}

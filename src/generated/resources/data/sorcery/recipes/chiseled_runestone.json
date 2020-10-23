@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sorcery",
+  "pattern": [
+    "yyy",
+    "yxy",
+    "yyy"
+  ],
+  "key": {
+    "x": {
+      "item": "sorcery:sorcerous_catalyst"
+    },
+    "y": {
+      "item": "sorcery:polished_wolfram"
+    }
+  },
+  "result": {
+    "item": "sorcery:chiseled_runestone"
+  }
+}

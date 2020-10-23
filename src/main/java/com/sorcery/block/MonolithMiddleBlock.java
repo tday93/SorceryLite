@@ -5,13 +5,8 @@ import com.sorcery.tileentity.ChiseledMonolithTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.monster.piglin.PiglinTasks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -21,7 +16,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class MonolithBlock extends Block
+public class MonolithMiddleBlock extends AbstractMonolithBlock
 {
     private static Float hardness   = 3.0F;
     private static Float resistance = 6.0F;
@@ -30,14 +25,9 @@ public class MonolithBlock extends Block
 
     public static final VoxelShape SHAPE = Block.makeCuboidShape(3, 0, 3, 13, 16, 13);
 
-    public MonolithBlock()
+    public MonolithMiddleBlock()
     {
-        super(Properties.create(Material.ROCK).hardnessAndResistance(hardness, resistance).sound(SoundType.STONE));
-        this.setDefaultState(this.stateContainer.getBaseState().with(ACTIVE, Boolean.valueOf(false)));
-    }
-
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(ACTIVE);
+        super();
     }
 
     @Override
@@ -76,7 +66,7 @@ public class MonolithBlock extends Block
 
     public static void setActivity(World world, BlockState state, BlockPos pos, Boolean active)
     {
-        world.setBlockState(pos, state.with(ACTIVE, Boolean.valueOf(active)), 3);
+        world.setBlockState(pos, state.with(ACTIVE, active), 3);
     }
 
     @Override

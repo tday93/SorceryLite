@@ -53,17 +53,17 @@ public enum ModColor
 
     public List<Integer> getHiList()
     {
-        return Arrays.asList(this.hiRed, this.hiBlue, this.hiGreen);
+        return Arrays.asList(this.hiRed, this.hiGreen, this.hiBlue);
     }
 
     public List<Integer> getMainList()
     {
-        return Arrays.asList(this.mainRed, this.mainBlue, this.mainGreen);
+        return Arrays.asList(this.mainRed, this.mainGreen, this.mainBlue);
     }
 
     public List<Integer> getLowList()
     {
-        return Arrays.asList(this.lowRed, this.lowBlue, this.lowGreen);
+        return Arrays.asList(this.lowRed, this.lowGreen, this.lowBlue);
     }
 
     public int getHiDecimal()

@@ -1,7 +1,10 @@
 package com.sorcery.particle;
 
+import com.sorcery.tileentity.AbstractMonolithTile;
 import com.sorcery.utils.BasisVectors;
 import com.sorcery.utils.Utils;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 
 /**
@@ -40,22 +43,12 @@ public class ParticleEffects
         }
     }
 
-    // pulse effect sent by arcana storage tiles
-    public static void arcanaPulse(ParticleEffectContext ctx)
-    {
-        sendTo(new ParticleEffectContext(ctx.world, Particles.getArcanaOrbs(), ctx.vec1, ctx.vec2, 1, 1, 0, ctx.age));
-        sendTo(new ParticleEffectContext(ctx.world, Particles.getArcanaOrbSparks(), ctx.vec1, ctx.vec2, 1, 0.95, 0, ctx.age));
-        sendTo(new ParticleEffectContext(ctx.world, Particles.getArcanaOrbSparks(), ctx.vec1, ctx.vec2, 1, 0.9, 0, ctx.age));
-        sendTo(new ParticleEffectContext(ctx.world, Particles.getArcanaOrbSparks(), ctx.vec1, ctx.vec2, 1, 0.85, 0, ctx.age));
-        sendTo(new ParticleEffectContext(ctx.world, Particles.getArcanaOrbSparks(), ctx.vec1, ctx.vec2, 1, 0.8, 0, ctx.age));
-    }
-
     // line of particles moving towards endpoint
     public static void sendTo(ParticleEffectContext ctx)
     {
         Vector3d ray = ctx.vec2.subtract(ctx.vec1).normalize();
         double distance = ctx.vec2.distanceTo(ctx.vec1);
-        double realSpeed = (distance / (double) (ctx.age - 10)) * ctx.speed;
+        double realSpeed = distance / ((double)ctx.age);
         Vector3d vec = ray.mul(realSpeed, realSpeed, realSpeed);
         ctx.world.addParticle(ctx.getParticle(), ctx.vec1.getX(), ctx.vec1.getY(), ctx.vec1.getZ(), vec.getX(), vec.getY(), vec.getZ());
     }
@@ -169,6 +162,36 @@ public class ParticleEffects
 
             ctx.world.addParticle(ctx.getParticle(), ctx.vec1.x + x, ctx.vec1.y, ctx.vec1.z + z, 0, 0, 0);
         }
+    }
+
+
+    // static particles within area
+    public static void staticVolume(ParticleEffectContext ctx)
+    {
+        double[] rand1 = ctx.world.rand.doubles(ctx.numParticles, 0, 1).toArray();
+        double[] rand2 = ctx.world.rand.doubles(ctx.numParticles, 0, 1).toArray();
+        double[] rand3 = ctx.world.rand.doubles(ctx.numParticles, 0, 1).toArray();
+
+        for (int i = 0; i < ctx.numParticles; i++)
+        {
+            double x = ctx.vec1.x + (ctx.vec2.x * rand1[i]);
+            double y = ctx.vec1.y + (ctx.vec2.y * rand2[i]);
+            double z = ctx.vec1.z + (ctx.vec2.z * rand3[i]);
+            ctx.world.addParticle(ctx.getParticle(), x, y, z, 0, 0, 0);
+        }
+
+
+    }
+
+    public static void interferenceParticles(ParticleEffectContext ctx)
+    {
+        TileEntity tile = ctx.world.getTileEntity(new BlockPos(ctx.vec1.x, ctx.vec1.y, ctx.vec1.z));
+
+        if (tile instanceof AbstractMonolithTile)
+        {
+            ((AbstractMonolithTile) tile).spawnInterferenceParticles();
+        }
+
     }
 
 

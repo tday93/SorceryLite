@@ -1,23 +1,23 @@
 package com.sorcery.setup;
 
 import com.sorcery.Constants;
-import com.sorcery.block.ModBlock;
 import com.sorcery.entity.ModEntity;
-import com.sorcery.item.ModItem;
+import com.sorcery.loot.IronOreGeodeModifier;
 import com.sorcery.potion.ModEffect;
-import com.sorcery.spell.ModSpell;
 import com.sorcery.spell.Spell;
 import com.sorcery.tileentity.ModTile;
-import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Effect;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryBuilder;
+
+import javax.annotation.Nonnull;
 
 // Common Registry events
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -35,6 +35,12 @@ public class CommonRegistryEvents
     public static void onEntityTypeRegistry(final RegistryEvent.Register<EntityType<?>> event)
     {
         ModEntity.register(event);
+    }
+
+    @SubscribeEvent
+    public static void registerModifierSerializers(@Nonnull final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event)
+    {
+        event.getRegistry().register(new IronOreGeodeModifier.Serializer().setRegistryName(Constants.MODID, "iron_ore_geode"));
     }
 
     @SubscribeEvent

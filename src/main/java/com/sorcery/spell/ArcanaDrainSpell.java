@@ -42,7 +42,7 @@ public class ArcanaDrainSpell extends Spell
     public void doSuckParticleEffect(SpellUseContext context, ArcanaStorageTile tile)
     {
         Vector3d suckVec = Utils.getStaffVector(context.getPlayer());
-        ParticleEffectPacket pkt =  new ParticleEffectPacket(7, 0, suckVec, tile.getArcanaPulseTarget(), 20, 1, 0.5, 40);
+        ParticleEffectPacket pkt =  new ParticleEffectPacket(7, 0, suckVec, tile.getOwnPulseTarget(), 20, 1, 0.5, 40);
         PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt);
     }
 }

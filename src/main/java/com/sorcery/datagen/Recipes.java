@@ -2,17 +2,13 @@ package com.sorcery.datagen;
 
 import com.sorcery.block.ModBlock;
 import com.sorcery.item.ModItem;
-import jdk.nashorn.internal.ir.Block;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
@@ -43,6 +39,13 @@ public class Recipes extends RecipeProvider
                 .setGroup("sorcery")
                 .addCriterion("sorcery:polished_runestone", InventoryChangeTrigger.Instance.forItems(ModBlock.POLISHED_RUNESTONE.get()))
                 .build(consumer);
+
+        // -- Runestones
+        runestoneRecipe(consumer, ModBlock.CHISELED_RUNESTONE.get(), ModItem.SORCEROUS_CATALYST.get());
+        runestoneRecipe(consumer, ModBlock.DARK_RUNESTONE.get(), Items.BEEF);
+        runestoneRecipe(consumer, ModBlock.LAPIS_RUNESTONE.get(), Items.LAPIS_BLOCK);
+        runestoneRecipe(consumer, ModBlock.LUNAR_RUNESTONE.get(), Items.IRON_INGOT);
+        runestoneRecipe(consumer, ModBlock.SOLAR_RUNESTONE.get(), Items.GOLD_INGOT);
 
         ShapedRecipeBuilder.shapedRecipe(ModBlock.POLISHED_RUNESTONE.get(), 8)
                 .patternLine("xxx")
@@ -125,6 +128,21 @@ public class Recipes extends RecipeProvider
                 .setGroup("sorcery")
                 .addCriterion("unique_component", InventoryChangeTrigger.Instance.forItems(uniqueComponent))
                 .build(consumer);
+    }
+
+    protected void runestoneRecipe(Consumer<IFinishedRecipe> consumer, IItemProvider monoBlock, Item catalyst)
+    {
+        ShapedRecipeBuilder.shapedRecipe(monoBlock, 1)
+                .patternLine("yyy")
+                .patternLine("yxy")
+                .patternLine("yyy")
+                .key('x', catalyst)
+                .key('y', ModBlock.POLISHED_RUNESTONE.get())
+                .setGroup("sorcery")
+                .addCriterion("catalyst", InventoryChangeTrigger.Instance.forItems(catalyst))
+                .addCriterion("runestone", InventoryChangeTrigger.Instance.forItems(ModBlock.POLISHED_RUNESTONE.get()))
+                .build(consumer);
+
     }
 
 }

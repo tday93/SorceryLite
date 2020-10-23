@@ -9,7 +9,6 @@ import net.minecraftforge.common.util.LazyOptional;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.naming.spi.ResolveResult;
 
 public class SpellcastingProvider implements ICapabilitySerializable<CompoundNBT>
 {

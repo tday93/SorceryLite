@@ -1,9 +1,10 @@
 package com.sorcery.tileentity;
 
-import com.sorcery.block.MonolithBlock;
+import com.sorcery.Sorcery;
 import com.sorcery.particle.ParticleEffectContext;
 import com.sorcery.particle.ParticleEffects;
 import com.sorcery.particle.Particles;
+import com.sorcery.utils.MonolithPattern;
 import com.sorcery.utils.Utils;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.math.vector.Vector3d;
@@ -25,7 +26,7 @@ public class LunarMonolithTile extends AbstractMonolithTile implements ITickable
 
 
     public LunarMonolithTile(){
-        super(ModTile.LUNAR_MONOLITH_TILE, 1000);
+        super(ModTile.LUNAR_MONOLITH_TILE, 1000, MonolithPattern.LUNAR);
         this.arcanaStorage.extractArcana(1000, false);
         this.arcanaPerRegen = 10;
         this.phaseMap.put(0, 3d);
@@ -42,45 +43,42 @@ public class LunarMonolithTile extends AbstractMonolithTile implements ITickable
     public void tick()
     {
         long worldTicks = this.getOffsetWorldTicks();
-
         if (!this.world.isRemote())
         {
             // Arcana generation
-            if (worldTicks % ticksPerRegen == 0 && this.active && !this.interference)
+            if (worldTicks % ticksPerRegen == 0 && !this.world.isDaytime() && !this.beingInterfered())
             {
                 this.receiveArcana((int)((double)this.arcanaPerRegen * this.cycleMultiplier));
             }
-
-            // Activity setting
+            // Set generation amounts
             if (worldTicks % 20 == 0)
             {
-                if (this.world.isDaytime())
+                if (!this.world.isDaytime())
                 {
-                    this.setActivity(false);
-                } else {
-                    this.setActivity(true);
-
                     int moonPhase = this.world.getDimensionType().getMoonPhase(worldTicks);
                     this.cycleMultiplier = this.phaseMap.get(moonPhase);
-                }
-                if (this.interference)
-                {
-                    this.setActivity(false);
                 }
             }
         } else {
             // Particles
             if (worldTicks % 5 == 0)
             {
-                if (this.getBlockState().get(MonolithBlock.ACTIVE))
+                if (!this.beingInterfered() && this.world.canBlockSeeSky(this.pos))
                 {
                     Vector3d moonVec = Utils.getMoonVector(this.world);
-                    ParticleEffects.drawIn(new ParticleEffectContext(world, Particles.getLunarSparks(), this.arcanaPulseSource, moonVec, 10, 1, 1, 40));
+                    if (isMoonOut(moonVec))
+                    {
+                        ParticleEffects.drawIn(new ParticleEffectContext(world, Particles.getLunarSparks(), this.getOwnPulseTarget(), moonVec, 10, 1, 1, 40));
+                    }
                 }
             }
 
         }
         super.tick();
+    }
 
+    private boolean isMoonOut(Vector3d moonVec)
+    {
+        return moonVec.y > 0;
     }
 }

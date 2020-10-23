@@ -1,8 +1,8 @@
 package com.sorcery.tileentity;
 
-import com.sorcery.block.MonolithBlock;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.ParticleEffectPacket;
+import com.sorcery.utils.MonolithPattern;
 import com.sorcery.utils.Utils;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.Items;
@@ -19,7 +19,7 @@ public class LapisMonolithTile extends AbstractMonolithTile
 
     public LapisMonolithTile()
     {
-        super(ModTile.LAPIS_MONOLITH_TILE, 1000);
+        super(ModTile.LAPIS_MONOLITH_TILE, 1000, MonolithPattern.LAPIS);
         this.arcanaStorage.extractArcana(1000, false);
     }
 
@@ -42,7 +42,7 @@ public class LapisMonolithTile extends AbstractMonolithTile
     public void doSuckParticleEffect(ItemEntity entity)
     {
         Vector3d suckVec = entity.getPositionVec();
-        ParticleEffectPacket pkt =  new ParticleEffectPacket(7, 3, this.arcanaPulseSource, suckVec, 20, 1, 0.5, 40);
+        ParticleEffectPacket pkt =  new ParticleEffectPacket(7, 3, this.getOwnPulseTarget(), suckVec, 20, 1, 0.5, 40);
         PacketHandler.sendToAllTrackingEntity(entity, pkt);
     }
 
@@ -52,15 +52,6 @@ public class LapisMonolithTile extends AbstractMonolithTile
         if (!world.isRemote())
         {
             long worldTicks = this.getOffsetWorldTicks();
-            if (worldTicks % 20 == 0) {
-                // check if active
-                if (this.arcanaStorage.getArcanaStored() < 10) {
-                    this.setActivity(false);
-                } else {
-                    this.setActivity(true);
-                }
-            }
-
             if (worldTicks % 40 == 0)
             {
                 // look for lapis on ground
