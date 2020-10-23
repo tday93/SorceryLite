@@ -22,7 +22,7 @@ public class AbstractMonolithBlock extends Block
 
     public AbstractMonolithBlock()
     {
-        super(Properties.create(Material.ROCK).hardnessAndResistance(hardness, resistance).sound(SoundType.STONE));
+        super(Properties.create(Material.ROCK).hardnessAndResistance(hardness, resistance).sound(SoundType.STONE).setLightLevel((state) -> {return state.get(ARCANA_FILL);}));
         this.setDefaultState(this.stateContainer.getBaseState().with(ACTIVE, Boolean.FALSE).with(ARCANA_FILL, 0));
     }
 
@@ -37,18 +37,17 @@ public class AbstractMonolithBlock extends Block
         {
             world.setBlockState(pos, state.with(ARCANA_FILL, arcanaFill).with(ACTIVE, (arcanaFill > 2)));
         }
-
     }
 
     @Override
     public int getStrongPower(BlockState blockState, IBlockReader blockAccess, BlockPos pos, Direction side) {
-        return blockState.get(ACTIVE) ? 15 : 0;
+        return blockState.get(ACTIVE) ? blockState.get(ARCANA_FILL) : 0;
     }
 
     @Override
     public int getWeakPower(BlockState blockState, IBlockReader blockAccess, BlockPos pos, Direction side)
     {
-        return blockState.get(ACTIVE) ? 15 : 0;
+        return blockState.get(ACTIVE) ? blockState.get(ARCANA_FILL) : 0;
     }
 
 }

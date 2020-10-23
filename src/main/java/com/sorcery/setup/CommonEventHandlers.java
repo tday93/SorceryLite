@@ -3,7 +3,10 @@ package com.sorcery.setup;
 import com.sorcery.arcana.ArcanaCapability;
 import com.sorcery.arcana.ArcanaProvider;
 import com.sorcery.arcana.IArcanaStorage;
-import com.sorcery.item.*;
+import com.sorcery.item.PortableArcanaItem;
+import com.sorcery.item.SpellbookItem;
+import com.sorcery.item.SpellcastingItem;
+import com.sorcery.item.WandItem;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.ArcanaCapSyncPacket;
 import com.sorcery.network.packets.SpellCapSyncPacket;
@@ -11,22 +14,16 @@ import com.sorcery.spellcasting.ISpellcasting;
 import com.sorcery.spellcasting.SpellcastingCapability;
 import com.sorcery.spellcasting.SpellcastingProvider;
 import com.sorcery.tileentity.AbstractMonolithTile;
-import com.sorcery.utils.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootEntry;
-import net.minecraft.loot.LootPool;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.lwjgl.system.CallbackI;
 
 // Event Handlers
 @Mod.EventBusSubscriber
@@ -63,7 +60,6 @@ public class CommonEventHandlers
         }
         if (event.getObject().getItem() instanceof SpellbookItem)
         {
-            System.out.println("attach cap to spellbook");
             event.addCapability(SpellcastingCapability.SPELLCASTING_LOC, new SpellcastingProvider());
         }
     }

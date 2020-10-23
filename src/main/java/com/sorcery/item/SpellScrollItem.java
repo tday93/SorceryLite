@@ -1,6 +1,5 @@
 package com.sorcery.item;
 
-import com.sorcery.Constants;
 import com.sorcery.spell.Spell;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;

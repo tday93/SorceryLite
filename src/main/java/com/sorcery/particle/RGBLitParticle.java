@@ -1,12 +1,7 @@
 package com.sorcery.particle;
 
-import net.minecraft.client.particle.IAnimatedSprite;
-import net.minecraft.client.particle.IParticleFactory;
-import net.minecraft.client.particle.IParticleRenderType;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.SpriteTexturedParticle;
+import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -36,12 +31,23 @@ public class RGBLitParticle extends SpriteTexturedParticle
 
 
     @Override
-    public void tick()
-    {
-        super.tick();
+    public void tick() {
         if (this.doAnimation)
         {
             this.selectSpriteWithAge(this.spriteSet);
+        }
+        this.prevPosX = this.posX;
+        this.prevPosY = this.posY;
+        this.prevPosZ = this.posZ;
+        if (this.age++ >= this.maxAge) {
+            this.setExpired();
+        } else {
+            this.motionY -= 0.04D * (double)this.particleGravity;
+            this.move(this.motionX, this.motionY, this.motionZ);
+            if (this.onGround) {
+                this.motionX *= (double)0.7F;
+                this.motionZ *= (double)0.7F;
+            }
         }
     }
 

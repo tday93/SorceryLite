@@ -48,7 +48,7 @@ public class ParticleEffects
     {
         Vector3d ray = ctx.vec2.subtract(ctx.vec1).normalize();
         double distance = ctx.vec2.distanceTo(ctx.vec1);
-        double realSpeed = distance / ((double)ctx.age - 1);
+        double realSpeed = distance / ((double)ctx.age);
         Vector3d vec = ray.mul(realSpeed, realSpeed, realSpeed);
         ctx.world.addParticle(ctx.getParticle(), ctx.vec1.getX(), ctx.vec1.getY(), ctx.vec1.getZ(), vec.getX(), vec.getY(), vec.getZ());
     }

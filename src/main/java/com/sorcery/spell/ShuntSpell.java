@@ -2,7 +2,6 @@ package com.sorcery.spell;
 
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.ParticleEffectPacket;
-import com.sorcery.particle.ModParticle;
 import com.sorcery.particle.Particles;
 import com.sorcery.utils.Utils;
 import net.minecraft.entity.MobEntity;

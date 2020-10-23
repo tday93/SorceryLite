@@ -1,7 +1,6 @@
 package com.sorcery.network.packets;
 
 import com.sorcery.Sorcery;
-import com.sorcery.item.SpellbookItem;
 import com.sorcery.item.WandItem;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.spellcasting.ISpellcasting;

@@ -1,7 +1,5 @@
 package com.sorcery.particle;
 
-import com.sorcery.Constants;
-import com.sorcery.block.ModBlock;
 import com.sorcery.utils.ModColor;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleType;

@@ -1,10 +1,6 @@
 package com.sorcery.item;
 
 
-import com.sorcery.spell.Spell;
-import com.sorcery.spell.SpellUseContext;
-import com.sorcery.utils.Utils;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 

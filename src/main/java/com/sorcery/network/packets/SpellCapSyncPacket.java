@@ -1,6 +1,5 @@
 package com.sorcery.network.packets;
 
-import com.sorcery.item.SpellbookItem;
 import com.sorcery.item.WandItem;
 import com.sorcery.spellcasting.ISpellcasting;
 import com.sorcery.spellcasting.SpellcastingCapability;
@@ -11,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
-import org.lwjgl.system.CallbackI;
 
 import java.util.function.Supplier;
 

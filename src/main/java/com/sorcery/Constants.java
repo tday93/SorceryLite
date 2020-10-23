@@ -4,9 +4,6 @@ import com.sorcery.setup.ModSetup;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Constants
 {
     public static final String MODID = "sorcery";

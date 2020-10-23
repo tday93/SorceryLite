@@ -1,16 +1,10 @@
 package com.sorcery.event;
 
-import com.sorcery.Sorcery;
 import com.sorcery.item.SpellcastingItem;
-import com.sorcery.item.StaffItem;
-import com.sorcery.item.WandItem;
 import com.sorcery.spell.CastType;
 import com.sorcery.spell.Spell;
 import com.sorcery.spell.SpellUseContext;
-import com.sorcery.utils.Utils;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

@@ -1,5 +1,6 @@
 package com.sorcery.spell;
 
+import com.sorcery.Sorcery;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockPos;
@@ -29,7 +30,7 @@ public class DigSpell extends Spell
         if (context.hasHitPos())
         {
             BlockPos pos = context.getHitPos();
-            System.out.println("Breaking block at:" + pos);
+            Sorcery.getLogger().debug("Breaking block at:" + pos);
             context.getWorld().destroyBlock(context.getHitPos(), true);
             return ActionResultType.SUCCESS;
         }

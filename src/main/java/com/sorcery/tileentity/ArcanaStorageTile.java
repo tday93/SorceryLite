@@ -8,7 +8,9 @@ import com.sorcery.particle.ParticleEffects;
 import com.sorcery.particle.Particles;
 import com.sorcery.utils.Utils;
 import net.minecraft.block.BlockState;
-import net.minecraft.nbt.*;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.LongArrayNBT;
+import net.minecraft.nbt.LongNBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -22,7 +24,8 @@ import net.minecraftforge.common.util.LazyOptional;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
 {
@@ -30,6 +33,7 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
     // static vars
     protected ArcanaStorage arcanaStorage = new ArcanaStorage(10000);
     protected int transferRate = 1000;
+    protected int arcanaTransferTicks = 20;
     // -- the max distance this tile will interact with other
     public double interactionRange = 8;
     // -- where the pulse should start from in relation to blockpos
@@ -64,8 +68,6 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
     protected Vector3d arcanaPulseTarget = null;
 
 
-
-
     public ArcanaStorageTile(TileEntityType<?> tileEntityTypeIn)
     {
         super(tileEntityTypeIn);
@@ -83,6 +85,15 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
 
         long worldTicks = this.getOffsetWorldTicks();
 
+        // Shared Stuff
+        if (worldTicks % 10 == 0)
+        {
+            if (this.arcanaTransferTargetPos != null && this.arcanaTransferTarget == null)
+            {
+                this.updateArcanaTransferTarget();
+            }
+        }
+
         // Client Side Stuff, mostly particle handling
         if (world.isRemote)
         {
@@ -98,7 +109,7 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         // Server side stuff, arcana sending etc.
         if (!world.isRemote)
         {
-            if (worldTicks % 20 == 0)
+            if (worldTicks % this.arcanaTransferTicks == 0)
             {
                 if (this.arcanaTransferTarget != null && !this.beingInterfered())
                 {
@@ -130,9 +141,18 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
     public void remove()
     {
         // Call remove other tile on every other acrcana storage tile in range
-        for (BlockPos pos : this.otherArcanaStorageTiles)
+        Sorcery.getLogger().debug("REMOVING TILE");
+        Sorcery.getLogger().debug("Arcana Sources:" + this.arcanaTransferSources);
+        Sorcery.getLogger().debug("Grid Monos:" + this.gridMonoliths);
+        this.updateTilesInRange();
+        BlockPos pos = this.getPos();
+        if (this.gridMonoliths.contains(pos))
         {
-            ((ArcanaStorageTile)this.world.getTileEntity(pos)).removeOtherTile(this.pos);
+            this.removeGrid();
+        }
+        for (BlockPos otherPos : this.otherArcanaStorageTiles)
+        {
+            ((ArcanaStorageTile)this.world.getTileEntity(otherPos)).removeOtherTile(pos);
         }
         super.remove();
     }
@@ -240,7 +260,10 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
             if (this.world != null)
             {
                 this.arcanaTransferTarget = (ArcanaStorageTile)this.world.getTileEntity(this.arcanaTransferTargetPos);
-                this.arcanaPulseTarget = this.arcanaTransferTarget.getOwnPulseTarget();
+                if (this.arcanaTransferTarget != null)
+                {
+                    this.arcanaPulseTarget = this.arcanaTransferTarget.getOwnPulseTarget();
+                }
             }
         } else {
             this.arcanaTransferTarget = null;
@@ -262,9 +285,15 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
 
     public void pingTransferSources()
     {
-        for (BlockPos pos : this.arcanaTransferSources)
+        try
         {
-            ((ArcanaStorageTile)this.world.getTileEntity(pos)).updateArcanaTransferTarget();
+            for (BlockPos pos : this.arcanaTransferSources)
+            {
+                ((ArcanaStorageTile) this.world.getTileEntity(pos)).updateArcanaTransferTarget();
+            }
+        } catch (NullPointerException exception)
+        {
+            Sorcery.getLogger().debug("Transfer source not yet loaded");
         }
     }
 
@@ -284,6 +313,7 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
 
    public void removeOtherTile(BlockPos pos)
    {
+       Sorcery.getLogger().debug("Removing other tile at: " + pos);
        if (this.gridMonoliths.contains(pos))
        {
            this.removeGrid();
@@ -291,10 +321,16 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
        this.otherArcanaStorageTiles.remove(pos);
        this.negativeInterferingTiles.remove(pos);
        this.arcanaTransferSources.remove(pos);
-       if (this.arcanaTransferTargetPos == pos)
+       Sorcery.getLogger().debug("Checking transfer target");
+       Sorcery.getLogger().debug("own TransferTargetPos= " + this.arcanaTransferTargetPos);
+       Sorcery.getLogger().debug("incoming Pos= " + pos);
+       // Equals doesn't work here, will look into more later
+       if (this.arcanaTransferTargetPos.withinDistance(pos, 0.2))
        {
+           Sorcery.getLogger().debug("Was arcana transfer target, removing");
            this.arcanaTransferTargetPos = null;
            this.arcanaTransferTarget = null;
+           this.arcanaPulseTarget = null;
        }
        if (this.tileOverridingInterference == pos)
        {
@@ -334,7 +370,6 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
             LongNBT transferTargetNBT = LongNBT.valueOf(this.arcanaTransferTargetPos.toLong());
             tag.put("TransferTarget", transferTargetNBT);
         }
-
         // interferingTiles
         LongArrayNBT negInterferingTilesNBT = Utils.blockPosSetToLongArray(this.negativeInterferingTiles);
         tag.put("NegInterferingTiles", negInterferingTilesNBT);
@@ -353,7 +388,7 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         }
 
         LongArrayNBT gridNBT = Utils.blockPosSetToLongArray(this.gridMonoliths);
-        tag.put("GridMonos", transferSourcesNBT);
+        tag.put("GridMonos", gridNBT);
 
         return tag;
     }
@@ -366,7 +401,8 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         }
         if (nbt.contains("TransferTarget"))
         {
-            this.arcanaTransferTargetPos = BlockPos.fromLong(((LongNBT)nbt.get("TransferTarget")).getLong());
+            BlockPos pos = BlockPos.fromLong(((LongNBT)nbt.get("TransferTarget")).getLong());
+            this.arcanaTransferTargetPos = pos;
         } else {
             this.arcanaTransferTargetPos = null;
         }

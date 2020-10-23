@@ -1,18 +1,13 @@
 package com.sorcery.setup;
 
 import com.sorcery.Constants;
-import com.sorcery.block.ModBlock;
 import com.sorcery.entity.ModEntity;
-import com.sorcery.item.ModItem;
 import com.sorcery.loot.IronOreGeodeModifier;
 import com.sorcery.potion.ModEffect;
-import com.sorcery.spell.ModSpell;
 import com.sorcery.spell.Spell;
 import com.sorcery.tileentity.ModTile;
-import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
-import net.minecraft.loot.LootTable;
 import net.minecraft.potion.Effect;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;

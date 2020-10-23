@@ -9,13 +9,7 @@ import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockPos;
 
-import static com.sorcery.item.ModItem.CRYSTAL_CARNELIAN;
-import static com.sorcery.item.ModItem.CRYSTAL_CHALCEDONY;
-import static com.sorcery.item.ModItem.GEODE;
-import static com.sorcery.item.ModItem.CRYSTAL_JASPER;
-import static com.sorcery.item.ModItem.CRYSTAL_NUUMMITE;
-import static com.sorcery.item.ModItem.CRYSTAL_SERPENTINE;
-import static com.sorcery.item.ModItem.CRYSTAL_SUGILITE;
+import static com.sorcery.item.ModItem.*;
 
 public class GeodeItem extends Item
 {

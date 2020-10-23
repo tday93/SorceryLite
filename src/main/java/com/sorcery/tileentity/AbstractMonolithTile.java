@@ -1,7 +1,7 @@
 package com.sorcery.tileentity;
 
-import com.sorcery.block.MonolithMiddleBlock;
 import com.sorcery.block.MonolithBottomBlock;
+import com.sorcery.block.MonolithMiddleBlock;
 import com.sorcery.block.MonolithTopBlock;
 import com.sorcery.particle.ParticleEffectContext;
 import com.sorcery.particle.ParticleEffects;
@@ -55,7 +55,7 @@ public abstract class AbstractMonolithTile extends ArcanaStorageTile implements 
             }
             if (worldTicks % 20 == 0)
             {
-                this.setArcanaFill((this.getStoredArcana() / this.getMaxArcana()) * 15);
+                this.setArcanaFill((int)(((double)this.getStoredArcana() / (double)this.getMaxArcana()) * 15));
             }
         }
         super.tick();
