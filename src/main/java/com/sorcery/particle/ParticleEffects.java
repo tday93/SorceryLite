@@ -1,7 +1,7 @@
 package com.sorcery.particle;
 
 import com.sorcery.tileentity.AbstractMonolithTile;
-import com.sorcery.utils.BasisVectors;
+import com.sorcery.utils.BasisVector;
 import com.sorcery.utils.Utils;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -74,7 +74,7 @@ public class ParticleEffects
     // spray of particles in a cone
     public static void coneSpray(ParticleEffectContext ctx)
     {
-        BasisVectors vecs = new BasisVectors(ctx.vec2);
+        BasisVector vecs = new BasisVector(ctx.vec2);
 
         double[] rand1 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
         double[] rand2 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
@@ -112,7 +112,7 @@ public class ParticleEffects
     // particles drawin in to source from a point a given distance along a direction vector
     public static void drawIn(ParticleEffectContext ctx)
     {
-        BasisVectors basis = new BasisVectors(ctx.vec2);
+        BasisVector basis = new BasisVector(ctx.vec2);
         Vector3d startingPoint = Utils.nBlocksAlongVector(ctx.vec1, ctx.vec2, 4);
 
         double[] rand1 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();

@@ -91,6 +91,7 @@ public class ModItem
     // -- Diamond
     public static final RegistryObject<Item> SCROLL_COMBUSTION = ITEMS.register("scroll_combustion", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COMBUSTION));
     public static final RegistryObject<Item> SCROLL_IGNITE = ITEMS.register("scroll_ignite", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_IGNITE));
+    public static final RegistryObject<Item> SCROLL_MAGIC_MISSILE = ITEMS.register("scroll_magic_missile", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_MAGIC_MISSILE));
 
     // -- Nether
     public static final RegistryObject<Item> SCROLL_CREATE_WATER = ITEMS.register("scroll_create_water", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CREATE_WATER));

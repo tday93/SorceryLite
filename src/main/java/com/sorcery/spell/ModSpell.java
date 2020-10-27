@@ -40,6 +40,9 @@ public class ModSpell
     // Diamond Spells
     public static final RegistryObject<Spell> SPELL_COMBUSTION = SPELLS.register("spell_combustion", () -> new CombustionSpell());
     public static final RegistryObject<Spell> SPELL_IGNITE = SPELLS.register("spell_ignite", () -> new IgniteSpell());
+    public static final RegistryObject<Spell> SPELL_MAGIC_MISSILE = SPELLS.register("spell_magic_missile", () -> new MagicMissileSpell(10));
+    // -- Magic Missile Spell
+    // -- Better Dig Spell
 
     // Nether Spells
     public static final RegistryObject<Spell> SPELL_CREATE_WATER = SPELLS.register("spell_create_water", () -> new CreateWaterSpell());

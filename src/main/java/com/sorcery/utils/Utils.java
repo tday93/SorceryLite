@@ -136,7 +136,7 @@ public class Utils {
 
     public static Vector3d getStaffVector(PlayerEntity player)
     {
-        BasisVectors basis = new BasisVectors(player.getLook(1));
+        BasisVector basis = new BasisVector(player.getLook(1));
 
         Vector3d vec = basis.addXYZ(player.getEyePosition(1), 0.25, 0, 0.1);
 
@@ -229,6 +229,25 @@ public class Utils {
                     return false;
                 }
                 return true;
+            }
+        };
+        return pred;
+    }
+
+    public static Predicate<Entity> getShootableEntites(Entity excludedEntityIn)
+    {
+        Predicate<Entity> pred = new Predicate<Entity>()
+        {
+            Entity excludedEntity = excludedEntityIn;
+            @Override
+            public boolean apply(@Nullable Entity input)
+            {
+                if (input instanceof LivingEntity && input != excludedEntityIn)
+                {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         };
         return pred;

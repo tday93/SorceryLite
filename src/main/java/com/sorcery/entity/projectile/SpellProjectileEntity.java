@@ -1,6 +1,7 @@
 package com.sorcery.entity.projectile;
 
 import com.sorcery.Constants;
+import com.sorcery.Sorcery;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.IRendersAsItem;
@@ -22,8 +23,9 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public class SpellProjectileEntity extends DamagingProjectileEntity implements IRendersAsItem
 {
     public ResourceLocation projectileTexture;
-    public int ticksInAir;
     public IParticleData baseParticle;
+
+    private int maxTicksExisted = 100;
 
     public SpellProjectileEntity(EntityType<? extends SpellProjectileEntity> entityType, World world)
     {
@@ -43,13 +45,16 @@ public class SpellProjectileEntity extends DamagingProjectileEntity implements I
     {
     }
 
-    // called once per tick
-    public void doPerMotionTick()
+    @Override
+    public void tick()
     {
-        this.world.addParticle(this.getParticle(), this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), 0.0D, 0.0D, 0.0D);
+        if (this.ticksExisted > this.maxTicksExisted)
+        {
+            this.remove();
+        }
+        this.ticksExisted++;
+        super.tick();
     }
-
-
 
     // Override of base onImpact, and dispatch to onBlockHit and onEntity Hit
     @Override
@@ -69,48 +74,10 @@ public class SpellProjectileEntity extends DamagingProjectileEntity implements I
         }
     }
 
-    // add gravity, remove default particle spawning from base class
     @Override
-
-    public void tick() {
-        Entity entity = this.func_234616_v_();
-        if (this.world.isRemote || (entity == null || !entity.removed) && this.world.isBlockLoaded(this.getPosition())) {
-            super.tick();
-            if (this.isFireballFiery()) {
-                this.setFire(1);
-            }
-
-            RayTraceResult raytraceresult = ProjectileHelper.func_234618_a_(this, this::func_230298_a_);
-            if (raytraceresult.getType() != RayTraceResult.Type.MISS && !net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, raytraceresult)) {
-                this.onImpact(raytraceresult);
-            }
-
-            this.doBlockCollisions();
-            Vector3d vector3d = this.getMotion();
-            double d0 = this.getPosX() + vector3d.x;
-            double d1 = this.getPosY() + vector3d.y;
-            double d2 = this.getPosZ() + vector3d.z;
-            ProjectileHelper.rotateTowardsMovement(this, 0.2F);
-            float f = this.getMotionFactor();
-            if (this.isInWater()) {
-                for(int i = 0; i < 4; ++i) {
-                    float f1 = 0.25F;
-                    this.world.addParticle(ParticleTypes.BUBBLE, d0 - vector3d.x * 0.25D, d1 - vector3d.y * 0.25D, d2 - vector3d.z * 0.25D, vector3d.x, vector3d.y, vector3d.z);
-                }
-
-                f = 0.8F;
-            }
-
-            if (!this.hasNoGravity())
-            {
-                vector3d = vector3d.add(0,-0.05, 0);
-            }
-
-            this.setMotion(vector3d.add(this.accelerationX, this.accelerationY, this.accelerationZ).scale((double)f));
-            this.setPosition(d0, d1, d2);
-        } else {
-            this.remove();
-        }
+    protected float getMotionFactor() {
+        // gonna shove a bunch of nonesense in here to deal with how super handles motion in its tick method
+        return 0.95F;
     }
 
     @Override
