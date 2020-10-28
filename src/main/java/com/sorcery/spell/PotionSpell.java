@@ -44,13 +44,13 @@ public class PotionSpell extends Spell
 
         if (context.wasEntityTargeted())
         {
-            EffectInstance potionEffect = new EffectInstance(effect, duration, this.amp);
+            EffectInstance potionEffect = new EffectInstance(effect, duration, this.amp, false, false);
             context.getTargetEntity().addPotionEffect(potionEffect);
             return ActionResultType.SUCCESS;
         }
         else if (this.castOnSelf)
         {
-            EffectInstance potionEffect = new EffectInstance(effect, duration, this.amp);
+            EffectInstance potionEffect = new EffectInstance(effect, duration, this.amp, false, false);
             context.getPlayer().addPotionEffect(potionEffect);
             return ActionResultType.SUCCESS;
         }

@@ -68,6 +68,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.SCROLL_COMBUSTION.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.SCROLL_IGNITE.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.SCROLL_MAGIC_MISSILE.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_EARTHEN_WALL.get(), "scroll_evocation");
         // -- Nether
         simpleSingleTexture(ModItem.SCROLL_CREATE_WATER.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.SCROLL_REPEL.get(), "scroll_evocation");
