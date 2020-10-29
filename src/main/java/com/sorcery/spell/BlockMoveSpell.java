@@ -1,14 +1,20 @@
 package com.sorcery.spell;
 
-import com.sorcery.Sorcery;
+import com.sorcery.Constants;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3i;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -17,45 +23,48 @@ public class BlockMoveSpell extends Spell
     private  Vector3i size;
     private Vector3i offset;
     private Vector3i translation;
+    private ResourceLocation allowedBlocksTag;
 
-    public BlockMoveSpell(int arcanaCost, Vector3i sizeIn, Vector3i offsetIn, Vector3i translationIn)
+    public BlockMoveSpell(int arcanaCost, Vector3i sizeIn, Vector3i offsetIn, Vector3i translationIn, ResourceLocation allowedBlocks)
     {
         super(arcanaCost);
-        this.size = sizeIn;
+        // doing this so that sizeIn can represent the total size
+        this.size = new Vector3i(sizeIn.getX() - 1, sizeIn.getY() - 1, sizeIn.getZ() -1);
         this.offset = offsetIn;
         this.translation = translationIn;
+        this.allowedBlocksTag = allowedBlocks;
+
     }
 
 
     @Override
     public ActionResultType doCastFinal(SpellUseContext context)
     {
+        ITag<Block> tag = BlockTags.getCollection().getTagByID(this.allowedBlocksTag);
         Direction direction = context.getPlayer().getAdjustedHorizontalFacing();
 
         Vector3i rotSize = rotateVector(this.size, direction);
         Vector3i rotOffest = rotateVector(this.offset, direction);
         Vector3i rotTranslation = rotateVector(this.translation, direction);
 
-        Sorcery.getLogger().debug("Hit Block: " + context.getHitPos());
         BlockPos startingPos = context.getHitPos().add(rotOffest);
         BlockPos endingPos = startingPos.add(rotSize);
-        Sorcery.getLogger().debug("Starting Pos: " + startingPos);
-        Sorcery.getLogger().debug("Ending Pos: " + endingPos);
 
         Stream<BlockPos> AOE = BlockPos.getAllInBox(startingPos, endingPos);
 
         Map<BlockPos, BlockState> startingState = new HashMap<>();
 
         // collect all blocks to be moved, and clear current position
-        AOE.forEach((pos ->
+        AOE.forEach((pos) ->
         {
             BlockState state = context.getWorld().getBlockState(pos);
-            if (!state.getBlock().hasTileEntity(state))
+            if (!state.getBlock().hasTileEntity(state) && tag.contains(state.getBlock()))
             {
-                startingState.put(pos, state);
+                startingState.put(pos.toImmutable(), state);
                 context.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
             }
-        }));
+        });
+
         // move blocks into position
         for (Map.Entry<BlockPos, BlockState> entry : startingState.entrySet())
         {
