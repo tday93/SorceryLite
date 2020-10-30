@@ -35,6 +35,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.SIGIL_ENCHANTMENT.get(), "sigil_enchantment");
         simpleSingleTexture(ModItem.SIGIL_NECROMANCY.get(), "sigil_necromancy");
         simpleSingleTexture(ModItem.SIGIL_TRANSMUTATION.get(), "sigil_transmutation");
+        // Crystals
         simpleSingleTexture(ModItem.CRYSTAL_ARCANE.get(), "crystal_arcane");
         simpleSingleTexture(ModItem.CRYSTAL_INERT.get(), "crystal_inert");
         simpleSingleTexture(ModItem.CRYSTAL_CARNELIAN.get(), "crystal_carnelian");
@@ -44,7 +45,9 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.CRYSTAL_SERPENTINE.get(), "crystal_serpentine");
         simpleSingleTexture(ModItem.CRYSTAL_NUUMMITE.get(), "crystal_nuummite");
         simpleSingleTexture(ModItem.GEODE.get(), "geode");
+        // Crafting Items
         simpleSingleTexture(ModItem.SORCEROUS_CATALYST.get(), "hadean_ember");
+
         simpleSingleTexture(ModItem.SPELL_BOOK.get(), "grimoire");
         // simpleSingleTexture(ModItem.SORCEROUS_STAFF.get(), "apprentice_staff");
         simpleSingleTexture(ModItem.CRYSTAL_RESONATOR.get(), "crystal_resonator");
@@ -72,6 +75,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.SCROLL_IGNITE.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.SCROLL_LESSER_FEATHER_FALL.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.SCROLL_MAGIC_MISSILE.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.SCROLL_SEISMIC_ECHO.get(), "scroll_evocation");
         simpleSingleTexture(ModItem.SCROLL_STONEFLESH.get(), "scroll_evocation");
         // -- Nether
         simpleSingleTexture(ModItem.SCROLL_CREATE_WATER.get(), "scroll_evocation");

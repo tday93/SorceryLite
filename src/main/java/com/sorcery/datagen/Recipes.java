@@ -1,5 +1,6 @@
 package com.sorcery.datagen;
 
+import com.sorcery.Constants;
 import com.sorcery.block.ModBlock;
 import com.sorcery.item.ModItem;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
@@ -7,7 +8,9 @@ import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.Tags;
 
@@ -29,6 +32,17 @@ public class Recipes extends RecipeProvider
                 .setGroup("sorcery")
                 .addCriterion("redstone", InventoryChangeTrigger.Instance.forItems(Items.REDSTONE))
                 .addCriterion("lapis", InventoryChangeTrigger.Instance.forItems(Items.LAPIS_LAZULI))
+                .build(consumer);
+
+        // This should be any of the base crystals, but for now just carnelian to see if the bug gets fixed.
+        ShapelessRecipeBuilder.shapelessRecipe(ModItem.CRYSTAL_ARCANE.get(), 8)
+                .addIngredient(Items.DIAMOND)
+                .addIngredient(ModItem.SORCEROUS_CATALYST.get())
+                .addIngredient(ModItem.CRYSTAL_CARNELIAN.get())
+                .setGroup("sorcery")
+                .addCriterion("diamond", InventoryChangeTrigger.Instance.forItems(Items.REDSTONE))
+                .addCriterion("sorcerous", InventoryChangeTrigger.Instance.forItems(Items.LAPIS_LAZULI))
+                .addCriterion("crystal", InventoryChangeTrigger.Instance.forItems(ModItem.CRYSTAL_CARNELIAN.get()))
                 .build(consumer);
 
         // Shaped Recipes
@@ -72,6 +86,18 @@ public class Recipes extends RecipeProvider
         wandRecipeTier2(consumer, ModItem.WAND_SIGNAL_FLARE.get(), Items.GUNPOWDER);
 
         //Scrolls
+        // -- Pre-Iron
+        // -- Iron
+        // -- Diamond
+        spellScrollRecipeTier3(consumer, ModItem.SCROLL_COMBUSTION.get(), Items.COAL_BLOCK);
+        spellScrollRecipeTier3(consumer, ModItem.SCROLL_DIG.get(), Items.DIAMOND_PICKAXE);
+        spellScrollRecipeTier3(consumer, ModItem.SCROLL_DRAIN_LIFE.get(), Items.ROTTEN_FLESH);
+        spellScrollRecipeTier3(consumer, ModItem.SCROLL_EARTHEN_WALL.get(), Items.DIRT);
+        spellScrollRecipeTier3(consumer, ModItem.SCROLL_IGNITE.get(), Items.FLINT_AND_STEEL);
+        spellScrollRecipeTier3(consumer, ModItem.SCROLL_LESSER_FEATHER_FALL.get(), Items.FEATHER);
+        spellScrollRecipeTier3(consumer, ModItem.SCROLL_MAGIC_MISSILE.get(), Items.ARROW);
+        spellScrollRecipeTier3(consumer, ModItem.SCROLL_SEISMIC_ECHO.get(), Items.DIAMOND_BLOCK);
+        spellScrollRecipeTier3(consumer, ModItem.SCROLL_STONEFLESH.get(), Items.STONE);
     }
 
     protected void spellScrollRecipeTier1(Consumer<IFinishedRecipe> consumer, Item scrollItem, Item uniqueComponent)
@@ -85,6 +111,21 @@ public class Recipes extends RecipeProvider
                 .key('z', Items.PAPER)
                 .setGroup("sorcery_spells")
                 .addCriterion("sorcery:sorcerous_catalyst", InventoryChangeTrigger.Instance.forItems(ModItem.SORCEROUS_CATALYST.get()))
+                .addCriterion("unique_component", InventoryChangeTrigger.Instance.forItems(uniqueComponent))
+                .build(consumer);
+    }
+
+    protected void spellScrollRecipeTier3(Consumer<IFinishedRecipe> consumer, Item scrollItem, Item uniqueComponent)
+    {
+        ShapedRecipeBuilder.shapedRecipe(scrollItem)
+                .patternLine(" x ")
+                .patternLine(" y ")
+                .patternLine(" z ")
+                .key('x', uniqueComponent)
+                .key('y', ModItem.CRYSTAL_ARCANE.get())
+                .key('z', Items.PAPER)
+                .setGroup("sorcery_spells")
+                .addCriterion("arcane_crystal", InventoryChangeTrigger.Instance.forItems(ModItem.CRYSTAL_ARCANE.get()))
                 .addCriterion("unique_component", InventoryChangeTrigger.Instance.forItems(uniqueComponent))
                 .build(consumer);
     }

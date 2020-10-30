@@ -49,10 +49,10 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_DRAIN_LIFE = SPELLS.register("spell_drain_life", () -> new DrainLifeSpell(10, 4));
     public static final RegistryObject<Spell> SPELL_EARTHEN_WALL = SPELLS.register("spell_earthen_wall", () -> new BlockMoveSpell(10, new Vector3i(3, 3, 1), new Vector3i(-1, -2, 0), new Vector3i(0, 3, 0), Constants.EARTHEN_WALL_BLOCKS));
     public static final RegistryObject<Spell> SPELL_IGNITE = SPELLS.register("spell_ignite", () -> new IgniteSpell());
-    public static final RegistryObject<Spell> SPELL_LESSER_FEATHER_FALL = SPELLS.register("spell_lesser_feather_fall", () -> new PotionSpell(10, ModEffect.FEATHER_FALLING, (20 * 60 * 5), 1));
+    public static final RegistryObject<Spell> SPELL_LESSER_FEATHER_FALL = SPELLS.register("spell_lesser_feather_fall", () -> new PotionSpell(10, ModEffect.FEATHER_FALLING, (20 * 60 * 5), 0));
     public static final RegistryObject<Spell> SPELL_MAGIC_MISSILE = SPELLS.register("spell_magic_missile", () -> new MagicMissileSpell(10));
-    // -- seismic echo
-    public static final RegistryObject<Spell> SPELL_STONEFLESH = SPELLS.register("spell_stoneflesh", () -> new PotionSpell(10, ModEffect.STONEFLESH, (20 * 60 * 5), 1));
+    public static final RegistryObject<Spell> SPELL_SEISMIC_ECHO = SPELLS.register("spell_seismic_echo", () -> new SeismicEchoSpell(10, 8));
+    public static final RegistryObject<Spell> SPELL_STONEFLESH = SPELLS.register("spell_stoneflesh", () -> new PotionSpell(10, ModEffect.STONEFLESH, (20 * 60 * 5), 0));
 
     // Nether Spells
     public static final RegistryObject<Spell> SPELL_CREATE_WATER = SPELLS.register("spell_create_water", () -> new CreateWaterSpell());

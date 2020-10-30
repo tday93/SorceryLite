@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sorcery_spells",
+  "pattern": [
+    " x ",
+    " y ",
+    " z "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "y": {
+      "item": "sorcery:crystal_arcane"
+    },
+    "z": {
+      "item": "minecraft:paper"
+    }
+  },
+  "result": {
+    "item": "sorcery:scroll_drain_life"
+  }
+}

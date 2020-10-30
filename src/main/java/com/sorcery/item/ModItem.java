@@ -58,7 +58,7 @@ public class ModItem
     // Geode
     public static final RegistryObject<Item> GEODE = ITEMS.register("geode", () -> new GeodeItem(Constants.ITEM_PROPS));
 
-    // Crushed Wolframite
+    // Crafting Items
     public static final RegistryObject<Item> SORCEROUS_CATALYST = ITEMS.register("sorcerous_catalyst", () -> new Item(Constants.ITEM_PROPS));
 
     // Utility Items
@@ -96,7 +96,8 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_IGNITE = ITEMS.register("scroll_ignite", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_IGNITE));
     public static final RegistryObject<Item> SCROLL_LESSER_FEATHER_FALL = ITEMS.register("scroll_lesser_feather_fall", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_FEATHER_FALL));
     public static final RegistryObject<Item> SCROLL_MAGIC_MISSILE = ITEMS.register("scroll_magic_missile", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_MAGIC_MISSILE));
-    public static final RegistryObject<Item> SCROLL_STONEFLESH = ITEMS.register("scroll_stone_flesh", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_STONEFLESH));
+    public static final RegistryObject<Item> SCROLL_SEISMIC_ECHO = ITEMS.register("scroll_seismic_echo", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_SEISMIC_ECHO));
+    public static final RegistryObject<Item> SCROLL_STONEFLESH = ITEMS.register("scroll_stoneflesh", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_STONEFLESH));
 
     // -- Nether
     public static final RegistryObject<Item> SCROLL_CREATE_WATER = ITEMS.register("scroll_create_water", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CREATE_WATER));
@@ -127,7 +128,7 @@ public class ModItem
     // -- End
 
     // Block Items
-    public static final RegistryObject<Item> POLISHED_RUNESTONE = ITEMS.register("polished_wolfram", () -> new BlockItem(ModBlock.POLISHED_RUNESTONE.get(), Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> POLISHED_RUNESTONE = ITEMS.register("polished_runestone", () -> new BlockItem(ModBlock.POLISHED_RUNESTONE.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> RUNEWOOD_LOG = ITEMS.register("runewood_log", () -> new BlockItem(ModBlock.RUNEWOOD_LOG.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> STRIPPED_RUNEWOOD_LOG = ITEMS.register("stripped_runewood_log", () -> new BlockItem(ModBlock.STRIPPED_RUNEWOOD_LOG.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> RUNEWOOD_LEAVES = ITEMS.register("runewood_leaves", () -> new BlockItem(ModBlock.RUNEWOOD_LEAVES.get(), Constants.ITEM_PROPS));

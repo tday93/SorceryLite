@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "sorcery",
+  "ingredients": [
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "sorcery:sorcerous_catalyst"
+    },
+    {
+      "item": "sorcery:crystal_carnelian"
+    }
+  ],
+  "result": {
+    "item": "sorcery:crystal_arcane",
+    "count": 8
+  }
+}

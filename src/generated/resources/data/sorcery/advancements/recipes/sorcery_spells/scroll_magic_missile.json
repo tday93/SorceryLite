@@ -2,16 +2,26 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sorcery:polished_wolfram"
+      "sorcery:scroll_magic_missile"
     ]
   },
   "criteria": {
-    "sorcery:sorcerous_catalyst": {
+    "arcane_crystal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "sorcery:sorcerous_catalyst"
+            "item": "sorcery:crystal_arcane"
+          }
+        ]
+      }
+    },
+    "unique_component": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:arrow"
           }
         ]
       }
@@ -19,13 +29,14 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sorcery:polished_wolfram"
+        "recipe": "sorcery:scroll_magic_missile"
       }
     }
   },
   "requirements": [
     [
-      "sorcery:sorcerous_catalyst",
+      "arcane_crystal",
+      "unique_component",
       "has_the_recipe"
     ]
   ]
