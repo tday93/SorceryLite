@@ -13,6 +13,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
@@ -36,13 +37,10 @@ public class PlantDeathSpell extends Spell
 
         // Extra Data
         World world = context.getWorld();
-        PlayerEntity player = context.getPlayer();
-        BlockPos playerPos = player.getPosition();
-        BlockPos blockStart = playerPos.add(-spellRange, -spellRange, -spellRange);
-        BlockPos blockEnd = playerPos.add(spellRange, spellRange + 1, spellRange);
+        AxisAlignedBB aaBB = new AxisAlignedBB(context.getPlayer().getPosition()).grow(spellRange);
 
         // List of all blocks in the affected area.
-        Stream<BlockPos> AOE = BlockPos.getAllInBox(blockStart, blockEnd);
+        Stream<BlockPos> AOE = BlockPos.getAllInBox(aaBB);
 
         playSound(context);
 

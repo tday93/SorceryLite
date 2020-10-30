@@ -24,6 +24,7 @@ public class ClientProxy implements IProxy
 
         RenderingRegistry.registerEntityRenderingHandler(ModEntity.SPELL_PROJECTILE, (manager) -> new SpriteRenderer<>(manager, itemRenderer));
         RenderingRegistry.registerEntityRenderingHandler(ModEntity.FIREBOLT, (manager) -> new SpriteRenderer<>(manager, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(ModEntity.MAGIC_MISSILE, (manager) -> new SpriteRenderer<>(manager, itemRenderer));
     }
 
     @Override

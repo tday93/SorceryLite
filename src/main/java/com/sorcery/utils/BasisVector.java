@@ -3,7 +3,7 @@ package com.sorcery.utils;
 import net.minecraft.util.math.vector.Vector3d;
 
 // Helper class for finding new basis vectors aligned with given normal vector
-public class BasisVectors
+public class BasisVector
 {
     public Vector3d x;
 
@@ -11,7 +11,7 @@ public class BasisVectors
 
     public Vector3d z;
 
-    public BasisVectors(Vector3d zIn)
+    public BasisVector(Vector3d zIn)
     {
         this.z = zIn;
         Vector3d arbitraryVec = new Vector3d(0, 1, 0);

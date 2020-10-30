@@ -44,10 +44,6 @@ public class RGBAParticle extends SpriteTexturedParticle
         } else {
             this.motionY -= 0.04D * (double)this.particleGravity;
             this.move(this.motionX, this.motionY, this.motionZ);
-            if (this.onGround) {
-                this.motionX *= (double)0.7F;
-                this.motionZ *= (double)0.7F;
-            }
         }
     }
 
@@ -76,6 +72,7 @@ public class RGBAParticle extends SpriteTexturedParticle
             RGBAParticle simpleParticle = new RGBAParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, spriteSet, data.r, data.g, data.b, data.a);
             simpleParticle.setMaxAge(data.t);
             simpleParticle.doAnimation = data.q;
+            simpleParticle.canCollide = data.c;
             if(data.q)
             {
                 simpleParticle.selectSpriteWithAge(spriteSet);

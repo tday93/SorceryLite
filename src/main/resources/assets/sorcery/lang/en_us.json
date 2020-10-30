@@ -3,7 +3,7 @@
   "itemGroup.sorcery_spells": "Sorcery Spells",
   "itemGroup.sorcery_wands": "Sorcery Wands",
 
-  "block.sorcery.polished_wolfram": "Polished Wolfram",
+  "block.sorcery.polished_runestone": "Polished Wolfram",
   "block.sorcery.runestone_bricks": "Runestone Bricks",
   "block.sorcery.runestone_brick_stairs": "Runestone Brick Stairs",
   "block.sorcery.runestone_brick_slab": "Runestone Brick Slab",
@@ -83,6 +83,8 @@
   "item.sorcery.wand_plant_life": "Wand of Plant Life",
   "item.sorcery.wand_chilling_touch": "Wand of Chilling Touch",
 
-  "effect.sorcery.dimensional_fraying": "Dimensional Fraying"
+  "effect.sorcery.dimensional_fraying": "Dimensional Fraying",
+  "effect.sorcery.feather_falling": "Feather Falling",
+  "effect.sorcery.stoneflesh": "Stoneflesh"
 
 }

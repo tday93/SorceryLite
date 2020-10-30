@@ -2,6 +2,7 @@ package com.sorcery.entity;
 
 import com.sorcery.Constants;
 import com.sorcery.entity.projectile.FireboltEntity;
+import com.sorcery.entity.projectile.MagicMissileEntity;
 import com.sorcery.entity.projectile.SpellProjectileEntity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -19,6 +20,9 @@ public class ModEntity
     @ObjectHolder("firebolt")
     public static EntityType<FireboltEntity> FIREBOLT;
 
+    @ObjectHolder("magic_missile")
+    public static EntityType<MagicMissileEntity> MAGIC_MISSILE;
+
     public static void init()
     {
         // Other Entities
@@ -35,13 +39,20 @@ public class ModEntity
                 .setCustomClientFactory(((spawnEntity, world) -> new FireboltEntity(FIREBOLT, world)))
                 .build("firebolt")
                 .setRegistryName(Constants.MODID, "firebolt");
-    }
 
+    MAGIC_MISSILE = (EntityType<MagicMissileEntity>) EntityType.Builder.create(MagicMissileEntity::new, EntityClassification.MISC)
+        .size(1,1)
+                .setShouldReceiveVelocityUpdates(true)
+                .setCustomClientFactory(((spawnEntity, world) -> new MagicMissileEntity(MAGIC_MISSILE, world)))
+        .build("magic_missile")
+                .setRegistryName(Constants.MODID, "magic_missile");
+    }
 
     public static void register(RegistryEvent.Register<EntityType<?>> event)
     {
         event.getRegistry().register(SPELL_PROJECTILE);
         event.getRegistry().register(FIREBOLT);
+        event.getRegistry().register(MAGIC_MISSILE);
 
     }
 }

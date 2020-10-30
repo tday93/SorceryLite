@@ -14,12 +14,11 @@ public class DigSpell extends Spell
     List<ToolType> tools;
     int speedMultiplier;
 
-    public DigSpell(int arcanaCost, int speedMulitplier)
+    public DigSpell(int arcanaCost, int speedMulitplier, List<ToolType> toolsIn)
     {
         super(arcanaCost);
         this.castDuration = 100000;
-        this.tools = new ArrayList<ToolType>();
-        this.tools.add(ToolType.SHOVEL);
+        this.tools = toolsIn;
         this.speedMultiplier = speedMulitplier;
         this.castType = CastType.DURATION;
     }

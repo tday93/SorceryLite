@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "sorcery:crystal_carnelian",
+    "sorcery:crystal_chalcedony",
+    "sorcery:crystal_sugilite",
+    "sorcery:crystal_jasper",
+    "sorcery:crystal_serpentine",
+    "sorcery:crystal_nuummite"
+  ]
+}
