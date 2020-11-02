@@ -1,0 +1,15 @@
+{
+  "name": "Arcane Catalyst",
+  "icon": "sorcery:sorcerous_catalyst",
+  "category": "items",
+  "pages": [
+    {
+      "type": "text",
+      "text": "An equal mixture of redstone and lapis, this powder seems to amplify sorcerous energies."
+    },
+    {
+      "type": "crafting",
+      "recipe": "sorcery:sorcerous_catalyst"
+    }
+  ]
+}

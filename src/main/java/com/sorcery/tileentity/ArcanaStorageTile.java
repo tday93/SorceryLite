@@ -152,7 +152,12 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
         }
         for (BlockPos otherPos : this.otherArcanaStorageTiles)
         {
-            ((ArcanaStorageTile)this.world.getTileEntity(otherPos)).removeOtherTile(pos);
+            TileEntity otherTile = this.world.getTileEntity(otherPos);
+            if (otherTile instanceof ArcanaStorageTile)
+            {
+                ((ArcanaStorageTile)otherTile).removeOtherTile(pos);
+
+            }
         }
         super.remove();
     }

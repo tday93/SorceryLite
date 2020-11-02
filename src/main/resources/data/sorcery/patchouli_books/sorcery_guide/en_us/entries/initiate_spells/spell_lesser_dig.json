@@ -1,0 +1,11 @@
+{
+  "name": "Lesser Dig",
+  "icon": "sorcery:textures/spells/spell_dig.png",
+  "category": "initiate_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Lesser Dig will let you break any blocks which a shovel could, but slightly faster than an iron shovel!"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Sorcericon",
+  "landing_text": "LANDING TEXT",
+  "version": 1,
+  "creative_tab": "sorcery",
+  "model": "sorcery:grimoire",
+  "book_texture": "patchouli:textures/gui/book_purple.png",
+  "show_progress": false
+}

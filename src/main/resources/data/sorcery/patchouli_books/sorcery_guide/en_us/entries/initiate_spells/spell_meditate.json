@@ -1,0 +1,11 @@
+{
+  "name": "Meditate",
+  "icon": "sorcery:textures/spells/spell_meditate.png",
+  "category": "initiate_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Casting Meditate allows you to recharge your wand or staff, albeit slowly."
+    }
+  ]
+}

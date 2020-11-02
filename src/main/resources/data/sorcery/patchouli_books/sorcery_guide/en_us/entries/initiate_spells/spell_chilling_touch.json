@@ -1,0 +1,11 @@
+{
+  "name": "Chilling Touch",
+  "icon": "sorcery:textures/spells/spell_chilling_touch.png",
+  "category": "initiate_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "A burst of frigid cold which will lightly damage and slow an enemy."
+    }
+  ]
+}

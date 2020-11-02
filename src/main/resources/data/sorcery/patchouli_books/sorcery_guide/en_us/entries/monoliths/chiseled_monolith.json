@@ -1,0 +1,11 @@
+{
+  "name": "Chiseled Monolith",
+  "icon": "sorcery:textures/gui/chiseled_monolith.png",
+  "category": "monoliths",
+  "pages": [
+    {
+      "type": "text",
+      "text": "The chiseled monolith is the first monolith a new sorcerer will construct."
+    }
+  ]
+}
