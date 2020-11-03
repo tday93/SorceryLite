@@ -19,9 +19,9 @@ public class CombustionSpell extends Spell
     private int dmgPerTick;
     private int fireDuration;
 
-    public CombustionSpell()
+    public CombustionSpell(SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(Config.SPELL_COMBUSTION_COST.get());
+        super(Config.SPELL_COMBUSTION_COST.get(), tierIn, schoolIn);
         this.castDuration = Config.SPELL_COMBUSTION_CAST_DURATION.get();
         this.dmgPerTick = Config.SPELL_COMBUSTION_DAMAGE.get();
         this.fireDuration = Config.SPELL_COMBUSTION_FIRE_DURATION.get();

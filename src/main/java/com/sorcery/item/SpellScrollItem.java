@@ -13,7 +13,6 @@ public class SpellScrollItem extends Item
     {
         super(properties);
         this.spellLoc = spellLocIn.getId();
-
     }
 
     public ResourceLocation getSpell()

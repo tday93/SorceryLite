@@ -7,9 +7,9 @@ import net.minecraft.util.ActionResultType;
 
 public class PlantLifeSpell extends Spell
 {
-    public PlantLifeSpell(int arcanaCost)
+    public PlantLifeSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(arcanaCost);
+        super(arcanaCost, tierIn, schoolIn);
     }
 
     @Override

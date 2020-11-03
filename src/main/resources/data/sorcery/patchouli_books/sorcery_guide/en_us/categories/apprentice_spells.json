@@ -1,6 +1,6 @@
 {
   "name": "Apprentice Spells",
-  "description": "Dip your toe in.",
-  "icon": "sorcery:wand_cobble_placement",
+  "description": "Spells for the Apprentice Sorcerer",
+  "icon": "sorcery:scroll_cobble_placement",
   "sortnum": 4
 }

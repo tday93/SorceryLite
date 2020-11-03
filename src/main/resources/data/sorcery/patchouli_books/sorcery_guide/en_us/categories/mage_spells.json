@@ -1,6 +1,6 @@
 {
   "name": "Mage Spells",
   "description": "Dip your toe in.",
-  "icon": "sorcery:scroll_repel",
+  "icon": "sorcery:scroll_create_water",
   "sortnum": 6
 }

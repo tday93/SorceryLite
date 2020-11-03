@@ -25,9 +25,9 @@ public class BlockMoveSpell extends Spell
     private Vector3i translation;
     private ResourceLocation allowedBlocksTag;
 
-    public BlockMoveSpell(int arcanaCost, Vector3i sizeIn, Vector3i offsetIn, Vector3i translationIn, ResourceLocation allowedBlocks)
+    public BlockMoveSpell(int arcanaCost, Vector3i sizeIn, Vector3i offsetIn, Vector3i translationIn, ResourceLocation allowedBlocks, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(arcanaCost);
+        super(arcanaCost, tierIn, schoolIn);
         // doing this so that sizeIn can represent the total size
         this.size = new Vector3i(sizeIn.getX() - 1, sizeIn.getY() - 1, sizeIn.getZ() -1);
         this.offset = offsetIn;

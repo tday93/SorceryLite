@@ -5,6 +5,10 @@
   "pages": [
     {
       "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
       "text": "Monoliths are the primary method of generating Arcana within Sorcery"
     }
   ]

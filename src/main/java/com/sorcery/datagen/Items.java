@@ -2,11 +2,15 @@ package com.sorcery.datagen;
 
 import com.sorcery.Constants;
 import com.sorcery.item.ModItem;
+import com.sorcery.item.SpellScrollItem;
+import com.sorcery.spell.Spell;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class Items extends ItemModelProvider
 {
@@ -46,6 +50,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.CRYSTAL_NUUMMITE.get(), "crystal_nuummite");
         simpleSingleTexture(ModItem.GEODE.get(), "geode");
         // Crafting Items
+        simpleSingleTexture(ModItem.SCROLL_INERT.get(), "inert_scroll");
         simpleSingleTexture(ModItem.SORCEROUS_CATALYST.get(), "hadean_ember");
 
         simpleSingleTexture(ModItem.SPELL_BOOK.get(), "grimoire");
@@ -54,36 +59,36 @@ public class Items extends ItemModelProvider
 
         // Spell Scrolls
         // -- Testing
-        simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_evocation");
+        simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_initiate_evocation");
         // -- Pre-Iron
-        simpleSingleTexture(ModItem.SCROLL_CHILLING_TOUCH.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_LESSER_DIG.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_PLANT_DEATH.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_PLANT_LIFE.get(), "scroll_evocation");
+        scrollItem((SpellScrollItem) ModItem.SCROLL_CHILLING_TOUCH.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_DIG.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_PLANT_DEATH.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_PLANT_LIFE.get());
         // -- Iron
-        simpleSingleTexture(ModItem.SCROLL_COBBLE_PLACEMENT.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_LESSER_FIREBOLT.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_LESSER_HEAL.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_LESSER_SHUNT.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_LESSER_SLOW.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_SIGNAL_FLARE.get(), "scroll_evocation");
+        scrollItem((SpellScrollItem)ModItem.SCROLL_COBBLE_PLACEMENT.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_FIREBOLT.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_HEAL.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_SHUNT.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_SLOW.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_SIGNAL_FLARE.get());
         // -- Diamond
-        simpleSingleTexture(ModItem.SCROLL_COMBUSTION.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_DIG.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_DRAIN_LIFE.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_EARTHEN_WALL.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_IGNITE.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_LESSER_FEATHER_FALL.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_MAGIC_MISSILE.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_SEISMIC_ECHO.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_STONEFLESH.get(), "scroll_evocation");
+        scrollItem((SpellScrollItem)ModItem.SCROLL_COMBUSTION.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_DIG.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_DRAIN_LIFE.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_EARTHEN_WALL.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_IGNITE.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_FEATHER_FALL.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_MAGIC_MISSILE.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_SEISMIC_ECHO.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_STONEFLESH.get());
         // -- Nether
-        simpleSingleTexture(ModItem.SCROLL_CREATE_WATER.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_REPEL.get(), "scroll_evocation");
-        simpleSingleTexture(ModItem.SCROLL_SPEED.get(), "scroll_evocation");
+        scrollItem((SpellScrollItem)ModItem.SCROLL_CREATE_WATER.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_REPEL.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_SPEED.get());
         // -- Netherite
         // -- End
-        simpleSingleTexture(ModItem.SCROLL_BLINK.get(), "scroll_evocation");
+        scrollItem((SpellScrollItem)ModItem.SCROLL_BLINK.get());
 
         // Wands
         // -- Pre-Iron
@@ -164,6 +169,12 @@ public class Items extends ItemModelProvider
     public void simpleBlockItem(Item item, String pathName)
     {
         withExistingParent(item.getRegistryName().getPath(), new ResourceLocation(Constants.MODID, "block/" + pathName));
+    }
+
+    public void scrollItem(SpellScrollItem item)
+    {
+        Spell spell = GameRegistry.findRegistry(Spell.class).getValue(item.spellLoc);
+        singleTexture(item.getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(Constants.MODID, "item/scroll_" + spell.spellTier.tierName + "_" + spell.spellSchool.schoolName ));
     }
 
 

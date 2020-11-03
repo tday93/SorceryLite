@@ -1,0 +1,16 @@
+{
+  "name": "Arcana Networks",
+  "icon": "sorcery:crystal_resonator",
+  "category": "monoliths",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "Monoliths can be linked into large networks, which are usefull for large-scale arcana generation"
+    }
+  ]
+}

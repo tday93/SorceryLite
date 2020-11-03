@@ -17,9 +17,9 @@ public class RepelSpell extends Spell
     private int range;
     private double velocity;
 
-    public RepelSpell()
+    public RepelSpell(SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(Config.SPELL_REPEL_COST.get());
+        super(Config.SPELL_REPEL_COST.get(), tierIn, schoolIn);
         this.range = Config.SPELL_REPEL_RANGE.get();
         this.velocity = Config.SPELL_REPEL_VELOCITY.get() * 0.1;
     }

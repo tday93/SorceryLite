@@ -5,7 +5,11 @@
   "pages": [
     {
       "type": "text",
-      "text": "Lesser Dig will let you break any blocks which a shovel could, but slightly faster than an iron shovel!"
+      "text": "$(o)I didn't become a Sorcerer to pursue a life of manual labor.$() $(br2) - Mage Fraulent Bootherhill on their formulation of the Dig Spell"
+    },
+    {
+      "type": "text",
+      "text": "Lesser Dig will break the target block as if broken by an unenchanted Iron Shovel, except slightly faster."
     }
   ]
 }

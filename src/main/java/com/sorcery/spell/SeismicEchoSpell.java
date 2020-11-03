@@ -19,9 +19,9 @@ public class SeismicEchoSpell extends Spell
 {
     private int range;
 
-    public SeismicEchoSpell(int arcanaCost, int range)
+    public SeismicEchoSpell(int arcanaCost, int range, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(arcanaCost);
+        super(arcanaCost, tierIn, schoolIn);
         this.castType = CastType.DURATION;
         this.castDuration = 40;
         this.range = range;

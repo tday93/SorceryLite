@@ -1,6 +1,6 @@
 {
-  "name": "Sorcericon",
-  "landing_text": "LANDING TEXT",
+  "name": "Sorcerer's Guide",
+  "landing_text": "$(o) An introduction and exploration of modern Sorcery$()",
   "version": 1,
   "creative_tab": "sorcery",
   "model": "sorcery:grimoire",

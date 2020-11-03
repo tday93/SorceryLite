@@ -16,9 +16,19 @@ public class Spell extends ForgeRegistryEntry<Spell>
     public CastType castType = CastType.INSTANT;
     public int castFrequency = 1;
 
+    public SpellSchool spellSchool = SpellSchool.EVOCATION;
+    public SpellTier spellTier = SpellTier.INITIATE;
+
     public Spell(int arcanaCost)
     {
         this.arcanaCost = arcanaCost;
+    }
+
+    public Spell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
+    {
+       this.arcanaCost = arcanaCost;
+       this.spellTier = tierIn;
+       this.spellSchool = schoolIn;
     }
 
     /**

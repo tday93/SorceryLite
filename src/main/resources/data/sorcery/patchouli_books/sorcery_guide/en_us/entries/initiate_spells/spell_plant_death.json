@@ -1,8 +1,12 @@
 {
   "name": "Plant Death",
-  "icon": "sorcery:textures/spells/spell_dig.png",
+  "icon": "sorcery:textures/spells/spell_plant_death.png",
   "category": "initiate_spells",
   "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
     {
       "type": "text",
       "text": "Lesser Dig will let you break any blocks which a shovel could, but slightly faster than an iron shovel!"

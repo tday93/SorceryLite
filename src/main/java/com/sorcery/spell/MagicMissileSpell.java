@@ -19,9 +19,9 @@ public class MagicMissileSpell extends Spell
 {
     double startingSpeed = 1;
 
-    public MagicMissileSpell(int arcanaCost)
+    public MagicMissileSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(arcanaCost);
+        super(arcanaCost, tierIn, schoolIn);
     }
 
     @Override

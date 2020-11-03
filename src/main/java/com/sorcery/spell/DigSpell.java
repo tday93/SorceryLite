@@ -14,9 +14,9 @@ public class DigSpell extends Spell
     List<ToolType> tools;
     int speedMultiplier;
 
-    public DigSpell(int arcanaCost, int speedMulitplier, List<ToolType> toolsIn)
+    public DigSpell(int arcanaCost, int speedMulitplier, List<ToolType> toolsIn, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(arcanaCost);
+        super(arcanaCost, tierIn, schoolIn);
         this.castDuration = 100000;
         this.tools = toolsIn;
         this.speedMultiplier = speedMulitplier;

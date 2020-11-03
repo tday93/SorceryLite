@@ -5,6 +5,10 @@
   "pages": [
     {
       "type": "text",
+      "text": "$(o)Cold doesn't spread like fire does, that's why we teach it to you first.$() $(br2) - Master Mage Walinda Dreeport on the teaching of new Sorcerers"
+    },
+    {
+      "type": "text",
       "text": "A burst of frigid cold which will lightly damage and slow an enemy."
     }
   ]

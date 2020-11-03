@@ -2,10 +2,33 @@
   "name": "Chiseled Monolith",
   "icon": "sorcery:textures/gui/chiseled_monolith.png",
   "category": "monoliths",
+  "sortnum": 1,
   "pages": [
     {
       "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
       "text": "The chiseled monolith is the first monolith a new sorcerer will construct."
+    },
+    {
+      "type": "multiblock",
+      "name": "Chiseled Monolith",
+      "enable_visualize": false,
+      "multiblock": {
+        "mapping":
+        {
+          "T": "sorcery:monolith_chiseled_top[active=true]",
+          "M": "sorcery:monolith_chiseled_middle[active=true]",
+          "0": "sorcery:monolith_chiseled_bottom[active=true]"
+        },
+        "pattern": [
+          ["T"],
+          ["M"],
+          ["0"]
+        ]
+      }
     }
   ]
 }

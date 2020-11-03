@@ -18,9 +18,9 @@ public class BlockPlacementSpell extends Spell
     public BlockItem placementItem;
     public ItemStack placementItemStack;
 
-    public BlockPlacementSpell(int arcanaCost, BlockItem placementItem)
+    public BlockPlacementSpell(int arcanaCost, BlockItem placementItem, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(arcanaCost);
+        super(arcanaCost, tierIn, schoolIn);
         this.sound = SoundEvents.BLOCK_STONE_PLACE;
         this.placementItem = placementItem;
         this.placementItemStack = new ItemStack(placementItem);

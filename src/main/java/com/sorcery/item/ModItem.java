@@ -59,6 +59,7 @@ public class ModItem
     public static final RegistryObject<Item> GEODE = ITEMS.register("geode", () -> new GeodeItem(Constants.ITEM_PROPS));
 
     // Crafting Items
+    public static final RegistryObject<Item> SCROLL_INERT = ITEMS.register("scroll_inert", () -> new Item(Constants.ITEM_PROPS));
     public static final RegistryObject<Item> SORCEROUS_CATALYST = ITEMS.register("sorcerous_catalyst", () -> new Item(Constants.ITEM_PROPS));
 
     // Utility Items

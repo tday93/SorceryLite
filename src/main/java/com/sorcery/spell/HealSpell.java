@@ -13,9 +13,9 @@ public class HealSpell extends Spell
     private double hungerMulti;
     private int cooldown;
 
-    public HealSpell(int arcanaCost, double healAmountIn, double hungerMultiIn, int cooldownIn)
+    public HealSpell(int arcanaCost, double healAmountIn, double hungerMultiIn, int cooldownIn, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(arcanaCost);
+        super(arcanaCost, tierIn, schoolIn);
         this.healAmount = healAmountIn;
         this.hungerMulti = hungerMultiIn;
         this.cooldown = cooldownIn;
