@@ -1,5 +1,5 @@
 {
-  "name": "Lesser Dig",
+  "name": "Lesser Cobble Placement",
   "icon": "sorcery:textures/spells/spell_cobble_placement.png",
   "category": "apprentice_spells",
   "pages": [
@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "Lesser Dig will let you break any blocks which a shovel could, but slightly faster than an iron shovel!"
+      "text": "$(l)Lesser Cobble Placement$() will pull a piece of cobblestone from anywhere in your inventory and place it into the world."
     }
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "name": "Earthen Wall",
+  "icon": "sorcery:textures/spells/spell_earthen_wall.png",
+  "category": "journeyman_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "DESCRIPTION TEXT HERE"
+    }
+  ]
+}

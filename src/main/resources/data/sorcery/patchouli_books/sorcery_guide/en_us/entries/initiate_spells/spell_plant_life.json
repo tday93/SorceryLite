@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "Lesser Dig will let you break any blocks which a shovel could, but slightly faster than an iron shovel!"
+      "text": "$(l)Plant Life$() nourishes plants that it is cast on in the same way that bonemeal does."
     }
   ]
 }

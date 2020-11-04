@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "A burst of frigid cold which will lightly damage and slow an enemy."
+      "text": "$(l)Chilling Touch$() produces a burst of frigid cold which will lightly damage and slow an enemy."
     }
   ]
 }

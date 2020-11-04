@@ -1,8 +1,8 @@
 {
-  "name": "Chiseled Monolith",
-  "icon": "sorcery:chiseled_runestone",
+  "name": "Lapis Monolith",
+  "icon": "sorcery:lapis_runestone",
   "category": "monoliths",
-  "sortnum": 1,
+  "sortnum": 3,
   "pages": [
     {
       "type": "text",
@@ -10,14 +10,14 @@
     },
     {
       "type": "multiblock",
-      "name": "Chiseled Monolith",
+      "name": "Lapis Monolith",
       "enable_visualize": false,
       "multiblock": {
         "mapping":
         {
-          "T": "sorcery:monolith_chiseled_top[active=true]",
-          "M": "sorcery:monolith_chiseled_middle[active=true]",
-          "0": "sorcery:monolith_chiseled_bottom[active=true]"
+          "T": "sorcery:monolith_lapis_top[active=true]",
+          "M": "sorcery:monolith_lapis_middle[active=true]",
+          "0": "sorcery:monolith_lapis_bottom[active=true]"
         },
         "pattern": [
           ["T"],

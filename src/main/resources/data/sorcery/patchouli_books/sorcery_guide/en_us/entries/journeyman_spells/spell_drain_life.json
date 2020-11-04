@@ -1,0 +1,15 @@
+{
+  "name": "Drain Life",
+  "icon": "sorcery:textures/spells/spell_drain_life.png",
+  "category": "journeyman_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "DESCRIPTION TEXT HERE"
+    }
+  ]
+}

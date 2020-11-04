@@ -1,5 +1,5 @@
 {
-  "name": "Lesser Dig",
+  "name": "Signal Flare",
   "icon": "sorcery:textures/spells/spell_signal_flare.png",
   "category": "apprentice_spells",
   "pages": [
@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "Lesser Dig will let you break any blocks which a shovel could, but slightly faster than an iron shovel!"
+      "text": "$(l)Signal Flare$() will launch a firework rocket from your position. This rocket will not boost Elytras."
     }
   ]
 }

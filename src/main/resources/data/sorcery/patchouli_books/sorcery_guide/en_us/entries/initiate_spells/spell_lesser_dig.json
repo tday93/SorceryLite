@@ -9,7 +9,12 @@
     },
     {
       "type": "text",
-      "text": "Lesser Dig will break the target block as if broken by an unenchanted Iron Shovel, except slightly faster."
+      "text": "$(l)Lesser Dig$() will break the target block slightly faster than an unenchanted Iron Shovel."
+    },
+    {
+      "type":"crafting",
+      "recipe": "sorcery:wand_lesser_dig",
+      "recipe2": "sorcery:scroll_lesser_dig"
     }
   ]
 }

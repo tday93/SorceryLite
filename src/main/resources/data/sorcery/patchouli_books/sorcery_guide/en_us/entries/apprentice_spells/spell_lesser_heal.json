@@ -1,5 +1,5 @@
 {
-  "name": "Lesser Dig",
+  "name": "Lesser Heal",
   "icon": "sorcery:textures/spells/spell_lesser_heal.png",
   "category": "apprentice_spells",
   "pages": [
@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "Lesser Dig will let you break any blocks which a shovel could, but slightly faster than an iron shovel!"
+      "text": "$(l)Lesser Heal$() will heal you for a small amount of hp, while draining hunger in order to do so. It will also apply a debuff which will cause further casts of $(l)Heal$() spells to fail (other methods of healing will still work)."
     }
   ]
 }

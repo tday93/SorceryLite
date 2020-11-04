@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "Lesser Dig will let you break any blocks which a shovel could, but slightly faster than an iron shovel!"
+      "text": "$(l)Plant Death$() will kill all plants within a small range around the caster. Note that killing plants this way prevents any items from dropping."
     }
   ]
 }

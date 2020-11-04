@@ -1,0 +1,15 @@
+{
+  "name": "Combustion",
+  "icon": "sorcery:textures/spells/spell_combustion.png",
+  "category": "journeyman_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "DESCRIPTION TEXT HERE"
+    }
+  ]
+}
