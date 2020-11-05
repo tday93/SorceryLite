@@ -20,10 +20,11 @@
           "0": "sorcery:monolith_chiseled_bottom[active=true]"
         },
         "pattern": [
-          ["T"],
-          ["M"],
-          ["0"]
-        ]
+          ["   ", " T ", "   "],
+          ["   ", " M ", "   "],
+          ["   ", " 0 ", "   "]
+        ],
+        "symmetrical": true
       }
     },
     {

@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "$(l)Meditate$() will slowly recharge your wand or staff. $(br) Meditating near a monolith containing arcana will pull arcana from that monolith."
+      "text": "$(br2)$(l)Meditate$() will slowly recharge your wand or staff. $(br) Meditating near a monolith containing arcana will pull arcana from that monolith."
     }
   ]
 }

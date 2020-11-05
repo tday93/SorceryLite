@@ -9,7 +9,12 @@
     },
     {
       "type": "text",
-      "text": "$(l)Chilling Touch$() produces a burst of frigid cold which will lightly damage and slow an enemy."
+      "text": "$(br2)$(l)Chilling Touch$() produces a burst of frigid cold which will lightly damage and slow an enemy."
+    },
+    {
+      "type":"crafting",
+      "recipe": "sorcery:wand_chilling_touch",
+      "recipe2": "sorcery:scroll_chilling_touch"
     }
   ]
 }

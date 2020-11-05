@@ -9,7 +9,12 @@
     },
     {
       "type": "text",
-      "text": "$(l)Plant Life$() nourishes plants that it is cast on in the same way that bonemeal does."
+      "text": "$(br2)$(l)Plant Life$() nourishes plants that it is cast on in the same way that bonemeal does."
+    },
+    {
+      "type":"crafting",
+      "recipe": "sorcery:wand_plant_life",
+      "recipe2": "sorcery:scroll_plant_life"
     }
   ]
 }

@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "$(l)Lesser Slow$() will apply a weak slowing effect to the targeted entity."
+      "text": "$(br2)$(l)Lesser Slow$() will apply a weak slowing effect to the targeted entity."
     }
   ]
 }

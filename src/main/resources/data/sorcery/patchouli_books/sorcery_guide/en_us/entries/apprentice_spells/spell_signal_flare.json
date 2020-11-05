@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "$(l)Signal Flare$() will launch a firework rocket from your position. This rocket will not boost Elytras."
+      "text": "$(br2)$(l)Signal Flare$() will launch a firework rocket from your position. This rocket will not boost Elytras."
     }
   ]
 }

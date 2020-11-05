@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "$(l)Lesser Shunt$() will randomly teleport a targeted entity to a position within a 5 block radius."
+      "text": "$(br2)$(l)Lesser Shunt$() will randomly teleport a targeted entity to a position within a 5 block radius."
     }
   ]
 }

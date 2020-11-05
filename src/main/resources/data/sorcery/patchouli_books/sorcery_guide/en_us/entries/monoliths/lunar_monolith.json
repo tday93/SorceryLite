@@ -20,9 +20,9 @@
           "0": "sorcery:monolith_lunar_bottom[active=true]"
         },
         "pattern": [
-          ["T"],
-          ["M"],
-          ["0"]
+          ["   ", " T ", "   "],
+          ["   ", " M ", "   "],
+          ["   ", " 0 ", "   "]
         ]
       }
     },

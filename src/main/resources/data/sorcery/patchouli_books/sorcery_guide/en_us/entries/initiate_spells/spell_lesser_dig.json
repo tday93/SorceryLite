@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "$(l)Lesser Dig$() will break the target block slightly faster than an unenchanted Iron Shovel."
+      "text": "$(br2)$(l)Lesser Dig$() will break the target block slightly faster than an unenchanted Iron Shovel."
     },
     {
       "type":"crafting",

@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "DESCRIPTION TEXT HERE"
+      "text": "$(br)$(l)Combustion$() will emit a cone of fire from your staff or wand, damaging and igniting any entities caught with in it."
     }
   ]
 }

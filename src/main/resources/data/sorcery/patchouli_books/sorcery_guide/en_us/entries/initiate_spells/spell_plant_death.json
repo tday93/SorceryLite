@@ -9,7 +9,12 @@
     },
     {
       "type": "text",
-      "text": "$(l)Plant Death$() will kill all plants within a small range around the caster. Note that killing plants this way prevents any items from dropping."
+      "text": "$(br2)$(l)Plant Death$() will kill all plants within a small range around the caster. Note that killing plants this way prevents any items from dropping."
+    },
+    {
+      "type":"crafting",
+      "recipe": "sorcery:wand_plant_death",
+      "recipe2": "sorcery:scroll_plant_death"
     }
   ]
 }

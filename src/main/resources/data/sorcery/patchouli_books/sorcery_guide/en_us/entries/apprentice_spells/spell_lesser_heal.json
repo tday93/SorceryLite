@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "$(l)Lesser Heal$() will heal you for a small amount of hp, while draining hunger in order to do so. It will also apply a debuff which will cause further casts of $(l)Heal$() spells to fail (other methods of healing will still work)."
+      "text": "$(br2)$(l)Lesser Heal$() will heal you for a small amount of hp, while draining hunger in order to do so. It will also apply a debuff which will cause further casts of $(l)Heal$() spells to fail (other methods of healing will still work)."
     }
   ]
 }

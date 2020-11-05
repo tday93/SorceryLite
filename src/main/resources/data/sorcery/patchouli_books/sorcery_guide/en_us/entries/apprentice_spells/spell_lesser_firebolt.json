@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "$(l)Lesser Firebolt$() will launch a small ball of fire from your wand or staff."
+      "text": "$(br2)$(l)Lesser Firebolt$() will launch a small ball of fire from your wand or staff."
     }
   ]
 }
