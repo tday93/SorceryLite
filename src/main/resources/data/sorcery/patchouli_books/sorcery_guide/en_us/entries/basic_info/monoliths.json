@@ -1,6 +1,6 @@
 {
   "name": "Monoliths",
-  "icon": "sorcery:textures/spells/spell_chilling_touch.png",
+  "icon": "sorcery:textures/gui/chiseled_monolith.png",
   "category": "basic_info",
   "pages": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "Monoliths are the primary method of generating Arcana within Sorcery"
+      "text": "$(br2)$(l)Monoliths$() are arcane constructions which a Sorcerer uses to generate and store $(l:basic_info/arcana)Arcana$(/l).$(br2)There are a number of different types of monolith, all with differing principles of arcana generation.$(br2)A monolith can be constructed by placing a specially prepared runestone block onto two polished runestone blocks."
     }
   ]
 }

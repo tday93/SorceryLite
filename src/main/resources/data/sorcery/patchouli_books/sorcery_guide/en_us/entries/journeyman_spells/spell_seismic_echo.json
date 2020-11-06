@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "DESCRIPTION TEXT HERE"
+      "text": "$(br2)$(l)Seismic Echo$() will send out a pulse of arcana which will echo back from valuable blocks within a small radius."
     }
   ]
 }

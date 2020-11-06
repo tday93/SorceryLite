@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "DESCRIPTION TEXT HERE"
+      "text": "$(br2)$(l)Ignite$() will ignite the targeted block, as if with a flint and steel."
     }
   ]
 }

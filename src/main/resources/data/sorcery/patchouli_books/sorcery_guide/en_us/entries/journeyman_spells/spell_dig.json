@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "DESCRIPTION TEXT HERE"
+      "text": "$(br2)$(l)Dig$() will break blocks like a Pickaxe or Shovel, and only slightly slower than a diamond tool."
     }
   ]
 }

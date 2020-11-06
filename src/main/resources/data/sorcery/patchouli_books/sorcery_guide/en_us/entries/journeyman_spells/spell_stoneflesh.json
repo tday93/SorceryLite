@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "DESCRIPTION TEXT HERE"
+      "text": "$(br2)$(l)Stoneflesh$() will apply a buff which will temporarily increase your armor value."
     }
   ]
 }

@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "DESCRIPTION TEXT HERE"
+      "text": "$(br2)$(l)Earthen Wall$() will pull a 3x3x1 wall from the targeted block. It will only pull dirt and stone like blocks, and will leave air blocks in their place."
     }
   ]
 }

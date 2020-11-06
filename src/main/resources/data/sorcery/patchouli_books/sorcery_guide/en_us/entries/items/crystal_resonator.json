@@ -1,0 +1,15 @@
+{
+  "name": "Crystal Resonator",
+  "icon": "sorcery:crystal_resonator",
+  "category": "items",
+  "pages": [
+    {
+      "type": "text",
+      "text": "A handy item used to link monoliths together into $(l:monoliths/arcana_networks)arcana networks$(/l). Shift-Right Clicking an monolith will set it as the arcana source, and then right clicking another monolith will set the arcana target."
+    },
+    {
+      "type": "crafting",
+      "recipe": "sorcery:crystal_resonator"
+    }
+  ]
+}

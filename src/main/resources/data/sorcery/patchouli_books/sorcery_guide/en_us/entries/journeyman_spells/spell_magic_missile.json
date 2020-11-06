@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "DESCRIPTION TEXT HERE"
+      "text": "$(br2)$(l)Magic Missile$() will shoot a projectile at the targeted entity or block, always hitting them regardless of their movement. "
     }
   ]
 }

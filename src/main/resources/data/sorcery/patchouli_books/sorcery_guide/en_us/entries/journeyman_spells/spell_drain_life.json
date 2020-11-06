@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "DESCRIPTION TEXT HERE"
+      "text": "$(br2)$(l)Drain Life$() Drain life will suck the life out of a targeted mob and heal you for a commensurate amount. Note that draining the life from an undead mob will instead heal them."
     }
   ]
 }

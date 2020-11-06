@@ -29,7 +29,7 @@
     },
     {
       "type": "text",
-      "text": "The chiseled monolith is the first monolith a new sorcerer will construct."
+      "text": "A Chiseled Monolith is the first monolith a new sorcerer will construct. Casting $(l:initiate_spells/meditate)meditate$() on a Chiseled Monolith will induce a resonance between your wand or staff and the monolith, resulting in a net increase in arcana within the monolith."
     }
   ]
 }

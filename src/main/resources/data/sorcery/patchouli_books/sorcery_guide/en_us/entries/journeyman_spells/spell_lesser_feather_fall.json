@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "DESCRIPTION TEXT HERE"
+      "text": "$(br2)$(l)Lesser Feather Fall$() will apply a buff to you which will prevent once instance of fall damage within the next 5 minutes."
     }
   ]
 }
