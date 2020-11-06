@@ -5,20 +5,17 @@ import com.sorcery.spell.ModSpell;
 import com.sorcery.spell.Spell;
 import com.sorcery.spell.SpellUseContext;
 import com.sorcery.tileentity.ArcanaStorageTile;
+import com.sorcery.utils.ModColor;
 import com.sorcery.utils.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.UseAction;
+import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -132,8 +129,13 @@ public class SpellcastingItem extends Item
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         try {
+            // TODO: make this work with staves
             Spell spell = Utils.getSpellFromProvider(stack);
-            TranslationTextComponent localizedSpell = new TranslationTextComponent(spell.getRegistryName().toString());
+            TranslationTextComponent localizedSpell = new TranslationTextComponent("spell."+ spell.getRegistryName().getNamespace() + "." + spell.getRegistryName().getPath());
+            Style style = localizedSpell.getStyle();
+            style = style.setItalic(true);
+            style = style.setColor(Color.fromInt(ModColor.ARCANA_PURPLE.getMainDecimal()));
+            localizedSpell.setStyle(style);
             tooltip.add(localizedSpell);
         } catch (NullPointerException exception)
         {

@@ -1,0 +1,15 @@
+{
+  "name": "Spellcasting",
+  "icon": "sorcery:textures/spells/spell_chilling_touch.png",
+  "category": "basic_info",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "Sorcerous spells are cast in two primary ways:$(br) 1. With a wand dedicated to a single spell.$(br) 2. With a Sorcerous Staff and Spellbook"
+    }
+  ]
+}

@@ -10,9 +10,9 @@ public class DrainLifeSpell extends Spell
 {
     private int lifeToDrain;
 
-    public DrainLifeSpell(int arcanaCost, int lifeToDrainIn)
+    public DrainLifeSpell(int arcanaCost, int lifeToDrainIn, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(arcanaCost);
+        super(arcanaCost, tierIn, schoolIn);
         this.lifeToDrain = lifeToDrainIn;
     }
 

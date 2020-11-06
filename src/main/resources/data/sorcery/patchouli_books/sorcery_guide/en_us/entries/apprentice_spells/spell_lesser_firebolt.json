@@ -1,0 +1,15 @@
+{
+  "name": "Lesser Firebolt",
+  "icon": "sorcery:textures/spells/spell_lesser_firebolt.png",
+  "category": "apprentice_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Lesser Firebolt$() will launch a small ball of fire from your wand or staff."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Arcana Networks",
+  "icon": "sorcery:crystal_resonator",
+  "category": "monoliths",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "Monoliths can be linked into large networks, which are useful for large-scale arcana generation. A $(l:items/crystal_resonator)Crystal Resonator$(/l) is used to perform this linking. A monolith can have any number of other arcana sources linked to it, but it can only send arcana to one target."
+    }
+  ]
+}

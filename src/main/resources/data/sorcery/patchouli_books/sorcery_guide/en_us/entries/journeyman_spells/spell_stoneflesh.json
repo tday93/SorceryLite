@@ -1,0 +1,15 @@
+{
+  "name": "Stoneflesh",
+  "icon": "sorcery:textures/spells/spell_stoneflesh.png",
+  "category": "journeyman_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Stoneflesh$() will apply a buff which will temporarily increase your armor value."
+    }
+  ]
+}

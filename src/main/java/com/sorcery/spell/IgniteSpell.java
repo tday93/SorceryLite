@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class IgniteSpell extends Spell
 {
-    public IgniteSpell()
+    public IgniteSpell(SpellTier tierIn, SpellSchool schoolIn)
     {
         super(Config.SPELL_IGNITE_COST.get());
         this.sound = SoundEvents.ITEM_FIRECHARGE_USE;

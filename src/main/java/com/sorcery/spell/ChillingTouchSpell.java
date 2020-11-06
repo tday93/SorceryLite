@@ -14,11 +14,13 @@ public class ChillingTouchSpell extends Spell
 {
     private int damageAmount;
 
-    public ChillingTouchSpell(int arcanaCost)
+    public ChillingTouchSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
     {
         super(arcanaCost);
         this.damageAmount = 3;
         this.sound = SoundEvents.BLOCK_SNOW_PLACE;
+        this.spellTier = tierIn;
+        this.spellSchool = schoolIn;
     }
 
     // Enforce limited range by only running when entity target directly

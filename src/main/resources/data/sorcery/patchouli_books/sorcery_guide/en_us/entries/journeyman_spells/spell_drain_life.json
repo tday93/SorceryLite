@@ -1,0 +1,15 @@
+{
+  "name": "Drain Life",
+  "icon": "sorcery:textures/spells/spell_drain_life.png",
+  "category": "journeyman_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Drain Life$() Drain life will suck the life out of a targeted mob and heal you for a commensurate amount. Note that draining the life from an undead mob will instead heal them."
+    }
+  ]
+}

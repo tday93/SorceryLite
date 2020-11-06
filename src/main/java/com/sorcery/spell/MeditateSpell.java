@@ -21,9 +21,9 @@ public class MeditateSpell extends Spell
 
     private int arcanaDrainRate = 100;
 
-    public MeditateSpell()
+    public MeditateSpell(SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(0);
+        super(0, tierIn, schoolIn);
         this.castDuration = 100000;
         this.castType = CastType.CHANNELED;
     }

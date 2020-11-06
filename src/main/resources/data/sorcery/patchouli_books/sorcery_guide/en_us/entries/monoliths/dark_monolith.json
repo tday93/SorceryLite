@@ -1,0 +1,36 @@
+{
+  "name": "Dark Monolith",
+  "icon": "sorcery:dark_runestone",
+  "category": "monoliths",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "multiblock",
+      "name": "Dark Monolith",
+      "enable_visualize": false,
+      "multiblock": {
+        "mapping":
+        {
+          "T": "sorcery:monolith_dark_top[active=true]",
+          "M": "sorcery:monolith_dark_middle[active=true]",
+          "0": "sorcery:monolith_dark_bottom[active=true]"
+        },
+        "pattern": [
+          ["   ", " T ", "   "],
+          ["   ", " M ", "   "],
+          ["   ", " 0 ", "   "]
+        ],
+        "symmetrical": true,
+        "offset": [0, -1, 0]
+      }
+    },
+    {
+      "type": "text",
+      "text": "A Dark Monolith generates arcana from the excess life-force leaked by a living creature into the aether upon their death."
+    }
+  ]
+}

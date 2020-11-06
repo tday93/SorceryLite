@@ -16,9 +16,9 @@ import java.util.List;
 
 public class SignalFlareSpell extends Spell
 {
-    public SignalFlareSpell(int arcanaCost)
+    public SignalFlareSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(arcanaCost);
+        super(arcanaCost, tierIn, schoolIn);
     }
 
     // perform the final cast of the spell

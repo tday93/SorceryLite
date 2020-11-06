@@ -27,13 +27,15 @@ public class PotionSpell extends Spell
         this.amp = ampIn;
     }
 
-    public PotionSpell(int costIn, Effect effectIn, int durationIn, int ampIn, boolean selfCastIn)
+    public PotionSpell(int costIn, Effect effectIn, int durationIn, int ampIn, boolean selfCastIn, SpellTier tierIn, SpellSchool schoolIn)
     {
         super(costIn);
         this.effect = effectIn;
         this.duration = durationIn;
         this.amp = ampIn;
         this.castOnSelf = selfCastIn;
+        this.spellTier = tierIn;
+        this.spellSchool = schoolIn;
     }
 
     @Override

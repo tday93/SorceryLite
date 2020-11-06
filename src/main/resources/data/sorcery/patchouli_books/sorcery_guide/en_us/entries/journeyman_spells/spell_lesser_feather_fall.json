@@ -1,0 +1,15 @@
+{
+  "name": "Lesser Feather Fall",
+  "icon": "sorcery:textures/spells/spell_lesser_feather_fall.png",
+  "category": "journeyman_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Lesser Feather Fall$() will apply a buff to you which will prevent once instance of fall damage within the next 5 minutes."
+    }
+  ]
+}

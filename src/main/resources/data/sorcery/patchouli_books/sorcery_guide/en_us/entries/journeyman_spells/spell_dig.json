@@ -1,0 +1,15 @@
+{
+  "name": "Dig",
+  "icon": "sorcery:textures/spells/spell_dig.png",
+  "category": "journeyman_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Dig$() will break blocks like a Pickaxe or Shovel, and only slightly slower than a diamond tool."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Lesser Shunt",
+  "icon": "sorcery:textures/spells/spell_lesser_shunt.png",
+  "category": "apprentice_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Lesser Shunt$() will randomly teleport a targeted entity to a position within a 5 block radius."
+    }
+  ]
+}

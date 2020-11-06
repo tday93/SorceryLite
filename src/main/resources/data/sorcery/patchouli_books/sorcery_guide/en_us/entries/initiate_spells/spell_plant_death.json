@@ -1,0 +1,20 @@
+{
+  "name": "Plant Death",
+  "icon": "sorcery:textures/spells/spell_plant_death.png",
+  "category": "initiate_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Plant Death$() will kill all plants within a small range around the caster. Note that killing plants this way prevents any items from dropping."
+    },
+    {
+      "type":"crafting",
+      "recipe": "sorcery:wand_plant_death",
+      "recipe2": "sorcery:scroll_plant_death"
+    }
+  ]
+}

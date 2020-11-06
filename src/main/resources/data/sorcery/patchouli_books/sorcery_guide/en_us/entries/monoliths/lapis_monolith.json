@@ -1,0 +1,34 @@
+{
+  "name": "Lapis Monolith",
+  "icon": "sorcery:lapis_runestone",
+  "category": "monoliths",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "multiblock",
+      "name": "Lapis Monolith",
+      "enable_visualize": false,
+      "multiblock": {
+        "mapping":
+        {
+          "T": "sorcery:monolith_lapis_top[active=true]",
+          "M": "sorcery:monolith_lapis_middle[active=true]",
+          "0": "sorcery:monolith_lapis_bottom[active=true]"
+        },
+        "pattern": [
+          ["   ", " T ", "   "],
+          ["   ", " M ", "   "],
+          ["   ", " 0 ", "   "]
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "text": "A Lapis Monolith harnesses the natural arcanic energy within lapis, destroying it in the process. Any lapis in the vicinity of the monolith will be broken down as fuel."
+    }
+  ]
+}

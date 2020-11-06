@@ -1,0 +1,20 @@
+{
+  "name": "Chilling Touch",
+  "icon": "sorcery:textures/spells/spell_chilling_touch.png",
+  "category": "initiate_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "$(o)Cold doesn't spread like fire does, that's why we teach it to you first.$() $(br2) - Master Mage Walinda Dreeport on the teaching of new Sorcerers"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Chilling Touch$() produces a burst of frigid cold which will lightly damage and slow an enemy."
+    },
+    {
+      "type":"crafting",
+      "recipe": "sorcery:wand_chilling_touch",
+      "recipe2": "sorcery:scroll_chilling_touch"
+    }
+  ]
+}

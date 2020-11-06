@@ -1,0 +1,15 @@
+{
+  "name": "Lesser Cobble Placement",
+  "icon": "sorcery:textures/spells/spell_cobble_placement.png",
+  "category": "apprentice_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Lesser Cobble Placement$() will pull a piece of cobblestone from anywhere in your inventory and place it into the world."
+    }
+  ]
+}

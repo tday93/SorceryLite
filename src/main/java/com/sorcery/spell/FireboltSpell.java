@@ -12,9 +12,9 @@ public class FireboltSpell extends Spell
 {
     private int velocity;
 
-    public FireboltSpell()
+    public FireboltSpell(SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(Config.SPELL_FIREBOLT_COST.get());
+        super(Config.SPELL_FIREBOLT_COST.get(), tierIn, schoolIn);
         this.velocity = 3;
     }
 

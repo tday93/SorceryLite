@@ -85,6 +85,16 @@
 
   "effect.sorcery.dimensional_fraying": "Dimensional Fraying",
   "effect.sorcery.feather_falling": "Feather Falling",
-  "effect.sorcery.stoneflesh": "Stoneflesh"
+  "effect.sorcery.stoneflesh": "Stoneflesh",
+
+
+  "advancements.sorcery.root.title": "Sorcery",
+  "advancements.sorcery.root.description": "Start your Sorcerous journey!",
+
+
+  "spell.sorcery.spell_lesser_dig": "Lesser Dig",
+  "spell.sorcery.spell_plant_death": "Plant Death",
+  "spell.sorcery.spell_plant_life": "Plant Life",
+  "spell.sorcery.spell_chilling_touch": "Chilling Touch"
 
 }

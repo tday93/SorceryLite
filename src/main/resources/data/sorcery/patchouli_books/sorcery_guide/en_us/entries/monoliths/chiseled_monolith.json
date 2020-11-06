@@ -1,0 +1,35 @@
+{
+  "name": "Chiseled Monolith",
+  "icon": "sorcery:chiseled_runestone",
+  "category": "monoliths",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "multiblock",
+      "name": "Chiseled Monolith",
+      "enable_visualize": false,
+      "multiblock": {
+        "mapping":
+        {
+          "T": "sorcery:monolith_chiseled_top[active=true]",
+          "M": "sorcery:monolith_chiseled_middle[active=true]",
+          "0": "sorcery:monolith_chiseled_bottom[active=true]"
+        },
+        "pattern": [
+          ["   ", " T ", "   "],
+          ["   ", " M ", "   "],
+          ["   ", " 0 ", "   "]
+        ],
+        "symmetrical": true
+      }
+    },
+    {
+      "type": "text",
+      "text": "A Chiseled Monolith is the first monolith a new sorcerer will construct. Casting $(l:initiate_spells/meditate)meditate$() on a Chiseled Monolith will induce a resonance between your wand or staff and the monolith, resulting in a net increase in arcana within the monolith."
+    }
+  ]
+}

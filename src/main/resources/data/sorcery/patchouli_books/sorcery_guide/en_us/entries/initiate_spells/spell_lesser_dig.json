@@ -1,0 +1,20 @@
+{
+  "name": "Lesser Dig",
+  "icon": "sorcery:textures/spells/spell_dig.png",
+  "category": "initiate_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "$(o)I didn't become a Sorcerer to pursue a life of manual labor.$() $(br2) - Mage Fraulent Bootherhill on their formulation of the Dig Spell"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Lesser Dig$() will break the target block slightly faster than an unenchanted Iron Shovel."
+    },
+    {
+      "type":"crafting",
+      "recipe": "sorcery:wand_lesser_dig",
+      "recipe2": "sorcery:scroll_lesser_dig"
+    }
+  ]
+}

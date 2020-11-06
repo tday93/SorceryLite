@@ -1,0 +1,15 @@
+{
+  "name": "Signal Flare",
+  "icon": "sorcery:textures/spells/spell_signal_flare.png",
+  "category": "apprentice_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Signal Flare$() will launch a firework rocket from your position. This rocket will not boost Elytras."
+    }
+  ]
+}

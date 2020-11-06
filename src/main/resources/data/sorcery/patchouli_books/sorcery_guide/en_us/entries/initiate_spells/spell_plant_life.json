@@ -1,0 +1,20 @@
+{
+  "name": "Plant Life",
+  "icon": "sorcery:textures/spells/spell_plant_life.png",
+  "category": "initiate_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Plant Life$() nourishes plants that it is cast on in the same way that bonemeal does."
+    },
+    {
+      "type":"crafting",
+      "recipe": "sorcery:wand_plant_life",
+      "recipe2": "sorcery:scroll_plant_life"
+    }
+  ]
+}

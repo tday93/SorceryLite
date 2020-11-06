@@ -1,0 +1,15 @@
+{
+  "name": "Magic Missile",
+  "icon": "sorcery:textures/spells/spell_magic_missile.png",
+  "category": "journeyman_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Magic Missile$() will shoot a projectile at the targeted entity or block, always hitting them regardless of their movement. "
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Combustion",
+  "icon": "sorcery:textures/spells/spell_combustion.png",
+  "category": "journeyman_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Combustion$() will emit a cone of fire from your staff or wand, damaging and igniting any entities caught with in it."
+    }
+  ]
+}

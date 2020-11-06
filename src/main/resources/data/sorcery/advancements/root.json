@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "sorcery:spell_book"
+    },
+    "title": {
+      "translate": "advancements.sorcery.root.title"
+    },
+    "description": {
+      "translate": "advancements.sorcery.root.description"
+    },
+    "hidden": false,
+    "show_toast": false,
+    "announce_to_chat": false,
+    "background": "sorcery:textures/gui/advancements/backgrounds/runestone_bricks.png"
+  },
+  "criteria": {
+    "start_criteria": {
+      "trigger": "minecraft:enter_block",
+      "conditions": {
+        "block": "minecraft:air"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "start_criteria"
+    ]
+  ]
+}

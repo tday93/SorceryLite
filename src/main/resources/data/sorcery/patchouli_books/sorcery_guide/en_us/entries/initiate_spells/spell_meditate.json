@@ -1,0 +1,15 @@
+{
+  "name": "Meditate",
+  "icon": "sorcery:textures/spells/spell_meditate.png",
+  "category": "initiate_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Meditate$() will slowly recharge your wand or staff. $(br) Meditating near a monolith containing arcana will pull arcana from that monolith."
+    }
+  ]
+}

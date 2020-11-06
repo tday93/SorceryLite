@@ -1,0 +1,15 @@
+{
+  "name": "Seismic Echo",
+  "icon": "sorcery:textures/spells/spell_seismic_echo.png",
+  "category": "journeyman_spells",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "$(br2)$(l)Seismic Echo$() will send out a pulse of arcana which will echo back from valuable blocks within a small radius."
+    }
+  ]
+}

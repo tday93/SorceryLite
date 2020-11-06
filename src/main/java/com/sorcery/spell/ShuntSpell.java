@@ -13,9 +13,9 @@ public class ShuntSpell extends Spell
 {
     private double range;
 
-    public ShuntSpell(int arcanaCost, double rangeIn)
+    public ShuntSpell(int arcanaCost, double rangeIn, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(arcanaCost);
+        super(arcanaCost, tierIn, schoolIn);
         this.sound = SoundEvents.ENTITY_ENDERMAN_TELEPORT;
         this.range = rangeIn;
     }
