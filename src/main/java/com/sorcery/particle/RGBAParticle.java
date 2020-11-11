@@ -13,6 +13,8 @@ public class RGBAParticle extends SpriteTexturedParticle
 
     Boolean doAnimation;
 
+    float motionDamp;
+
     public RGBAParticle(ClientWorld world, double x, double y, double z, double vX, double vY, double vZ, IAnimatedSprite spriteSetIn, float r, float g, float b, float a)
     {
         super(world, x, y, z, vX, vY, vZ);
@@ -28,6 +30,7 @@ public class RGBAParticle extends SpriteTexturedParticle
         this.particleAlpha = a;
 
         this.canCollide = false;
+        this.motionDamp = 0;
     }
 
     @Override
@@ -42,7 +45,9 @@ public class RGBAParticle extends SpriteTexturedParticle
         if (this.age++ >= this.maxAge) {
             this.setExpired();
         } else {
-            this.motionY -= 0.04D * (double)this.particleGravity;
+            this.motionY = this.motionY - (0.04D * (double)this.particleGravity);
+            this.motionX = this.motionX * this.motionDamp;
+            this.motionZ = this.motionZ * this.motionDamp;
             this.move(this.motionX, this.motionY, this.motionZ);
         }
     }
@@ -73,6 +78,8 @@ public class RGBAParticle extends SpriteTexturedParticle
             simpleParticle.setMaxAge(data.t);
             simpleParticle.doAnimation = data.q;
             simpleParticle.canCollide = data.c;
+            simpleParticle.particleGravity = data.m;
+            simpleParticle.motionDamp = data.d;
             if(data.q)
             {
                 simpleParticle.selectSpriteWithAge(spriteSet);

@@ -4,6 +4,10 @@ import net.minecraft.particles.IParticleData;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
+/**
+ *  vec1 = usually position
+ *  vec2 = usually direction
+ */
 public class ParticleEffectContext
 {
     public World world;

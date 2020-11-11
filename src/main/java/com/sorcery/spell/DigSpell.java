@@ -1,9 +1,13 @@
 package com.sorcery.spell;
 
 import com.sorcery.Sorcery;
+import com.sorcery.network.PacketHandler;
+import com.sorcery.network.packets.ParticleEffectPacket;
+import com.sorcery.utils.Utils;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.common.ToolType;
 
 import java.util.ArrayList;
@@ -34,6 +38,19 @@ public class DigSpell extends Spell
             return ActionResultType.SUCCESS;
         }
         return ActionResultType.FAIL;
+    }
+
+    // perform the per-tick action of the spell
+    public ActionResultType doCastPerTick(SpellUseContext context)
+    {
+        if (!context.getWorld().isRemote())
+        {
+            Vector3d loc = Utils.nBlocksAlongVector(context.getPlayer().getEyePosition(0), context.getPlayer().getLook(0), 0.5f).add(0, 0, 0);
+            Vector3d hitLoc = context.getHitVec();
+            ParticleEffectPacket pkt1 = new ParticleEffectPacket(11, 13, loc, hitLoc, 4, 1, 0.05, 20);
+            PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt1);
+        }
+        return ActionResultType.SUCCESS;
     }
 
     @Override

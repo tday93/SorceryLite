@@ -1,6 +1,7 @@
 package com.sorcery.setup;
 
 import com.sorcery.Constants;
+import com.sorcery.particle.EaseOutParticle;
 import com.sorcery.particle.ModParticle;
 import com.sorcery.particle.RGBAParticle;
 import com.sorcery.particle.RGBLitParticle;
@@ -31,6 +32,7 @@ public class ClientRegistryEvents
         mc.particles.registerFactory(ModParticle.SNOWFLAKE, RGBAParticle.Factory::new);
         mc.particles.registerFactory(ModParticle.ZAP_2, RGBAParticle.Factory::new);
         mc.particles.registerFactory(ModParticle.ARCANA, RGBLitParticle.Factory::new);
+        mc.particles.registerFactory(ModParticle.ARCANA_ALPHA, RGBAParticle.Factory::new);
     }
 
 }

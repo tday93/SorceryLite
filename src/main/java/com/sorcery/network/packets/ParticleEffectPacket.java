@@ -82,6 +82,7 @@ public class ParticleEffectPacket
         nbt.putDouble("r", radius);
         nbt.putInt("t", age);
 
+
         this.pktNBT = nbt;
     }
 
@@ -119,7 +120,7 @@ public class ParticleEffectPacket
                         collection.add(100, particle);
 
                     } else {
-                        collection = Particles.getParticleSet(nbt.getInt("pN"));
+                        collection = Particles.getParticleSet(nbt.getInt("pN"), nbt.getInt("t"));
                     }
 
 
@@ -168,6 +169,13 @@ public class ParticleEffectPacket
                             break;
                         case 10:
                             ParticleEffects.interferenceParticles(context);
+                            break;
+                        case 11:
+                            ParticleEffects.sendToThick(context);
+                            break;
+                        case 12:
+                            ParticleEffects.shrinkingSphere(context);
+                            break;
                     }
                 }
 

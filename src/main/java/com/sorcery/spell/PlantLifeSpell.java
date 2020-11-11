@@ -13,6 +13,17 @@ public class PlantLifeSpell extends Spell
     }
 
     @Override
+    public boolean allowCast(SpellUseContext context)
+    {
+        if (context.wasUsedOnBlock())
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
     public ActionResultType doCastFinal(SpellUseContext context)
     {
         this.playSound(context);

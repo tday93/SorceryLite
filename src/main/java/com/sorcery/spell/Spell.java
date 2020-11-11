@@ -1,9 +1,14 @@
 package com.sorcery.spell;
 
+import com.sorcery.network.PacketHandler;
+import com.sorcery.network.packets.ParticleEffectPacket;
+import com.sorcery.utils.Utils;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 
@@ -41,7 +46,7 @@ public class Spell extends ForgeRegistryEntry<Spell>
 
         if (!preCast(context))
         {
-            // TODO: Generic Spell Failure particle effect + sound
+            doSpellFailureEffect(context);
             return ActionResultType.FAIL;
         }
 
@@ -189,6 +194,20 @@ public class Spell extends ForgeRegistryEntry<Spell>
             return 1;
         } else {
             return (double)context.getCastingTicks() / (double)this.castDuration;
+        }
+    }
+
+    protected void doSpellFailureEffect(SpellUseContext context)
+    {
+
+        context.getWorld().playSound(context.getPlayer(), context.getPos(), SoundEvents.BLOCK_CONDUIT_DEACTIVATE, this.soundCategory, 1.0F, context.getWorld().rand.nextFloat() * 0.4F + 0.8F);
+
+        if (!context.getWorld().isRemote())
+        {
+            Vector3d loc = Utils.nBlocksAlongVector(context.getPlayer().getEyePosition(0), context.getPlayer().getLook(0), 0.5f).add(0, 0, 0);
+            Vector3d look = context.getPlayer().getLookVec();
+            ParticleEffectPacket pkt1 = new ParticleEffectPacket(3, 0, loc, look, 20, 1, 0.1, 20);
+            PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt1);
         }
     }
 
