@@ -15,6 +15,8 @@ public class RGBAParticle extends SpriteTexturedParticle
 
     float motionDamp;
 
+    IParticleRenderType renderType;
+
     public RGBAParticle(ClientWorld world, double x, double y, double z, double vX, double vY, double vZ, IAnimatedSprite spriteSetIn, float r, float g, float b, float a)
     {
         super(world, x, y, z, vX, vY, vZ);
@@ -31,6 +33,7 @@ public class RGBAParticle extends SpriteTexturedParticle
 
         this.canCollide = false;
         this.motionDamp = 0;
+        this.renderType = IParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
     @Override
@@ -55,7 +58,7 @@ public class RGBAParticle extends SpriteTexturedParticle
     @Override
     public IParticleRenderType getRenderType()
     {
-        return IParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+        return this.renderType;
     }
 
 
@@ -85,6 +88,10 @@ public class RGBAParticle extends SpriteTexturedParticle
                 simpleParticle.selectSpriteWithAge(spriteSet);
             } else {
                 simpleParticle.selectSpriteRandomly(spriteSet);
+            }
+            if (data.l)
+            {
+                simpleParticle.renderType = IParticleRenderType.PARTICLE_SHEET_LIT;
             }
             return simpleParticle;
         }

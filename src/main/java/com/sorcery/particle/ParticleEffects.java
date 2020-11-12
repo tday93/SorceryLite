@@ -4,6 +4,7 @@ import com.sorcery.tileentity.AbstractMonolithTile;
 import com.sorcery.utils.BasisVector;
 import com.sorcery.utils.Utils;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 
@@ -233,6 +234,19 @@ public class ParticleEffects
             ((AbstractMonolithTile) tile).spawnInterferenceParticles();
         }
 
+    }
+
+    public static void beam(ParticleEffectContext ctx)
+    {
+        Vector3d ray = ctx.vec2.subtract(ctx.vec1).normalize();
+        double distance = ctx.vec2.distanceTo(ctx.vec1);
+        int numParticles = (int)(distance / 0.1);
+
+        for (int i = 0; i < numParticles; i++)
+        {
+            Vector3d partVec = Utils.nBlocksAlongVector(ctx.vec1, ray, (float)(0.1 * i));
+            ctx.world.addParticle(ctx.getParticle(), partVec.getX(), partVec.getY(), partVec.getZ(), 0, 0, 0);
+        }
     }
 
 }

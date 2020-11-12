@@ -45,9 +45,9 @@ public class DigSpell extends Spell
     {
         if (!context.getWorld().isRemote())
         {
-            Vector3d loc = Utils.nBlocksAlongVector(context.getPlayer().getEyePosition(0), context.getPlayer().getLook(0), 0.5f).add(0, 0, 0);
+            Vector3d loc = Utils.nBlocksAlongVector(context.getPlayer().getEyePosition(0), context.getPlayer().getLook(0), 1).add(0, -0.2, 0);
             Vector3d hitLoc = context.getHitVec();
-            ParticleEffectPacket pkt1 = new ParticleEffectPacket(11, 13, loc, hitLoc, 4, 1, 0.05, 20);
+            ParticleEffectPacket pkt1 = new ParticleEffectPacket(13, 13, loc, hitLoc, 30, 1, 0.05, 1);
             PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt1);
         }
         return ActionResultType.SUCCESS;

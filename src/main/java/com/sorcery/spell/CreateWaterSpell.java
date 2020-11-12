@@ -35,11 +35,11 @@ public class CreateWaterSpell extends Spell
                     return ActionResultType.FAIL;
                 }
             }
-            this.doParticleEffects(context);
-            this.playSound(context);
 
             BlockState blockState = Blocks.WATER.getDefaultState();
             context.getWorld().setBlockState(waterPos, blockState, 11);
+            this.doParticleEffects(context);
+            this.playSound(context);
             return ActionResultType.SUCCESS;
         }
         return ActionResultType.FAIL;

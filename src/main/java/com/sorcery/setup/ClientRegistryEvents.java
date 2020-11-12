@@ -1,10 +1,8 @@
 package com.sorcery.setup;
 
 import com.sorcery.Constants;
-import com.sorcery.particle.EaseOutParticle;
 import com.sorcery.particle.ModParticle;
 import com.sorcery.particle.RGBAParticle;
-import com.sorcery.particle.RGBLitParticle;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
@@ -27,12 +25,11 @@ public class ClientRegistryEvents
         mc.particles.registerFactory(ModParticle.ARCANA_SPARK_1, RGBAParticle.Factory::new);
         mc.particles.registerFactory(ModParticle.ARCANA_SPARK_3, RGBAParticle.Factory::new);
         mc.particles.registerFactory(ModParticle.SIMPLE_SPARK, RGBAParticle.Factory::new);
-        mc.particles.registerFactory(ModParticle.LIT_SPARK, RGBLitParticle.Factory::new);
         mc.particles.registerFactory(ModParticle.SKULL_SMOKE, RGBAParticle.Factory::new);
         mc.particles.registerFactory(ModParticle.SNOWFLAKE, RGBAParticle.Factory::new);
         mc.particles.registerFactory(ModParticle.ZAP_2, RGBAParticle.Factory::new);
-        mc.particles.registerFactory(ModParticle.ARCANA, RGBLitParticle.Factory::new);
-        mc.particles.registerFactory(ModParticle.ARCANA_ALPHA, RGBAParticle.Factory::new);
+        mc.particles.registerFactory(ModParticle.ARCANA, RGBAParticle.Factory::new);
+        mc.particles.registerFactory(ModParticle.BEAM, RGBAParticle.Factory::new);
     }
 
 }

@@ -176,6 +176,9 @@ public class ParticleEffectPacket
                         case 12:
                             ParticleEffects.shrinkingSphere(context);
                             break;
+                        case 13:
+                            ParticleEffects.beam(context);
+                            break;
                     }
                 }
 

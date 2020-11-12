@@ -36,9 +36,6 @@ public class ModParticle
     @ObjectHolder("sorcery:simple_spark")
     public static RGBAParticleType SIMPLE_SPARK;
 
-    @ObjectHolder("sorcery:lit_spark")
-    public static RGBAParticleType LIT_SPARK;
-
     @ObjectHolder("sorcery:skull_smoke")
     public static RGBAParticleType SKULL_SMOKE;
 
@@ -51,8 +48,8 @@ public class ModParticle
     @ObjectHolder("sorcery:arcana")
     public static RGBAParticleType ARCANA;
 
-    @ObjectHolder("sorcery:arcana_alpha")
-    public static RGBAParticleType ARCANA_ALPHA;
+    @ObjectHolder("sorcery:beam")
+    public static RGBAParticleType BEAM;
 
 
     @SubscribeEvent
@@ -64,12 +61,11 @@ public class ModParticle
         registerParticle(new RGBAParticleType(), "sorcery:arcana_spark1", event);
         registerParticle(new RGBAParticleType(), "sorcery:arcana_spark3", event);
         registerParticle(new RGBAParticleType(), "sorcery:simple_spark", event);
-        registerParticle(new RGBAParticleType(), "sorcery:lit_spark", event);
         registerParticle(new RGBAParticleType(), "sorcery:skull_smoke", event);
         registerParticle(new RGBAParticleType(), "sorcery:snowflake", event);
         registerParticle(new RGBAParticleType(), "sorcery:zap2", event);
         registerParticle(new RGBAParticleType(), "sorcery:arcana", event);
-        registerParticle(new RGBAParticleType(), "sorcery:arcana_alpha", event);
+        registerParticle(new RGBAParticleType(), "sorcery:beam", event);
     }
 
     public static void registerParticle(ParticleType<?> particleType, String regName, RegistryEvent.Register<ParticleType<?>> event)
