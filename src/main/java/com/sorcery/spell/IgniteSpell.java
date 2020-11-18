@@ -13,7 +13,7 @@ public class IgniteSpell extends Spell
     public IgniteSpell(SpellTier tierIn, SpellSchool schoolIn)
     {
         super(Config.SPELL_IGNITE_COST.get());
-        this.sound = SoundEvents.ITEM_FIRECHARGE_USE;
+        this.finalSound = SoundEvents.ITEM_FLINTANDSTEEL_USE;
     }
 
     @Override
@@ -28,10 +28,11 @@ public class IgniteSpell extends Spell
                 return ActionResultType.FAIL;
             }
             this.doParticleEffects(context);
-            this.playSound(context);
+            this.playFinalSound(context);
 
             BlockState blockState = ((FireBlock) Blocks.FIRE).getDefaultState();
             context.getWorld().setBlockState(firePos, blockState, 11);
+            this.playFinalSound(context);
             return ActionResultType.SUCCESS;
         }
         return ActionResultType.FAIL;

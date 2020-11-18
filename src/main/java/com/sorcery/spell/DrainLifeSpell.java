@@ -52,8 +52,8 @@ public class DrainLifeSpell extends Spell
     @Override
     public void doParticleEffects(SpellUseContext context)
     {
-        Vector3d loc = context.getTargetEntity().getPositionVec();
-        ParticleEffectPacket pkt1 = new ParticleEffectPacket(0, 15, loc, Vector3d.ZERO, 10, 0.2, 0.5, 20);
+        Vector3d loc = context.getTargetEntity().getEyePosition(0);
+        ParticleEffectPacket pkt1 = new ParticleEffectPacket(0, 15, loc, Vector3d.ZERO, 10, 0.1, 0.5, 20);
         PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt1);
     }
 }

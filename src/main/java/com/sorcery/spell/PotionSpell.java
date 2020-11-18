@@ -3,6 +3,7 @@ package com.sorcery.spell;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.ParticleEffectPacket;
 import com.sorcery.particle.Particles;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ActionResultType;
@@ -42,7 +43,7 @@ public class PotionSpell extends Spell
     public ActionResultType doCastFinal(SpellUseContext context)
     {
         this.doParticleEffects(context);
-        this.playSound(context);
+        this.playFinalSound(context);
 
         if (context.wasEntityTargeted())
         {
@@ -65,7 +66,7 @@ public class PotionSpell extends Spell
         Vector3d loc = context.getPlayer().getPositionVec().add(0,1, 0);
         Vector3d look = context.getPlayer().getLook(1);
 
-        ParticleEffectPacket pkt = new ParticleEffectPacket(2, Particles.getPuff(), loc, look, 100, 0.5, 0.2, 20);
+        ParticleEffectPacket pkt = new ParticleEffectPacket(2, ParticleTypes.EFFECT, loc, look, 20, 0.2, 0.2, 20);
 
         PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt);
     }

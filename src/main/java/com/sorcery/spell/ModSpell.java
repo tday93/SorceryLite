@@ -15,6 +15,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class ModSpell
 {
@@ -58,11 +59,13 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_CREATE_WATER = SPELLS.register("spell_create_water", () -> new CreateWaterSpell(SpellTier.MAGE, SpellSchool.CONJURATION));
     public static final RegistryObject<Spell> SPELL_REPEL = SPELLS.register("spell_repel", () -> new RepelSpell(SpellTier.MAGE, SpellSchool.EVOCATION));
     public static final RegistryObject<Spell> SPELL_SPEED = SPELLS.register("spell_speed", () -> new PotionSpell(Config.SPELL_SPEED_COST.get(), Effects.SPEED, Config.SPELL_SPEED_DURATION.get(), 1, true, SpellTier.MAGE, SpellSchool.ENCHANTMENT));
+    public static final RegistryObject<Spell> SPELL_TRANSMUTE_STONE = SPELLS.register("spell_transmute_stone", () -> new BlockTransmuteSpell(10, SpellTier.MAGE, SpellSchool.TRANSMUTATION));
     // -- Cocoon Spell
 
     // Netherite Spells - Master Mage
     public static final RegistryObject<Spell> SPELL_FEATHER_FALL = SPELLS.register("spell_feather_fall", () -> new PotionSpell(10, ModEffect.FEATHER_FALLING, (20 * 60 * 5), 2, true, SpellTier.MASTER, SpellSchool.ENCHANTMENT));
     // -- Tunnel Spell
+    // -- spell bomb
 
     // End Spells - Arch Mage
     public static final RegistryObject<Spell> SPELL_BLINK = SPELLS.register("spell_blink", () -> new BlinkSpell());
@@ -73,6 +76,7 @@ public class ModSpell
         Sorcery.getLogger().debug("Initing spells");
         SPELLS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
+
 
 
 }

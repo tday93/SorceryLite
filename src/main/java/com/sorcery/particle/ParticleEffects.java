@@ -249,4 +249,17 @@ public class ParticleEffects
         }
     }
 
+    public static void randomBurst(ParticleEffectContext ctx)
+    {
+        double[] rand1 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+        double[] rand2 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+        double[] rand3 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+
+        for (int i = 0; i < ctx.numParticles; i++)
+        {
+            Vector3d vec = new Vector3d(rand1[i], rand2[i], rand3[i]).normalize().scale(ctx.speed);
+            ctx.world.addParticle(ctx.getParticle(), ctx.vec1.getX(), ctx.vec1.getY(), ctx.vec1.getZ(), vec.getX(), vec.getY(), vec.getZ());
+        }
+    }
+
 }

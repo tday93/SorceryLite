@@ -6,6 +6,7 @@ import com.sorcery.network.packets.ParticleEffectPacket;
 import com.sorcery.utils.Utils;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.common.ToolType;
@@ -23,6 +24,7 @@ public class DigSpell extends Spell
         super(arcanaCost, tierIn, schoolIn);
         this.castDuration = 100000;
         this.tools = toolsIn;
+        this.tickSound = SoundEvents.BLOCK_STONE_HIT;
         this.speedMultiplier = speedMulitplier;
         this.castType = CastType.DURATION;
     }

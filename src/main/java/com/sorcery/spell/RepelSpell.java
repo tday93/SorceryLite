@@ -28,7 +28,7 @@ public class RepelSpell extends Spell
     @Override
     public ActionResultType doCastFinal(SpellUseContext context)
     {
-        this.playSound(context);
+        this.playFinalSound(context);
         LivingEntity repelFrom = context.getPlayer();
         List<Entity> entities = Utils.entitiesInRange(context.getWorld(), context.getPos(), range, repelFrom);
 

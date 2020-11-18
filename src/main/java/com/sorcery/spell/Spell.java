@@ -3,7 +3,6 @@ package com.sorcery.spell;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.ParticleEffectPacket;
 import com.sorcery.utils.Utils;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
@@ -16,7 +15,8 @@ public class Spell extends ForgeRegistryEntry<Spell>
 {
     public int arcanaCost;
     public int castDuration = 1;
-    public SoundEvent sound = SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP;
+    public SoundEvent finalSound = SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP;
+    public SoundEvent tickSound = null;
     public SoundCategory soundCategory = SoundCategory.BLOCKS;
     public CastType castType = CastType.INSTANT;
     public int castFrequency = 1;
@@ -86,6 +86,7 @@ public class Spell extends ForgeRegistryEntry<Spell>
             doCastPerTick(context);
             return ActionResultType.SUCCESS;
         } else {
+            doCastPerTickClient(context);
             return ActionResultType.SUCCESS;
         }
     }
@@ -125,29 +126,46 @@ public class Spell extends ForgeRegistryEntry<Spell>
     // perform the final cast of the spell
     public ActionResultType doCastFinal(SpellUseContext context)
     {
+        this.playFinalSound(context);
         return ActionResultType.SUCCESS;
     }
 
     // final cast of spell client-only actions
     public void doCastFinalClient(SpellUseContext context)
     {
+        this.playFinalSound(context);
     }
 
     // perform the per-tick action of the spell
     public ActionResultType doCastPerTick(SpellUseContext context)
     {
+        this.playTickSound(context);
         return ActionResultType.SUCCESS;
+    }
+
+    public void doCastPerTickClient(SpellUseContext context)
+    {
+        this.playTickSound(context);
     }
 
     // Send packets to play particle effects
     public void doParticleEffects(SpellUseContext context)
     {
+
     }
 
     // Play sound effects, override if you want different behavior
-    public void playSound(SpellUseContext context)
+    public void playFinalSound(SpellUseContext context)
     {
-        context.getWorld().playSound(context.getPlayer(), context.getPos(), this.sound, this.soundCategory, 1.0F, context.getWorld().rand.nextFloat() * 0.4F + 0.8F);
+        context.getWorld().playSound(context.getPlayer(), context.getPos(), this.finalSound, this.soundCategory, 1.0F, context.getWorld().rand.nextFloat() * 0.4F + 0.8F);
+    }
+
+    public void playTickSound(SpellUseContext context)
+    {
+        if (this.tickSound != null)
+        {
+            context.getWorld().playSound(context.getPlayer(), context.getPos(), this.tickSound, this.soundCategory, 1.0F, context.getWorld().rand.nextFloat() * 0.4F + 0.8F);
+        }
     }
 
     // Drain Arcana from caster, return true if successful
@@ -200,7 +218,7 @@ public class Spell extends ForgeRegistryEntry<Spell>
     protected void doSpellFailureEffect(SpellUseContext context)
     {
 
-        context.getWorld().playSound(context.getPlayer(), context.getPos(), SoundEvents.BLOCK_CONDUIT_DEACTIVATE, this.soundCategory, 1.0F, context.getWorld().rand.nextFloat() * 0.4F + 0.8F);
+        //context.getWorld().playSound(context.getPlayer(), context.getPos(), SoundEvents.BLOCK_CONDUIT_DEACTIVATE, this.soundCategory, 1.0F, context.getWorld().rand.nextFloat() * 0.4F + 0.8F);
 
         if (!context.getWorld().isRemote())
         {

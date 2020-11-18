@@ -26,7 +26,7 @@ public class CombustionSpell extends Spell
         this.dmgPerTick = Config.SPELL_COMBUSTION_DAMAGE.get();
         this.fireDuration = Config.SPELL_COMBUSTION_FIRE_DURATION.get();
         this.castType = CastType.CHANNELED;
-        this.sound = SoundEvents.ITEM_FIRECHARGE_USE;
+        this.finalSound = SoundEvents.ITEM_FIRECHARGE_USE;
         this.castFrequency = 2;
     }
 
@@ -34,7 +34,7 @@ public class CombustionSpell extends Spell
     public ActionResultType doCastPerTick(SpellUseContext context)
     {
         this.doParticleEffects(context);
-        this.playSound(context);
+        this.playFinalSound(context);
         List<Entity> entList = Utils.entitiesInCone(context.getWorld(), context.getPos(), context.getPlayer(), context.getPlayer().getEyePosition(1), context.getPlayer().getLook(1), 8, 0.2);
 
         Double castPercent = this.getCastPercent(context);

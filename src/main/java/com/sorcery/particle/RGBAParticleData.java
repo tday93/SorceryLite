@@ -220,7 +220,7 @@ public class RGBAParticleData implements IParticleData
     @Override
     public String getParameters()
     {
-        String params = String.format(Locale.ROOT, "%s %f %f %f %f %d %b %b %f %f %l", this.getType().getRegistryName(), this.r, this.g, this.b, this.a, this.t, this.q, this.c, this.m, this.d, this.l);
+        String params = String.format(Locale.ROOT, "%s %f %f %f %f %d %b %b %f %f %b", this.getType().getRegistryName(), this.r, this.g, this.b, this.a, this.t, this.q, this.c, this.m, this.d, this.l);
         return params;
     }
 

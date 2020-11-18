@@ -1,6 +1,7 @@
 package com.sorcery.setup;
 
 import com.sorcery.Constants;
+import com.sorcery.particle.BrownianParticle;
 import com.sorcery.particle.ModParticle;
 import com.sorcery.particle.RGBAParticle;
 import net.minecraft.client.Minecraft;
@@ -30,6 +31,7 @@ public class ClientRegistryEvents
         mc.particles.registerFactory(ModParticle.ZAP_2, RGBAParticle.Factory::new);
         mc.particles.registerFactory(ModParticle.ARCANA, RGBAParticle.Factory::new);
         mc.particles.registerFactory(ModParticle.BEAM, RGBAParticle.Factory::new);
+        mc.particles.registerFactory(ModParticle.ARCANA_BROWNIAN, BrownianParticle.Factory::new);
     }
 
 }

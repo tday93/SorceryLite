@@ -179,6 +179,8 @@ public class ParticleEffectPacket
                         case 13:
                             ParticleEffects.beam(context);
                             break;
+                        case 14:
+                            ParticleEffects.randomBurst(context);
                     }
                 }
 

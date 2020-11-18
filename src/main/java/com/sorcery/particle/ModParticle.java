@@ -48,6 +48,9 @@ public class ModParticle
     @ObjectHolder("sorcery:arcana")
     public static RGBAParticleType ARCANA;
 
+    @ObjectHolder("sorcery:arcana_brownian")
+    public static RGBAParticleType ARCANA_BROWNIAN;
+
     @ObjectHolder("sorcery:beam")
     public static RGBAParticleType BEAM;
 
@@ -66,6 +69,7 @@ public class ModParticle
         registerParticle(new RGBAParticleType(), "sorcery:zap2", event);
         registerParticle(new RGBAParticleType(), "sorcery:arcana", event);
         registerParticle(new RGBAParticleType(), "sorcery:beam", event);
+        registerParticle(new RGBAParticleType(), "sorcery:arcana_brownian", event);
     }
 
     public static void registerParticle(ParticleType<?> particleType, String regName, RegistryEvent.Register<ParticleType<?>> event)

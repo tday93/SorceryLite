@@ -24,7 +24,7 @@ public class Particles
 
     public static IParticleData getPuff()
     {
-        return new RGBAParticleData(ModParticle.SIMPLE_PUFF, 1, 1, 1, 1);
+        return new RGBAParticleData(ModParticle.SIMPLE_PUFF, 1, 1, 1, 1, 10, true, false, 0.0f, 0.9f, false);
     }
 
     public static IParticleData getSkullSmoke()
@@ -126,6 +126,7 @@ public class Particles
                 return collection;
             case 7:
                 collection.add(100, getSnowflake());
+                return collection;
             case 8:
                 collection.add(50, getColoredParticle(ModColor.ARCANA_PURPLE.getMainList(), ModParticle.ZAP_2, 0.5f, age));
                 collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getLowList(), ModParticle.ZAP_2, 0.5f, age));
@@ -165,6 +166,16 @@ public class Particles
                 collection.add(50, getColoredParticle(ModColor.NECROMANCY_BLACK.getMainList(), ModParticle.SKULL_SMOKE, 0.8f, age, true));
                 collection.add(25, getColoredParticle(ModColor.NECROMANCY_BLACK.getLowList(), ModParticle.SKULL_SMOKE, 0.8f, age, true));
                 collection.add(25, getColoredParticle(ModColor.NECROMANCY_BLACK.getHiList(), ModParticle.SKULL_SMOKE, 0.8f, age, true));
+                return collection;
+            case 16:
+                collection.add(50, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getMainList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
+                collection.add(25, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getLowList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
+                collection.add(25, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getHiList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
+                return collection;
+            case 17:
+                collection.add(50, getColoredParticle(ModColor.CONJURATION_PURPLE.getMainList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
+                collection.add(25, getColoredParticle(ModColor.CONJURATION_PURPLE.getLowList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
+                collection.add(25, getColoredParticle(ModColor.CONJURATION_PURPLE.getHiList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
                 return collection;
             default:
                 collection.add(100, getSpark());

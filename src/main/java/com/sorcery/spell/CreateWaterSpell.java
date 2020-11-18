@@ -18,7 +18,7 @@ public class CreateWaterSpell extends Spell
     public CreateWaterSpell(SpellTier tierIn, SpellSchool schoolIn)
     {
         super(Config.SPELL_CREATE_WATER_COST.get(), tierIn, schoolIn);
-        this.sound = SoundEvents.ITEM_BUCKET_EMPTY;
+        this.finalSound = SoundEvents.ITEM_BUCKET_EMPTY;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class CreateWaterSpell extends Spell
             BlockState blockState = Blocks.WATER.getDefaultState();
             context.getWorld().setBlockState(waterPos, blockState, 11);
             this.doParticleEffects(context);
-            this.playSound(context);
+            this.playFinalSound(context);
             return ActionResultType.SUCCESS;
         }
         return ActionResultType.FAIL;

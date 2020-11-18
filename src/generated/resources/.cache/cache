@@ -98,6 +98,7 @@ a816ee907a43d9cd0d1ebf62183bf030e5a522b9 assets/sorcery/models/item/scroll_lesse
 ab8fb976ee7b824543a72a59c643735add37ae3b assets/sorcery/models/item/scroll_signal_flare.json
 cc04e366769aaff7d1bc38a78b0c4fe16586aa66 assets/sorcery/models/item/scroll_speed.json
 e012fe0658dd563a704e54243e65436dacdd1958 assets/sorcery/models/item/scroll_stoneflesh.json
+29a0037a081deab06f031d1a6090e15d1f89afd6 assets/sorcery/models/item/scroll_transmute_stone.json
 d3466ba4a17ab7f982ed0eb7a223478f3da855ca assets/sorcery/models/item/sigil_abjuration.json
 a83cbc716de8ff304b6af9c99b23d37f8b9a0117 assets/sorcery/models/item/sigil_conjuration.json
 d62cb78a95801158ee4676021eb2098ea35792dc assets/sorcery/models/item/sigil_enchantment.json
@@ -108,6 +109,7 @@ c1799f0b484af5c566b485ba123f92c092152d38 assets/sorcery/models/item/sigil_slate.
 3259494925a327695726f246eba3661239d88490 assets/sorcery/models/item/solar_runestone.json
 38297b28048a87b426f0caa3f05ef594dadaa3bb assets/sorcery/models/item/sorcerous_catalyst.json
 49bd018c5dd4423413e38f8725ccaba789f085d0 assets/sorcery/models/item/spell_book.json
+213e729ba1bf862a849251bc8512ce1c558ef6f0 assets/sorcery/models/item/spell_projectile.json
 5555e893f7672e6e34d86791172f4b0ff1e08d28 assets/sorcery/models/item/stripped_runewood_log.json
 ba8eee01ca22e131ff52e6b0fd44a895976127de assets/sorcery/models/item/tome_abjuration.json
 6de9e26180ad95baa49425ddc0afad41b8b6d6c5 assets/sorcery/models/item/tome_conjuration.json
