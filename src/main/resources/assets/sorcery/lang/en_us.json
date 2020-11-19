@@ -83,6 +83,11 @@
   "item.sorcery.wand_plant_life": "Wand of Plant Life",
   "item.sorcery.wand_chilling_touch": "Wand of Chilling Touch",
 
+  "item.sorcery.scroll_lesser_dig": "Scroll of Lesser Dig",
+  "item.sorcery.scroll_plant_death": "Scroll of Plant Death",
+  "item.sorcery.scroll_plant_life": "Scroll of Plant Life",
+  "item.sorcery.scroll_chilling_touch": "Scroll of Chilling Touch",
+
   "effect.sorcery.dimensional_fraying": "Dimensional Fraying",
   "effect.sorcery.feather_falling": "Feather Falling",
   "effect.sorcery.stoneflesh": "Stoneflesh",

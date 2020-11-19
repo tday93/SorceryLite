@@ -34,6 +34,7 @@ public class FireboltSpell extends Spell
         Vector3d entityPos = Utils.nBlocksAlongVector(eyePos, playerLook, 2.0f);
         entity.setPosition(entityPos.x, entityPos.y, entityPos.z);
         entity.addVelocity(playerLook.x * velocity, playerLook.y * velocity, playerLook.z * velocity);
+        entity.accelerationY = -0.1;
         world.addEntity(entity);
         return ActionResultType.SUCCESS;
     }

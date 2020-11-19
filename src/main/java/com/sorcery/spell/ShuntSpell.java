@@ -36,6 +36,13 @@ public class ShuntSpell extends Spell
         return ActionResultType.FAIL;
     }
 
+    // Enforce limited range by only running when entity target directly
+    @Override
+    public boolean allowCast(SpellUseContext context)
+    {
+        return context.wasEntityTargeted();
+    }
+
     // Send packets to play particle effects
     public void doParticleEffects(SpellUseContext context, Vector3d origin)
     {

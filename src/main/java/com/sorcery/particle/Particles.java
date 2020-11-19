@@ -177,6 +177,11 @@ public class Particles
                 collection.add(25, getColoredParticle(ModColor.CONJURATION_PURPLE.getLowList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
                 collection.add(25, getColoredParticle(ModColor.CONJURATION_PURPLE.getHiList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
                 return collection;
+            case 18:
+                collection.add(50, getColoredParticle(ModColor.LUNAR_SILVER.getMainList(), ModParticle.BEAM, 1.0f, age, false, false, 0.0f, 1.0f, true));
+                collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getLowList(), ModParticle.BEAM, 1.0f, age, false, false, 0.0f, 1.0f, true));
+                collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getHiList(), ModParticle.BEAM, 1.0f, age, false, false, 0.0f, 1.0f, true));
+                return collection;
             default:
                 collection.add(100, getSpark());
                 return collection;

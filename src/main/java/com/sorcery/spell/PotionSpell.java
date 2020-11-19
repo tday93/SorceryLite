@@ -47,7 +47,7 @@ public class PotionSpell extends Spell
 
         if (context.wasEntityTargeted())
         {
-            EffectInstance potionEffect = new EffectInstance(effect, duration, this.amp, false, false);
+            EffectInstance potionEffect = new EffectInstance(effect, duration, this.amp, false, true);
             context.getTargetEntity().addPotionEffect(potionEffect);
             return ActionResultType.SUCCESS;
         }
@@ -63,10 +63,13 @@ public class PotionSpell extends Spell
     @Override
     public void doParticleEffects(SpellUseContext context)
     {
-        Vector3d loc = context.getPlayer().getPositionVec().add(0,1, 0);
-        Vector3d look = context.getPlayer().getLook(1);
 
-        ParticleEffectPacket pkt = new ParticleEffectPacket(2, ParticleTypes.EFFECT, loc, look, 20, 0.2, 0.2, 20);
+        Vector3d loc = context.getPlayer().getPositionVec().add(0,1, 0);
+        if (context.wasEntityTargeted())
+        {
+            loc = context.getTargetEntity().getPositionVec().add(0.5, 0.5, 0.5);
+        }
+        ParticleEffectPacket pkt = new ParticleEffectPacket(2, ParticleTypes.EFFECT, loc, Vector3d.ZERO, 20, 0.2, 0.2, 20);
 
         PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt);
     }

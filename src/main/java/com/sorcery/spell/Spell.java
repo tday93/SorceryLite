@@ -47,7 +47,7 @@ public class Spell extends ForgeRegistryEntry<Spell>
         if (!preCast(context))
         {
             doSpellFailureEffect(context);
-            return ActionResultType.FAIL;
+            return ActionResultType.SUCCESS;
         }
 
         if (!context.getWorld().isRemote())
