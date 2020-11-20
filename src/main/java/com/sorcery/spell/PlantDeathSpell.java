@@ -27,7 +27,7 @@ public class PlantDeathSpell extends Spell
     public PlantDeathSpell(SpellTier tierIn, SpellSchool schoolIn) {
         super(Config.SPELL_PLANT_DEATH_COST.get(), tierIn, schoolIn);
         this.spellRange = Config.SPELL_PLANT_DEATH_RANGE.get();
-        this.sound = SoundEvents.BLOCK_CROP_BREAK;
+        this.finalSound = SoundEvents.BLOCK_CROP_BREAK;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class PlantDeathSpell extends Spell
         // List of all blocks in the affected area.
         Stream<BlockPos> AOE = BlockPos.getAllInBox(aaBB);
 
-        playSound(context);
+        playFinalSound(context);
 
         AOE.forEach((blockPosInAOE) ->
         {

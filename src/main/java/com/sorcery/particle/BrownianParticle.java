@@ -7,13 +7,19 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
-public class RGBLitParticle extends SpriteTexturedParticle
+public class BrownianParticle extends SpriteTexturedParticle
 {
     IAnimatedSprite spriteSet;
 
-    Boolean doAnimation = true;
+    Boolean doAnimation;
 
-    public RGBLitParticle(ClientWorld world, double x, double y, double z, double vX, double vY, double vZ, IAnimatedSprite spriteSetIn, float r, float g, float b, float a)
+    float motionDamp;
+
+    private double brownianFactor = 0.01;
+
+    IParticleRenderType renderType;
+
+    public BrownianParticle(ClientWorld world, double x, double y, double z, double vX, double vY, double vZ, IAnimatedSprite spriteSetIn, float r, float g, float b, float a)
     {
         super(world, x, y, z, vX, vY, vZ);
 
@@ -26,9 +32,11 @@ public class RGBLitParticle extends SpriteTexturedParticle
         this.particleBlue = b;
         this.particleGreen = g;
         this.particleAlpha = a;
-        this.canCollide = false;
-    }
 
+        this.canCollide = false;
+        this.motionDamp = 0;
+        this.renderType = IParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+    }
 
     @Override
     public void tick() {
@@ -42,19 +50,17 @@ public class RGBLitParticle extends SpriteTexturedParticle
         if (this.age++ >= this.maxAge) {
             this.setExpired();
         } else {
-            this.motionY -= 0.04D * (double)this.particleGravity;
+            this.motionY = this.motionY - (0.04D * (double)this.particleGravity) + ((this.world.rand.nextDouble() - 0.5) * brownianFactor);
+            this.motionX = this.motionX * this.motionDamp + ((this.world.rand.nextDouble() - 0.5) * brownianFactor);
+            this.motionZ = this.motionZ * this.motionDamp + ((this.world.rand.nextDouble() - 0.5) * brownianFactor);
             this.move(this.motionX, this.motionY, this.motionZ);
-            if (this.onGround) {
-                this.motionX *= (double)0.7F;
-                this.motionZ *= (double)0.7F;
-            }
         }
     }
 
     @Override
     public IParticleRenderType getRenderType()
     {
-        return IParticleRenderType.PARTICLE_SHEET_LIT;
+        return this.renderType;
     }
 
 
@@ -73,17 +79,25 @@ public class RGBLitParticle extends SpriteTexturedParticle
         @Override
         public Particle makeParticle(RGBAParticleData data, ClientWorld worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
         {
-            RGBLitParticle simpleParticle = new RGBLitParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, spriteSet, data.r, data.g, data.b, data.a);
+            BrownianParticle simpleParticle = new BrownianParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, spriteSet, data.r, data.g, data.b, data.a);
             simpleParticle.setMaxAge(data.t);
             simpleParticle.doAnimation = data.q;
-            if (data.q)
+            simpleParticle.canCollide = data.c;
+            simpleParticle.particleGravity = data.m;
+            simpleParticle.motionDamp = data.d;
+            if(data.q)
             {
                 simpleParticle.selectSpriteWithAge(spriteSet);
             } else {
                 simpleParticle.selectSpriteRandomly(spriteSet);
             }
+            if (data.l)
+            {
+                simpleParticle.renderType = IParticleRenderType.PARTICLE_SHEET_LIT;
+            }
             return simpleParticle;
         }
+
     }
 
 }

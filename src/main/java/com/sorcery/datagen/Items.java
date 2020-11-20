@@ -56,6 +56,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.SPELL_BOOK.get(), "grimoire");
         // simpleSingleTexture(ModItem.SORCEROUS_STAFF.get(), "apprentice_staff");
         simpleSingleTexture(ModItem.CRYSTAL_RESONATOR.get(), "crystal_resonator");
+        simpleSingleTexture(ModItem.SPELL_PROJECTILE.get(), "spell_projectile");
 
         // Spell Scrolls
         // -- Testing
@@ -86,6 +87,8 @@ public class Items extends ItemModelProvider
         scrollItem((SpellScrollItem)ModItem.SCROLL_CREATE_WATER.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_REPEL.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_SPEED.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_TRANSMUTE_STONE.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_RAY_OF_FROST.get());
         // -- Netherite
         // -- End
         scrollItem((SpellScrollItem)ModItem.SCROLL_BLINK.get());

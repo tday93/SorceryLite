@@ -1,17 +1,13 @@
 package com.sorcery.spell;
 
-import com.sorcery.Sorcery;
 import com.sorcery.entity.ModEntity;
 import com.sorcery.entity.projectile.MagicMissileEntity;
 import com.sorcery.utils.BasisVector;
 import com.sorcery.utils.Utils;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FireBlock;
 import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 
@@ -22,6 +18,7 @@ public class MagicMissileSpell extends Spell
     public MagicMissileSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
     {
         super(arcanaCost, tierIn, schoolIn);
+        this.finalSound = SoundEvents.ITEM_TRIDENT_HIT;
     }
 
     @Override
@@ -56,6 +53,8 @@ public class MagicMissileSpell extends Spell
 
         // Spawn entity
         context.getWorld().addEntity(magicMissile);
+        this.playFinalSound(context);
         return ActionResultType.SUCCESS;
     }
+
 }

@@ -11,6 +11,7 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
@@ -22,6 +23,7 @@ public class BlinkSpell extends Spell
     public BlinkSpell()
     {
         super(Config.SPELL_BLINK_COST.get());
+        this.finalSound = SoundEvents.ENTITY_ENDERMAN_TELEPORT;
         this.blinkDistance = Config.SPELL_BLINK_DISTANCE.get();
     }
 
@@ -30,7 +32,7 @@ public class BlinkSpell extends Spell
     public ActionResultType doCastFinal(SpellUseContext context)
     {
         this.doParticleEffects(context);
-        this.playSound(context);
+        this.playFinalSound(context);
 
         PlayerEntity player = context.getPlayer();
 

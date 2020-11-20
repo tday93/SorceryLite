@@ -18,7 +18,7 @@ public class ChillingTouchSpell extends Spell
     {
         super(arcanaCost);
         this.damageAmount = 3;
-        this.sound = SoundEvents.BLOCK_SNOW_PLACE;
+        this.finalSound = SoundEvents.BLOCK_SNOW_PLACE;
         this.spellTier = tierIn;
         this.spellSchool = schoolIn;
     }
@@ -34,7 +34,7 @@ public class ChillingTouchSpell extends Spell
     public ActionResultType doCastFinal(SpellUseContext context)
     {
         this.doParticleEffects(context);
-        this.playSound(context);
+        this.playFinalSound(context);
         context.getTargetEntity().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 3, 1));
         context.getTargetEntity().attackEntityFrom(DamageSource.MAGIC, 3);
         return ActionResultType.SUCCESS;
@@ -52,8 +52,8 @@ public class ChillingTouchSpell extends Spell
     }
     // Play sound effects, override if you want different behavior
     @Override
-    public void playSound(SpellUseContext context)
+    public void playFinalSound(SpellUseContext context)
     {
-        context.getWorld().playSound(context.getPlayer(), context.getPos(), this.sound, this.soundCategory, 1.0F, context.getWorld().rand.nextFloat() * 0.4F + 0.8F);
+        context.getWorld().playSound(context.getPlayer(), context.getPos(), this.finalSound, this.soundCategory, 1.0F, context.getWorld().rand.nextFloat() * 0.4F + 0.8F);
     }
 }

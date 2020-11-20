@@ -10,12 +10,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
-public class SlowOutParticle extends RGBAParticle
+public class EaseOutParticle extends RGBAParticle
 {
     IAnimatedSprite spriteSet;
     int hangTicks;
 
-    public SlowOutParticle(ClientWorld world, double x, double y, double z, double vX, double vY, double vZ, IAnimatedSprite spriteSetIn, int hangTicksIn, float r, float g, float b, float a)
+    public EaseOutParticle(ClientWorld world, double x, double y, double z, double vX, double vY, double vZ, IAnimatedSprite spriteSetIn, int hangTicksIn, float r, float g, float b, float a)
     {
         super(world, x, y, z, vX, vY, vZ, spriteSetIn, r, g, b, a);
         // Override motion randomization
@@ -73,9 +73,17 @@ public class SlowOutParticle extends RGBAParticle
         @Override
         public Particle makeParticle(RGBAParticleData data, ClientWorld worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
         {
-            SlowOutParticle simpleParticle = new SlowOutParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, spriteSet, 10, data.r, data.g, data.b, data.a);
-            simpleParticle.setMaxAge(40);
-            simpleParticle.selectSpriteWithAge(spriteSet);
+            EaseOutParticle simpleParticle = new EaseOutParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, spriteSet, 10, data.r, data.g, data.b, data.a);
+            simpleParticle.setMaxAge(data.t);
+            simpleParticle.doAnimation = data.q;
+            simpleParticle.canCollide = data.c;
+            simpleParticle.particleGravity = data.m;
+            if(data.q)
+            {
+                simpleParticle.selectSpriteWithAge(spriteSet);
+            } else {
+                simpleParticle.selectSpriteRandomly(spriteSet);
+            }
             return simpleParticle;
         }
     }

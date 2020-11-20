@@ -2,12 +2,15 @@ package com.sorcery.spell;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
+import com.sorcery.network.PacketHandler;
+import com.sorcery.network.packets.ParticleEffectPacket;
 import com.sorcery.tileentity.AbstractMonolithTile;
 import com.sorcery.tileentity.ArcanaStorageTile;
 import com.sorcery.tileentity.ChiseledMonolithTile;
 import com.sorcery.utils.Utils;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.math.vector.Vector3d;
 
 import java.util.HashSet;
 import java.util.List;
@@ -52,6 +55,10 @@ public class MeditateSpell extends Spell
                     context.getArcanaSource().receiveArcana(arcanaExtracted, false);
                 }
             }
+
+            Vector3d loc = context.getPlayer().getEyePosition(0);
+            ParticleEffectPacket pkt1 = new ParticleEffectPacket(12, 14, loc, Vector3d.ZERO, 4, 1, 2, 20);
+            PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt1);
 
             context.getArcanaSource().receiveArcana(this.arcanaGenRate, false);
             return ActionResultType.SUCCESS;

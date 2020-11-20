@@ -57,26 +57,19 @@ public class SpellbookInventory extends Inventory
     private void writeNBT(CompoundNBT compound, ItemStack stack, PlayerInventory playerInventory) {
         final NonNullList<ItemStack> list = NonNullList.withSize(getSizeInventory(), ItemStack.EMPTY);
         ISpellcasting spellCasting = Utils.getSpellCap(stack);
-        Sorcery.getLogger().debug("existing spell cap");
         Sorcery.getLogger().debug(spellCasting);
         spellCasting.clearPreparedSpells();
-        Sorcery.getLogger().debug("in write NBT in spellbook inventory");
         for (int index = 0; index < list.size(); index++) {
             ItemStack stack1 = getStackInSlot(index);
             list.set(index, getStackInSlot(index));
             if (stack1.getItem() instanceof SpellScrollItem)
             {
-                Sorcery.getLogger().debug("adding spell from scroll");
                 ResourceLocation spellLoc = ((SpellScrollItem) stack1.getItem()).getSpell();
-                Sorcery.getLogger().debug(spellLoc.toString());
                 spellCasting.addPreparedSpell(spellLoc);
             }
         }
-        Sorcery.getLogger().debug("adding arcanaDrain");
         spellCasting.addPreparedSpell(ModSpell.SPELL_MEDITATE.getId());
         spellCasting.setActiveSpell(ModSpell.SPELL_MEDITATE.getId());
-        Sorcery.getLogger().debug("final spellcasting:");
-        Sorcery.getLogger().debug(spellCasting.serializeNBT());
         ItemStackHelper.saveAllItems(compound, list, true);
         PacketHandler.sendToPlayer((ServerPlayerEntity) playerInventory.player, new SpellCapSyncPacket((CompoundNBT) SpellcastingCapability.SPELLCASTING.writeNBT(spellCasting, null)));
     }

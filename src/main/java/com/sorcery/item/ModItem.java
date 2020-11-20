@@ -64,6 +64,7 @@ public class ModItem
 
     // Utility Items
     public static final RegistryObject<Item> CRYSTAL_RESONATOR = ITEMS.register("crystal_resonator", () -> new CrystalResonatorItem(Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> SPELL_PROJECTILE = ITEMS.register("spell_projectile", () -> new Item(Constants.ITEM_PROPS));
 
     // Staves
     public static final RegistryObject<Item> SORCEROUS_STAFF = ITEMS.register("sorcerous_staff", () -> new StaffItem(Constants.ITEM_PROPS));
@@ -104,6 +105,8 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_CREATE_WATER = ITEMS.register("scroll_create_water", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CREATE_WATER));
     public static final RegistryObject<Item> SCROLL_REPEL = ITEMS.register("scroll_repel", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_REPEL));
     public static final RegistryObject<Item> SCROLL_SPEED = ITEMS.register("scroll_speed", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_SPEED));
+    public static final RegistryObject<Item> SCROLL_TRANSMUTE_STONE = ITEMS.register("scroll_transmute_stone", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_TRANSMUTE_STONE));
+    public static final RegistryObject<Item> SCROLL_RAY_OF_FROST = ITEMS.register("scroll_ray_of_frost", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_RAY_OF_FROST));
     // -- Netherite
     // -- End
     public static final RegistryObject<Item> SCROLL_BLINK = ITEMS.register("scroll_blink", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_BLINK));

@@ -11,6 +11,7 @@ import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.vector.Vector3d;
 
 public class BlockPlacementSpell extends Spell
 {
@@ -21,7 +22,7 @@ public class BlockPlacementSpell extends Spell
     public BlockPlacementSpell(int arcanaCost, BlockItem placementItem, SpellTier tierIn, SpellSchool schoolIn)
     {
         super(arcanaCost, tierIn, schoolIn);
-        this.sound = SoundEvents.BLOCK_STONE_PLACE;
+        this.finalSound = SoundEvents.BLOCK_STONE_PLACE;
         this.placementItem = placementItem;
         this.placementItemStack = new ItemStack(placementItem);
     }
@@ -58,7 +59,8 @@ public class BlockPlacementSpell extends Spell
             {
                 BlockState state = placementItem.getBlock().getDefaultState();
                 context.getPlayer().inventory.getStackInSlot(index).shrink(1);
-                this.playSound(context);
+                this.playFinalSound(context);
+                this.doParticleEffects(context);
                 context.getWorld().setBlockState(context.getFacePos(), state, 3);
                 return ActionResultType.SUCCESS;
             }
@@ -69,8 +71,7 @@ public class BlockPlacementSpell extends Spell
     //needs work still
     public void doParticleEffects(SpellUseContext context)
     {
-        IParticleData blockPartData = new BlockParticleData(ParticleTypes.BLOCK, this.placementItem.getBlock().getDefaultState());
-        ParticleEffectPacket pkt = new ParticleEffectPacket(5, blockPartData, Utils.getVectorFromPos(context.getFacePos()), context.getPlayer().getLookVec(), 20, 0.5, 0.2, 20);
+        ParticleEffectPacket pkt = new ParticleEffectPacket(14, 17, Utils.getVectorFromPos(context.getFacePos()).add(0.5, 0.5, 0.5), Vector3d.ZERO, 10, 0.1, 0.2, 20);
         PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt);
     }
 }

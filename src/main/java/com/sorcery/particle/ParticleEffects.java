@@ -4,6 +4,7 @@ import com.sorcery.tileentity.AbstractMonolithTile;
 import com.sorcery.utils.BasisVector;
 import com.sorcery.utils.Utils;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 
@@ -17,6 +18,60 @@ import net.minecraft.util.math.vector.Vector3d;
 public class ParticleEffects
 {
 
+    public static void doParticleEffect(int effectID, ParticleEffectContext context)
+    {
+        switch (effectID)
+        {
+            case 0:
+                risePoof(context);
+                break;
+            case 1:
+                ringHorizontal(context);
+                break;
+            case 2:
+                expandingSphere(context);
+                break;
+            case 3:
+                coneSpray(context);
+                break;
+            case 4:
+                sendTo(context);
+                break;
+            case 5:
+                smallFountain(context);
+                break;
+            case 6:
+                drawIn(context);
+                break;
+            case 7:
+                drawInFrom(context);
+                break;
+            case 8:
+                staticHorizontalRing(context);
+                break;
+            case 9:
+                staticVolume(context);
+                break;
+            case 10:
+                interferenceParticles(context);
+                break;
+            case 11:
+                sendToThick(context);
+                break;
+            case 12:
+                shrinkingSphere(context);
+                break;
+            case 13:
+                beam(context);
+                break;
+            case 14:
+                randomBurst(context);
+            case 15:
+                beamShower(context);
+            case 16:
+                randomStaticCloud(context);
+        }
+    }
 
     // Bunch of particles within random radius of location, that rise with speed riseSpeed
     public static void risePoof(ParticleEffectContext ctx)
@@ -53,6 +108,23 @@ public class ParticleEffects
         ctx.world.addParticle(ctx.getParticle(), ctx.vec1.getX(), ctx.vec1.getY(), ctx.vec1.getZ(), vec.getX(), vec.getY(), vec.getZ());
     }
 
+    // line of particles moving towards endpoint
+    public static void sendToThick(ParticleEffectContext ctx)
+    {
+        Vector3d ray = ctx.vec2.subtract(ctx.vec1).normalize();
+        double distance = ctx.vec2.distanceTo(ctx.vec1);
+        double realSpeed = distance / ((double)ctx.age);
+        Vector3d vec = ray.mul(realSpeed, realSpeed, realSpeed);
+        double[] rand1 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+        double[] rand2 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+        double[] rand3 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+        for ( int i = 0; i < ctx.numParticles; i++)
+        {
+            Vector3d startVec = ctx.vec1.add(rand1[i] * ctx.radius, rand2[i] * ctx.radius, rand3[i] * ctx.radius);
+            ctx.world.addParticle(ctx.getParticle(), startVec.getX(), startVec.getY(), startVec.getZ(), vec.getX(), vec.getY(), vec.getZ());
+        }
+    }
+
     // Expanding sphere of ~roughly evenly spaced particles surrounding location
     public static void expandingSphere(ParticleEffectContext ctx)
     {
@@ -70,6 +142,30 @@ public class ParticleEffects
             ctx.world.addParticle(ctx.getParticle(), ctx.vec1.getX(), ctx.vec1.getY(), ctx.vec1.getZ(), pathVec.getX() * ctx.speed,pathVec.getY() * ctx.speed, pathVec.getZ() * ctx.speed);
         }
     }
+
+    // Expanding sphere of ~roughly evenly spaced
+    public static void shrinkingSphere(ParticleEffectContext ctx)
+    {
+        double rand = ctx.world.getRandom().nextDouble() * ctx.numParticles;
+        double offset = 2.0/ctx.numParticles;
+        double increment = Math.PI * (3.0 - Math.sqrt(5.0));
+        double distance = ctx.radius;
+        double realSpeed = distance / ((double)ctx.age);
+        for ( int i = 0; i < ctx.numParticles; i++)
+        {
+            double y = ((i * offset) - 1) + (offset / 2);
+            double r = Math.sqrt(1 - Math.pow(y, 2));
+            double phi = ((i + rand) % ctx.numParticles) * increment;
+            double x = Math.cos(phi) * r;
+            double z = Math.sin(phi) * r;
+            Vector3d pathVec = new Vector3d(x, y, z).normalize();
+            Vector3d startVec = Utils.nBlocksAlongVector(ctx.vec1, pathVec, (float)ctx.radius);
+            pathVec = pathVec.inverse();
+            Vector3d vec = pathVec.mul(realSpeed, realSpeed, realSpeed);
+            ctx.world.addParticle(ctx.getParticle(), startVec.getX(), startVec.getY(), startVec.getZ(), vec.getX(), vec.getY(), vec.getZ());
+        }
+    }
+
 
     // spray of particles in a cone
     public static void coneSpray(ParticleEffectContext ctx)
@@ -194,5 +290,61 @@ public class ParticleEffects
 
     }
 
+    public static void beam(ParticleEffectContext ctx)
+    {
+        Vector3d ray = ctx.vec2.subtract(ctx.vec1).normalize();
+        double distance = ctx.vec2.distanceTo(ctx.vec1);
+        int numParticles = (int)(distance / 0.1);
+
+        for (int i = 0; i < numParticles; i++)
+        {
+            Vector3d partVec = Utils.nBlocksAlongVector(ctx.vec1, ray, (float)(0.1 * i));
+            ctx.world.addParticle(ctx.getParticle(), partVec.getX(), partVec.getY(), partVec.getZ(), 0, 0, 0);
+        }
+    }
+
+    public static void beamShower(ParticleEffectContext ctx)
+    {
+        Vector3d ray = ctx.vec2.subtract(ctx.vec1).normalize();
+        double distance = ctx.vec2.distanceTo(ctx.vec1);
+        BasisVector basis = new BasisVector(ray);
+
+        for (int i = 0; i < ctx.numParticles; i++)
+        {
+            Vector3d partVec = Utils.nBlocksAlongVector(ctx.vec1, ray, (float)(ctx.world.rand.nextDouble() * distance));
+            Vector3d velVec = basis.addX(Vector3d.ZERO, (ctx.world.rand.nextDouble() - 0.5) * ctx.speed);
+            velVec = velVec.add(0, ctx.radius, 0);
+            ctx.world.addParticle(ctx.getParticle(), partVec.getX(), partVec.getY(), partVec.getZ(), velVec.getX(), velVec.getY(), velVec.getZ());
+        }
+    }
+
+    public static void randomBurst(ParticleEffectContext ctx)
+    {
+        double[] rand1 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+        double[] rand2 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+        double[] rand3 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+
+        for (int i = 0; i < ctx.numParticles; i++)
+        {
+            Vector3d vec = new Vector3d(rand1[i], rand2[i], rand3[i]).normalize().scale(ctx.speed);
+            ctx.world.addParticle(ctx.getParticle(), ctx.vec1.getX(), ctx.vec1.getY(), ctx.vec1.getZ(), vec.getX(), vec.getY(), vec.getZ());
+        }
+    }
+
+    public static void randomStaticCloud(ParticleEffectContext ctx)
+    {
+        double[] rand1 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+        double[] rand2 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+        double[] rand3 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+        double[] rand4 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+
+        for (int i = 0; i < ctx.numParticles; i++)
+        {
+            Vector3d ray = new Vector3d(rand1[i], rand2[i], rand3[i]).normalize();
+            Vector3d vec = Utils.nBlocksAlongVector(ctx.vec1, ray, (float)((rand4[i] - 0.5) * ctx.radius));
+            ctx.world.addParticle(ctx.getParticle(), vec.getX(), vec.getY(), vec.getZ(), 0, 0, 0);
+        }
+
+    }
 
 }

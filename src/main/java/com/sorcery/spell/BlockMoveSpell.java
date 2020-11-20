@@ -1,15 +1,20 @@
 package com.sorcery.spell;
 
 import com.sorcery.Constants;
+import com.sorcery.network.PacketHandler;
+import com.sorcery.network.packets.ParticleEffectPacket;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector3i;
 
 import java.util.Arrays;
@@ -30,6 +35,7 @@ public class BlockMoveSpell extends Spell
         super(arcanaCost, tierIn, schoolIn);
         // doing this so that sizeIn can represent the total size
         this.size = new Vector3i(sizeIn.getX() - 1, sizeIn.getY() - 1, sizeIn.getZ() -1);
+        this.finalSound = SoundEvents.BLOCK_STONE_PLACE;
         this.offset = offsetIn;
         this.translation = translationIn;
         this.allowedBlocksTag = allowedBlocks;
@@ -71,6 +77,10 @@ public class BlockMoveSpell extends Spell
             BlockPos transPos = entry.getKey().add(rotTranslation);
             if (context.getWorld().getBlockState(transPos).getBlock() == Blocks.AIR)
             {
+
+                ParticleEffectPacket pkt1 = new ParticleEffectPacket(14, 17, new Vector3d(transPos.getX(), transPos.getY(), transPos.getZ()).add(0.5, 0.5, 0.5), Vector3d.ZERO, 6, 0.2, 0.2, 10);
+
+                PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt1);
                 context.getWorld().setBlockState(transPos, entry.getValue());
             }
         }

@@ -5,6 +5,7 @@ import com.sorcery.entity.ModEntity;
 import com.sorcery.entity.projectile.FireboltEntity;
 import com.sorcery.utils.Utils;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
@@ -15,6 +16,7 @@ public class FireboltSpell extends Spell
     public FireboltSpell(SpellTier tierIn, SpellSchool schoolIn)
     {
         super(Config.SPELL_FIREBOLT_COST.get(), tierIn, schoolIn);
+        this.finalSound = SoundEvents.ITEM_FIRECHARGE_USE;
         this.velocity = 3;
     }
 
@@ -23,7 +25,7 @@ public class FireboltSpell extends Spell
     public ActionResultType doCastFinal(SpellUseContext context)
     {
         this.doParticleEffects(context);
-        this.playSound(context);
+        this.playFinalSound(context);
         World world = context.getWorld();
         FireboltEntity entity = new FireboltEntity(ModEntity.FIREBOLT, world);
         entity.setDamageAndDuration(Config.SPELL_FIREBOLT_DAMAGE.get(), Config.SPELL_FIREBOLT_FIRE_DURATION.get());
@@ -32,6 +34,7 @@ public class FireboltSpell extends Spell
         Vector3d entityPos = Utils.nBlocksAlongVector(eyePos, playerLook, 2.0f);
         entity.setPosition(entityPos.x, entityPos.y, entityPos.z);
         entity.addVelocity(playerLook.x * velocity, playerLook.y * velocity, playerLook.z * velocity);
+        entity.accelerationY = -0.1;
         world.addEntity(entity);
         return ActionResultType.SUCCESS;
     }
