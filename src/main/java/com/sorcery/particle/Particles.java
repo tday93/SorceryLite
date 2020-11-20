@@ -173,14 +173,22 @@ public class Particles
                 collection.add(25, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getHiList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
                 return collection;
             case 17:
+                // Brownian Arcana Conjuration
                 collection.add(50, getColoredParticle(ModColor.CONJURATION_PURPLE.getMainList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
                 collection.add(25, getColoredParticle(ModColor.CONJURATION_PURPLE.getLowList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
                 collection.add(25, getColoredParticle(ModColor.CONJURATION_PURPLE.getHiList(), ModParticle.ARCANA_BROWNIAN, 0.5f, age, false, false, 0.0f, 0.9f, true));
                 return collection;
             case 18:
+                // Ice Beam
                 collection.add(50, getColoredParticle(ModColor.LUNAR_SILVER.getMainList(), ModParticle.BEAM, 1.0f, age, false, false, 0.0f, 1.0f, true));
                 collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getLowList(), ModParticle.BEAM, 1.0f, age, false, false, 0.0f, 1.0f, true));
                 collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getHiList(), ModParticle.BEAM, 1.0f, age, false, false, 0.0f, 1.0f, true));
+                return collection;
+            case 19:
+                // Falling snowflakes
+                collection.add(50, getColoredParticle(ModColor.LUNAR_SILVER.getMainList(), ModParticle.SNOWFLAKE, 1.0f, age, true, true, 0.5f, 1.0f, true));
+                collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getLowList(), ModParticle.SNOWFLAKE, 1.0f, age, true, true, 0.5f, 1.0f, true));
+                collection.add(25, getColoredParticle(ModColor.LUNAR_SILVER.getHiList(), ModParticle.SNOWFLAKE, 1.0f, age, true, true, 0.5f, 1.0f, true));
                 return collection;
             default:
                 collection.add(100, getSpark());

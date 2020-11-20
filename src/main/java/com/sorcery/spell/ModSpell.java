@@ -61,7 +61,7 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_REPEL = SPELLS.register("spell_repel", () -> new RepelSpell(SpellTier.MAGE, SpellSchool.EVOCATION));
     public static final RegistryObject<Spell> SPELL_SPEED = SPELLS.register("spell_speed", () -> new PotionSpell(Config.SPELL_SPEED_COST.get(), Effects.SPEED, Config.SPELL_SPEED_DURATION.get(), 1, true, SpellTier.MAGE, SpellSchool.ENCHANTMENT));
     public static final RegistryObject<Spell> SPELL_TRANSMUTE_STONE = SPELLS.register("spell_transmute_stone", () -> new BlockTransmuteSpell(10, SpellTier.MAGE, SpellSchool.TRANSMUTATION));
-    public static final RegistryObject<Spell> SPELL_RAY_OF_FROST = SPELLS.register("spell_ray_of_frost", () -> new RayAttackSpell(1, 1, DamageSource.GENERIC, Effects.SLOWNESS, 1, 18, SpellTier.MAGE, SpellSchool.EVOCATION));
+    public static final RegistryObject<Spell> SPELL_RAY_OF_FROST = SPELLS.register("spell_ray_of_frost", () -> new RayAttackSpell(1, 1, DamageSource.GENERIC, Effects.SLOWNESS, (20 * 3), 18, 19, SpellTier.MAGE, SpellSchool.EVOCATION));
     // -- Cocoon Spell
 
     // Netherite Spells - Master Mage

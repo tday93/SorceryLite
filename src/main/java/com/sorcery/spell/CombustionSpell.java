@@ -26,6 +26,7 @@ public class CombustionSpell extends Spell
         this.dmgPerTick = Config.SPELL_COMBUSTION_DAMAGE.get();
         this.fireDuration = Config.SPELL_COMBUSTION_FIRE_DURATION.get();
         this.castType = CastType.CHANNELED;
+        this.tickSound = SoundEvents.ITEM_FIRECHARGE_USE;
         this.finalSound = SoundEvents.ITEM_FIRECHARGE_USE;
         this.castFrequency = 2;
     }

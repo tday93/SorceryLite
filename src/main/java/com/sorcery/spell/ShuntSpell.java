@@ -28,7 +28,7 @@ public class ShuntSpell extends Spell
         {
             MobEntity mobEntity = (MobEntity)context.getTargetEntity();
             Vector3d newPos = Utils.randomPosInRange(context.getWorld().rand, mobEntity.getPosX(), mobEntity.getPosY(), mobEntity.getPosZ(), this.range);
-            this.doParticleEffects(context, mobEntity.getPositionVec());
+            this.doParticleEffects(context, mobEntity.getPositionVec(), newPos);
             this.playFinalSound(context);
             mobEntity.setPositionAndUpdate(newPos.x, newPos.y, newPos.z);
             return ActionResultType.SUCCESS;
@@ -44,9 +44,12 @@ public class ShuntSpell extends Spell
     }
 
     // Send packets to play particle effects
-    public void doParticleEffects(SpellUseContext context, Vector3d origin)
+    public void doParticleEffects(SpellUseContext context, Vector3d origin, Vector3d newPosition)
     {
         ParticleEffectPacket pkt = new ParticleEffectPacket(0, Particles.getPuff(), origin, context.getTargetEntity().getLookVec(), 5, 0.1, 0.2, 10);
+        ParticleEffectPacket pkt1 = new ParticleEffectPacket(16, 17, newPosition, Vector3d.ZERO, 10, 0.1, 2, 10);
+
         PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt);
+        PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt1);
     }
 }

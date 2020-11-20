@@ -43,6 +43,10 @@ public class Spell extends ForgeRegistryEntry<Spell>
      */
     public ActionResultType castFinal(SpellUseContext context)
     {
+        if (this.castType == CastType.CHANNELED)
+        {
+            return ActionResultType.SUCCESS;
+        }
 
         if (!preCast(context))
         {

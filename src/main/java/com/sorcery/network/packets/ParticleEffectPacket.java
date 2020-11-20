@@ -135,55 +135,8 @@ public class ParticleEffectPacket
 
                     ParticleEffectContext context = new ParticleEffectContext(world, collection, loc, lookVec, num, speed, radius, age);
 
-                    switch (message.pktNBT.getInt("eT"))
-                    {
-                        case 0:
-                            ParticleEffects.risePoof(context);
-                            break;
-                        case 1:
-                            ParticleEffects.ringHorizontal(context);
-                            break;
-                        case 2:
-                            ParticleEffects.expandingSphere(context);
-                            break;
-                        case 3:
-                            ParticleEffects.coneSpray(context);
-                            break;
-                        case 4:
-                            ParticleEffects.sendTo(context);
-                            break;
-                        case 5:
-                            ParticleEffects.smallFountain(context);
-                            break;
-                        case 6:
-                            ParticleEffects.drawIn(context);
-                            break;
-                        case 7:
-                            ParticleEffects.drawInFrom(context);
-                            break;
-                        case 8:
-                            ParticleEffects.staticHorizontalRing(context);
-                            break;
-                        case 9:
-                            ParticleEffects.staticVolume(context);
-                            break;
-                        case 10:
-                            ParticleEffects.interferenceParticles(context);
-                            break;
-                        case 11:
-                            ParticleEffects.sendToThick(context);
-                            break;
-                        case 12:
-                            ParticleEffects.shrinkingSphere(context);
-                            break;
-                        case 13:
-                            ParticleEffects.beam(context);
-                            break;
-                        case 14:
-                            ParticleEffects.randomBurst(context);
-                    }
+                    ParticleEffects.doParticleEffect(message.pktNBT.getInt("eT"), context);
                 }
-
             });
             ctx.get().setPacketHandled(true);
         }

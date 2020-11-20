@@ -19,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -41,6 +42,8 @@ public class DrawScreenEvent
     private static ResourceLocation spellIcon = null;
 
     private static long showSelectionTicks = 40;
+
+    private static TranslationTextComponent localizedSpell = null;
 
 
     private static int backgroundWidth = 131;
@@ -182,7 +185,7 @@ public class DrawScreenEvent
                 long tDelta = mc.world.getGameTime() - showSpellSelectionStart;
                 if (tDelta < showSelectionTicks)
                 {
-                    mc.fontRenderer.drawStringWithShadow(matrixStack, selectedSpell.toString(), posX + 40 , posY + 30, 16777215);
+                    mc.fontRenderer.func_243246_a(matrixStack, localizedSpell, posX + 40 , posY + 30, 16777215);
 
                 } else {
                     showSpellSelection = false;
@@ -205,6 +208,7 @@ public class DrawScreenEvent
     public static void setSelectedSpell(ResourceLocation spell)
     {
         selectedSpell = spell;
+        localizedSpell = new TranslationTextComponent("spell."+ spell.getNamespace() + "." + spell.getPath());
         setShowSpellSelection(true);
         spellIcon = new ResourceLocation(Constants.MODID, "textures/spells/" + spell.getPath() + ".png");
         showSpellSelectionStart = Minecraft.getInstance().world.getGameTime();
