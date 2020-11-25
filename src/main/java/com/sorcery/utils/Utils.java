@@ -4,7 +4,9 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.sorcery.arcana.IArcanaStorage;
 import com.sorcery.block.state.CrystalColor;
+import com.sorcery.item.SpellScrollItem;
 import com.sorcery.item.SpellbookItem;
+import com.sorcery.item.WandItem;
 import com.sorcery.spell.Spell;
 import com.sorcery.spellcasting.ISpellcasting;
 import net.minecraft.entity.Entity;
@@ -12,6 +14,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.LongArrayNBT;
 import net.minecraft.tileentity.TileEntity;
@@ -59,6 +62,11 @@ public class Utils {
         ResourceLocation spellLoc = getSpellCap(provider).getActiveSpell();
         Spell spellOut = GameRegistry.findRegistry(Spell.class).getValue(spellLoc);
         return spellOut;
+    }
+
+    public static Spell getSpell(ResourceLocation spellLoc)
+    {
+        return GameRegistry.findRegistry(Spell.class).getValue(spellLoc);
     }
 
     public static Vector3d nBlocksAlongVector(Vector3d pos, Vector3d unitVector, float distance)
@@ -305,5 +313,28 @@ public class Utils {
             }
         }
         return spellbook;
+    }
+
+
+    public static WandItem getWand(Spell spell)
+    {
+        return getWand(spell.getRegistryName());
+    }
+
+    public static SpellScrollItem getScroll(Spell spell)
+    {
+        return getScroll(spell.getRegistryName());
+    }
+
+    public static WandItem getWand(ResourceLocation spell)
+    {
+        Item item = GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(spell.getNamespace(), "wand_" + spell.getPath().substring(6)));
+        return (WandItem)item;
+    }
+
+    public static SpellScrollItem getScroll(ResourceLocation spell)
+    {
+        Item item = GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(spell.getNamespace(), "scroll_" + spell.getPath().substring(6)));
+        return (SpellScrollItem)item;
     }
 }

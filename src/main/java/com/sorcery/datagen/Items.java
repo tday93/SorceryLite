@@ -3,6 +3,7 @@ package com.sorcery.datagen;
 import com.sorcery.Constants;
 import com.sorcery.item.ModItem;
 import com.sorcery.item.SpellScrollItem;
+import com.sorcery.item.WandItem;
 import com.sorcery.spell.Spell;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
@@ -94,21 +95,37 @@ public class Items extends ItemModelProvider
         scrollItem((SpellScrollItem)ModItem.SCROLL_BLINK.get());
 
         // Wands
+        // -- Utility
+        simpleSingleTexture(ModItem.WAND_CORE_INITIATE.get(), "wand_core_initiate");
+        simpleSingleTexture(ModItem.WAND_CORE_APPRENTICE.get(), "wand_core_apprentice");
+        simpleSingleTexture(ModItem.WAND_CORE_JOURNEYMAN.get(), "wand_core_journeyman");
+        simpleSingleTexture(ModItem.WAND_CORE_SORCERER.get(), "wand_core_sorcerer");
+        simpleSingleTexture(ModItem.WAND_CORE_MASTER_SORCERER.get(), "wand_core_master_sorcerer");
+        simpleSingleTexture(ModItem.WAND_CORE_ARCHSORCERER.get(), "wand_core_archsorcerer");
         // -- Pre-Iron
-        simpleSingleTexture(ModItem.WAND_LESSER_DIG.get(), "wand_preiron_evocation");
-        simpleSingleTexture(ModItem.WAND_PLANT_DEATH.get(), "wand_preiron_evocation");
-        simpleSingleTexture(ModItem.WAND_PLANT_LIFE.get(), "wand_preiron_evocation");
-        simpleSingleTexture(ModItem.WAND_CHILLING_TOUCH.get(), "wand_preiron_evocation");
+        wandItem((WandItem)ModItem.WAND_LESSER_DIG.get());
+        wandItem((WandItem)ModItem.WAND_PLANT_DEATH.get());
+        wandItem((WandItem)ModItem.WAND_PLANT_LIFE.get());
+        wandItem((WandItem)ModItem.WAND_CHILLING_TOUCH.get());
         // -- Iron
-        simpleSingleTexture(ModItem.WAND_COBBLE_PLACEMENT.get(), "wand_iron_evocation");
-        simpleSingleTexture(ModItem.WAND_LESSER_SHUNT.get(), "wand_iron_evocation");
-        simpleSingleTexture(ModItem.WAND_LESSER_FIREBOLT.get(), "wand_iron_evocation");
-        simpleSingleTexture(ModItem.WAND_LESSER_HEAL.get(), "wand_iron_evocation");
-        simpleSingleTexture(ModItem.WAND_LESSER_SLOW.get(), "wand_iron_evocation");
-        simpleSingleTexture(ModItem.WAND_SIGNAL_FLARE.get(), "wand_iron_evocation");
+        wandItem((WandItem)ModItem.WAND_COBBLE_PLACEMENT.get());
+        wandItem((WandItem)ModItem.WAND_LESSER_SHUNT.get());
+        wandItem((WandItem)ModItem.WAND_LESSER_FIREBOLT.get());
+        wandItem((WandItem)ModItem.WAND_LESSER_HEAL.get());
+        wandItem((WandItem)ModItem.WAND_LESSER_SLOW.get());
+        wandItem((WandItem)ModItem.WAND_SIGNAL_FLARE.get());
         // -- Diamond
-        simpleSingleTexture(ModItem.WAND_CREATE_WATER.get(), "wand_iron_evocation");
+        wandItem((WandItem)ModItem.WAND_COMBUSTION.get());
+        wandItem((WandItem)ModItem.WAND_DIG.get());
+        wandItem((WandItem)ModItem.WAND_DRAIN_LIFE.get());
+        wandItem((WandItem)ModItem.WAND_EARTHEN_WALL.get());
+        wandItem((WandItem)ModItem.WAND_IGNITE.get());
+        wandItem((WandItem)ModItem.WAND_LESSER_FEATHER_FALL.get());
+        wandItem((WandItem)ModItem.WAND_MAGIC_MISSILE.get());
+        wandItem((WandItem)ModItem.WAND_SEISMIC_ECHO.get());
+        wandItem((WandItem)ModItem.WAND_STONEFLESH.get());
         // -- Nether
+        wandItem((WandItem)ModItem.WAND_CREATE_WATER.get());
         // -- Netherite
         // -- End
 
@@ -180,6 +197,11 @@ public class Items extends ItemModelProvider
         singleTexture(item.getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(Constants.MODID, "item/scroll_" + spell.spellTier.tierName + "_" + spell.spellSchool.schoolName ));
     }
 
+    public void wandItem(WandItem item)
+    {
+        Spell spell = item.SPELL.get();
+        singleTexture(item.getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(Constants.MODID, "item/wand_" + spell.spellTier.tierName + "_" + spell.spellSchool.schoolName ));
+    }
 
 
 }

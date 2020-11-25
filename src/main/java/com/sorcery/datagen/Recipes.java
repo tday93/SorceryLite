@@ -71,19 +71,36 @@ public class Recipes extends RecipeProvider
                 .addCriterion("sorcery:sorcerous_catalyst", InventoryChangeTrigger.Instance.forItems(ModItem.SORCEROUS_CATALYST.get()))
                 .build(consumer);
 
-        // Wands
-        // -- Pre-Iron
-        wandRecipeTier1(consumer, ModItem.WAND_LESSER_DIG.get(), Items.DIRT);
-        wandRecipeTier1(consumer, ModItem.WAND_PLANT_DEATH.get(), Items.COARSE_DIRT);
-        wandRecipeTier1(consumer, ModItem.WAND_PLANT_LIFE.get(), Tags.Items.SEEDS);
-        wandRecipeTier1(consumer, ModItem.WAND_CHILLING_TOUCH.get(), Items.SNOWBALL);
-        // -- Iron
-        wandRecipeTier2(consumer, ModItem.WAND_COBBLE_PLACEMENT.get(), Items.COBBLESTONE);
-        wandRecipeTier2(consumer, ModItem.WAND_LESSER_FIREBOLT.get(), Items.COAL);
-        wandRecipeTier2(consumer, ModItem.WAND_LESSER_SHUNT.get(), Items.ENDER_PEARL);
-        wandRecipeTier2(consumer, ModItem.WAND_LESSER_HEAL.get(), Items.GLISTERING_MELON_SLICE);
-        wandRecipeTier2(consumer, ModItem.WAND_LESSER_SLOW.get(), Items.COBWEB);
-        wandRecipeTier2(consumer, ModItem.WAND_SIGNAL_FLARE.get(), Items.GUNPOWDER);
+        // Wand Cores
+        ShapedRecipeBuilder.shapedRecipe(ModItem.WAND_CORE_INITIATE.get(), 1)
+                .patternLine("  x")
+                .patternLine(" x ")
+                .patternLine("x  ")
+                .key('x', Items.STICK)
+                .setGroup("sorcery")
+                .addCriterion("minecraft:stick", InventoryChangeTrigger.Instance.forItems(Items.STICK))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(ModItem.WAND_CORE_APPRENTICE.get(), 1)
+                .patternLine("  y")
+                .patternLine(" x ")
+                .patternLine("x  ")
+                .key('x', Items.STICK)
+                .key('y', Items.IRON_INGOT)
+                .setGroup("sorcery")
+                .addCriterion("minecraft:iron_ingot", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(ModItem.WAND_CORE_JOURNEYMAN.get(), 1)
+                .patternLine("  y")
+                .patternLine(" x ")
+                .patternLine("z  ")
+                .key('x', Items.STICK)
+                .key('y', Items.IRON_INGOT)
+                .key('z', ModItem.CRYSTAL_ARCANE.get())
+                .setGroup("sorcery")
+                .addCriterion("sorcery:crystal_arcane", InventoryChangeTrigger.Instance.forItems(ModItem.CRYSTAL_ARCANE.get()))
+                .build(consumer);
 
         //Scrolls
         // -- Pre-Iron
@@ -126,47 +143,6 @@ public class Recipes extends RecipeProvider
                 .key('z', Items.PAPER)
                 .setGroup("sorcery_spells")
                 .addCriterion("arcane_crystal", InventoryChangeTrigger.Instance.forItems(ModItem.CRYSTAL_ARCANE.get()))
-                .addCriterion("unique_component", InventoryChangeTrigger.Instance.forItems(uniqueComponent))
-                .build(consumer);
-    }
-
-
-    protected void wandRecipeTier1(Consumer<IFinishedRecipe> consumer, Item wandItem, Item uniqueComponent)
-    {
-        ShapedRecipeBuilder.shapedRecipe(wandItem)
-                .patternLine("  x")
-                .patternLine(" y ")
-                .patternLine("y  ")
-                .key('x', uniqueComponent)
-                .key('y', Items.STICK)
-                .setGroup("sorcery")
-                .addCriterion("unique_component", InventoryChangeTrigger.Instance.forItems(uniqueComponent))
-                .build(consumer);
-    }
-
-    protected void wandRecipeTier1(Consumer<IFinishedRecipe> consumer, Item wandItem, ITag<Item> tag)
-    {
-        ShapedRecipeBuilder.shapedRecipe(wandItem)
-                .patternLine("  x")
-                .patternLine(" y ")
-                .patternLine("y  ")
-                .key('x', tag)
-                .key('y', Items.STICK)
-                .setGroup("sorcery")
-                .addCriterion("unique_component", InventoryChangeTrigger.Instance.forItems(ItemPredicate.Builder.create().tag(tag).build()))
-                .build(consumer);
-    }
-
-    protected void wandRecipeTier2(Consumer<IFinishedRecipe> consumer, Item wandItem, Item uniqueComponent)
-    {
-        ShapedRecipeBuilder.shapedRecipe(wandItem)
-                .patternLine(" zx")
-                .patternLine(" yz")
-                .patternLine("y  ")
-                .key('x', uniqueComponent)
-                .key('y', Items.STICK)
-                .key('z', ModItem.SORCEROUS_CATALYST.get())
-                .setGroup("sorcery")
                 .addCriterion("unique_component", InventoryChangeTrigger.Instance.forItems(uniqueComponent))
                 .build(consumer);
     }

@@ -1,0 +1,6 @@
+{
+  "name": "Wands",
+  "description": "Specialized Spellcasting",
+  "icon": "sorcery:wand_core_initiate",
+  "sortnum": 1
+}

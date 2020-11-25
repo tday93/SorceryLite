@@ -1,0 +1,18 @@
+{
+  "name": "Sorcerer Wand Core",
+  "icon": "sorcery:wand_core_sorcerer",
+  "category": "items",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "text",
+      "text": "The infernal fires of the nether allow one to imbue a weaker wand with gold, greatly increasing its ability to handle and channel sorcerous energies."
+    },
+    {
+      "type": "spotlight",
+      "item": "minecraft:gold_ingot",
+      "title": "Gold Imbuement",
+      "text": "Within the Nether, use a Journeyman Wand Core while holding a Gold Ingot"
+    }
+  ]
+}

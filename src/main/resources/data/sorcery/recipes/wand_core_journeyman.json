@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sorcery",
+  "pattern": [
+    "  y",
+    " x ",
+    "z  "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:stick"
+    },
+    "y": {
+      "item": "minecraft:iron_ingot"
+    },
+    "z": {
+      "item": "sorcery:crystal_arcane"
+    }
+  },
+  "result": {
+    "item": "sorcery:wand_core_journeyman"
+  }
+}

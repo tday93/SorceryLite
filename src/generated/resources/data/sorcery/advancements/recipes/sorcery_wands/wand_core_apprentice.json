@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "sorcery:wand_core_apprentice"
+    ]
+  },
+  "criteria": {
+    "minecraft:iron_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:iron_ingot"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sorcery:wand_core_apprentice"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "minecraft:iron_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -5,9 +5,9 @@ public enum SpellTier
     INITIATE(0, "initiate"),
     APPRENTICE(1, "apprentice"),
     JOURNEYMAN(2, "journeyman"),
-    MAGE(3, "mage"),
-    MASTER(4, "master"),
-    ARCHMAGE(5, "archmage");
+    SORCERER(3, "sorcerer"),
+    MASTER_SORCERER(4, "master_sorcerer"),
+    ARCHSORCERER(5, "archsorcerer");
 
     public int tierInt;
     public String tierName;

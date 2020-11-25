@@ -1,0 +1,16 @@
+{
+  "name": "Journeyman Wand Core",
+  "icon": "sorcery:wand_core_journeyman",
+  "category": "items",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Affixing an arcane crystal to the pommel of a wand will enhance the stability of the wand, making the casting of more powerful spells possible. This is the most powerful wand core which can be crafted via mundane methods, stronger wands will require more exotic methods of construction."
+    },
+    {
+      "type": "crafting",
+      "recipe": "sorcery:wand_core_journeyman"
+    }
+  ]
+}
