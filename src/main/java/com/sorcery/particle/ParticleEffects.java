@@ -70,6 +70,8 @@ public class ParticleEffects
                 beamShower(context);
             case 16:
                 randomStaticCloud(context);
+            case 17:
+                horizontalRingArea(context);
         }
     }
 
@@ -256,7 +258,7 @@ public class ParticleEffects
             double x = ctx.radius * Math.cos(angle);
             double z = ctx.radius * Math.sin(angle);
 
-            ctx.world.addParticle(ctx.getParticle(), ctx.vec1.x + x, ctx.vec1.y, ctx.vec1.z + z, 0, 0, 0);
+            ctx.world.addParticle(ctx.getParticle(), ctx.vec1.x + x, ctx.vec1.y, ctx.vec1.z + z, ctx.vec2.getX(), ctx.vec2.getY(), ctx.vec2.getZ());
         }
     }
 
@@ -347,4 +349,15 @@ public class ParticleEffects
 
     }
 
+    public static void horizontalRingArea(ParticleEffectContext ctx)
+    {
+        double[] rand1 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+        double[] rand2 = ctx.world.rand.doubles(ctx.numParticles, -1, 1).toArray();
+
+        for (int i = 0; i < ctx.numParticles; i++)
+        {
+            Vector3d vec = ctx.vec1.add(rand1[i] * ctx.radius, 0, rand2[i] * ctx.radius);
+            ctx.world.addParticle(ctx.getParticle(), vec.getX(), vec.getY(), vec.getZ(), ctx.vec2.getX(), ctx.vec2.getY(), ctx.vec2.getZ());
+        }
+    }
 }

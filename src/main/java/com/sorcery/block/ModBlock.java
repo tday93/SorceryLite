@@ -58,6 +58,9 @@ public class ModBlock
     public static final RegistryObject<Block> MONOLITH_SOLAR_MIDDLE = BLOCKS.register("monolith_solar_middle", () -> new SolarMonolithBlock());
     public static final RegistryObject<Block> MONOLITH_SOLAR_BOTTOM = BLOCKS.register("monolith_solar_bottom", () -> new MonolithBottomBlock());
 
+
+    public static final RegistryObject<Block> CRAFT_BLOCK = BLOCKS.register("craft_block", () -> new CraftBlock());
+
     // Runestones
 
     public static final RegistryObject<Block> CHISELED_RUNESTONE = BLOCKS.register("chiseled_runestone", () -> new RunestoneBlock(MONOLITH_CHISELED_TOP.getId(), MONOLITH_CHISELED_MIDDLE.getId(), MONOLITH_CHISELED_BOTTOM.getId()));

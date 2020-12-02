@@ -196,6 +196,12 @@ public class Particles
                 collection.add(25, getColoredParticle(ModColor.ENCHANTMENT_BLUE.getLowList(), ModParticle.ARCANA, 0.5f, age, false, false, 0.0f, 0.9f, true));
                 collection.add(25, getColoredParticle(ModColor.ENCHANTMENT_BLUE.getHiList(), ModParticle.ARCANA, 0.5f, age, false, false, 0.0f, 0.9f, true));
                 return collection;
+            case 21:
+                // Arcana Arcana Lit
+                collection.add(50, getColoredParticle(ModColor.ARCANA_PURPLE.getMainList(), ModParticle.ARCANA, 0.3f, age, false, false, 0.0f, 0.9f, false));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getLowList(), ModParticle.ARCANA, 0.3f, age, false, false, 0.0f, 0.9f, false));
+                collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getHiList(), ModParticle.ARCANA, 0.3f, age, false, false, 0.0f, 0.9f, false));
+                return collection;
             default:
                 collection.add(100, getSpark());
                 return collection;

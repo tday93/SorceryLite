@@ -192,6 +192,8 @@ public class ModItem
     public static final RegistryObject<Item> MONOLITH_SOLAR_MIDDLE = ITEMS.register("monolith_solar_middle", () -> new BlockItem(ModBlock.MONOLITH_SOLAR_MIDDLE.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> MONOLITH_SOLAR_TOP = ITEMS.register("monolith_solar_top", () -> new BlockItem(ModBlock.MONOLITH_SOLAR_TOP.get(), Constants.ITEM_PROPS));
 
+    public static final RegistryObject<Item> CRAFT_BLOCK = ITEMS.register("craft_block", () -> new BlockItem(ModBlock.CRAFT_BLOCK.get(), Constants.ITEM_PROPS));
+
 
     public static void init()
     {

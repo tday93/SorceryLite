@@ -174,6 +174,8 @@ public class Items extends ItemModelProvider
         simpleBlockItem(ModItem.MONOLITH_SOLAR_MIDDLE.get(), "monolith_solar_middle");
         simpleBlockItem(ModItem.MONOLITH_SOLAR_TOP.get(), "monolith_solar_top");
 
+        simpleBlockItem(ModItem.CRAFT_BLOCK.get(), "craft_block");
+
     }
 
     public void simpleSingleTexture(Item item, String pathName)

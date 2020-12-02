@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SpellUtil
@@ -43,5 +44,24 @@ public class SpellUtil
         catMap.put(Items.DIRT, (WandItem) ModItem.WAND_LESSER_DIG.get());
 
         return catMap;
+    }
+
+    public static ArrayList<Item> getAdvancedComponents(Item catalystItem)
+    {
+        ArrayList<Item> components = new ArrayList<>();
+        if (catalystItem == Items.DIAMOND)
+        {
+            components.add(Items.ANDESITE);
+            return components;
+        }
+        return components;
+    }
+    public static Item getAdvancedResult(Item catalystItem)
+    {
+        if (catalystItem == Items.DIAMOND)
+        {
+            return Items.ACACIA_BOAT;
+        }
+        return null;
     }
 }

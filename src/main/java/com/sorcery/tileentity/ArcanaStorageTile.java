@@ -330,12 +330,15 @@ public class ArcanaStorageTile extends TileEntity implements ITickableTileEntity
        Sorcery.getLogger().debug("own TransferTargetPos= " + this.arcanaTransferTargetPos);
        Sorcery.getLogger().debug("incoming Pos= " + pos);
        // Equals doesn't work here, will look into more later
-       if (this.arcanaTransferTargetPos.withinDistance(pos, 0.2))
+       if (this.arcanaTransferTargetPos != null)
        {
-           Sorcery.getLogger().debug("Was arcana transfer target, removing");
-           this.arcanaTransferTargetPos = null;
-           this.arcanaTransferTarget = null;
-           this.arcanaPulseTarget = null;
+           if (this.arcanaTransferTargetPos.withinDistance(pos, 0.2))
+           {
+               Sorcery.getLogger().debug("Was arcana transfer target, removing");
+               this.arcanaTransferTargetPos = null;
+               this.arcanaTransferTarget = null;
+               this.arcanaPulseTarget = null;
+           }
        }
        if (this.tileOverridingInterference == pos)
        {
