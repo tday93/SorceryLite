@@ -2,8 +2,6 @@ package com.sorcery.spell;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.sorcery.item.ModItem;
-import com.sorcery.item.WandItem;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.ParticleEffectPacket;
 import com.sorcery.tileentity.AbstractMonolithTile;
@@ -13,22 +11,18 @@ import com.sorcery.utils.Utils;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class AdvancedCraftSpell extends Spell
 {
 
     private int monolithRange = 7;
-    private int arcanaDrainRate = 50;
-    private int arcanaPerTickRate = 1;
+    private int arcanaDrainRate = 5;
+    private int arcanaPerTickRate = 5;
 
     public AdvancedCraftSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
     {
@@ -58,11 +52,11 @@ public class AdvancedCraftSpell extends Spell
         if (flag)
         {
             craftedItem = SpellUtil.getAdvancedResult(catalystItem);
-            // do craft here
             for (Item item : SpellUtil.getAdvancedComponents(catalystItem))
             {
                 context.getPlayer().inventory.getStackInSlot(context.getPlayer().inventory.findSlotMatchingUnusedItem(new ItemStack(item))).shrink(1);
             }
+            context.getPlayer().inventory.getStackInSlot(context.getPlayer().inventory.findSlotMatchingUnusedItem(new ItemStack(catalystItem))).shrink(1);
         }
 
         if(craftedItem != null)
@@ -112,7 +106,7 @@ public class AdvancedCraftSpell extends Spell
 
     @Override
     public int getCastDuration(SpellUseContext context){
-        return (this.spellTier.tierInt + 1) * 20;
+        return SpellUtil.getAdvancedDuration(context.getPlayer().getHeldItemOffhand().getItem());
     }
 
     @Override
@@ -120,6 +114,21 @@ public class AdvancedCraftSpell extends Spell
     {
         Predicate<TileEntity> searchPredicate = Utils.getTESearchPredicate(CraftBlockTile.class, context.getPos(), 4);
         List<TileEntity> allTEs = context.getWorld().loadedTileEntityList;
-        return !Collections2.filter(allTEs, searchPredicate).isEmpty();
+        boolean flag = false;
+        for (TileEntity tile : Collections2.filter(allTEs, searchPredicate))
+        {
+            if (((CraftBlockTile)tile).craftAreaActive())
+            {
+                flag = true;
+            }
+        }
+        return flag;
+    }
+
+    // get arcana cost. override to define variable arcana costs
+    @Override
+    public int getArcanaCost(SpellUseContext context)
+    {
+        return SpellUtil.getAdvancedCost(context.getPlayer().getHeldItemOffhand().getItem());
     }
 }

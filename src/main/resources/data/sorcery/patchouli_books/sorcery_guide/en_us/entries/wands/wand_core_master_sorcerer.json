@@ -1,16 +1,18 @@
 {
-  "name": "Initiate Wand Core",
-  "icon": "sorcery:wand_core_initiate",
-  "category": "items",
+  "name": "Master Sorcerer Wand Core",
+  "icon": "sorcery:wand_core_master_sorcerer",
+  "category": "wands",
   "sortnum": 5,
   "pages": [
     {
       "type": "text",
-      "text": "A specially carved wooden rod with which to channel sorcerous energies. This can be crafted via mundane methods."
+      "text": "$(l:basic_info/crafting)Arcane Assembly$(/l) allows for the creation of an even further refined and powerful wand core."
     },
     {
-      "type": "crafting",
-      "recipe": "sorcery:wand_core_initiate"
+      "type": "spotlight",
+      "item": "minecraft:runewood_log",
+      "title": "Arcane Assembly",
+      "text": "Catalyst: Runewood Log; Additional Items: Gold Ingot, Arcane Crystal, Sorcerous Catalyst"
     }
   ]
 }

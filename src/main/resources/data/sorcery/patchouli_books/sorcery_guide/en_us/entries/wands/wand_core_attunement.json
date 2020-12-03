@@ -1,7 +1,7 @@
 {
   "name": "Wand Core Attunement",
   "icon": "sorcery:scroll_inert",
-  "category": "items",
+  "category": "wands",
   "sortnum": 0,
   "pages": [
     {

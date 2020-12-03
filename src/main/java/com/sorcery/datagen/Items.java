@@ -57,6 +57,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.SPELL_BOOK.get(), "grimoire");
         // simpleSingleTexture(ModItem.SORCEROUS_STAFF.get(), "apprentice_staff");
         simpleSingleTexture(ModItem.CRYSTAL_RESONATOR.get(), "crystal_resonator");
+        simpleSingleTexture(ModItem.ARCANE_ASSEMBLER.get(), "arcane_assembler");
         simpleSingleTexture(ModItem.SPELL_PROJECTILE.get(), "spell_projectile");
 
         // Spell Scrolls

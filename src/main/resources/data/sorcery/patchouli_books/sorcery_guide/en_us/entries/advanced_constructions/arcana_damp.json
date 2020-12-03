@@ -1,0 +1,65 @@
+{
+  "name": "Arcana Damp",
+  "icon": "sorcery:craft_block",
+  "category": "advanced_constructions",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "spotlight",
+      "item": "sorcery:craft_block",
+      "text": "The Arcana Damp works with a special array of monoliths to still the natural flow of Arcana in a localized region. This allows for the delicate manipulation of Arcana required for $(l:basic_info/crafting)Arcane Assembly$(/l)."
+    },
+    {
+      "type": "multiblock",
+      "name": "Arcana Damp",
+      "enable_visualize": false,
+      "multiblock": {
+        "mapping": {
+          "T": "sorcery:monolith_chiseled_top[active=true]",
+          "M": "sorcery:monolith_chiseled_middle[active=true]",
+          "B": "sorcery:monolith_chiseled_bottom[active=true]",
+          "0": "sorcery:craft_block"
+        },
+        "pattern": [
+          [
+            "   T T   ",
+            " T     T ",
+            "         ",
+            "T       T",
+            "         ",
+            "T       T",
+            "         ",
+            " T     T ",
+            "   T T   "
+          ],
+          [
+            "   M M   ",
+            " M     M ",
+            "         ",
+            "M       M",
+            "         ",
+            "M       M",
+            "         ",
+            " M     M ",
+            "   M M   "
+          ],
+          [
+            "   B B   ",
+            " B     B ",
+            "         ",
+            "B       B",
+            "    0    ",
+            "B       B",
+            "         ",
+            " B     B ",
+            "   B B   "
+          ]
+        ]
+      }
+    }
+  ]
+}

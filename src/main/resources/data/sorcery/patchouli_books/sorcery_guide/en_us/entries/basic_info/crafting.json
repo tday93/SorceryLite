@@ -1,0 +1,27 @@
+{
+  "name": "Crafting",
+  "icon": "minecraft:crafting_table",
+  "category": "basic_info",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "There are several methods of crafting of which an aspiring Sorcerer must be aware."
+    },
+    {
+      "type": "text",
+      "title": "Mundane Crafting",
+      "text": "Mundane crafting means using traditional items and methods to construct sorcerous items. These can be crafted using a standard crafting table, and have no special requirements beyond the necessary ingredients."
+    },
+    {
+      "type": "text",
+      "title": "Arcane Attunement",
+      "text": "Arcane Attunement is the process by which a sorcerous item is attuned with a particular catalyst item. This is the process used to $(l:wands/wand_core_attunement)convert a wand core into a functioning wand$(/l). It is also used to enhance certain sorcerous items with a particular material. Arcane Attunement does not use Arcana, but can occasionally have other requirements, such as being performed in a particular location. Any such requirements will be noted in the entry for the item being crafted."
+    },
+    {
+      "type": "text",
+      "title": "Arcane Assembly",
+      "text": "Arcana Assembly is a way to craft complex sorcerous items using Arcana. To do so requires both an $(l:items/arcane_assembler)Arcane Assembler$(/l), and a properly prepared location using an $(l:advanced_constructions/arcana_damp)Arcana Damp$(/l). These are necessary to handle the extremely delicate Arcana manipulation needed for this method of crafting. Arcane Assembly will always use a catalyst item held in the offhand, as well as a number of additional items which must be in the players inventory for the craft to succeed. These items will be consumed by the crafting process."
+    }
+  ]
+}

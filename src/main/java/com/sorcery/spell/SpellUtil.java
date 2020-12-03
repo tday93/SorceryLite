@@ -49,19 +49,40 @@ public class SpellUtil
     public static ArrayList<Item> getAdvancedComponents(Item catalystItem)
     {
         ArrayList<Item> components = new ArrayList<>();
-        if (catalystItem == Items.DIAMOND)
+        if (catalystItem == ModItem.RUNEWOOD_LOG.get())
         {
-            components.add(Items.ANDESITE);
+            components.add(Items.GOLD_INGOT);
+            components.add(ModItem.CRYSTAL_ARCANE.get());
+            components.add(ModItem.SORCEROUS_CATALYST.get());
             return components;
         }
         return components;
     }
+
     public static Item getAdvancedResult(Item catalystItem)
     {
-        if (catalystItem == Items.DIAMOND)
+        if (catalystItem == ModItem.RUNEWOOD_LOG.get())
         {
-            return Items.ACACIA_BOAT;
+            return ModItem.WAND_CORE_MASTER_SORCERER.get();
         }
         return null;
+    }
+
+    public static int getAdvancedCost(Item catalystItem)
+    {
+        if (catalystItem == ModItem.RUNEWOOD_LOG.get())
+        {
+            return 200;
+        }
+        return 1;
+    }
+
+    public static int getAdvancedDuration(Item catalystItem)
+    {
+        if (catalystItem == ModItem.RUNEWOOD_LOG.get())
+        {
+            return 80;
+        }
+        return 1;
     }
 }

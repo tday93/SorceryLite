@@ -36,6 +36,8 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_WAND_CRAFT_4 = SPELLS.register("spell_wand_craft_4", () -> new WandCraftSpell(0, SpellTier.MASTER_SORCERER, SpellSchool.ENCHANTMENT));
     public static final RegistryObject<Spell> SPELL_WAND_CRAFT_5 = SPELLS.register("spell_wand_craft_5", () -> new WandCraftSpell(0, SpellTier.ARCHSORCERER, SpellSchool.ENCHANTMENT));
 
+    public static final RegistryObject<Spell> SPELL_ADVANCED_CRAFT = SPELLS.register("spell_advanced_craft", () -> new AdvancedCraftSpell(200, SpellTier.ARCHSORCERER, SpellSchool.ENCHANTMENT));
+
     // Pre-Iron Spells - Initiate
     public static final RegistryObject<Spell> SPELL_CHILLING_TOUCH = SPELLS.register("spell_chilling_touch", () -> new ChillingTouchSpell(50, SpellTier.INITIATE, SpellSchool.EVOCATION));
     public static final RegistryObject<Spell> SPELL_LESSER_DIG = SPELLS.register("spell_lesser_dig", () -> new DigSpell(10, 6, Arrays.asList(ToolType.SHOVEL), SpellTier.INITIATE, SpellSchool.TRANSMUTATION));

@@ -1,7 +1,7 @@
 {
   "name": "Sorcerer Wand Core",
   "icon": "sorcery:wand_core_sorcerer",
-  "category": "items",
+  "category": "wands",
   "sortnum": 4,
   "pages": [
     {

@@ -1,0 +1,15 @@
+{
+  "name": "Arcane Assembler",
+  "icon": "sorcery:arcane_assembler",
+  "category": "items",
+  "pages": [
+    {
+      "type": "text",
+      "text": "FLAVOR TEXT HERE"
+    },
+    {
+      "type": "text",
+      "text": "The Arcane Assembler is a delicate instrument with which a Sorcerer can finely manipulate Arcana to construct complex and powerful items. It must be used within an active $(l:advanced_constructions/arcana_damp)Arcana Damp$(/l)."
+    }
+  ]
+}

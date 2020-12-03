@@ -64,6 +64,8 @@ public class ModItem
 
     // Utility Items
     public static final RegistryObject<Item> CRYSTAL_RESONATOR = ITEMS.register("crystal_resonator", () -> new CrystalResonatorItem(Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> ARCANE_ASSEMBLER = ITEMS.register("arcane_assembler", () -> new WandItem(ModSpell.SPELL_ADVANCED_CRAFT, 2500, Constants.ITEM_PROPS_NONSTACK));
+
     public static final RegistryObject<Item> SPELL_PROJECTILE = ITEMS.register("spell_projectile", () -> new Item(Constants.ITEM_PROPS));
 
     // Staves

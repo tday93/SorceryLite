@@ -3,6 +3,7 @@ package com.sorcery.item;
 import com.sorcery.Constants;
 import com.sorcery.spell.Spell;
 import com.sorcery.spell.SpellTier;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 
 public class WandItem extends SpellcastingItem
@@ -20,6 +21,13 @@ public class WandItem extends SpellcastingItem
     public WandItem(RegistryObject<Spell> spellin, int arcanaAmount)
     {
         super(Constants.ITEM_PROPS_WANDS);
+        this.arcanaAmount = arcanaAmount;
+        this.SPELL = spellin;
+    }
+
+    public WandItem(RegistryObject<Spell> spellin, int arcanaAmount, Item.Properties props)
+    {
+        super(props);
         this.arcanaAmount = arcanaAmount;
         this.SPELL = spellin;
     }

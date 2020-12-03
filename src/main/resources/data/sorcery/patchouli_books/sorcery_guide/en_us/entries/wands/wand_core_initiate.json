@@ -1,7 +1,7 @@
 {
   "name": "Initiate Wand Core",
   "icon": "sorcery:wand_core_initiate",
-  "category": "items",
+  "category": "wands",
   "sortnum": 1,
   "pages": [
     {

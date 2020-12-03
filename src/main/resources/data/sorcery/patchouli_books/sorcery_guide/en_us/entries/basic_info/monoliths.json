@@ -2,6 +2,7 @@
   "name": "Monoliths",
   "icon": "sorcery:textures/gui/chiseled_monolith.png",
   "category": "basic_info",
+  "sortnum": 3,
   "pages": [
     {
       "type": "text",

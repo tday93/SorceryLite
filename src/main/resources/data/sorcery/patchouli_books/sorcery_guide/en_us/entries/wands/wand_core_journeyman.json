@@ -1,7 +1,7 @@
 {
   "name": "Journeyman Wand Core",
   "icon": "sorcery:wand_core_journeyman",
-  "category": "items",
+  "category": "wands",
   "sortnum": 3,
   "pages": [
     {

@@ -1,7 +1,7 @@
 {
   "name": "Apprentice Wand Core",
   "icon": "sorcery:wand_core_apprentice",
-  "category": "items",
+  "category": "wands",
   "sortnum": 2,
   "pages": [
     {
