@@ -14,6 +14,10 @@
       "text": "The Arcana Damp works with a special array of monoliths to still the natural flow of Arcana in a localized region. This allows for the delicate manipulation of Arcana required for $(l:basic_info/crafting)Arcane Assembly$(/l)."
     },
     {
+      "type": "crafting",
+      "recipe": "sorcery:craft_block"
+    },
+    {
       "type": "multiblock",
       "name": "Arcana Damp",
       "enable_visualize": false,

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "sorcery:wand_core_journeyman"
+    ]
+  },
+  "criteria": {
+    "sorcery:crystal_arcane": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "sorcery:crystal_arcane"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sorcery:wand_core_journeyman"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "sorcery:crystal_arcane",
+      "has_the_recipe"
+    ]
+  ]
+}

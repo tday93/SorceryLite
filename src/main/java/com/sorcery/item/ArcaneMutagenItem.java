@@ -8,9 +8,9 @@ import net.minecraft.item.ItemUseContext;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ActionResultType;
 
-public class CrushedWolframiteItem extends Item
+public class ArcaneMutagenItem extends Item
 {
-    public CrushedWolframiteItem()
+    public ArcaneMutagenItem()
     {
         super(Constants.ITEM_PROPS);
     }

@@ -53,6 +53,7 @@ public class Items extends ItemModelProvider
         // Crafting Items
         simpleSingleTexture(ModItem.SCROLL_INERT.get(), "inert_scroll");
         simpleSingleTexture(ModItem.SORCEROUS_CATALYST.get(), "hadean_ember");
+        simpleSingleTexture(ModItem.ARCANE_MUTAGEN.get(), "putrid_organ");
 
         simpleSingleTexture(ModItem.SPELL_BOOK.get(), "grimoire");
         // simpleSingleTexture(ModItem.SORCEROUS_STAFF.get(), "apprentice_staff");

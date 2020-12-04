@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "sorcery:arcane_mutagen"
+    ]
+  },
+  "criteria": {
+    "sorcerous": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "sorcery:sorcerous_catalyst"
+          }
+        ]
+      }
+    },
+    "netherwart": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:nether_wart"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sorcery:arcane_mutagen"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "sorcerous",
+      "netherwart",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -72,8 +72,8 @@ public class ModBlock
     // non simple blocks
     public static final RegistryObject<Block> RUNEWOOD_LOG = BLOCKS.register("runewood_log", () -> new RunewoodLogBlock());
     public static final RegistryObject<Block> STRIPPED_RUNEWOOD_LOG = BLOCKS.register("stripped_runewood_log", () -> new StrippedRunewoodLogBlock());
-    public static final RegistryObject<Block> RUNEWOOD_SAPLING = BLOCKS.register("runewood_sapling", () -> new RunewoodSaplingBlock());
-    public static final RegistryObject<Block> RUNEWOOD_LEAVES = BLOCKS.register("runewood_leaves", () -> new LeavesBlock(Block.Properties.create(Material.LEAVES)));
+    public static final RegistryObject<SaplingBlock> RUNEWOOD_SAPLING = BLOCKS.register("runewood_sapling", () -> new RunewoodSaplingBlock());
+    public static final RegistryObject<Block> RUNEWOOD_LEAVES = BLOCKS.register("runewood_leaves", () -> new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid()));
 
     // Decor
     public static final RegistryObject<Block> WOLFRAM_LANTERN = BLOCKS.register("wolfram_lantern", () -> new WolframLanternBlock());

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "sorcery:lapis_runestone"
+    ]
+  },
+  "criteria": {
+    "catalyst": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:lapis_block"
+          }
+        ]
+      }
+    },
+    "runestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "sorcery:polished_runestone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sorcery:lapis_runestone"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "catalyst",
+      "runestone",
+      "has_the_recipe"
+    ]
+  ]
+}

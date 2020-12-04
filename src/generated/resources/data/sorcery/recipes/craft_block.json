@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sorcery",
+  "pattern": [
+    "xyx",
+    "yzy",
+    "xyx"
+  ],
+  "key": {
+    "x": {
+      "item": "sorcery:polished_runestone"
+    },
+    "y": {
+      "item": "sorcery:crystal_arcane"
+    },
+    "z": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "sorcery:craft_block"
+  }
+}

@@ -61,6 +61,7 @@ public class ModItem
     // Crafting Items
     public static final RegistryObject<Item> SCROLL_INERT = ITEMS.register("scroll_inert", () -> new Item(Constants.ITEM_PROPS));
     public static final RegistryObject<Item> SORCEROUS_CATALYST = ITEMS.register("sorcerous_catalyst", () -> new Item(Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> ARCANE_MUTAGEN = ITEMS.register("arcane_mutagen", () -> new ArcaneMutagenItem());
 
     // Utility Items
     public static final RegistryObject<Item> CRYSTAL_RESONATOR = ITEMS.register("crystal_resonator", () -> new CrystalResonatorItem(Constants.ITEM_PROPS));

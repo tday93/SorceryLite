@@ -4,13 +4,9 @@ import com.sorcery.Constants;
 import com.sorcery.block.ModBlock;
 import com.sorcery.item.ModItem;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
-import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ITag;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.Tags;
 
@@ -45,6 +41,14 @@ public class Recipes extends RecipeProvider
                 .addCriterion("crystal", InventoryChangeTrigger.Instance.forItems(ModItem.CRYSTAL_CARNELIAN.get()))
                 .build(consumer);
 
+        ShapelessRecipeBuilder.shapelessRecipe(ModItem.ARCANE_MUTAGEN.get(), 4)
+                .addIngredient(ModItem.SORCEROUS_CATALYST.get())
+                .addIngredient(Items.NETHER_WART)
+                .setGroup("sorcery")
+                .addCriterion("sorcerous", InventoryChangeTrigger.Instance.forItems(ModItem.SORCEROUS_CATALYST.get()))
+                .addCriterion("netherwart", InventoryChangeTrigger.Instance.forItems(Items.NETHER_WART))
+                .build(consumer);
+
         // Shaped Recipes
         ShapedRecipeBuilder.shapedRecipe(ModBlock.RUNESTONE_BRICKS.get(), 4)
                 .patternLine("xx")
@@ -71,7 +75,7 @@ public class Recipes extends RecipeProvider
                 .addCriterion("sorcery:sorcerous_catalyst", InventoryChangeTrigger.Instance.forItems(ModItem.SORCEROUS_CATALYST.get()))
                 .build(consumer);
 
-        // Wand Cores
+        // -- Wand Cores
         ShapedRecipeBuilder.shapedRecipe(ModItem.WAND_CORE_INITIATE.get(), 1)
                 .patternLine("  x")
                 .patternLine(" x ")
@@ -100,6 +104,18 @@ public class Recipes extends RecipeProvider
                 .key('z', ModItem.CRYSTAL_ARCANE.get())
                 .setGroup("sorcery")
                 .addCriterion("sorcery:crystal_arcane", InventoryChangeTrigger.Instance.forItems(ModItem.CRYSTAL_ARCANE.get()))
+                .build(consumer);
+
+        // -- Arcana Damp
+        ShapedRecipeBuilder.shapedRecipe(ModBlock.CRAFT_BLOCK.get(), 1)
+                .patternLine("xyx")
+                .patternLine("yzy")
+                .patternLine("xyx")
+                .key('x', ModBlock.POLISHED_RUNESTONE.get())
+                .key('y', ModItem.CRYSTAL_ARCANE.get())
+                .key('z', Items.NETHERITE_INGOT)
+                .setGroup("sorcery")
+                .addCriterion("netherite", InventoryChangeTrigger.Instance.forItems(Items.NETHERITE_INGOT))
                 .build(consumer);
 
         //Scrolls
