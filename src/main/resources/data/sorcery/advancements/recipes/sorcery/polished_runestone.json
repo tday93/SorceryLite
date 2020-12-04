@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "sorcery:polished_runestone"
+    ]
+  },
+  "criteria": {
+    "sorcery:sorcerous_catalyst": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "sorcery:sorcerous_catalyst"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sorcery:polished_runestone"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "sorcery:sorcerous_catalyst",
+      "has_the_recipe"
+    ]
+  ]
+}

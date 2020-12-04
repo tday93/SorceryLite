@@ -1,0 +1,16 @@
+{
+  "name": "Apprentice Wand Core",
+  "icon": "sorcery:wand_core_apprentice",
+  "category": "wands",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "text": "Attaching an iron tip to the wand appears to allow it to handle the stress of casting more powerful spells. Luckily this also can be crafted via mundane methods."
+    },
+    {
+      "type": "crafting",
+      "recipe": "sorcery:wand_core_apprentice"
+    }
+  ]
+}

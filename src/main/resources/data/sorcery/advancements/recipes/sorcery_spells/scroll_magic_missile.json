@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "sorcery:scroll_magic_missile"
+    ]
+  },
+  "criteria": {
+    "arcane_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "sorcery:crystal_arcane"
+          }
+        ]
+      }
+    },
+    "unique_component": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:arrow"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sorcery:scroll_magic_missile"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "arcane_crystal",
+      "unique_component",
+      "has_the_recipe"
+    ]
+  ]
+}

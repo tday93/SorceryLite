@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sorcery",
+  "pattern": [
+    "  x",
+    " x ",
+    "x  "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "sorcery:wand_core_initiate"
+  }
+}

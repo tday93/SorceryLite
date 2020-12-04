@@ -27,6 +27,7 @@ public class BlockStates extends BlockStateProvider
         simpleBlock(ModBlock.DARK_RUNESTONE.get());
         simpleBlock(ModBlock.SOLAR_RUNESTONE.get());
         simpleBlock(ModBlock.LUNAR_RUNESTONE.get());
+        simpleBlock(ModBlock.CRAFT_BLOCK.get());
 
 
         stairsBlock((StairsBlock) ModBlock.RUNESTONE_BRICK_STAIRS.get(), new ResourceLocation(Constants.MODID, "block/runestone_bricks"));

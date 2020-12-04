@@ -1,0 +1,18 @@
+{
+  "name": "Master Sorcerer Wand Core",
+  "icon": "sorcery:wand_core_master_sorcerer",
+  "category": "wands",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "text",
+      "text": "$(l:basic_info/crafting)Arcane Assembly$(/l) allows for the creation of an even further refined and powerful wand core."
+    },
+    {
+      "type": "spotlight",
+      "item": "sorcery:runewood_log",
+      "title": "Arcane Assembly",
+      "text": "Catalyst: Runewood Log; Additional Items: Gold Ingot, Arcane Crystal, Sorcerous Catalyst"
+    }
+  ]
+}

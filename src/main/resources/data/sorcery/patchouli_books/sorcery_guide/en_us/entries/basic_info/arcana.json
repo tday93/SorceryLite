@@ -2,6 +2,7 @@
   "name": "Arcana",
   "icon": "sorcery:crystal_arcane",
   "category": "basic_info",
+  "sortnum": 0,
   "pages": [
     {
       "type": "text",

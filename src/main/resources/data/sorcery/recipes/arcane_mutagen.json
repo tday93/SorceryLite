@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "sorcery",
+  "ingredients": [
+    {
+      "item": "sorcery:sorcerous_catalyst"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    }
+  ],
+  "result": {
+    "item": "sorcery:arcane_mutagen",
+    "count": 4
+  }
+}

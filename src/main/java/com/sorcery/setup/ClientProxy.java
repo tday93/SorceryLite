@@ -1,10 +1,13 @@
 package com.sorcery.setup;
 
+import com.sorcery.block.ModBlock;
 import com.sorcery.entity.ModEntity;
 import com.sorcery.keybinding.KeyBindings;
 import com.sorcery.keybinding.KeyInputHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -25,6 +28,7 @@ public class ClientProxy implements IProxy
         RenderingRegistry.registerEntityRenderingHandler(ModEntity.SPELL_PROJECTILE, (manager) -> new SpriteRenderer<>(manager, itemRenderer));
         RenderingRegistry.registerEntityRenderingHandler(ModEntity.FIREBOLT, (manager) -> new SpriteRenderer<>(manager, itemRenderer));
         RenderingRegistry.registerEntityRenderingHandler(ModEntity.MAGIC_MISSILE, (manager) -> new SpriteRenderer<>(manager, itemRenderer));
+        RenderTypeLookup.setRenderLayer(ModBlock.RUNEWOOD_SAPLING.get(), RenderType.getCutout());
     }
 
     @Override

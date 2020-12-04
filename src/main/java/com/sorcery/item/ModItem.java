@@ -61,9 +61,12 @@ public class ModItem
     // Crafting Items
     public static final RegistryObject<Item> SCROLL_INERT = ITEMS.register("scroll_inert", () -> new Item(Constants.ITEM_PROPS));
     public static final RegistryObject<Item> SORCEROUS_CATALYST = ITEMS.register("sorcerous_catalyst", () -> new Item(Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> ARCANE_MUTAGEN = ITEMS.register("arcane_mutagen", () -> new ArcaneMutagenItem());
 
     // Utility Items
     public static final RegistryObject<Item> CRYSTAL_RESONATOR = ITEMS.register("crystal_resonator", () -> new CrystalResonatorItem(Constants.ITEM_PROPS));
+    public static final RegistryObject<Item> ARCANE_ASSEMBLER = ITEMS.register("arcane_assembler", () -> new WandItem(ModSpell.SPELL_ADVANCED_CRAFT, 2500, Constants.ITEM_PROPS_NONSTACK));
+
     public static final RegistryObject<Item> SPELL_PROJECTILE = ITEMS.register("spell_projectile", () -> new Item(Constants.ITEM_PROPS));
 
     // Staves
@@ -113,6 +116,14 @@ public class ModItem
 
 
     // Wands
+    // -- Utility
+    public static final RegistryObject<Item> WAND_CORE_INITIATE = ITEMS.register("wand_core_initiate", () -> new WandItem(ModSpell.SPELL_WAND_CRAFT_0, 2500));
+    public static final RegistryObject<Item> WAND_CORE_APPRENTICE = ITEMS.register("wand_core_apprentice", () -> new WandItem(ModSpell.SPELL_WAND_CRAFT_1, 2500));
+    public static final RegistryObject<Item> WAND_CORE_JOURNEYMAN = ITEMS.register("wand_core_journeyman", () -> new WandItem(ModSpell.SPELL_WAND_CRAFT_2, 2500));
+    public static final RegistryObject<Item> WAND_CORE_SORCERER = ITEMS.register("wand_core_sorcerer", () -> new WandItem(ModSpell.SPELL_WAND_CRAFT_3, 2500));
+    public static final RegistryObject<Item> WAND_CORE_MASTER_SORCERER = ITEMS.register("wand_core_master_sorcerer", () -> new WandItem(ModSpell.SPELL_WAND_CRAFT_4, 2500));
+    public static final RegistryObject<Item> WAND_CORE_ARCHSORCERER = ITEMS.register("wand_core_archsorcerer", () -> new WandItem(ModSpell.SPELL_WAND_CRAFT_5, 2500));
+
     // -- Pre-Iron
     public static final RegistryObject<Item> WAND_LESSER_DIG = ITEMS.register("wand_lesser_dig", () -> new WandItem(ModSpell.SPELL_LESSER_DIG, 2500));
     public static final RegistryObject<Item> WAND_PLANT_DEATH = ITEMS.register("wand_plant_death", () -> new WandItem(ModSpell.SPELL_PLANT_DEATH));
@@ -126,8 +137,18 @@ public class ModItem
     public static final RegistryObject<Item> WAND_LESSER_SLOW = ITEMS.register("wand_lesser_slow", () -> new WandItem(ModSpell.SPELL_LESSER_SLOW));
     public static final RegistryObject<Item> WAND_SIGNAL_FLARE = ITEMS.register("wand_signal_flare", () -> new WandItem(ModSpell.SPELL_SIGNAL_FLARE));
     // -- Diamond
-    public static final RegistryObject<Item> WAND_CREATE_WATER = ITEMS.register("wand_create_water", () -> new WandItem(ModSpell.SPELL_CREATE_WATER));
+    public static final RegistryObject<Item> WAND_COMBUSTION = ITEMS.register("wand_combustion", () -> new WandItem(ModSpell.SPELL_COMBUSTION));
+    public static final RegistryObject<Item> WAND_DIG = ITEMS.register("wand_dig", () -> new WandItem(ModSpell.SPELL_DIG));
+    public static final RegistryObject<Item> WAND_DRAIN_LIFE = ITEMS.register("wand_drain_life", () -> new WandItem(ModSpell.SPELL_DRAIN_LIFE));
+    public static final RegistryObject<Item> WAND_EARTHEN_WALL = ITEMS.register("wand_earthen_wall", () -> new WandItem(ModSpell.SPELL_EARTHEN_WALL));
+    public static final RegistryObject<Item> WAND_IGNITE = ITEMS.register("wand_ignite", () -> new WandItem(ModSpell.SPELL_IGNITE));
+    public static final RegistryObject<Item> WAND_LESSER_FEATHER_FALL = ITEMS.register("wand_lesser_feather_fall", () -> new WandItem(ModSpell.SPELL_LESSER_FEATHER_FALL));
+    public static final RegistryObject<Item> WAND_MAGIC_MISSILE = ITEMS.register("wand_magic_missile", () -> new WandItem(ModSpell.SPELL_MAGIC_MISSILE));
+    public static final RegistryObject<Item> WAND_SEISMIC_ECHO = ITEMS.register("wand_seismic_echo", () -> new WandItem(ModSpell.SPELL_SEISMIC_ECHO));
+    public static final RegistryObject<Item> WAND_STONEFLESH = ITEMS.register("wand_stoneflesh", () -> new WandItem(ModSpell.SPELL_STONEFLESH));
+
     // -- Nether
+    public static final RegistryObject<Item> WAND_CREATE_WATER = ITEMS.register("wand_create_water", () -> new WandItem(ModSpell.SPELL_CREATE_WATER));
     // -- Netherite
     // -- End
 
@@ -173,6 +194,8 @@ public class ModItem
     public static final RegistryObject<Item> MONOLITH_SOLAR_BOTTOM = ITEMS.register("monolith_solar_bottom", () -> new BlockItem(ModBlock.MONOLITH_SOLAR_BOTTOM.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> MONOLITH_SOLAR_MIDDLE = ITEMS.register("monolith_solar_middle", () -> new BlockItem(ModBlock.MONOLITH_SOLAR_MIDDLE.get(), Constants.ITEM_PROPS));
     public static final RegistryObject<Item> MONOLITH_SOLAR_TOP = ITEMS.register("monolith_solar_top", () -> new BlockItem(ModBlock.MONOLITH_SOLAR_TOP.get(), Constants.ITEM_PROPS));
+
+    public static final RegistryObject<Item> CRAFT_BLOCK = ITEMS.register("craft_block", () -> new BlockItem(ModBlock.CRAFT_BLOCK.get(), Constants.ITEM_PROPS));
 
 
     public static void init()

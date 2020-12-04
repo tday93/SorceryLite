@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "sorcery:item/wand_preiron_evocation"
+    "layer0": "sorcery:item/wand_initiate_necromancy"
   }
 }

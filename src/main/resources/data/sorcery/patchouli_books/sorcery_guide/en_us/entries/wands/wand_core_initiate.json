@@ -1,0 +1,16 @@
+{
+  "name": "Initiate Wand Core",
+  "icon": "sorcery:wand_core_initiate",
+  "category": "wands",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "A specially carved wooden rod with which to channel sorcerous energies. This can be crafted via mundane methods."
+    },
+    {
+      "type": "crafting",
+      "recipe": "sorcery:wand_core_initiate"
+    }
+  ]
+}

@@ -78,6 +78,12 @@
   "item.sorcery.sorcerous_staff": "Sorcerous Staff",
   "item.sorcery.crystal_resonator": "Crystal Resonator",
 
+  "item.sorcery.wand_core_initiate": "Initiate Wand Core",
+  "item.sorcery.wand_core_apprentice": "Apprentice Wand Core",
+  "item.sorcery.wand_core_journeyman": "Journeyman Wand Core",
+  "item.sorcery.wand_core_sorcerer": "Sorcerer Wand Core",
+  "item.sorcery.wand_core_master_sorcerer": "Master Sorcerer Wand Core",
+  "item.sorcery.wand_core_archsorcerer": "Archsorcerer Wand Core",
   "item.sorcery.wand_lesser_dig": "Wand of Lesser Dig",
   "item.sorcery.wand_plant_death": "Wand of Plant Death",
   "item.sorcery.wand_plant_life": "Wand of Plant Life",
@@ -134,8 +140,29 @@
   "advancements.sorcery.root.title": "Sorcery",
   "advancements.sorcery.root.description": "Start your Sorcerous journey!",
 
+  "spelltier.sorcery.initiate": "Initiate",
+  "spelltier.sorcery.apprentice": "Apprentice",
+  "spelltier.sorcery.journeyman": "Journeyman",
+  "spelltier.sorcery.sorcerer": "Sorcerer",
+  "spelltier.sorcery.master_sorcerer": "Master Sorcerer",
+  "spelltier.sorcery.archsorcerer": "Archsorcerer",
 
+  "spellschool.sorcery.abjuration": "Abjuration",
+  "spellschool.sorcery.conjuration": "Conjuration",
+  "spellschool.sorcery.enchantment": "Enchantment",
+  "spellschool.sorcery.evocation": "Evocation",
+  "spellschool.sorcery.necromancy": "Necromancy",
+  "spellschool.sorcery.transmutation": "Transmutation",
+
+
+  "spell.sorcery.spell_wand_craft_0": "Craft Initiate Wand",
+  "spell.sorcery.spell_wand_craft_1": "Craft Apprentice Wand",
+  "spell.sorcery.spell_wand_craft_2": "Craft Journeyman Wand",
+  "spell.sorcery.spell_wand_craft_3": "Craft Sorcerer Wand",
+  "spell.sorcery.spell_wand_craft_4": "Craft Master Sorcerer Wand",
+  "spell.sorcery.spell_wand_craft_5": "Craft Archsorcerer Wand",
   "spell.sorcery.spell_meditate": "Meditate",
+
   "spell.sorcery.spell_lesser_dig": "Lesser Dig",
   "spell.sorcery.spell_plant_death": "Plant Death",
   "spell.sorcery.spell_plant_life": "Plant Life",

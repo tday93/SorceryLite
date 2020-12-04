@@ -1,0 +1,16 @@
+{
+  "name": "Wand Core Attunement",
+  "icon": "sorcery:scroll_inert",
+  "category": "wands",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "A wand core can be attuned to a particular spell by focusing ones sorcerous energies on it while holding an appropriate catalyst item. This will consume both the core and the catalyst item, leaving the sorcerer with a wand attuned to a particular spell. This cannot be undone."
+    },
+    {
+      "type": "text",
+      "recipe": "Use the wand core with an appropriate catalyst item in your offhand. The catalyst item for a given spell can be found within the entry for the spell within this book."
+    }
+  ]
+}

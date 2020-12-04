@@ -29,6 +29,8 @@ public class ModTile
     @ObjectHolder("pylon")
     public static TileEntityType<PylonTile> PYLON_TILE;
 
+    @ObjectHolder("craft_block")
+    public static TileEntityType<CraftBlockTile> CRAFT_BLOCK_TILE;
 
     public static void init(RegistryEvent.Register<TileEntityType<?>> event)
     {
@@ -63,6 +65,10 @@ public class ModTile
                 .build(null)
                 .setRegistryName("pylon"));
 
+        event.getRegistry().register(TileEntityType.Builder
+                .create(CraftBlockTile::new, ModBlock.CRAFT_BLOCK.get())
+                .build(null)
+                .setRegistryName("craft_block"));
     }
 
 }
