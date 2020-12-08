@@ -4,6 +4,7 @@ import com.sorcery.Config;
 import com.sorcery.Constants;
 import com.sorcery.Sorcery;
 import com.sorcery.potion.ModEffect;
+import com.sorcery.utils.StructurePattern;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Effects;
@@ -38,14 +39,14 @@ public class ModSpell
 
     public static final RegistryObject<Spell> SPELL_ADVANCED_CRAFT = SPELLS.register("spell_advanced_craft", () -> new AdvancedCraftSpell(200, SpellTier.ARCHSORCERER, SpellSchool.ENCHANTMENT));
 
-    // Pre-Iron Spells - Initiate
+    // Initiate (Pre-Iron) Spells - Initiate
     public static final RegistryObject<Spell> SPELL_CHILLING_TOUCH = SPELLS.register("spell_chilling_touch", () -> new ChillingTouchSpell(50, SpellTier.INITIATE, SpellSchool.EVOCATION));
     public static final RegistryObject<Spell> SPELL_LESSER_DIG = SPELLS.register("spell_lesser_dig", () -> new DigSpell(10, 6, Arrays.asList(ToolType.SHOVEL), SpellTier.INITIATE, SpellSchool.TRANSMUTATION));
     public static final RegistryObject<Spell> SPELL_MEDITATE = SPELLS.register("spell_meditate", () -> new MeditateSpell(SpellTier.INITIATE, SpellSchool.ENCHANTMENT));
     public static final RegistryObject<Spell> SPELL_PLANT_DEATH = SPELLS.register("spell_plant_death", () -> new PlantDeathSpell(SpellTier.INITIATE, SpellSchool.NECROMANCY));
     public static final RegistryObject<Spell> SPELL_PLANT_LIFE = SPELLS.register("spell_plant_life", () -> new PlantLifeSpell(10, SpellTier.INITIATE, SpellSchool.NECROMANCY));
 
-    // Iron Spells - Apprentice
+    // Apprentice (Iron) Spells - Apprentice
     public static final RegistryObject<Spell> SPELL_COBBLE_PLACEMENT = SPELLS.register("spell_cobble_placement", () -> new BlockPlacementSpell(10, (BlockItem)Items.COBBLESTONE, SpellTier.APPRENTICE, SpellSchool.CONJURATION));
     public static final RegistryObject<Spell> SPELL_LESSER_FIREBOLT = SPELLS.register("spell_lesser_firebolt", () -> new FireboltSpell(SpellTier.APPRENTICE, SpellSchool.EVOCATION));
     public static final RegistryObject<Spell> SPELL_LESSER_HEAL = SPELLS.register("spell_lesser_heal", () -> new HealSpell(10, 4, 2, 80, SpellTier.APPRENTICE, SpellSchool.ABJURATION));
@@ -53,7 +54,7 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_LESSER_SLOW = SPELLS.register("spell_lesser_slow", () -> new PotionSpell(10, Effects.SLOWNESS, 40, 1, false, SpellTier.APPRENTICE, SpellSchool.ENCHANTMENT));
     public static final RegistryObject<Spell> SPELL_SIGNAL_FLARE = SPELLS.register("spell_signal_flare", () -> new SignalFlareSpell(10, SpellTier.APPRENTICE, SpellSchool.CONJURATION));
 
-    // Diamond Spells - Journeyman
+    // Journeyman (Diamond) Spells - Journeyman
     public static final RegistryObject<Spell> SPELL_COMBUSTION = SPELLS.register("spell_combustion", () -> new CombustionSpell(SpellTier.JOURNEYMAN, SpellSchool.EVOCATION));
     public static final RegistryObject<Spell> SPELL_DIG = SPELLS.register("spell_dig", () -> new DigSpell(10, 7, Arrays.asList(ToolType.SHOVEL, ToolType.PICKAXE), SpellTier.JOURNEYMAN, SpellSchool.TRANSMUTATION));
     public static final RegistryObject<Spell> SPELL_DRAIN_LIFE = SPELLS.register("spell_drain_life", () -> new DrainLifeSpell(10, 4, SpellTier.JOURNEYMAN, SpellSchool.NECROMANCY));
@@ -64,13 +65,14 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_SEISMIC_ECHO = SPELLS.register("spell_seismic_echo", () -> new SeismicEchoSpell(10, 8, SpellTier.JOURNEYMAN, SpellSchool.CONJURATION));
     public static final RegistryObject<Spell> SPELL_STONEFLESH = SPELLS.register("spell_stoneflesh", () -> new PotionSpell(10, ModEffect.STONEFLESH, (20 * 60 * 5), 0, true, SpellTier.JOURNEYMAN, SpellSchool.ABJURATION));
 
-    // Nether Spells - Mage
+    // Sorcerer (Nether) Spells - Mage
     public static final RegistryObject<Spell> SPELL_CREATE_WATER = SPELLS.register("spell_create_water", () -> new CreateWaterSpell(SpellTier.SORCERER, SpellSchool.CONJURATION));
     public static final RegistryObject<Spell> SPELL_REPEL = SPELLS.register("spell_repel", () -> new RepelSpell(SpellTier.SORCERER, SpellSchool.EVOCATION));
     public static final RegistryObject<Spell> SPELL_SPEED = SPELLS.register("spell_speed", () -> new PotionSpell(Config.SPELL_SPEED_COST.get(), Effects.SPEED, Config.SPELL_SPEED_DURATION.get(), 1, true, SpellTier.SORCERER, SpellSchool.ENCHANTMENT));
     public static final RegistryObject<Spell> SPELL_TRANSMUTE_STONE = SPELLS.register("spell_transmute_stone", () -> new BlockTransmuteSpell(10, SpellTier.SORCERER, SpellSchool.TRANSMUTATION));
     public static final RegistryObject<Spell> SPELL_RAY_OF_FROST = SPELLS.register("spell_ray_of_frost", () -> new RayAttackSpell(1, 1, DamageSource.GENERIC, Effects.SLOWNESS, (20 * 3), 18, 19, SpellTier.SORCERER, SpellSchool.EVOCATION));
     // -- Cocoon Spell
+    public static final RegistryObject<Spell> SPELL_COBBLECOON = SPELLS.register("spell_cobblecoon", () -> new BlockStructureSpell(10, StructurePattern.COCOON_PATTERN, SpellTier.SORCERER, SpellSchool.CONJURATION));
 
     // Netherite Spells - Master Mage
     public static final RegistryObject<Spell> SPELL_FEATHER_FALL = SPELLS.register("spell_feather_fall", () -> new PotionSpell(10, ModEffect.FEATHER_FALLING, (20 * 60 * 5), 2, true, SpellTier.MASTER_SORCERER, SpellSchool.ENCHANTMENT));

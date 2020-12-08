@@ -9,16 +9,16 @@ import java.util.*;
 
 public class BlockPattern
 {
-    private List<String> patternLines;
+    private List<List<String>> pattern3d;
     private Character centralCharacter;
     private List<Integer> centralCharacterLocation;
     private Map<Character, Integer> intMap;
     private Map<Integer, Character> revIntMap;
     private Map<Block, Character> blockMap;
 
-    public BlockPattern(List<String> patternLines, Character centralChar, Map<Character, Integer> interferenceMap, Map<Integer, Character> revIntMap, Map<Block, Character> blockMap)
+    public BlockPattern(List<List<String>> pattern3d, Character centralChar, Map<Character, Integer> interferenceMap, Map<Integer, Character> revIntMap, Map<Block, Character> blockMap)
     {
-        this.patternLines = patternLines;
+        this.pattern3d = pattern3d;
         this.centralCharacter = centralChar;
         this.centralCharacterLocation = this.getCentralCharacterLocation();
         this.intMap = interferenceMap;
@@ -26,23 +26,24 @@ public class BlockPattern
         this.blockMap = blockMap;
     }
 
-    public int getInterference(int x, int z)
+    public int getInterference(int x, int y, int z)
     {
         int relX = x + centralCharacterLocation.get(0);
-        int relZ = z + centralCharacterLocation.get(1);
+        int relY = y + centralCharacterLocation.get(1);
+        int relZ = z + centralCharacterLocation.get(2);
+
         try
         {
-            return this.intMap.get(patternLines.get(relZ).charAt(relX));
-        } catch (NullPointerException exception)
+            return this.intMap.get(pattern3d.get(relY).get(relZ).charAt(relX));
+        } catch (IndexOutOfBoundsException | NullPointerException exception)
         {
             return 0;
         }
-
     }
 
-    public boolean isNegInterference(int x, int z)
+    public boolean isNegInterference(int x, int y, int z)
     {
-        if (getInterference(x, x) < 0)
+        if (getInterference(x, y, z) < 0)
         {
             return true;
         }
@@ -53,14 +54,18 @@ public class BlockPattern
     {
         List<List<Integer>> locations = new LinkedList<>();
 
-        for (int i = 0; i < patternLines.size(); i++)
+        for (int i = 0; i < pattern3d.size(); i++)
         {
-            String line = patternLines.get(i);
-            for( int j = 0; j < line.length(); j++)
+            List<String> patternSlice = this.pattern3d.get(i);
+            for( int j = 0; j < patternSlice.size(); j++)
             {
-                if (line.charAt(j) == charIn)
+                String line = patternSlice.get(j);
+                for( int k = 0; k < line.length(); k++)
                 {
-                    locations.add(Arrays.asList(j, i));
+                    if (line.charAt(k) == charIn)
+                    {
+                        locations.add(Arrays.asList(k, pattern3d.size() - (i + 1), j));
+                    }
                 }
             }
         }
@@ -73,7 +78,7 @@ public class BlockPattern
 
         for (List<Integer> location : positionsIn)
         {
-            offsetPositions.add(Arrays.asList(location.get(0) - centralCharacterLocation.get(0), location.get(1) - centralCharacterLocation.get(1)));
+            offsetPositions.add(Arrays.asList(location.get(0) - centralCharacterLocation.get(0), location.get(1) - centralCharacterLocation.get(1), location.get(2) - centralCharacterLocation.get(2)));
         }
         return offsetPositions;
     }
@@ -115,7 +120,7 @@ public class BlockPattern
         List<BlockPos> positions = new LinkedList<>();
         for (List<Integer> loc : this.getBlockLocs(block))
         {
-            positions.add(new BlockPos(centralPos.getX() + loc.get(0), centralPos.getY(), centralPos.getZ() + loc.get(1)));
+            positions.add(new BlockPos(centralPos.getX() + loc.get(0), centralPos.getY() + loc.get(1), centralPos.getZ() + loc.get(2)));
         }
         return positions;
     }
@@ -128,7 +133,7 @@ public class BlockPattern
             boolean locationsValid = true;
             for (List<Integer> loc : this.getBlockLocs(entry.getKey()))
             {
-                BlockPos checkPos = centralPos.add(loc.get(0), 0, loc.get(1));
+                BlockPos checkPos = centralPos.add(loc.get(0), loc.get(1), loc.get(2));
                 if (world.getBlockState(checkPos).getBlock() != entry.getKey())
                 {
                     locationsValid = false;
@@ -142,16 +147,23 @@ public class BlockPattern
         return true;
     }
 
+    public Map<Block, Character> getBlockMap()
+    {
+        return blockMap;
+    }
+
     public static class PatternBuilder
     {
-        private List<String> patternLines = new LinkedList<>();
+        private List<List<String>> pattern3d = new LinkedList<>();
         private Character centralCharacter = 'I';
         private Map<Character, Integer> intMap = new HashMap<>();
         private Map<Integer, Character> revIntMap = new HashMap<>();
         private HashMap<Block, Character> blockMap = new HashMap<>();
+        private int lineIndex = 0;
 
         public PatternBuilder()
         {
+            this.pattern3d.add(new LinkedList<>());
             this.addIntCharInternal('N', -1);
             this.addIntCharInternal('P', 1);
             this.addIntCharInternal('-', 0);
@@ -170,9 +182,16 @@ public class BlockPattern
            return this;
         }
 
+        public PatternBuilder addLevel()
+        {
+            this.pattern3d.add(new LinkedList<>());
+            this.lineIndex += 1;
+            return this;
+        }
+
         public PatternBuilder addLine(String line)
         {
-            this.patternLines.add(line);
+            this.pattern3d.get(this.lineIndex).add(line);
             return this;
         }
 
@@ -190,7 +209,7 @@ public class BlockPattern
 
        public BlockPattern build()
        {
-           return new BlockPattern(patternLines, centralCharacter, intMap, revIntMap, blockMap);
+           return new BlockPattern(pattern3d, centralCharacter, intMap, revIntMap, blockMap);
        }
     }
 

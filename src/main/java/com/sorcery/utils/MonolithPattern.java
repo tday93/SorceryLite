@@ -2,6 +2,7 @@ package com.sorcery.utils;
 
 
 import com.sorcery.block.ModBlock;
+import net.minecraft.block.Blocks;
 
 public enum MonolithPattern
 {
@@ -168,6 +169,7 @@ public enum MonolithPattern
             .addLine("-----------------")
             .build()
     );
+
 
 
     public final BlockPattern pattern;

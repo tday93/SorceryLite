@@ -61,8 +61,6 @@ public class CraftBlockTile extends AbstractMonolithTile
                 monoPoses.add(otherMono.getPos());
                 otherMono.addInterferenceOverride(this.pos);
             }
-            System.out.println(ringMonos);
-            System.out.println(monoPoses);
             ringMonos.get(0).addArcanaTransferTarget(monoPoses.get(1));
             ringMonos.get(1).addArcanaTransferTarget(monoPoses.get(3));
             ringMonos.get(3).addArcanaTransferTarget(monoPoses.get(5));

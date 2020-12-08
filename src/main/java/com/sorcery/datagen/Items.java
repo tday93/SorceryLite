@@ -92,6 +92,7 @@ public class Items extends ItemModelProvider
         scrollItem((SpellScrollItem)ModItem.SCROLL_SPEED.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_TRANSMUTE_STONE.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_RAY_OF_FROST.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_COBBLECOON.get());
         // -- Netherite
         // -- End
         scrollItem((SpellScrollItem)ModItem.SCROLL_BLINK.get());

@@ -36,9 +36,10 @@ public class ChiseledMonolithTile extends AbstractMonolithTile implements ITicka
     public int checkInterference(BlockPos pos)
     {
         int relX = pos.getX() - this.pos.getX();
+        int relY = pos.getY() - this.pos.getY();
         int relZ = pos.getZ() - this.pos.getZ();
 
-        return this.monolithData.pattern.getInterference(relX, relZ);
+        return this.monolithData.pattern.getInterference(relX, relY, relZ);
     }
 
     @Override

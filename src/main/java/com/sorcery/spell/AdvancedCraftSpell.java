@@ -56,7 +56,7 @@ public class AdvancedCraftSpell extends Spell
             {
                 context.getPlayer().inventory.getStackInSlot(context.getPlayer().inventory.findSlotMatchingUnusedItem(new ItemStack(item))).shrink(1);
             }
-            context.getPlayer().inventory.getStackInSlot(context.getPlayer().inventory.findSlotMatchingUnusedItem(new ItemStack(catalystItem))).shrink(1);
+            context.getPlayer().getHeldItemOffhand().shrink(1);
         }
 
         if(craftedItem != null)
