@@ -337,4 +337,15 @@ public class Utils {
         Item item = GameRegistry.findRegistry(Item.class).getValue(new ResourceLocation(spell.getNamespace(), "scroll_" + spell.getPath().substring(6)));
         return (SpellScrollItem)item;
     }
+
+    public static double horizontalDistance(double x1, double z1, double x2, double z2)
+    {
+        return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((z2 - z1), 2));
+    }
+
+
+    public static double horizontalDistance(Vector3d vec1, Vector3d vec2)
+    {
+        return horizontalDistance(vec1.x, vec1.z, vec2.x, vec2.z);
+    }
 }

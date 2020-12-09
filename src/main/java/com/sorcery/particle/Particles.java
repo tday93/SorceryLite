@@ -202,6 +202,11 @@ public class Particles
                 collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getLowList(), ModParticle.ARCANA, 0.3f, age, false, false, 0.0f, 0.9f, false));
                 collection.add(25, getColoredParticle(ModColor.ARCANA_PURPLE.getHiList(), ModParticle.ARCANA, 0.3f, age, false, false, 0.0f, 0.9f, false));
                 return collection;
+            case 22:
+                collection.add(50, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getMainList(), ModParticle.BEAM, 1.0f, age, false, true, 0.0f, 1.0f, true));
+                collection.add(25, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getLowList(), ModParticle.BEAM, 1.0f, age, false, true, 0.0f, 1.0f, true));
+                collection.add(25, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getHiList(), ModParticle.BEAM, 1.0f, age, false, true, 0.0f, 1.0f, true));
+                return collection;
             default:
                 collection.add(100, getSpark());
                 return collection;

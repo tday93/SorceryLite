@@ -23,6 +23,9 @@ public class ModEntity
     @ObjectHolder("magic_missile")
     public static EntityType<MagicMissileEntity> MAGIC_MISSILE;
 
+    @ObjectHolder("spell_carrier")
+    public static EntityType<SpellCarrierEntity> SPELL_CARRIER;
+
     public static void init()
     {
         // Other Entities
@@ -40,12 +43,19 @@ public class ModEntity
                 .build("firebolt")
                 .setRegistryName(Constants.MODID, "firebolt");
 
-    MAGIC_MISSILE = (EntityType<MagicMissileEntity>) EntityType.Builder.create(MagicMissileEntity::new, EntityClassification.MISC)
-        .size(1,1)
+        MAGIC_MISSILE = (EntityType<MagicMissileEntity>) EntityType.Builder.create(MagicMissileEntity::new, EntityClassification.MISC)
+                .size(1,1)
                 .setShouldReceiveVelocityUpdates(true)
                 .setCustomClientFactory(((spawnEntity, world) -> new MagicMissileEntity(MAGIC_MISSILE, world)))
-        .build("magic_missile")
+                .build("magic_missile")
                 .setRegistryName(Constants.MODID, "magic_missile");
+
+        SPELL_CARRIER = (EntityType<SpellCarrierEntity>) EntityType.Builder.create(SpellCarrierEntity::new, EntityClassification.MISC)
+                .size(1,1)
+                .setShouldReceiveVelocityUpdates(true)
+                .setCustomClientFactory(((spawnEntity, world) -> new SpellCarrierEntity(SPELL_CARRIER, world)))
+                .build("spell_carrier")
+                .setRegistryName(Constants.MODID, "spell_carrier");
     }
 
     public static void register(RegistryEvent.Register<EntityType<?>> event)
@@ -53,6 +63,7 @@ public class ModEntity
         event.getRegistry().register(SPELL_PROJECTILE);
         event.getRegistry().register(FIREBOLT);
         event.getRegistry().register(MAGIC_MISSILE);
+        event.getRegistry().register(SPELL_CARRIER);
 
     }
 }

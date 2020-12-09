@@ -71,8 +71,8 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_SPEED = SPELLS.register("spell_speed", () -> new PotionSpell(Config.SPELL_SPEED_COST.get(), Effects.SPEED, Config.SPELL_SPEED_DURATION.get(), 1, true, SpellTier.SORCERER, SpellSchool.ENCHANTMENT));
     public static final RegistryObject<Spell> SPELL_TRANSMUTE_STONE = SPELLS.register("spell_transmute_stone", () -> new BlockTransmuteSpell(10, SpellTier.SORCERER, SpellSchool.TRANSMUTATION));
     public static final RegistryObject<Spell> SPELL_RAY_OF_FROST = SPELLS.register("spell_ray_of_frost", () -> new RayAttackSpell(1, 1, DamageSource.GENERIC, Effects.SLOWNESS, (20 * 3), 18, 19, SpellTier.SORCERER, SpellSchool.EVOCATION));
-    // -- Cocoon Spell
     public static final RegistryObject<Spell> SPELL_COBBLECOON = SPELLS.register("spell_cobblecoon", () -> new BlockStructureSpell(10, StructurePattern.COCOON_PATTERN, SpellTier.SORCERER, SpellSchool.CONJURATION));
+    public static final RegistryObject<Spell> SPELL_ACID_RAIN = SPELLS.register("spell_acid_rain", () -> new ElementalRainSpell(10, ModEffect.CORROSION, 4, 8, 22,SpellTier.SORCERER, SpellSchool.EVOCATION));
 
     // Netherite Spells - Master Mage
     public static final RegistryObject<Spell> SPELL_FEATHER_FALL = SPELLS.register("spell_feather_fall", () -> new PotionSpell(10, ModEffect.FEATHER_FALLING, (20 * 60 * 5), 2, true, SpellTier.MASTER_SORCERER, SpellSchool.ENCHANTMENT));

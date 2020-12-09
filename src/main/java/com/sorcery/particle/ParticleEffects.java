@@ -356,7 +356,10 @@ public class ParticleEffects
 
         for (int i = 0; i < ctx.numParticles; i++)
         {
-            Vector3d vec = ctx.vec1.add(rand1[i] * ctx.radius, 0, rand2[i] * ctx.radius);
+            double r1 = rand1[i] * ctx.radius;
+            double rMax = Math.sqrt(Math.pow(ctx.radius, 2) - Math.pow(r1, 2));
+            double r2 = rand2[i] * rMax;
+            Vector3d vec = ctx.vec1.add(r1, 0, r2);
             ctx.world.addParticle(ctx.getParticle(), vec.getX(), vec.getY(), vec.getZ(), ctx.vec2.getX(), ctx.vec2.getY(), ctx.vec2.getZ());
         }
     }

@@ -111,6 +111,7 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_TRANSMUTE_STONE = ITEMS.register("scroll_transmute_stone", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_TRANSMUTE_STONE));
     public static final RegistryObject<Item> SCROLL_RAY_OF_FROST = ITEMS.register("scroll_ray_of_frost", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_RAY_OF_FROST));
     public static final RegistryObject<Item> SCROLL_COBBLECOON = ITEMS.register("scroll_cobblecoon", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COBBLECOON));
+    public static final RegistryObject<Item> SCROLL_ACID_RAIN = ITEMS.register("scroll_acid_rain", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_ACID_RAIN));
     // -- Netherite
     // -- End
     public static final RegistryObject<Item> SCROLL_BLINK = ITEMS.register("scroll_blink", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_BLINK));

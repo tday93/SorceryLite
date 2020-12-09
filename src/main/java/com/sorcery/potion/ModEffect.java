@@ -30,13 +30,14 @@ public class ModEffect
     @ObjectHolder("stoneflesh")
     public static Effect STONEFLESH;
 
+
     public static void init(RegistryEvent.Register<Effect> event)
     {
         registerEffect("dimensional_fraying", new EffectMod(EffectType.NEUTRAL, 13223375), event);
 
         registerEffect("healing_sickness", new EffectMod(EffectType.NEUTRAL, 13458603), event);
 
-        registerEffect("corrosion", new EffectMod(EffectType.HARMFUL, 1531410).addAttributesModifier(Attributes.ARMOR, "d5dfa148-cd83-45db-adba-48b6a0925210", 0.5, AttributeModifier.Operation.MULTIPLY_TOTAL), event);
+        registerEffect("corrosion", new EffectMod(EffectType.HARMFUL, 1531410).addAttributesModifier(Attributes.ARMOR, "d5dfa148-cd83-45db-adba-48b6a0925210", 0.75, AttributeModifier.Operation.MULTIPLY_TOTAL), event);
 
         registerEffect("necrosis", new EffectMod(EffectType.HARMFUL, 5378331).addAttributesModifier(Attributes.MAX_HEALTH, "8589daf4-84a8-4189-beee-57ffa27838bb", -2, AttributeModifier.Operation.ADDITION), event);
 
