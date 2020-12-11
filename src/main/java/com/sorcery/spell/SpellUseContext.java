@@ -5,6 +5,7 @@ import com.sorcery.arcana.IArcanaStorage;
 import com.sorcery.item.StaffItem;
 import com.sorcery.item.WandItem;
 import com.sorcery.utils.Utils;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -35,6 +36,8 @@ public class SpellUseContext
     private final LivingEntity targetEntity;
     private final boolean usedOnBlock;
     private int castingTicks;
+    private Spell inherentSpell = null;
+    private Entity carrierEntity = null;
 
 
     /**
@@ -228,8 +231,27 @@ public class SpellUseContext
         return false;
     }
 
+    public void setInherentSpell(Spell spell)
+    {
+        this.inherentSpell = spell;
+    }
+
+    public Entity getCarrierEntity()
+    {
+        return this.carrierEntity;
+    }
+
+    public void setCarrierEntity(Entity entity)
+    {
+        this.carrierEntity = entity;
+    }
+
     public Spell getSpell()
     {
+        if (this.inherentSpell != null)
+        {
+            return this.inherentSpell;
+        }
         if (this.item.getItem() instanceof WandItem)
         {
             return Utils.getSpellFromProvider(this.item);

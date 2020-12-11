@@ -66,6 +66,7 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_initiate_evocation");
         // -- Pre-Iron
         scrollItem((SpellScrollItem) ModItem.SCROLL_CHILLING_TOUCH.get());
+        scrollItem((SpellScrollItem) ModItem.SCROLL_FIERY_TOUCH.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_DIG.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_PLANT_DEATH.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_PLANT_LIFE.get());
@@ -92,6 +93,9 @@ public class Items extends ItemModelProvider
         scrollItem((SpellScrollItem)ModItem.SCROLL_SPEED.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_TRANSMUTE_STONE.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_RAY_OF_FROST.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_COBBLECOON.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_ACID_RAIN.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_FIRE_NOVA.get());
         // -- Netherite
         // -- End
         scrollItem((SpellScrollItem)ModItem.SCROLL_BLINK.get());
