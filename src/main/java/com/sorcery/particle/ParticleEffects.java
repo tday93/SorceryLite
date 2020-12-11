@@ -91,9 +91,10 @@ public class ParticleEffects
     // Expanding hortizontal ring of particles, all starting from a single point
     public static void ringHorizontal(ParticleEffectContext ctx)
     {
+        double r1 = ctx.world.rand.nextDouble() * 0.2;
         for (int i = 0; i < ctx.numParticles; i++)
         {
-            double angleRadians = ((2 * Math.PI) / ctx.numParticles) * i;
+            double angleRadians = ((2 * Math.PI) / ctx.numParticles) * i + r1;
             double vecX = Math.cos(angleRadians) * ctx.speed;
             double vecZ = Math.sin(angleRadians) * ctx.speed;
             ctx.world.addParticle(ctx.getParticle(), ctx.vec1.getX(), ctx.vec1.getY(), ctx.vec1.getZ(), vecX, 0, vecZ);

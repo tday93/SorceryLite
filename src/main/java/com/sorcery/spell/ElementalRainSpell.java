@@ -4,13 +4,11 @@ import com.sorcery.entity.ModEntity;
 import com.sorcery.entity.SpellCarrierEntity;
 import com.sorcery.network.PacketHandler;
 import com.sorcery.network.packets.ParticleEffectPacket;
+import com.sorcery.spell.components.ElementalComponent;
 import com.sorcery.utils.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ActionResultType;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.vector.Vector3d;
 
 import java.util.List;
@@ -21,17 +19,15 @@ public class ElementalRainSpell extends Spell
     private double horizontalRadius;
     private double verticalRange;
     private double maxRange;
-    private Effect rainEffect;
-    private int particleCollection;
+    private ElementalComponent elementalComponent;
 
-    public ElementalRainSpell(int arcanaCost, Effect effectIn, double horizontalRadius, double verticalRange, int particleCollection, SpellTier tierIn, SpellSchool schoolIn)
+    public ElementalRainSpell(int arcanaCost, ElementalComponent damageComponent, double horizontalRadius, double verticalRange, SpellTier tierIn, SpellSchool schoolIn)
     {
         super(arcanaCost, tierIn, schoolIn);
         this.horizontalRadius = horizontalRadius;
         this.verticalRange = verticalRange;
         this.maxRange = Math.sqrt(Math.pow(this.horizontalRadius, 2) + Math.pow(this.verticalRange, 2));
-        this.rainEffect = effectIn;
-        this.particleCollection = particleCollection;
+        this.elementalComponent = damageComponent;
     }
 
     public ActionResultType doCastFinal(SpellUseContext context)
@@ -57,14 +53,12 @@ public class ElementalRainSpell extends Spell
             {
                 if (Utils.horizontalDistance(context.getHitVec(), entity.getPositionVec()) <= this.horizontalRadius && entity.getPosY() < context.getHitVec().add(0, 8, 0).getY())
                 {
-                    EffectInstance potionEffect = new EffectInstance(this.rainEffect, 10, 1, false, true);
-                    ((LivingEntity)entity).addPotionEffect(potionEffect);
-                    entity.attackEntityFrom(DamageSource.GENERIC, 1);
+                    this.elementalComponent.damageEntity((LivingEntity)entity, context);
                 }
             }
         }
 
-        ParticleEffectPacket pkt1 = new ParticleEffectPacket(17, this.particleCollection, context.getHitVec().add(0, this.verticalRange, 0), new Vector3d(0, -0.8, 0), 30, 1, this.horizontalRadius, 40);
+        ParticleEffectPacket pkt1 = new ParticleEffectPacket(17, this.elementalComponent.getPrimaryParticleCollection(), context.getHitVec().add(0, this.verticalRange, 0), new Vector3d(0, -0.8, 0), 30, 1, this.horizontalRadius, 20);
         PacketHandler.sendToAllTrackingPlayer(context.getPlayer(), pkt1);
 
         return ActionResultType.SUCCESS;

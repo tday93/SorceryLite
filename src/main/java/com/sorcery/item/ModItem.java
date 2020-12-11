@@ -86,6 +86,7 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_PLANT_DEATH = ITEMS.register("scroll_plant_death", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_DEATH));
     public static final RegistryObject<Item> SCROLL_PLANT_LIFE = ITEMS.register("scroll_plant_life", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_LIFE));
     public static final RegistryObject<Item> SCROLL_CHILLING_TOUCH = ITEMS.register("scroll_chilling_touch", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CHILLING_TOUCH));
+    public static final RegistryObject<Item> SCROLL_FIERY_TOUCH = ITEMS.register("scroll_fiery_touch", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_FIERY_TOUCH));
     // -- Iron
     public static final RegistryObject<Item> SCROLL_COBBLE_PLACEMENT = ITEMS.register("scroll_cobble_placement", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COBBLE_PLACEMENT));
     public static final RegistryObject<Item> SCROLL_LESSER_FIREBOLT = ITEMS.register("scroll_lesser_firebolt", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_FIREBOLT));
@@ -112,6 +113,7 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_RAY_OF_FROST = ITEMS.register("scroll_ray_of_frost", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_RAY_OF_FROST));
     public static final RegistryObject<Item> SCROLL_COBBLECOON = ITEMS.register("scroll_cobblecoon", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COBBLECOON));
     public static final RegistryObject<Item> SCROLL_ACID_RAIN = ITEMS.register("scroll_acid_rain", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_ACID_RAIN));
+    public static final RegistryObject<Item> SCROLL_FIRE_NOVA = ITEMS.register("scroll_fire_nova", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_FIRE_NOVA));
     // -- Netherite
     // -- End
     public static final RegistryObject<Item> SCROLL_BLINK = ITEMS.register("scroll_blink", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_BLINK));

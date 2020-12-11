@@ -3,6 +3,7 @@ package com.sorcery.particle;
 import com.sorcery.utils.ModColor;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleType;
+import net.minecraft.particles.ParticleTypes;
 
 import java.util.List;
 
@@ -206,6 +207,9 @@ public class Particles
                 collection.add(50, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getMainList(), ModParticle.BEAM, 1.0f, age, false, true, 0.0f, 1.0f, true));
                 collection.add(25, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getLowList(), ModParticle.BEAM, 1.0f, age, false, true, 0.0f, 1.0f, true));
                 collection.add(25, getColoredParticle(ModColor.TRANSMUTATION_GREEN.getHiList(), ModParticle.BEAM, 1.0f, age, false, true, 0.0f, 1.0f, true));
+                return collection;
+            case 23:
+                collection.add(100, ParticleTypes.FLAME);
                 return collection;
             default:
                 collection.add(100, getSpark());
