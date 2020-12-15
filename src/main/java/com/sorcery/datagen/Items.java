@@ -10,7 +10,6 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class Items extends ItemModelProvider
@@ -64,12 +63,13 @@ public class Items extends ItemModelProvider
         // Spell Scrolls
         // -- Testing
         simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_initiate_evocation");
+        scrollItem((SpellScrollItem) ModItem.SCROLL_TEST_STRUCTURE.get());
         // -- Pre-Iron
         scrollItem((SpellScrollItem) ModItem.SCROLL_CHILLING_TOUCH.get());
         scrollItem((SpellScrollItem) ModItem.SCROLL_FIERY_TOUCH.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_DIG.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_PLANT_DEATH.get());
-        scrollItem((SpellScrollItem)ModItem.SCROLL_PLANT_LIFE.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_PLANT_GROWTH.get());
         // -- Iron
         scrollItem((SpellScrollItem)ModItem.SCROLL_COBBLE_PLACEMENT.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_FIREBOLT.get());
@@ -97,6 +97,8 @@ public class Items extends ItemModelProvider
         scrollItem((SpellScrollItem)ModItem.SCROLL_ACID_RAIN.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_FIRE_NOVA.get());
         // -- Netherite
+        scrollItem((SpellScrollItem)ModItem.SCROLL_TUNNEL.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_STAIR_DOWN.get());
         // -- End
         scrollItem((SpellScrollItem)ModItem.SCROLL_BLINK.get());
 
@@ -111,7 +113,7 @@ public class Items extends ItemModelProvider
         // -- Pre-Iron
         wandItem((WandItem)ModItem.WAND_LESSER_DIG.get());
         wandItem((WandItem)ModItem.WAND_PLANT_DEATH.get());
-        wandItem((WandItem)ModItem.WAND_PLANT_LIFE.get());
+        wandItem((WandItem)ModItem.WAND_PLANT_GROWTH.get());
         wandItem((WandItem)ModItem.WAND_CHILLING_TOUCH.get());
         // -- Iron
         wandItem((WandItem)ModItem.WAND_COBBLE_PLACEMENT.get());

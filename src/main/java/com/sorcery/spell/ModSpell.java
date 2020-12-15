@@ -31,6 +31,7 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_REMOVE_ARCANA = SPELLS.register("spell_remove_arcana", () -> new TestSpell("Arcana Removed!", 1000));
     public static final RegistryObject<Spell> SPELL_TEST = SPELLS.register("spell_test", () -> new TestSpell("poof!", 0));
     public static final RegistryObject<Spell> SPELL_ARCANA_DRAIN = SPELLS.register("spell_arcana_drain", () -> new ArcanaDrainSpell());
+    public static final RegistryObject<Spell> SPELL_TEST_STRUCTURE = SPELLS.register("spell_test_structure", () -> new BlockStructureSpell(10, StructurePattern.TEST_PATTERN, true, false, false, null, SpellTier.ARCHSORCERER, SpellSchool.CONJURATION));
 
     // Utility Spells
     public static final RegistryObject<Spell> SPELL_WAND_CRAFT_0 = SPELLS.register("spell_wand_craft_0", () -> new WandCraftSpell(0, SpellTier.INITIATE, SpellSchool.ENCHANTMENT));
@@ -48,7 +49,7 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_LESSER_DIG = SPELLS.register("spell_lesser_dig", () -> new DigSpell(10, 6, Arrays.asList(ToolType.SHOVEL), SpellTier.INITIATE, SpellSchool.TRANSMUTATION));
     public static final RegistryObject<Spell> SPELL_MEDITATE = SPELLS.register("spell_meditate", () -> new MeditateSpell(SpellTier.INITIATE, SpellSchool.ENCHANTMENT));
     public static final RegistryObject<Spell> SPELL_PLANT_DEATH = SPELLS.register("spell_plant_death", () -> new PlantDeathSpell(SpellTier.INITIATE, SpellSchool.NECROMANCY));
-    public static final RegistryObject<Spell> SPELL_PLANT_LIFE = SPELLS.register("spell_plant_life", () -> new PlantLifeSpell(10, SpellTier.INITIATE, SpellSchool.NECROMANCY));
+    public static final RegistryObject<Spell> SPELL_PLANT_GROWTH = SPELLS.register("spell_plant_growth", () -> new PlantGrowthSpell(10, SpellTier.INITIATE, SpellSchool.NECROMANCY));
 
     // Apprentice (Iron) Spells - Apprentice
     public static final RegistryObject<Spell> SPELL_COBBLE_PLACEMENT = SPELLS.register("spell_cobble_placement", () -> new BlockPlacementSpell(10, (BlockItem)Items.COBBLESTONE, SpellTier.APPRENTICE, SpellSchool.CONJURATION));
@@ -75,13 +76,15 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_SPEED = SPELLS.register("spell_speed", () -> new PotionSpell(Config.SPELL_SPEED_COST.get(), Effects.SPEED, Config.SPELL_SPEED_DURATION.get(), 1, true, SpellTier.SORCERER, SpellSchool.ENCHANTMENT));
     public static final RegistryObject<Spell> SPELL_TRANSMUTE_STONE = SPELLS.register("spell_transmute_stone", () -> new BlockTransmuteSpell(10, SpellTier.SORCERER, SpellSchool.TRANSMUTATION));
     public static final RegistryObject<Spell> SPELL_RAY_OF_FROST = SPELLS.register("spell_ray_of_frost", () -> new ElementalRaySpell(1, new FrostElementalComponent(1, 20, 1), SpellTier.SORCERER, SpellSchool.EVOCATION));
-    public static final RegistryObject<Spell> SPELL_COBBLECOON = SPELLS.register("spell_cobblecoon", () -> new BlockStructureSpell(10, StructurePattern.COCOON_PATTERN, SpellTier.SORCERER, SpellSchool.CONJURATION));
+    public static final RegistryObject<Spell> SPELL_COBBLECOON = SPELLS.register("spell_cobblecoon", () -> new BlockStructureSpell(10, StructurePattern.COCOON_PATTERN, true, false, false, null, SpellTier.SORCERER, SpellSchool.CONJURATION));
     public static final RegistryObject<Spell> SPELL_ACID_RAIN = SPELLS.register("spell_acid_rain", () -> new ElementalRainSpell(10, new AcidElementalComponent(1, 10, 1), 4, 8, SpellTier.SORCERER, SpellSchool.EVOCATION));
     public static final RegistryObject<Spell> SPELL_FIRE_NOVA = SPELLS.register("spell_fire_nova", () -> new ElementalNovaSpell(10, new FireElementalComponent(4, 4), 6, 23, SpellTier.SORCERER, SpellSchool.EVOCATION));
 
 
     // Netherite Spells - Master Mage
     public static final RegistryObject<Spell> SPELL_FEATHER_FALL = SPELLS.register("spell_feather_fall", () -> new PotionSpell(10, ModEffect.FEATHER_FALLING, (20 * 60 * 5), 2, true, SpellTier.MASTER_SORCERER, SpellSchool.ENCHANTMENT));
+    public static final RegistryObject<Spell> SPELL_TUNNEL = SPELLS.register("spell_tunnel", () -> new BlockStructureSpell(10, StructurePattern.TUNNEL_PATTERN, false, true, true, '~', 40, SpellTier.MASTER_SORCERER, SpellSchool.CONJURATION));
+    public static final RegistryObject<Spell> SPELL_STAIR_DOWN = SPELLS.register("spell_stair_down", () -> new BlockStructureSpell(10, StructurePattern.STAIR_DOWN_PATTERN, false, true, true, '~', 40, SpellTier.MASTER_SORCERER, SpellSchool.CONJURATION));
     // -- Tunnel Spell
     // -- spell bomb
 

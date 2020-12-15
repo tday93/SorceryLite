@@ -80,11 +80,12 @@ public class ModItem
 
     // -- Testing
     public static final RegistryObject<Item> REMOVE_ARCANA_SPELL_SCROLL = ITEMS.register("remove_arcana_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_REMOVE_ARCANA));
+    public static final RegistryObject<Item> SCROLL_TEST_STRUCTURE = ITEMS.register("scroll_test_structure", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_TEST_STRUCTURE));
 
     // -- Pre-Iron
     public static final RegistryObject<Item> SCROLL_LESSER_DIG = ITEMS.register("scroll_lesser_dig", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_DIG));
     public static final RegistryObject<Item> SCROLL_PLANT_DEATH = ITEMS.register("scroll_plant_death", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_DEATH));
-    public static final RegistryObject<Item> SCROLL_PLANT_LIFE = ITEMS.register("scroll_plant_life", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_LIFE));
+    public static final RegistryObject<Item> SCROLL_PLANT_GROWTH = ITEMS.register("scroll_plant_growth", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_GROWTH));
     public static final RegistryObject<Item> SCROLL_CHILLING_TOUCH = ITEMS.register("scroll_chilling_touch", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CHILLING_TOUCH));
     public static final RegistryObject<Item> SCROLL_FIERY_TOUCH = ITEMS.register("scroll_fiery_touch", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_FIERY_TOUCH));
     // -- Iron
@@ -115,6 +116,8 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_ACID_RAIN = ITEMS.register("scroll_acid_rain", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_ACID_RAIN));
     public static final RegistryObject<Item> SCROLL_FIRE_NOVA = ITEMS.register("scroll_fire_nova", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_FIRE_NOVA));
     // -- Netherite
+    public static final RegistryObject<Item> SCROLL_TUNNEL = ITEMS.register("scroll_tunnel", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_TUNNEL));
+    public static final RegistryObject<Item> SCROLL_STAIR_DOWN = ITEMS.register("scroll_stair_down", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_STAIR_DOWN));
     // -- End
     public static final RegistryObject<Item> SCROLL_BLINK = ITEMS.register("scroll_blink", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_BLINK));
 
@@ -131,7 +134,7 @@ public class ModItem
     // -- Pre-Iron
     public static final RegistryObject<Item> WAND_LESSER_DIG = ITEMS.register("wand_lesser_dig", () -> new WandItem(ModSpell.SPELL_LESSER_DIG, 2500));
     public static final RegistryObject<Item> WAND_PLANT_DEATH = ITEMS.register("wand_plant_death", () -> new WandItem(ModSpell.SPELL_PLANT_DEATH));
-    public static final RegistryObject<Item> WAND_PLANT_LIFE = ITEMS.register("wand_plant_life", () -> new WandItem(ModSpell.SPELL_PLANT_LIFE));
+    public static final RegistryObject<Item> WAND_PLANT_GROWTH = ITEMS.register("wand_plant_life", () -> new WandItem(ModSpell.SPELL_PLANT_GROWTH));
     public static final RegistryObject<Item> WAND_CHILLING_TOUCH = ITEMS.register("wand_chilling_touch", () -> new WandItem(ModSpell.SPELL_CHILLING_TOUCH));
     // -- Iron
     public static final RegistryObject<Item> WAND_COBBLE_PLACEMENT = ITEMS.register("wand_cobble_placement", () -> new WandItem(ModSpell.SPELL_COBBLE_PLACEMENT));
