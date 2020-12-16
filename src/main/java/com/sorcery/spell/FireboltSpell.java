@@ -11,11 +11,11 @@ import net.minecraft.world.World;
 
 public class FireboltSpell extends Spell
 {
-    private int velocity;
+    private final int velocity;
 
-    public FireboltSpell(SpellTier tierIn, SpellSchool schoolIn)
+    public FireboltSpell(int costIn, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(Config.SPELL_FIREBOLT_COST.get(), tierIn, schoolIn);
+        super(costIn, tierIn, schoolIn);
         this.finalSound = SoundEvents.ITEM_FIRECHARGE_USE;
         this.velocity = 3;
     }

@@ -56,7 +56,7 @@ public class ArcanaCapSyncPacket
             }
 
          });
-         ctx.get().getPacketHandled();
+         ctx.get().setPacketHandled(true);
       }
    }
 

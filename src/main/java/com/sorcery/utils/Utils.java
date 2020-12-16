@@ -9,6 +9,7 @@ import com.sorcery.item.SpellbookItem;
 import com.sorcery.item.WandItem;
 import com.sorcery.spell.Spell;
 import com.sorcery.spellcasting.ISpellcasting;
+import jdk.nashorn.internal.ir.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -18,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.LongArrayNBT;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -176,11 +178,7 @@ public class Utils {
                     return false;
                 }
                 // Only add items with distance
-                if (!pos.withinDistance(input.getPos(), range))
-                {
-                    return false;
-                }
-                return true;
+                return pos.withinDistance(input.getPos(), range);
             }
         };
         return pred;
@@ -191,7 +189,7 @@ public class Utils {
     {
         Predicate<TileEntity> pred = new Predicate<TileEntity>()
         {
-            BlockPos pos = tile.getPos();
+            final BlockPos pos = tile.getPos();
 
             @Override
             public boolean apply(@Nullable TileEntity input)
@@ -207,11 +205,7 @@ public class Utils {
                     return false;
                 }
                 // Only add items with distance
-                if (!pos.withinDistance(input.getPos(), range))
-                {
-                    return false;
-                }
-                return true;
+                return pos.withinDistance(input.getPos(), range);
             }
         };
         return pred;
@@ -221,7 +215,7 @@ public class Utils {
     {
         Predicate<TileEntity> pred = new Predicate<TileEntity>()
         {
-            BlockPos pos = entity.getPosition();
+            final BlockPos pos = entity.getPosition();
 
             @Override
             public boolean apply(@Nullable TileEntity input)
@@ -232,11 +226,7 @@ public class Utils {
                     return false;
                 }
                 // Only add items with distance
-                if (!pos.withinDistance(input.getPos(), range))
-                {
-                    return false;
-                }
-                return true;
+                return pos.withinDistance(input.getPos(), range);
             }
         };
         return pred;
@@ -246,16 +236,11 @@ public class Utils {
     {
         Predicate<Entity> pred = new Predicate<Entity>()
         {
-            Entity excludedEntity = excludedEntityIn;
+            final Entity excludedEntity = excludedEntityIn;
             @Override
             public boolean apply(@Nullable Entity input)
             {
-                if (input instanceof LivingEntity && input != excludedEntityIn)
-                {
-                    return true;
-                } else {
-                    return false;
-                }
+                return input instanceof LivingEntity && input != excludedEntityIn;
             }
         };
         return pred;

@@ -11,7 +11,7 @@ import net.minecraft.util.math.vector.Vector3d;
 
 public class ArcanaDrainSpell extends Spell
 {
-    private int arcanaDrainRate = 100;
+    private final int arcanaDrainRate = 100;
 
     public ArcanaDrainSpell()
     {

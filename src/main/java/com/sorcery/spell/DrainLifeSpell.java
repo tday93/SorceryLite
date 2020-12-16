@@ -14,9 +14,9 @@ import net.minecraft.util.math.vector.Vector3d;
 
 public class DrainLifeSpell extends Spell
 {
-    private int lifeToDrain;
+    private final int lifeToDrain;
 
-    public DrainLifeSpell(int arcanaCost, int lifeToDrainIn, SpellTier tierIn, SpellSchool schoolIn)
+    public DrainLifeSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn, int lifeToDrainIn)
     {
         super(arcanaCost, tierIn, schoolIn);
         this.lifeToDrain = lifeToDrainIn;

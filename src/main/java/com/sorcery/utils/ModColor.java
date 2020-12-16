@@ -34,7 +34,7 @@ public enum ModColor
     private final int lowGreen;
     private final int lowDecimal;
 
-    private ModColor(int hiRed, int hiGreen, int hiBlue, int mainRed, int mainGreen, int mainBlue, int lowRed, int lowGreen, int lowBlue)
+    ModColor(int hiRed, int hiGreen, int hiBlue, int mainRed, int mainGreen, int mainBlue, int lowRed, int lowGreen, int lowBlue)
     {
 
         this.hiRed = hiRed;

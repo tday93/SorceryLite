@@ -6,8 +6,8 @@ import net.minecraft.block.material.Material;
 
 public class AlchemicalWorkbenchBlock extends Block
 {
-    private static Float hardness   = 3.0F;
-    private static Float resistance = 6.0F;
+    private static final Float hardness   = 3.0F;
+    private static final Float resistance = 6.0F;
 
     public AlchemicalWorkbenchBlock()
     {

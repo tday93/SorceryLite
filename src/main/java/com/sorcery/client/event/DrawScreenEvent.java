@@ -11,6 +11,7 @@ import com.sorcery.spell.Spell;
 import com.sorcery.tileentity.ArcanaStorageTile;
 import com.sorcery.utils.Utils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -41,37 +42,37 @@ public class DrawScreenEvent
 
     private static ResourceLocation spellIcon = null;
 
-    private static long showSelectionTicks = 40;
+    private static final long showSelectionTicks = 40;
 
     private static TranslationTextComponent localizedSpell = null;
 
 
-    private static int backgroundWidth = 131;
-    private static int backgroundHeight = 38;
+    private static final int backgroundWidth = 131;
+    private static final int backgroundHeight = 38;
 
-    private static int barWidth = 127;
-    private static int barHeight = 5;
+    private static final int barWidth = 127;
+    private static final int barHeight = 5;
 
-    private static int barXOffset = 2;
-    private static int barYOffset = 2;
+    private static final int barXOffset = 2;
+    private static final int barYOffset = 2;
 
-    private static int barTexXOffset = 2;
-    private static int barTexYOffset = 38;
+    private static final int barTexXOffset = 2;
+    private static final int barTexYOffset = 38;
 
-    private static int overlayWidth = 125;
-    private static int overlayHeight = 3;
+    private static final int overlayWidth = 125;
+    private static final int overlayHeight = 3;
 
-    private static int overlayXOffset = 3;
-    private static int overlayYOffset = 3;
+    private static final int overlayXOffset = 3;
+    private static final int overlayYOffset = 3;
 
-    private static int overlayTexXOffset = 3;
-    private static int overlayTexYOffset = 43;
+    private static final int overlayTexXOffset = 3;
+    private static final int overlayTexYOffset = 43;
 
-    private static int spellIconXOffset = 3;
-    private static int spellIconYOffset = 9;
+    private static final int spellIconXOffset = 3;
+    private static final int spellIconYOffset = 9;
 
-    private static int spellIconWidth = 26;
-    private static int spellIconHeight = 26;
+    private static final int spellIconWidth = 26;
+    private static final int spellIconHeight = 26;
 
 
 
@@ -177,7 +178,7 @@ public class DrawScreenEvent
             {
                 // Spell Icon
                 mc.getTextureManager().bindTexture(spellIcon);
-                mc.ingameGUI.blit(matrixStack, posX + spellIconXOffset, posY + spellIconYOffset, 0, 0, spellIconWidth, spellIconHeight, 26, 26);
+                AbstractGui.blit(matrixStack, posX + spellIconXOffset, posY + spellIconYOffset, 0, 0, spellIconWidth, spellIconHeight, 26, 26);
             }
 
             if (showSpellSelection)

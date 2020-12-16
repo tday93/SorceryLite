@@ -8,9 +8,9 @@ import net.minecraft.util.DamageSource;
 
 public class AcidElementalComponent extends ElementalComponent
 {
-    private int damage;
-    private int corrosionDuration;
-    private int corrosionAmp;
+    private final int damage;
+    private final int corrosionDuration;
+    private final int corrosionAmp;
 
     public AcidElementalComponent(int damage, int corrosionDuration, int corrosionAmp)
     {

@@ -6,8 +6,8 @@ import net.minecraft.util.DamageSource;
 
 public class FireElementalComponent extends ElementalComponent
 {
-    private int fireDuration;
-    private int fireDamage;
+    private final int fireDuration;
+    private final int fireDamage;
 
     public FireElementalComponent(int fireDamage, int fireDuration)
     {

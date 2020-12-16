@@ -20,9 +20,9 @@ import java.util.List;
 public class AdvancedCraftSpell extends Spell
 {
 
-    private int monolithRange = 7;
-    private int arcanaDrainRate = 5;
-    private int arcanaPerTickRate = 5;
+    private final int monolithRange = 7;
+    private final int arcanaDrainRate = 5;
+    private final int arcanaPerTickRate = 5;
 
     public AdvancedCraftSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
     {

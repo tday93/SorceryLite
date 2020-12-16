@@ -14,10 +14,10 @@ import java.util.List;
 public class ElementalNovaSpell extends Spell
 {
     public int range;
-    private int particleCollection;
-    private ElementalComponent elementalComponent;
+    private final int particleCollection;
+    private final ElementalComponent elementalComponent;
 
-    public ElementalNovaSpell(int arcanaCost, ElementalComponent elementalComponent, int range, int particleCollection, SpellTier tierIn, SpellSchool schoolIn)
+    public ElementalNovaSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn, ElementalComponent elementalComponent, int range, int particleCollection)
     {
         super(arcanaCost, tierIn, schoolIn);
         this.range = range;

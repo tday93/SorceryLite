@@ -25,12 +25,12 @@ import java.util.stream.Stream;
 
 public class BlockMoveSpell extends Spell
 {
-    private  Vector3i size;
-    private Vector3i offset;
-    private Vector3i translation;
-    private ResourceLocation allowedBlocksTag;
+    private final Vector3i size;
+    private final Vector3i offset;
+    private final Vector3i translation;
+    private final ResourceLocation allowedBlocksTag;
 
-    public BlockMoveSpell(int arcanaCost, Vector3i sizeIn, Vector3i offsetIn, Vector3i translationIn, ResourceLocation allowedBlocks, SpellTier tierIn, SpellSchool schoolIn)
+    public BlockMoveSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn, Vector3i sizeIn, Vector3i offsetIn, Vector3i translationIn, ResourceLocation allowedBlocks)
     {
         super(arcanaCost, tierIn, schoolIn);
         // doing this so that sizeIn can represent the total size

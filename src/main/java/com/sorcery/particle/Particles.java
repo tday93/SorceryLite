@@ -211,6 +211,9 @@ public class Particles
             case 23:
                 collection.add(100, ParticleTypes.FLAME);
                 return collection;
+            case 24:
+                collection.add(100, ParticleTypes.SMOKE);
+                return collection;
             default:
                 collection.add(100, getSpark());
                 return collection;

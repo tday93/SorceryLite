@@ -78,7 +78,7 @@ public class SpellCapSyncPacket
                 }
 
             });
-            ctx.get().getPacketHandled();
+            ctx.get().setPacketHandled(true);
         }
     }
 

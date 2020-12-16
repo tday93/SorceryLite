@@ -11,10 +11,10 @@ import net.minecraft.util.math.vector.Vector3d;
 public class ElementalTouchSpell extends Spell
 {
 
-    private IDamageEntityComponent damageComponent;
-    private int particleCollection;
+    private final IDamageEntityComponent damageComponent;
+    private final int particleCollection;
 
-    public ElementalTouchSpell(int arcanaCost, IDamageEntityComponent damageComponent, int particleCollection, SoundEvent finalSound, SpellTier tierIn, SpellSchool schoolIn)
+    public ElementalTouchSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn, IDamageEntityComponent damageComponent, int particleCollection, SoundEvent finalSound)
     {
         super(arcanaCost);
         this.damageComponent = damageComponent;

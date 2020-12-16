@@ -11,9 +11,9 @@ import net.minecraft.util.math.vector.Vector3d;
 
 public class ShuntSpell extends Spell
 {
-    private double range;
+    private final double range;
 
-    public ShuntSpell(int arcanaCost, double rangeIn, SpellTier tierIn, SpellSchool schoolIn)
+    public ShuntSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn, double rangeIn)
     {
         super(arcanaCost, tierIn, schoolIn);
         this.finalSound = SoundEvents.ENTITY_ENDERMAN_TELEPORT;

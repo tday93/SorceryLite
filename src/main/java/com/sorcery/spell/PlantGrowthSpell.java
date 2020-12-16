@@ -15,12 +15,7 @@ public class PlantGrowthSpell extends Spell
     @Override
     public boolean allowCast(SpellUseContext context)
     {
-        if (context.wasUsedOnBlock())
-        {
-            return true;
-        } else {
-            return false;
-        }
+        return context.wasUsedOnBlock();
     }
 
     @Override

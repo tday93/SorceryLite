@@ -9,11 +9,11 @@ import net.minecraft.util.FoodStats;
 public class HealSpell extends Spell
 {
 
-    private double healAmount;
-    private double hungerMulti;
-    private int cooldown;
+    private final double healAmount;
+    private final double hungerMulti;
+    private final int cooldown;
 
-    public HealSpell(int arcanaCost, double healAmountIn, double hungerMultiIn, int cooldownIn, SpellTier tierIn, SpellSchool schoolIn)
+    public HealSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn, double healAmountIn, double hungerMultiIn, int cooldownIn)
     {
         super(arcanaCost, tierIn, schoolIn);
         this.healAmount = healAmountIn;

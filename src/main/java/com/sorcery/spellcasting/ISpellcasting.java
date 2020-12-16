@@ -9,36 +9,36 @@ import java.util.ArrayList;
 public interface ISpellcasting extends INBTSerializable<CompoundNBT>
 {
     // Active Spell
-    public ResourceLocation getActiveSpell();
+    ResourceLocation getActiveSpell();
 
-    public void setActiveSpell(ResourceLocation spell);
+    void setActiveSpell(ResourceLocation spell);
 
 
     // Prepared Spells
 
-    public ArrayList<ResourceLocation> getPreparedSpells();
+    ArrayList<ResourceLocation> getPreparedSpells();
 
-    public void setPreparedSpells(ArrayList<ResourceLocation> allSpells);
+    void setPreparedSpells(ArrayList<ResourceLocation> allSpells);
 
-    public void addPreparedSpell(ResourceLocation spell);
+    void addPreparedSpell(ResourceLocation spell);
 
-    public void removePreparedSpell(ResourceLocation spell);
+    void removePreparedSpell(ResourceLocation spell);
 
-    public boolean hasPreparedSpell(ResourceLocation spell);
+    boolean hasPreparedSpell(ResourceLocation spell);
 
-    public void clearPreparedSpells();
+    void clearPreparedSpells();
 
 
     // Utility
 
-    public void cycleActiveSpell(int delta);
+    void cycleActiveSpell(int delta);
 
-    public int getIndexFromSpell(ResourceLocation rl);
+    int getIndexFromSpell(ResourceLocation rl);
 
-    public ResourceLocation getSpellFromIndex(int index);
+    ResourceLocation getSpellFromIndex(int index);
 
-    public ResourceLocation getNextSpell();
+    ResourceLocation getNextSpell();
 
-    public ResourceLocation getPreviousSpell();
+    ResourceLocation getPreviousSpell();
 
 }

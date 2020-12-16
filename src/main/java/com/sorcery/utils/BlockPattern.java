@@ -11,12 +11,12 @@ import java.util.*;
 
 public class BlockPattern
 {
-    private List<List<String>> pattern3d;
-    private Character centralCharacter;
-    private List<Integer> centralCharacterLocation;
-    private Map<Character, Integer> intMap;
-    private Map<Integer, Character> revIntMap;
-    private Map<Block, Character> blockMap;
+    private final List<List<String>> pattern3d;
+    private final Character centralCharacter;
+    private final List<Integer> centralCharacterLocation;
+    private final Map<Character, Integer> intMap;
+    private final Map<Integer, Character> revIntMap;
+    private final Map<Block, Character> blockMap;
 
     public BlockPattern(List<List<String>> pattern3d, Character centralChar, Map<Character, Integer> interferenceMap, Map<Integer, Character> revIntMap, Map<Block, Character> blockMap)
     {
@@ -45,11 +45,7 @@ public class BlockPattern
 
     public boolean isNegInterference(int x, int y, int z)
     {
-        if (getInterference(x, y, z) < 0)
-        {
-            return true;
-        }
-        return false;
+        return getInterference(x, y, z) < 0;
     }
 
     private List<List<Integer>> getCharPositions(Character charIn)
@@ -222,11 +218,11 @@ public class BlockPattern
 
     public static class PatternBuilder
     {
-        private List<List<String>> pattern3d = new LinkedList<>();
+        private final List<List<String>> pattern3d = new LinkedList<>();
         private Character centralCharacter = 'I';
-        private Map<Character, Integer> intMap = new HashMap<>();
-        private Map<Integer, Character> revIntMap = new HashMap<>();
-        private HashMap<Block, Character> blockMap = new HashMap<>();
+        private final Map<Character, Integer> intMap = new HashMap<>();
+        private final Map<Integer, Character> revIntMap = new HashMap<>();
+        private final HashMap<Block, Character> blockMap = new HashMap<>();
         private int lineIndex = 0;
 
         public PatternBuilder()

@@ -107,12 +107,7 @@ public class Spell extends ForgeRegistryEntry<Spell>
             return false;
         }
 
-        if (!drainArcana(context, this.getArcanaCost(context)))
-        {
-            return false;
-        }
-
-        return true;
+        return drainArcana(context, this.getArcanaCost(context));
     }
 
     // check to see if cast will be allowed
@@ -187,12 +182,7 @@ public class Spell extends ForgeRegistryEntry<Spell>
             }
         } else {
             // Client side, just check
-            if (context.getArcanaSource().getArcanaStored() >= arcanaCost)
-            {
-                return true;
-            } else {
-                return false;
-            }
+            return context.getArcanaSource().getArcanaStored() >= arcanaCost;
         }
     }
 

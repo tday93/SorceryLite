@@ -17,13 +17,13 @@ import java.util.Map;
 public class BlockStructureSpell extends Spell
 {
 
-    private BlockPattern structurePattern;
-    private Character clearCharacter;
-    private Boolean clearNonAir;
-    private Boolean centerPlayer;
-    private Boolean clearCenter;
+    private final BlockPattern structurePattern;
+    private final Character clearCharacter;
+    private final Boolean clearNonAir;
+    private final Boolean centerPlayer;
+    private final Boolean clearCenter;
 
-    public BlockStructureSpell(int arcanaCost, StructurePattern patternIn, Boolean centerPlayer, Boolean clearNonAir, Boolean clearCenter, @Nullable Character clearCharacter, SpellTier tierIn, SpellSchool schoolIn)
+    public BlockStructureSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn, StructurePattern patternIn, Boolean centerPlayer, Boolean clearNonAir, Boolean clearCenter, @Nullable Character clearCharacter)
     {
         super(arcanaCost, tierIn, schoolIn);
         this.structurePattern = patternIn.pattern;
@@ -34,7 +34,7 @@ public class BlockStructureSpell extends Spell
 
     }
 
-    public BlockStructureSpell(int arcanaCost, StructurePattern patternIn, Boolean centerPlayer, Boolean clearNonAir, Boolean clearCenter, @Nullable Character clearCharacter, int durationIn, SpellTier tierIn, SpellSchool schoolIn)
+    public BlockStructureSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn, StructurePattern patternIn, Boolean centerPlayer, Boolean clearNonAir, Boolean clearCenter, @Nullable Character clearCharacter, int durationIn)
     {
         super(arcanaCost, tierIn, schoolIn);
         this.structurePattern = patternIn.pattern;
@@ -56,7 +56,7 @@ public class BlockStructureSpell extends Spell
         if (!this.centerPlayer)
         {
             startPos = context.getHitPos();
-            if (!(direction == Direction.UP.UP || direction == Direction.DOWN))
+            if (!(direction == Direction.UP || direction == Direction.DOWN))
             {
                 direction = context.getHitFace().getOpposite();
             }

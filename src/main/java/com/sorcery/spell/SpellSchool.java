@@ -16,7 +16,7 @@ public enum SpellSchool
     public String schoolName;
     public ModColor schoolColor;
 
-    private SpellSchool(int indexIn, String nameIn, ModColor colorIn)
+    SpellSchool(int indexIn, String nameIn, ModColor colorIn)
     {
         this.schoolIndex = indexIn;
         this.schoolName = nameIn;

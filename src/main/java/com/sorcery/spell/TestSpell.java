@@ -11,7 +11,7 @@ import net.minecraft.util.text.StringTextComponent;
 public class TestSpell extends Spell
 {
 
-    private String debugMessage;
+    private final String debugMessage;
 
     public TestSpell(String debugMessageIn, int arcanaCost)
     {

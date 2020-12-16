@@ -12,11 +12,11 @@ import net.minecraft.util.math.vector.Vector3d;
 public class PotionSpell extends Spell
 {
     // Potion effect to apply
-    private Effect effect;
+    private final Effect effect;
     // Duration in ticks, 1 second = 20 ticks
-    private int duration;
+    private final int duration;
     // effect amplifier
-    private int amp;
+    private final int amp;
     private boolean castOnSelf = true;
 
 
@@ -28,15 +28,13 @@ public class PotionSpell extends Spell
         this.amp = ampIn;
     }
 
-    public PotionSpell(int costIn, Effect effectIn, int durationIn, int ampIn, boolean selfCastIn, SpellTier tierIn, SpellSchool schoolIn)
+    public PotionSpell(int costIn, SpellTier tierIn, SpellSchool schoolIn, Effect effectIn, int durationIn, int ampIn, boolean selfCastIn)
     {
-        super(costIn);
+        super(costIn, tierIn, schoolIn);
         this.effect = effectIn;
         this.duration = durationIn;
         this.amp = ampIn;
         this.castOnSelf = selfCastIn;
-        this.spellTier = tierIn;
-        this.spellSchool = schoolIn;
     }
 
     @Override

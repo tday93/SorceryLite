@@ -19,7 +19,7 @@ public class BlockPlacementSpell extends Spell
     public BlockItem placementItem;
     public ItemStack placementItemStack;
 
-    public BlockPlacementSpell(int arcanaCost, BlockItem placementItem, SpellTier tierIn, SpellSchool schoolIn)
+    public BlockPlacementSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn, BlockItem placementItem)
     {
         super(arcanaCost, tierIn, schoolIn);
         this.finalSound = SoundEvents.BLOCK_STONE_PLACE;
@@ -37,12 +37,7 @@ public class BlockPlacementSpell extends Spell
         Integer index = context.getPlayer().inventory.findSlotMatchingUnusedItem(this.placementItemStack);
         if(index > -1)
         {
-            if (context.getWorld().isAirBlock(context.getFacePos()))
-            {
-                return true;
-            } else {
-                return false;
-            }
+            return context.getWorld().isAirBlock(context.getFacePos());
         } else {
             return false;
         }

@@ -22,10 +22,10 @@ import java.util.stream.Stream;
 
 public class PlantDeathSpell extends Spell
 {
-    private double spellRange;
+    private final double spellRange;
 
-    public PlantDeathSpell(SpellTier tierIn, SpellSchool schoolIn) {
-        super(Config.SPELL_PLANT_DEATH_COST.get(), tierIn, schoolIn);
+    public PlantDeathSpell(int costIn, SpellTier tierIn, SpellSchool schoolIn) {
+        super(costIn, tierIn, schoolIn);
         this.spellRange = Config.SPELL_PLANT_DEATH_RANGE.get();
         this.finalSound = SoundEvents.BLOCK_CROP_BREAK;
     }

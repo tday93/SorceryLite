@@ -82,20 +82,24 @@ public class ModItem
     public static final RegistryObject<Item> REMOVE_ARCANA_SPELL_SCROLL = ITEMS.register("remove_arcana_spell_scroll", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_REMOVE_ARCANA));
     public static final RegistryObject<Item> SCROLL_TEST_STRUCTURE = ITEMS.register("scroll_test_structure", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_TEST_STRUCTURE));
 
-    // -- Pre-Iron
+    // -- Initiate (Pre-Iron)
     public static final RegistryObject<Item> SCROLL_LESSER_DIG = ITEMS.register("scroll_lesser_dig", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_DIG));
     public static final RegistryObject<Item> SCROLL_PLANT_DEATH = ITEMS.register("scroll_plant_death", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_DEATH));
     public static final RegistryObject<Item> SCROLL_PLANT_GROWTH = ITEMS.register("scroll_plant_growth", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_PLANT_GROWTH));
     public static final RegistryObject<Item> SCROLL_CHILLING_TOUCH = ITEMS.register("scroll_chilling_touch", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CHILLING_TOUCH));
     public static final RegistryObject<Item> SCROLL_FIERY_TOUCH = ITEMS.register("scroll_fiery_touch", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_FIERY_TOUCH));
-    // -- Iron
+    public static final RegistryObject<Item> SCROLL_ACIDIC_TOUCH = ITEMS.register("scroll_acidic_touch", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_ACIDIC_TOUCH));
+
+    // -- Apprentice (Iron)
     public static final RegistryObject<Item> SCROLL_COBBLE_PLACEMENT = ITEMS.register("scroll_cobble_placement", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COBBLE_PLACEMENT));
     public static final RegistryObject<Item> SCROLL_LESSER_FIREBOLT = ITEMS.register("scroll_lesser_firebolt", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_FIREBOLT));
     public static final RegistryObject<Item> SCROLL_SIGNAL_FLARE = ITEMS.register("scroll_signal_flare", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_SIGNAL_FLARE));
     public static final RegistryObject<Item> SCROLL_LESSER_HEAL = ITEMS.register("scroll_lesser_heal", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_HEAL));
     public static final RegistryObject<Item> SCROLL_LESSER_SHUNT = ITEMS.register("scroll_lesser_shunt", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_SHUNT));
     public static final RegistryObject<Item> SCROLL_LESSER_SLOW = ITEMS.register("scroll_lesser_slow", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_LESSER_SLOW));
-    // -- Diamond
+    public static final RegistryObject<Item> SCROLL_RAY_OF_ACID = ITEMS.register("scroll_ray_of_acid", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_RAY_OF_ACID));
+
+    // -- Journeyman (Diamond)
     public static final RegistryObject<Item> SCROLL_COMBUSTION = ITEMS.register("scroll_combustion", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COMBUSTION));
     public static final RegistryObject<Item> SCROLL_DIG = ITEMS.register("scroll_dig", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_DIG));
     public static final RegistryObject<Item> SCROLL_DRAIN_LIFE = ITEMS.register("scroll_drain_life", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_DRAIN_LIFE));
@@ -106,7 +110,7 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_SEISMIC_ECHO = ITEMS.register("scroll_seismic_echo", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_SEISMIC_ECHO));
     public static final RegistryObject<Item> SCROLL_STONEFLESH = ITEMS.register("scroll_stoneflesh", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_STONEFLESH));
 
-    // -- Nether
+    // -- Sorcerer (Nether)
     public static final RegistryObject<Item> SCROLL_CREATE_WATER = ITEMS.register("scroll_create_water", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_CREATE_WATER));
     public static final RegistryObject<Item> SCROLL_REPEL = ITEMS.register("scroll_repel", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_REPEL));
     public static final RegistryObject<Item> SCROLL_SPEED = ITEMS.register("scroll_speed", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_SPEED));
@@ -114,11 +118,14 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_RAY_OF_FROST = ITEMS.register("scroll_ray_of_frost", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_RAY_OF_FROST));
     public static final RegistryObject<Item> SCROLL_COBBLECOON = ITEMS.register("scroll_cobblecoon", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_COBBLECOON));
     public static final RegistryObject<Item> SCROLL_ACID_RAIN = ITEMS.register("scroll_acid_rain", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_ACID_RAIN));
+    public static final RegistryObject<Item> SCROLL_FIRE_RAIN = ITEMS.register("scroll_fire_rain", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_FIRE_RAIN));
     public static final RegistryObject<Item> SCROLL_FIRE_NOVA = ITEMS.register("scroll_fire_nova", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_FIRE_NOVA));
-    // -- Netherite
+
+    // -- Master Sorcerer (Netherite)
     public static final RegistryObject<Item> SCROLL_TUNNEL = ITEMS.register("scroll_tunnel", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_TUNNEL));
     public static final RegistryObject<Item> SCROLL_STAIR_DOWN = ITEMS.register("scroll_stair_down", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_STAIR_DOWN));
-    // -- End
+
+    // -- ArchSorcerer (End)
     public static final RegistryObject<Item> SCROLL_BLINK = ITEMS.register("scroll_blink", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_BLINK));
 
 

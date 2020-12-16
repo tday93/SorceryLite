@@ -15,9 +15,9 @@ import net.minecraft.util.math.vector.Vector3d;
 
 public class CreateWaterSpell extends Spell
 {
-    public CreateWaterSpell(SpellTier tierIn, SpellSchool schoolIn)
+    public CreateWaterSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(Config.SPELL_CREATE_WATER_COST.get(), tierIn, schoolIn);
+        super(arcanaCost, tierIn, schoolIn);
         this.finalSound = SoundEvents.ITEM_BUCKET_EMPTY;
     }
 

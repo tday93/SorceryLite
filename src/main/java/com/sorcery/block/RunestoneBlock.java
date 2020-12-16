@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 
 public class RunestoneBlock extends Block
 {
-    private ResourceLocation monolithTopBlock;
-    private ResourceLocation monolithMiddleBlock;
-    private ResourceLocation monolithBottomBlock;
+    private final ResourceLocation monolithTopBlock;
+    private final ResourceLocation monolithMiddleBlock;
+    private final ResourceLocation monolithBottomBlock;
 
 
     public RunestoneBlock(ResourceLocation monolithTopBlockIn, ResourceLocation monolithMiddleBlockIn, ResourceLocation monolithBottomBlockIn)
