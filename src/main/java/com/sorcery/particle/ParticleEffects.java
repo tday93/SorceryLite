@@ -315,8 +315,7 @@ public class ParticleEffects
         for (int i = 0; i < ctx.numParticles; i++)
         {
             Vector3d partVec = Utils.nBlocksAlongVector(ctx.vec1, ray, (float)(ctx.world.rand.nextDouble() * distance));
-            Vector3d velVec = basis.addX(Vector3d.ZERO, (ctx.world.rand.nextDouble() - 0.5) * ctx.speed);
-            velVec = velVec.add(0, ctx.radius, 0);
+            Vector3d velVec = basis.addX(Vector3d.ZERO, (ctx.world.rand.nextDouble() - 0.5) * ctx.speed).add(0, ctx.radius, 0);
             ctx.world.addParticle(ctx.getParticle(), partVec.getX(), partVec.getY(), partVec.getZ(), velVec.getX(), velVec.getY(), velVec.getZ());
         }
     }

@@ -99,6 +99,7 @@ public class Items extends ItemModelProvider
         scrollItem((SpellScrollItem)ModItem.SCROLL_ACID_RAIN.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_FIRE_RAIN.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_FIRE_NOVA.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_FROST_NOVA.get());
         // -- Master Sorcerer (Netherite)
         scrollItem((SpellScrollItem)ModItem.SCROLL_TUNNEL.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_STAIR_DOWN.get());

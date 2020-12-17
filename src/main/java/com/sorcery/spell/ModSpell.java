@@ -75,6 +75,8 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_LESSER_FEATHER_FALL = SPELLS.register("spell_lesser_feather_fall", () -> new PotionSpell(10, SpellTier.JOURNEYMAN, SpellSchool.ENCHANTMENT, ModEffect.FEATHER_FALLING, (20 * 60 * 5), 0, true));
     public static final RegistryObject<Spell> SPELL_SEISMIC_ECHO = SPELLS.register("spell_seismic_echo", () -> new SeismicEchoSpell(10, SpellTier.JOURNEYMAN, SpellSchool.CONJURATION, 8));
     public static final RegistryObject<Spell> SPELL_STONEFLESH = SPELLS.register("spell_stoneflesh", () -> new PotionSpell(10, SpellTier.JOURNEYMAN, SpellSchool.ABJURATION, ModEffect.STONEFLESH, (20 * 60 * 5), 0, true));
+    // - Earthen Pillar
+
     // -- Combat --
     public static final RegistryObject<Spell> SPELL_COMBUSTION = SPELLS.register("spell_combustion", () -> new ElementalConeSpell(SpellTier.JOURNEYMAN, SpellSchool.EVOCATION, new FireElementalComponent(1, 10)));
     public static final RegistryObject<Spell> SPELL_DRAIN_LIFE = SPELLS.register("spell_drain_life", () -> new DrainLifeSpell(10, SpellTier.JOURNEYMAN, SpellSchool.NECROMANCY, 4));
@@ -88,10 +90,13 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_SPEED = SPELLS.register("spell_speed", () -> new PotionSpell(Config.SPELL_SPEED_COST.get(), SpellTier.SORCERER, SpellSchool.ENCHANTMENT, Effects.SPEED, Config.SPELL_SPEED_DURATION.get(), 1, true));
     public static final RegistryObject<Spell> SPELL_TRANSMUTE_STONE = SPELLS.register("spell_transmute_stone", () -> new BlockTransmuteSpell(10, SpellTier.SORCERER, SpellSchool.TRANSMUTATION));
     public static final RegistryObject<Spell> SPELL_COBBLECOON = SPELLS.register("spell_cobblecoon", () -> new BlockStructureSpell(10, SpellTier.SORCERER, SpellSchool.CONJURATION, StructurePattern.COCOON_PATTERN, true, false, false, null));
+    // - Pillar
+
     // -- Combat --
     public static final RegistryObject<Spell> SPELL_ACID_RAIN = SPELLS.register("spell_acid_rain", () -> new ElementalRainSpell(10, SpellTier.SORCERER, SpellSchool.EVOCATION, new AcidElementalComponent(1, 10, 1), 4, 8));
     public static final RegistryObject<Spell> SPELL_FIRE_RAIN = SPELLS.register("spell_fire_rain", () -> new ElementalRainSpell(10, SpellTier.SORCERER, SpellSchool.EVOCATION, new FireElementalComponent(1, 10), 4, 8));
     public static final RegistryObject<Spell> SPELL_FIRE_NOVA = SPELLS.register("spell_fire_nova", () -> new ElementalNovaSpell(10, SpellTier.SORCERER, SpellSchool.EVOCATION, new FireElementalComponent(4, 4), 6, 23));
+    public static final RegistryObject<Spell> SPELL_FROST_NOVA = SPELLS.register("spell_frost_nova", () -> new ElementalNovaSpell(10, SpellTier.SORCERER, SpellSchool.EVOCATION, new FrostElementalComponent(4, 20, 1), 6, 23));
 
 
     // Netherite Spells - Master Mage

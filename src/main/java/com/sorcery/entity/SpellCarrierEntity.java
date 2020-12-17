@@ -25,7 +25,7 @@ public class SpellCarrierEntity extends Entity
     }
 
     public void tick() {
-        if (this.context instanceof SpellUseContext)
+        if (this.context != null)
         {
             this.lifeTicks += 1;
             context.setCastingTicks(this.lifeTicks);

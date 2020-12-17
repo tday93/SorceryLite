@@ -120,6 +120,7 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_ACID_RAIN = ITEMS.register("scroll_acid_rain", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_ACID_RAIN));
     public static final RegistryObject<Item> SCROLL_FIRE_RAIN = ITEMS.register("scroll_fire_rain", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_FIRE_RAIN));
     public static final RegistryObject<Item> SCROLL_FIRE_NOVA = ITEMS.register("scroll_fire_nova", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_FIRE_NOVA));
+    public static final RegistryObject<Item> SCROLL_FROST_NOVA = ITEMS.register("scroll_frost_nova", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_FROST_NOVA));
 
     // -- Master Sorcerer (Netherite)
     public static final RegistryObject<Item> SCROLL_TUNNEL = ITEMS.register("scroll_tunnel", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_TUNNEL));
