@@ -10,7 +10,6 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class Items extends ItemModelProvider
@@ -64,20 +63,23 @@ public class Items extends ItemModelProvider
         // Spell Scrolls
         // -- Testing
         simpleSingleTexture(ModItem.REMOVE_ARCANA_SPELL_SCROLL.get(), "scroll_initiate_evocation");
-        // -- Pre-Iron
+        scrollItem((SpellScrollItem) ModItem.SCROLL_TEST_STRUCTURE.get());
+        // -- Initiate (Pre-Iron)
         scrollItem((SpellScrollItem) ModItem.SCROLL_CHILLING_TOUCH.get());
         scrollItem((SpellScrollItem) ModItem.SCROLL_FIERY_TOUCH.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_DIG.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_PLANT_DEATH.get());
-        scrollItem((SpellScrollItem)ModItem.SCROLL_PLANT_LIFE.get());
-        // -- Iron
+        scrollItem((SpellScrollItem)ModItem.SCROLL_PLANT_GROWTH.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_ACIDIC_TOUCH.get());
+        // -- Apprentice (Iron)
         scrollItem((SpellScrollItem)ModItem.SCROLL_COBBLE_PLACEMENT.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_FIREBOLT.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_HEAL.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_SHUNT.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_LESSER_SLOW.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_SIGNAL_FLARE.get());
-        // -- Diamond
+        scrollItem((SpellScrollItem)ModItem.SCROLL_RAY_OF_ACID.get());
+        // -- Journeyman (Diamond)
         scrollItem((SpellScrollItem)ModItem.SCROLL_COMBUSTION.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_DIG.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_DRAIN_LIFE.get());
@@ -87,7 +89,7 @@ public class Items extends ItemModelProvider
         scrollItem((SpellScrollItem)ModItem.SCROLL_MAGIC_MISSILE.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_SEISMIC_ECHO.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_STONEFLESH.get());
-        // -- Nether
+        // -- Sorcerer (Nether)
         scrollItem((SpellScrollItem)ModItem.SCROLL_CREATE_WATER.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_REPEL.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_SPEED.get());
@@ -95,9 +97,13 @@ public class Items extends ItemModelProvider
         scrollItem((SpellScrollItem)ModItem.SCROLL_RAY_OF_FROST.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_COBBLECOON.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_ACID_RAIN.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_FIRE_RAIN.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_FIRE_NOVA.get());
-        // -- Netherite
-        // -- End
+        scrollItem((SpellScrollItem)ModItem.SCROLL_FROST_NOVA.get());
+        // -- Master Sorcerer (Netherite)
+        scrollItem((SpellScrollItem)ModItem.SCROLL_TUNNEL.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_STAIR_DOWN.get());
+        // -- Archsorcerer (End)
         scrollItem((SpellScrollItem)ModItem.SCROLL_BLINK.get());
 
         // Wands
@@ -108,19 +114,19 @@ public class Items extends ItemModelProvider
         simpleSingleTexture(ModItem.WAND_CORE_SORCERER.get(), "wand_core_sorcerer");
         simpleSingleTexture(ModItem.WAND_CORE_MASTER_SORCERER.get(), "wand_core_master_sorcerer");
         simpleSingleTexture(ModItem.WAND_CORE_ARCHSORCERER.get(), "wand_core_archsorcerer");
-        // -- Pre-Iron
+        // -- Initiate (Pre-Iron)
         wandItem((WandItem)ModItem.WAND_LESSER_DIG.get());
         wandItem((WandItem)ModItem.WAND_PLANT_DEATH.get());
-        wandItem((WandItem)ModItem.WAND_PLANT_LIFE.get());
+        wandItem((WandItem)ModItem.WAND_PLANT_GROWTH.get());
         wandItem((WandItem)ModItem.WAND_CHILLING_TOUCH.get());
-        // -- Iron
+        // -- Apprentice (Iron)
         wandItem((WandItem)ModItem.WAND_COBBLE_PLACEMENT.get());
         wandItem((WandItem)ModItem.WAND_LESSER_SHUNT.get());
         wandItem((WandItem)ModItem.WAND_LESSER_FIREBOLT.get());
         wandItem((WandItem)ModItem.WAND_LESSER_HEAL.get());
         wandItem((WandItem)ModItem.WAND_LESSER_SLOW.get());
         wandItem((WandItem)ModItem.WAND_SIGNAL_FLARE.get());
-        // -- Diamond
+        // -- Journeyman (Diamond)
         wandItem((WandItem)ModItem.WAND_COMBUSTION.get());
         wandItem((WandItem)ModItem.WAND_DIG.get());
         wandItem((WandItem)ModItem.WAND_DRAIN_LIFE.get());
@@ -130,10 +136,10 @@ public class Items extends ItemModelProvider
         wandItem((WandItem)ModItem.WAND_MAGIC_MISSILE.get());
         wandItem((WandItem)ModItem.WAND_SEISMIC_ECHO.get());
         wandItem((WandItem)ModItem.WAND_STONEFLESH.get());
-        // -- Nether
+        // -- Sorcerer (Nether)
         wandItem((WandItem)ModItem.WAND_CREATE_WATER.get());
-        // -- Netherite
-        // -- End
+        // -- Master Sorcerer (Netherite)
+        // -- Archsorcerer (End)
 
 
 

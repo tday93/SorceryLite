@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 public class PortableArcanaItem extends Item
 {
-    private int arcanaRestoreAmount = 10000;
+    private final int arcanaRestoreAmount = 10000;
 
     public PortableArcanaItem(Properties properties)
     {

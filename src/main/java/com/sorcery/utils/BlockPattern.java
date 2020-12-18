@@ -1,7 +1,9 @@
 package com.sorcery.utils;
 
 import net.minecraft.block.Block;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -9,12 +11,12 @@ import java.util.*;
 
 public class BlockPattern
 {
-    private List<List<String>> pattern3d;
-    private Character centralCharacter;
-    private List<Integer> centralCharacterLocation;
-    private Map<Character, Integer> intMap;
-    private Map<Integer, Character> revIntMap;
-    private Map<Block, Character> blockMap;
+    private final List<List<String>> pattern3d;
+    private final Character centralCharacter;
+    private final List<Integer> centralCharacterLocation;
+    private final Map<Character, Integer> intMap;
+    private final Map<Integer, Character> revIntMap;
+    private final Map<Block, Character> blockMap;
 
     public BlockPattern(List<List<String>> pattern3d, Character centralChar, Map<Character, Integer> interferenceMap, Map<Integer, Character> revIntMap, Map<Block, Character> blockMap)
     {
@@ -43,11 +45,7 @@ public class BlockPattern
 
     public boolean isNegInterference(int x, int y, int z)
     {
-        if (getInterference(x, y, z) < 0)
-        {
-            return true;
-        }
-        return false;
+        return getInterference(x, y, z) < 0;
     }
 
     private List<List<Integer>> getCharPositions(Character charIn)
@@ -88,6 +86,52 @@ public class BlockPattern
         return getOffsetPositions(getCharPositions(this.blockMap.get(block)));
     }
 
+    public List<List<Integer>> getBlockLocsRotated(Block block, Direction direction)
+    {
+        return rotateRelativePositions(getOffsetPositions(getCharPositions(this.blockMap.get(block))), direction);
+    }
+
+    public List<List<Integer>> getCharLocsRotated(Character charIn, Direction direction)
+    {
+        return rotateRelativePositions(getOffsetPositions(getCharPositions(charIn)), direction);
+    }
+
+    public List<List<Integer>> rotateRelativePositions(List<List<Integer>> positions, Direction direction)
+    {
+        List<List<Integer>> rotatedPositions = new LinkedList<>();
+
+        // +Z
+        if (direction == Direction.NORTH)
+        {
+            return positions;
+        }
+        // -Z
+        if (direction == Direction.SOUTH)
+        {
+            for (List<Integer> position : positions)
+            {
+                rotatedPositions.add(Arrays.asList(position.get(0) * -1, position.get(1), position.get(2) * -1));
+            }
+        }
+        // +X
+        if (direction == Direction.EAST)
+        {
+            for (List<Integer> position : positions)
+            {
+                rotatedPositions.add(Arrays.asList(position.get(2) * -1, position.get(1), position.get(0)));
+            }
+        }
+        // -X
+        if (direction == Direction.WEST)
+        {
+            for (List<Integer> position : positions)
+            {
+                rotatedPositions.add(Arrays.asList(position.get(2), position.get(1), position.get(0) * -1));
+            }
+        }
+        return rotatedPositions;
+    }
+
     private List<List<Integer>> getIntPositions(Integer interference)
     {
         Character intChar = this.revIntMap.get(interference);
@@ -125,6 +169,26 @@ public class BlockPattern
         return positions;
     }
 
+    public List<BlockPos> getBlockPositionsRotated(BlockPos centralPos, Block block, Direction direction)
+    {
+        List<BlockPos> positions = new LinkedList<>();
+        for (List<Integer> loc : this.getBlockLocsRotated(block, direction))
+        {
+            positions.add(new BlockPos(centralPos.getX() + loc.get(0), centralPos.getY() + loc.get(1), centralPos.getZ() + loc.get(2)));
+        }
+        return positions;
+    }
+
+    public List<BlockPos> getBlockPositionsRotated(BlockPos centralPos, Character charIn, Direction direction)
+    {
+        List<BlockPos> positions = new LinkedList<>();
+        for (List<Integer> loc : this.getCharLocsRotated(charIn, direction))
+        {
+            positions.add(new BlockPos(centralPos.getX() + loc.get(0), centralPos.getY() + loc.get(1), centralPos.getZ() + loc.get(2)));
+        }
+        return positions;
+    }
+
     public boolean isPatternValid(World world, BlockPos centralPos)
     {
         boolean allValid = true;
@@ -154,11 +218,11 @@ public class BlockPattern
 
     public static class PatternBuilder
     {
-        private List<List<String>> pattern3d = new LinkedList<>();
+        private final List<List<String>> pattern3d = new LinkedList<>();
         private Character centralCharacter = 'I';
-        private Map<Character, Integer> intMap = new HashMap<>();
-        private Map<Integer, Character> revIntMap = new HashMap<>();
-        private HashMap<Block, Character> blockMap = new HashMap<>();
+        private final Map<Character, Integer> intMap = new HashMap<>();
+        private final Map<Integer, Character> revIntMap = new HashMap<>();
+        private final HashMap<Block, Character> blockMap = new HashMap<>();
         private int lineIndex = 0;
 
         public PatternBuilder()

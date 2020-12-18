@@ -23,9 +23,7 @@ public class GeodeItem extends Item
 
     public static boolean isGeode(Item item)
     {
-        if (GEODE.get().getItem() == item)
-            return true;
-        return false;
+        return GEODE.get().getItem() == item;
     }
 
 

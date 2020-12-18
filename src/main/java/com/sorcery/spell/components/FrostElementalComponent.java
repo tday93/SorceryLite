@@ -8,9 +8,9 @@ import net.minecraft.util.DamageSource;
 
 public class FrostElementalComponent extends ElementalComponent
 {
-    private int damage;
-    private int slowDuration;
-    private int slowAmp;
+    private final int damage;
+    private final int slowDuration;
+    private final int slowAmp;
 
     public FrostElementalComponent(int damage, int slowDuration, int slowAmp)
     {

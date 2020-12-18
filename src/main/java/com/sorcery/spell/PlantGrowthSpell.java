@@ -5,9 +5,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ActionResultType;
 
-public class PlantLifeSpell extends Spell
+public class PlantGrowthSpell extends Spell
 {
-    public PlantLifeSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
+    public PlantGrowthSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
     {
         super(arcanaCost, tierIn, schoolIn);
     }
@@ -15,12 +15,7 @@ public class PlantLifeSpell extends Spell
     @Override
     public boolean allowCast(SpellUseContext context)
     {
-        if (context.wasUsedOnBlock())
-        {
-            return true;
-        } else {
-            return false;
-        }
+        return context.wasUsedOnBlock();
     }
 
     @Override

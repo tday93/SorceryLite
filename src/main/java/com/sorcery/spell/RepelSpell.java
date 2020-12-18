@@ -14,12 +14,12 @@ import java.util.List;
 
 public class RepelSpell extends Spell
 {
-    private int range;
-    private double velocity;
+    private final int range;
+    private final double velocity;
 
-    public RepelSpell(SpellTier tierIn, SpellSchool schoolIn)
+    public RepelSpell(int costIn, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(Config.SPELL_REPEL_COST.get(), tierIn, schoolIn);
+        super(costIn, tierIn, schoolIn);
         this.range = Config.SPELL_REPEL_RANGE.get();
         this.velocity = Config.SPELL_REPEL_VELOCITY.get() * 0.1;
     }

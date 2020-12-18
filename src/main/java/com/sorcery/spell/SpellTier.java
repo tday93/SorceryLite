@@ -12,7 +12,7 @@ public enum SpellTier
     public int tierInt;
     public String tierName;
 
-    private SpellTier(int tierInt, String tierName)
+    SpellTier(int tierInt, String tierName)
     {
         this.tierInt = tierInt;
         this.tierName = tierName;

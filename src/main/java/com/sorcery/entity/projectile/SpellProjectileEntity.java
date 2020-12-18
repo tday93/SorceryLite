@@ -25,7 +25,7 @@ public class SpellProjectileEntity extends DamagingProjectileEntity implements I
     public ResourceLocation projectileTexture;
     public IParticleData baseParticle;
 
-    private int maxTicksExisted = 100;
+    private final int maxTicksExisted = 100;
 
     public SpellProjectileEntity(EntityType<? extends SpellProjectileEntity> entityType, World world)
     {

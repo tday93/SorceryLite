@@ -13,7 +13,7 @@ import java.util.Map;
 public class BlockTransmuteSpell extends Spell
 {
 
-    private Map<Block, Block> blockMap;
+    private final Map<Block, Block> blockMap;
 
     public BlockTransmuteSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn)
     {

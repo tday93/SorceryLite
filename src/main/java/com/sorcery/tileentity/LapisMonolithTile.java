@@ -15,7 +15,7 @@ import java.util.List;
 public class LapisMonolithTile extends AbstractMonolithTile
 {
 
-    private int arcanaPerLapis = 100;
+    private final int arcanaPerLapis = 100;
 
     public LapisMonolithTile()
     {
@@ -31,12 +31,7 @@ public class LapisMonolithTile extends AbstractMonolithTile
     public boolean canAcceptLapis()
     {
         int arcanaSpace = this.arcanaStorage.getMaxArcanaStored() - this.arcanaStorage.getArcanaStored();
-        if (arcanaSpace >= this.arcanaPerLapis)
-        {
-            return true;
-        } else {
-            return false;
-        }
+        return arcanaSpace >= this.arcanaPerLapis;
     }
 
     public void doSuckParticleEffect(ItemEntity entity)

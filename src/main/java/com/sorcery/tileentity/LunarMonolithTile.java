@@ -22,7 +22,7 @@ public class LunarMonolithTile extends AbstractMonolithTile implements ITickable
 
     private double cycleMultiplier = 0.5;
 
-    private Map<Integer, Double> phaseMap = new HashMap();
+    private final Map<Integer, Double> phaseMap = new HashMap();
 
 
     public LunarMonolithTile(){

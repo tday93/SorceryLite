@@ -18,11 +18,11 @@ import java.util.Set;
 
 public class MeditateSpell extends Spell
 {
-    private int arcanaGenRate = 1;
+    private final int arcanaGenRate = 1;
 
-    private int monolithRange = 8;
+    private final int monolithRange = 8;
 
-    private int arcanaDrainRate = 100;
+    private final int arcanaDrainRate = 100;
 
     public MeditateSpell(SpellTier tierIn, SpellSchool schoolIn)
     {

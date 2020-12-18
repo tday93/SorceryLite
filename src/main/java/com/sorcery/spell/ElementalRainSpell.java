@@ -16,12 +16,12 @@ import java.util.List;
 public class ElementalRainSpell extends Spell
 {
 
-    private double horizontalRadius;
-    private double verticalRange;
-    private double maxRange;
-    private ElementalComponent elementalComponent;
+    private final double horizontalRadius;
+    private final double verticalRange;
+    private final double maxRange;
+    private final ElementalComponent elementalComponent;
 
-    public ElementalRainSpell(int arcanaCost, ElementalComponent damageComponent, double horizontalRadius, double verticalRange, SpellTier tierIn, SpellSchool schoolIn)
+    public ElementalRainSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn, ElementalComponent damageComponent, double horizontalRadius, double verticalRange)
     {
         super(arcanaCost, tierIn, schoolIn);
         this.horizontalRadius = horizontalRadius;

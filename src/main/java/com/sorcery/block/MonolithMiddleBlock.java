@@ -18,8 +18,8 @@ import javax.annotation.Nullable;
 
 public class MonolithMiddleBlock extends AbstractMonolithBlock
 {
-    private static Float hardness   = 3.0F;
-    private static Float resistance = 6.0F;
+    private static final Float hardness   = 3.0F;
+    private static final Float resistance = 6.0F;
     public static final BooleanProperty ACTIVE = States.ACTIVE;
     public static final int LIT_LIGHT_LEVEL = 7;
 

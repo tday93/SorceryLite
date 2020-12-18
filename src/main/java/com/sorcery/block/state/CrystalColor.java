@@ -16,7 +16,7 @@ public enum CrystalColor implements IStringSerializable
 
     private final String crystalName;
 
-    private CrystalColor(String name, String crystalName) {
+    CrystalColor(String name, String crystalName) {
         this.name = name;
         this.crystalName = crystalName;
     }

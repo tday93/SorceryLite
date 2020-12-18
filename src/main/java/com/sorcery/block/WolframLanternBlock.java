@@ -40,8 +40,8 @@ import javax.annotation.Nullable;
 
 public class WolframLanternBlock extends Block
 {
-    private static Float hardness = 1.5F;
-    private static Float resistance = 6.0F;
+    private static final Float hardness = 1.5F;
+    private static final Float resistance = 6.0F;
 
     public static final EnumProperty<CrystalColor> COLOR = States.CRYSTAL_COLOR;
     public static final BooleanProperty HANGING = BlockStateProperties.HANGING;

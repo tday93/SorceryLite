@@ -174,9 +174,7 @@ public class SpellUseContext
     }
 
     public boolean wasEntityTargeted(){
-        if (targetEntity == null)
-            return false;
-        return true;
+        return targetEntity != null;
     }
 
     public LivingEntity getTargetEntity()
@@ -191,10 +189,7 @@ public class SpellUseContext
 
     public boolean hasHitPos()
     {
-        if (this.rayTraceResult == null)
-            return false;
-
-        return true;
+        return this.rayTraceResult != null;
     }
 
     public BlockPos getFacePos()
@@ -224,11 +219,7 @@ public class SpellUseContext
 
     public boolean wasHitBlockAir()
     {
-        if (this.world.isAirBlock(this.rayTraceResult.getPos()))
-        {
-            return true;
-        }
-        return false;
+        return this.world.isAirBlock(this.rayTraceResult.getPos());
     }
 
     public void setInherentSpell(Spell spell)

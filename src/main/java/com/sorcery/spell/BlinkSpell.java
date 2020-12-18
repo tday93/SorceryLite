@@ -18,11 +18,11 @@ import net.minecraft.util.math.vector.Vector3d;
 
 public class BlinkSpell extends Spell
 {
-    private double blinkDistance;
+    private final double blinkDistance;
 
-    public BlinkSpell()
+    public BlinkSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolin)
     {
-        super(Config.SPELL_BLINK_COST.get());
+        super(arcanaCost, tierIn, schoolin);
         this.finalSound = SoundEvents.ENTITY_ENDERMAN_TELEPORT;
         this.blinkDistance = Config.SPELL_BLINK_DISTANCE.get();
     }

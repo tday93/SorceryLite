@@ -15,7 +15,7 @@ public class BrownianParticle extends SpriteTexturedParticle
 
     float motionDamp;
 
-    private double brownianFactor = 0.01;
+    private final double brownianFactor = 0.01;
 
     IParticleRenderType renderType;
 

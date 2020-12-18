@@ -10,9 +10,9 @@ import net.minecraft.util.math.BlockPos;
 
 public class IgniteSpell extends Spell
 {
-    public IgniteSpell(SpellTier tierIn, SpellSchool schoolIn)
+    public IgniteSpell(int costIn, SpellTier tierIn, SpellSchool schoolIn)
     {
-        super(Config.SPELL_IGNITE_COST.get());
+        super(costIn, tierIn, schoolIn);
         this.finalSound = SoundEvents.ITEM_FLINTANDSTEEL_USE;
     }
 
@@ -30,7 +30,7 @@ public class IgniteSpell extends Spell
             this.doParticleEffects(context);
             this.playFinalSound(context);
 
-            BlockState blockState = ((FireBlock) Blocks.FIRE).getDefaultState();
+            BlockState blockState = Blocks.FIRE.getDefaultState();
             context.getWorld().setBlockState(firePos, blockState, 11);
             this.playFinalSound(context);
             return ActionResultType.SUCCESS;

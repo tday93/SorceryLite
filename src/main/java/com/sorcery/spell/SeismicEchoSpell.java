@@ -17,9 +17,9 @@ import java.util.stream.Stream;
 
 public class SeismicEchoSpell extends Spell
 {
-    private int range;
+    private final int range;
 
-    public SeismicEchoSpell(int arcanaCost, int range, SpellTier tierIn, SpellSchool schoolIn)
+    public SeismicEchoSpell(int arcanaCost, SpellTier tierIn, SpellSchool schoolIn, int range)
     {
         super(arcanaCost, tierIn, schoolIn);
         this.castType = CastType.DURATION;

@@ -15,8 +15,8 @@ import javax.annotation.Nullable;
 
 public class StrippedRunewoodLogBlock extends RotatedPillarBlock
 {
-    private static Float hardness   = 3.0F;
-    private static Float resistance = 6.0F;
+    private static final Float hardness   = 3.0F;
+    private static final Float resistance = 6.0F;
 
     public static final IntegerProperty NORTH_RUNE = States.NORTH_RUNE;
     public static final IntegerProperty EAST_RUNE = States.EAST_RUNE;
