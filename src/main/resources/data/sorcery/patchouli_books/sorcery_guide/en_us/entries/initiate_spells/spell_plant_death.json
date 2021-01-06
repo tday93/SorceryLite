@@ -13,8 +13,7 @@
     },
     {
       "type":"crafting",
-      "recipe": "sorcery:wand_plant_death",
-      "recipe2": "sorcery:scroll_plant_death"
+      "recipe": "sorcery:scroll_plant_death"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
-  "name": "Chilling Touch",
-  "icon": "sorcery:textures/spells/spell_chilling_touch.png",
+  "name": "Acidic Touch",
+  "icon": "sorcery:textures/spells/spell_acidic_touch.png",
   "category": "initiate_spells",
   "pages": [
     {
@@ -13,7 +13,7 @@
     },
     {
       "type":"crafting",
-      "recipe": "sorcery:scroll_chilling_touch"
+      "recipe": "sorcery:scroll_acidic_touch"
     }
   ]
 }

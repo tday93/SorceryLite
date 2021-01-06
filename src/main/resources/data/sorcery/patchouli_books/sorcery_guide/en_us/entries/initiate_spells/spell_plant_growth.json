@@ -1,6 +1,6 @@
 {
   "name": "Plant Life",
-  "icon": "sorcery:textures/spells/spell_plant_life.png",
+  "icon": "sorcery:textures/spells/spell_plant_growth.png",
   "category": "initiate_spells",
   "pages": [
     {
