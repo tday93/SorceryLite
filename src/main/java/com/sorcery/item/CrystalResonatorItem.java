@@ -126,8 +126,14 @@ public class CrystalResonatorItem extends Item
     public ItemStack clearLinkPos(ItemStack stack)
     {
        CompoundNBT nbt = stack.getTag();
-       nbt.remove("linkPos");
-       stack.setTag(nbt);
+       if(nbt != null)
+       {
+           if (nbt.contains("linkPos"))
+           {
+               nbt.remove("linkPos");
+               stack.setTag(nbt);
+           }
+       }
        return stack;
     }
 

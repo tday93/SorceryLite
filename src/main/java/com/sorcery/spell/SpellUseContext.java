@@ -237,6 +237,33 @@ public class SpellUseContext
         this.carrierEntity = entity;
     }
 
+    // Drain Arcana from caster, return true if successful
+    public boolean drainArcana(int arcanaCost)
+    {
+        if (!this.getWorld().isRemote())
+        {
+            if (this.carrierEntity != null)
+            {
+                return true;
+            }
+            // Server side, check + drain
+            if (this.getArcanaSource().getArcanaStored() >= arcanaCost)
+            {
+                this.getArcanaSource().extractArcana(arcanaCost, false);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if (this.carrierEntity != null)
+            {
+                return true;
+            }
+            // Client side, just check
+            return this.getArcanaSource().getArcanaStored() >= arcanaCost;
+        }
+    }
+
     public Spell getSpell()
     {
         if (this.inherentSpell != null)
@@ -249,9 +276,13 @@ public class SpellUseContext
         }
         if (this.item.getItem() instanceof StaffItem && this.getPlayer() != null)
         {
-            return Utils.getSpellFromProvider(Utils.getPlayerSpellbook(this.getPlayer()));
+            ItemStack playerSpellbook = Utils.getPlayerSpellbook(this.getPlayer());
+            if (playerSpellbook != null)
+            {
+                return Utils.getSpellFromProvider(playerSpellbook);
+            }
         }
-        return ModSpell.SPELL_REMOVE_ARCANA.get();
+        return ModSpell.SPELL_MEDITATE.get();
     }
 
 }

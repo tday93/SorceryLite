@@ -1,6 +1,6 @@
 {
-  "name": "Chilling Touch",
-  "icon": "sorcery:textures/spells/spell_chilling_touch.png",
+  "name": "Fiery Touch",
+  "icon": "sorcery:textures/spells/spell_fiery_touch.png",
   "category": "initiate_spells",
   "pages": [
     {

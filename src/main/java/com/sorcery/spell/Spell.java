@@ -170,20 +170,7 @@ public class Spell extends ForgeRegistryEntry<Spell>
     // Drain Arcana from caster, return true if successful
     public boolean drainArcana(SpellUseContext context, int arcanaCost)
     {
-        if (!context.getWorld().isRemote())
-        {
-            // Server side, check + drain
-            if (context.getArcanaSource().getArcanaStored() >= arcanaCost)
-            {
-                context.getArcanaSource().extractArcana(arcanaCost, false);
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            // Client side, just check
-            return context.getArcanaSource().getArcanaStored() >= arcanaCost;
-        }
+        return context.drainArcana(arcanaCost);
     }
 
     public int getCastDuration(){

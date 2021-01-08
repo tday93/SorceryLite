@@ -1,7 +1,7 @@
 {
-  "name": "Chilling Touch",
-  "icon": "sorcery:textures/spells/spell_chilling_touch.png",
-  "category": "initiate_spells",
+  "name": "Stair Down",
+  "icon": "sorcery:textures/spells/spell_stair_down.png",
+  "category": "master_sorcerer_spells",
   "pages": [
     {
       "type": "text",
@@ -13,7 +13,7 @@
     },
     {
       "type":"crafting",
-      "recipe": "sorcery:scroll_chilling_touch"
+      "recipe": "sorcery:scroll_create_water"
     }
   ]
 }

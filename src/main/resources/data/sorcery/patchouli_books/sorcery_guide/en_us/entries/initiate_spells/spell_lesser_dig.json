@@ -13,8 +13,7 @@
     },
     {
       "type":"crafting",
-      "recipe": "sorcery:wand_lesser_dig",
-      "recipe2": "sorcery:scroll_lesser_dig"
+      "recipe": "sorcery:scroll_lesser_dig"
     }
   ]
 }

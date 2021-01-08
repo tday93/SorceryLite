@@ -131,6 +131,9 @@
   "item.sorcery.scroll_speed": "Scroll of Speed",
   "item.sorcery.scroll_transmute_stone": "Scroll of Transmute Stone",
   "item.sorcery.scroll_ray_of_frost": "Scroll of Ray of Frost",
+  "item.sorcery.scroll_cobblecoon": "Scroll of Cobblecoon",
+  "item.sorcery.scroll_frost_nova": "Scroll of Frost Nova",
+  "item.sorcery.scroll_fire_nova": "Scroll of Fire Nova",
 
   "effect.sorcery.dimensional_fraying": "Dimensional Fraying",
   "effect.sorcery.feather_falling": "Feather Falling",
@@ -187,5 +190,8 @@
   "spell.sorcery.spell_repel": "Repel",
   "spell.sorcery.spell_speed": "Speed",
   "spell.sorcery.spell_transmute_stone": "Transmute Stone",
-  "spell.sorcery.spell_ray_of_frost": "Ray of Frost"
+  "spell.sorcery.spell_ray_of_frost": "Ray of Frost",
+  "spell.sorcery.spell_cobblecoon": "Cobblecoon",
+  "spell.sorcery.spell_frost_nova": "Frost Nova",
+  "spell.sorcery.spell_fire_nova": "Fire Nova"
 }
