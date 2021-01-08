@@ -276,9 +276,13 @@ public class SpellUseContext
         }
         if (this.item.getItem() instanceof StaffItem && this.getPlayer() != null)
         {
-            return Utils.getSpellFromProvider(Utils.getPlayerSpellbook(this.getPlayer()));
+            ItemStack playerSpellbook = Utils.getPlayerSpellbook(this.getPlayer());
+            if (playerSpellbook != null)
+            {
+                return Utils.getSpellFromProvider(playerSpellbook);
+            }
         }
-        return ModSpell.SPELL_REMOVE_ARCANA.get();
+        return ModSpell.SPELL_MEDITATE.get();
     }
 
 }

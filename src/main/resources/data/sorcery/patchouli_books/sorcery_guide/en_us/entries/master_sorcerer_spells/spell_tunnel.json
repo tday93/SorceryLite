@@ -1,7 +1,7 @@
 {
-  "name": "Fire Nova",
-  "icon": "sorcery:textures/spells/spell_fire_nova.png",
-  "category": "sorcerer_spells",
+  "name": "Tunnel",
+  "icon": "sorcery:textures/spells/spell_tunnel.png",
+  "category": "master_sorcerer_spells",
   "pages": [
     {
       "type": "text",

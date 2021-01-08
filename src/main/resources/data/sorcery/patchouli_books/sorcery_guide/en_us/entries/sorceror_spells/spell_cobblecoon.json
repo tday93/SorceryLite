@@ -1,6 +1,6 @@
 {
-  "name": "Create Water",
-  "icon": "sorcery:textures/spells/spell_create_water.png",
+  "name": "Cobblecoon",
+  "icon": "sorcery:textures/spells/spell_cobblecoon.png",
   "category": "sorcerer_spells",
   "pages": [
     {

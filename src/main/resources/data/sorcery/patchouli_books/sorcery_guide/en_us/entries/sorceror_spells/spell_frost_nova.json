@@ -1,6 +1,6 @@
 {
-  "name": "Create Water",
-  "icon": "sorcery:textures/spells/spell_create_water.png",
+  "name": "Frost Nova",
+  "icon": "sorcery:textures/spells/spell_frost_nova.png",
   "category": "sorcerer_spells",
   "pages": [
     {
