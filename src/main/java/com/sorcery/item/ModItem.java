@@ -125,6 +125,7 @@ public class ModItem
     // -- Master Sorcerer (Netherite)
     public static final RegistryObject<Item> SCROLL_TUNNEL = ITEMS.register("scroll_tunnel", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_TUNNEL));
     public static final RegistryObject<Item> SCROLL_STAIR_DOWN = ITEMS.register("scroll_stair_down", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_STAIR_DOWN));
+    public static final RegistryObject<Item> SCROLL_MENDING = ITEMS.register("scroll_mending", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_MENDING));
 
     // -- ArchSorcerer (End)
     public static final RegistryObject<Item> SCROLL_BLINK = ITEMS.register("scroll_blink", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_BLINK));
