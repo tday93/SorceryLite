@@ -25,7 +25,7 @@ public class MendingSpell extends Spell
         ItemStack offhandItem = context.getPlayer().getHeldItemOffhand();
         if (offhandItem.isDamageable())
         {
-            offhandItem.setDamage(offhandItem.getDamage() + this.repairAmount);
+            offhandItem.setDamage(Math.max(offhandItem.getDamage() - this.repairAmount, 0));
             return ActionResultType.SUCCESS;
         }
 
@@ -33,7 +33,7 @@ public class MendingSpell extends Spell
         {
             if (armorItem.isDamageable())
             {
-                armorItem.setDamage(armorItem.getDamage() + this.repairAmount);
+                armorItem.setDamage(Math.max(armorItem.getDamage() - this.repairAmount/4, 0));
             }
         }
         return ActionResultType.SUCCESS;
