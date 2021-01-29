@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "sorcery:item/scroll_master_sorcerer_evocation"
+    "layer0": "sorcery:item/scroll_master_sorcerer_abjuration"
   }
 }

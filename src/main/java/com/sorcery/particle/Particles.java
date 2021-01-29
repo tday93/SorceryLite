@@ -214,6 +214,12 @@ public class Particles
             case 24:
                 collection.add(100, ParticleTypes.SMOKE);
                 return collection;
+            case 25:
+                // Abjuration Arcana Lit
+                collection.add(50, getColoredParticle(ModColor.ABJURATION_YELLOW.getMainList(), ModParticle.ARCANA, 0.3f, age, false, false, 0.0f, 0.8f, false));
+                collection.add(25, getColoredParticle(ModColor.ABJURATION_YELLOW.getLowList(), ModParticle.ARCANA, 0.3f, age, false, false, 0.0f, 0.8f, false));
+                collection.add(25, getColoredParticle(ModColor.ABJURATION_YELLOW.getHiList(), ModParticle.ARCANA, 0.3f, age, false, false, 0.0f, 0.8f, false));
+                return collection;
             default:
                 collection.add(100, getSpark());
                 return collection;
