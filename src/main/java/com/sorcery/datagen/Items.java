@@ -105,7 +105,9 @@ public class Items extends ItemModelProvider
         scrollItem((SpellScrollItem)ModItem.SCROLL_STAIR_DOWN.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_MENDING.get());
         // -- Archsorcerer (End)
+        scrollItem((SpellScrollItem)ModItem.SCROLL_FIREBURST.get());
         scrollItem((SpellScrollItem)ModItem.SCROLL_BLINK.get());
+        scrollItem((SpellScrollItem)ModItem.SCROLL_RECALL.get());
 
         // Wands
         // -- Utility

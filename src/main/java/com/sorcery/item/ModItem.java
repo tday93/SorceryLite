@@ -128,7 +128,10 @@ public class ModItem
     public static final RegistryObject<Item> SCROLL_MENDING = ITEMS.register("scroll_mending", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_MENDING));
 
     // -- ArchSorcerer (End)
+    public static final RegistryObject<Item> SCROLL_FIREBURST = ITEMS.register("scroll_fireburst", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_FIREBURST));
+
     public static final RegistryObject<Item> SCROLL_BLINK = ITEMS.register("scroll_blink", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_BLINK));
+    public static final RegistryObject<Item> SCROLL_RECALL = ITEMS.register("scroll_recall", () -> new SpellScrollItem(Constants.ITEM_PROPS_SCROLLS, ModSpell.SPELL_RECALL));
 
 
     // Wands
