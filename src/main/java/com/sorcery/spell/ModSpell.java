@@ -103,16 +103,18 @@ public class ModSpell
     public static final RegistryObject<Spell> SPELL_TUNNEL = SPELLS.register("spell_tunnel", () -> new BlockStructureSpell(Config.SPELL_TUNNEL_COST.get(), SpellTier.MASTER_SORCERER, SpellSchool.CONJURATION, StructurePattern.TUNNEL_PATTERN, false, true, true, '~', 40));
     public static final RegistryObject<Spell> SPELL_STAIR_DOWN = SPELLS.register("spell_stair_down", () -> new BlockStructureSpell(Config.SPELL_STAIR_DOWN_COST.get(), SpellTier.MASTER_SORCERER, SpellSchool.CONJURATION, StructurePattern.STAIR_DOWN_PATTERN, false, true, true, '~', 40));
     public static final RegistryObject<Spell> SPELL_MENDING = SPELLS.register("spell_mending", () -> new MendingSpell(Config.SPELL_MENDING_COST.get(), SpellTier.MASTER_SORCERER, SpellSchool.ABJURATION));
-    // - mending
     // -- Combat -- (Rains)
     public static final RegistryObject<Spell> SPELL_ACID_RAIN = SPELLS.register("spell_acid_rain", () -> new ElementalRainSpell(Config.SPELL_ACID_RAIN_COST.get(), SpellTier.MASTER_SORCERER, SpellSchool.EVOCATION, new AcidElementalComponent(1, 10, 1), 4, 8));
     public static final RegistryObject<Spell> SPELL_FIRE_RAIN = SPELLS.register("spell_fire_rain", () -> new ElementalRainSpell(Config.SPELL_FIRE_RAIN_COST.get(), SpellTier.MASTER_SORCERER, SpellSchool.EVOCATION, new FireElementalComponent(1, 10), 4, 8));
 
     // Archsorcerer (End) Spells
     // -- Non-Combat --
+    public static final RegistryObject<Spell> SPELL_BLINK = SPELLS.register("spell_blink", () -> new BlinkSpell(Config.SPELL_BLINK_COST.get(), SpellTier.ARCHSORCERER, SpellSchool.CONJURATION));
+    public static final RegistryObject<Spell> SPELL_RECALL = SPELLS.register("spell_recall", () -> new RecallSpell(Config.SPELL_RECALL_COST.get(), SpellTier.ARCHSORCERER, SpellSchool.CONJURATION));
     // - Death Guard
     // -- Combat -- (Nukes)
-    public static final RegistryObject<Spell> SPELL_BLINK = SPELLS.register("spell_blink", () -> new BlinkSpell(Config.SPELL_BLINK_COST.get(), SpellTier.ARCHSORCERER, SpellSchool.CONJURATION));
+    public static final RegistryObject<Spell> SPELL_FIREBURST = SPELLS.register("spell_fireburst", () -> new ElementalBurstSpell(Config.SPELL_FIREBURST_COST.get(), SpellTier.ARCHSORCERER, SpellSchool.EVOCATION, new FireElementalComponent(1, 8), Config.SPELL_FIREBURST_RANGE.get(), Config.SPELL_FIREBURST_RADIUS.get()));
+
 
 
     public static void init()

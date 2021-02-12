@@ -86,6 +86,11 @@ public class Config
 
     public static ForgeConfigSpec.IntValue SPELL_BLINK_COST;
     public static ForgeConfigSpec.IntValue SPELL_BLINK_DISTANCE;
+    public static ForgeConfigSpec.IntValue SPELL_RECALL_COST;
+    public static ForgeConfigSpec.IntValue SPELL_FIREBURST_COST;
+    public static ForgeConfigSpec.IntValue SPELL_FIREBURST_RANGE;
+    public static ForgeConfigSpec.IntValue SPELL_FIREBURST_RADIUS;
+
 
     // Monolith config items
     public static ForgeConfigSpec.IntValue MONOLITH_NORMAL_GENERATE;
@@ -171,6 +176,10 @@ public class Config
         SPELL_BLINK_COST = spellIntParamHelper("blink", "cost",500, 0, Integer.MAX_VALUE);
         SPELL_BLINK_DISTANCE = spellIntParamHelper("blink", "distance", 4, 2, 64);
 
+        SPELL_RECALL_COST = spellIntParamHelper("recall", "cost",500, 0, Integer.MAX_VALUE);
+        SPELL_FIREBURST_COST = spellIntParamHelper("fireburst", "cost",500, 0, Integer.MAX_VALUE);
+        SPELL_FIREBURST_RANGE = spellIntParamHelper("fireburst", "range",16, 0, 64);
+        SPELL_FIREBURST_RADIUS = spellIntParamHelper("fireburst", "radius",8, 0, 64);
         // After every config added
         COMMON_BUILDER.pop();
     }
